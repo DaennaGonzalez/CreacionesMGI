@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Creaciones MGI - Fabricación personalizada en MDF y acrílico. Detalles únicos, piezas inolvidables." />
+  <title>Creaciones MGI | Inicio</title>
+
+  <!-- CSS (se agregará después) -->
+  <link rel="stylesheet" href="styles.css" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+</head>
+
+<body class="mgi-body">
+  <!-- Fondo fijo -->
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- ENCABEZADO -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <!-- Logo -->
+      <a class="brand" href="index.html">
+        <img
+          src="imgs/logo-creacionesmgi.webp"
+          alt="Creaciones MGI"
+          class="brand-logo"
+        />
+      </a>
+
+      <!-- FRASE (solo aparece en modo compacto) -->
+<p class="header-frase" aria-hidden="true">
+  Damos forma a tus ideas para crear historias inolvidables.
+</p>
+
+      <!-- Menú hamburguesa -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Navegación -->
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="activo">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+
+    <!-- PORTADA -->
+    <section class="hero">
+      <div class="hero-contenido">
+
+        <!-- Tabla izquierda -->
+        <div class="hero-lateral izquierda">
+          <img src="imgs/tabla-izquierda.webp" alt="">
+        </div>
+
+        <!-- Centro -->
+        <div class="hero-centro">
+          <h1>Fabricación<br>en MDF y acrílico</h1>
+          <p class="subtitulo">Detalles únicos, piezas inolvidables</p>
+
+          <img
+            src="imgs/imagen-centro-portada.webp"
+            alt="Productos personalizados Creaciones MGI"
+            class="imagen-principal"
+          />
+
+          <button class="btn-principal" data-modal="cotizaModal">
+            Cotiza tu diseño
+          </button>
+        </div>
+
+        <!-- Tabla derecha -->
+        <div class="hero-lateral derecha">
+          <img src="imgs/tabla-derecha.webp" alt="">
+        </div>
+
+
+        <!-- =========================
+  VIDEO (debajo del botón)
+========================= -->
+<section class="home-video" aria-label="Video principal de Creaciones MGI">
+  <div class="home-video__frame">
+    <video
+      class="home-video__video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+    >
+      <source
+        src="https://res.cloudinary.com/dbsjtpqpa/video/upload/q_auto,f_auto/VIDEO_CREACIONES_MGI_sbjqrs.mp4"
+        type="video/mp4"
+      />
+      Tu navegador no soporta videos HTML5.
+    </video>
+  </div>
+</section>
+
+
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 1 -->
+<section class="seccion">
+  <h2 class="titulo-seccion">Productos destacados</h2>
+
+  <div class="grid-productos">
+    <article class="tarjeta">
+      <h3>Altar de muertos</h3>
+      <p>Decoración tradicional en MDF con grabado láser.</p>
+    </article>
+
+    <article class="tarjeta">
+      <h3>Cajas personalizadas</h3>
+      <p>Ideales para regalos, sobres y recuerdos.</p>
+    </article>
+
+    <article class="tarjeta">
+      <h3>Lapiceras</h3>
+      <p>Diseños únicos con nombres y colores personalizados.</p>
+    </article>
+
+    <article class="tarjeta">
+      <h3>Portallaves</h3>
+      <p>Funcionales y decorativos para el hogar u oficina.</p>
+    </article>
+  </div>
+
+  <!-- 👇 IMAGEN DESTACADA DEBAJO DE LAS TARJETAS -->
+  <div class="destacado-imagen">
+    <img
+      src="imgs/trabajadora-sorprendida.webp"
+      alt="Trabajadora sorprendida con productos Creaciones MGI"
+      class="destacado-imagen__img"
+      loading="lazy"
+    />
+  </div>
+</section>
+
+
+    <!-- SECCIÓN 2 -->
+    <section class="seccion fondo-azul">
+      <h2 class="titulo-seccion">¿Cómo trabajamos?</h2>
+
+      <div class="pasos">
+        <div class="paso">1. Envíanos tu idea</div>
+        <div class="paso">2. Te enviamos cotización</div>
+        <div class="paso">3. Fabricamos y entregamos</div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3 -->
+    <section class="seccion" id="cotiza">
+      <h2 class="titulo-seccion">Cotiza tu diseño</h2>
+
+      <form class="formulario">
+        <input type="text" placeholder="Nombre completo" required>
+        <input type="tel" placeholder="Teléfono / WhatsApp" required>
+        <input type="email" placeholder="Correo electrónico" required>
+        <textarea placeholder="Describe tu idea o producto" required></textarea>
+
+        <button type="submit" class="btn-principal">
+          Enviar cotización
+        </button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- BURBUJAS FLOTANTES -->
+  <div class="burbujas">
+    <a href="https://wa.me/5210000000000" target="_blank" class="burbuja whatsapp">
+      <img src="imgs/icono-whatsapp.png" alt="WhatsApp">
+    </a>
+
+    <a href="https://facebook.com" target="_blank" class="burbuja facebook">
+      <img src="imgs/logo-facebook.png" alt="Facebook">
+    </a>
+  </div>
+
+  <!-- MODAL COTIZACIÓN -->
+  <dialog id="cotizaModal" class="modal">
+    <form method="dialog" class="modal-contenido">
+      <h2>Cotiza tu diseño</h2>
+      <input type="text" placeholder="Nombre" required>
+      <input type="tel" placeholder="WhatsApp" required>
+      <textarea placeholder="Describe tu idea" required></textarea>
+
+      <button class="btn-principal">Enviar</button>
+      <button class="btn-secundario">Cerrar</button>
+    </form>
+  </dialog>
+
+  <!-- JS (se agregará después) -->
+  <script src="script.js"></script>
+
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
