@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Realiza tu pedido en Creaciones MGI: proceso, tiempos y formulario para cotizar tu diseño." />
+  <title>Creaciones MGI | Pedidos</title>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html" class="activo">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SECCIÓN 1 -->
+    <section class="seccion">
+      <h2 class="titulo-seccion">¿Cómo hago mi pedido?</h2>
+
+      <div class="grid-productos">
+        <article class="tarjeta">
+          <h3>1) Envíanos tu idea</h3>
+          <p>Cuéntanos qué necesitas: tipo de producto, medidas aproximadas, colores, texto, temática y fecha para entrega.</p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>2) Te cotizamos</h3>
+          <p>Te enviamos opciones, precio estimado y tiempo de fabricación. Si tu idea requiere ajuste, te proponemos alternativas.</p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>3) Confirmas diseño</h3>
+          <p>Una vez aprobado el diseño, se agenda tu pedido. Aquí confirmamos detalles finales para que quede tal como lo imaginas.</p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>4) Fabricación y entrega</h3>
+          <p>Fabricamos y te entregamos según lo acordado. Te avisamos en cuanto esté listo para entrega o envío.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2 -->
+    <section class="seccion fondo-azul">
+      <h2 class="titulo-seccion">Tiempos y detalles</h2>
+
+      <div class="pasos">
+        <div class="paso">⏱️ Tiempo estimado: según diseño y volumen</div>
+        <div class="paso">📌 Recomendación: pedir con anticipación</div>
+        <div class="paso">✅ Personalización: nombres, frases, temática</div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3 -->
+    <section class="seccion" id="pedido">
+      <h2 class="titulo-seccion">Solicita tu pedido</h2>
+
+      <form class="formulario">
+        <input type="text" placeholder="Nombre completo" required>
+        <input type="tel" placeholder="WhatsApp" required>
+        <input type="email" placeholder="Correo (opcional)" >
+        <input type="text" placeholder="Producto (ej. caja, letrero, evento...)" required>
+        <textarea placeholder="Describe tu pedido (medidas, colores, texto, temática, fecha de entrega)" required></textarea>
+
+        <button type="submit" class="btn-principal">Enviar pedido</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+  </footer>
+
+  <div class="burbujas">
+    <a href="https://wa.me/5210000000000" target="_blank" class="burbuja whatsapp">
+      <img src="imgs/icono-whatsapp.png" alt="WhatsApp">
+    </a>
+    <a href="https://facebook.com" target="_blank" class="burbuja facebook">
+      <img src="imgs/logo-facebook.png" alt="Facebook">
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
