@@ -77,9 +77,8 @@
 
         <!-- Centro -->
         <div class="hero-centro">
-          <h1>Fabricación<br>en MDF y acrílico</h1>
-          <p class="subtitulo">Detalles únicos, piezas inolvidables</p>
-
+          <h1>Damos forma a tus ideas<br>para crear historias inolvidables</h1>
+          
           <img
             src="imgs/imagen-centro-portada.webp"
             alt="Productos personalizados Creaciones MGI"
@@ -160,6 +159,198 @@
     />
   </div>
 </section>
+
+<!-- SECCIÓN 2 (NUEVA): ¿QUÉ ESTÁS CELEBRANDO? -->
+<section class="seccion seccion-celebrando" id="celebrando">
+  <div class="celebrando-wrap">
+
+    <!-- Decoraciones (solo DESKTOP amplio) -->
+    <img
+      src="imgs/queestascelebrando-izquierda.webp"
+      alt=""
+      class="celebrando-deco celebrando-deco--izq"
+      aria-hidden="true"
+      loading="lazy"
+    />
+
+    <img
+      src="imgs/queestascelebrando-derecha.webp"
+      alt=""
+      class="celebrando-deco celebrando-deco--der"
+      aria-hidden="true"
+      loading="lazy"
+    />
+
+    <h2 class="titulo-seccion">¿Qué estás celebrando?</h2>
+
+    <div class="grid-productos celebrando-grid">
+      <!-- 1 -->
+      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
+        <h3>🎂 Cumpleaños</h3>
+        <p>Letreros, alcancías, centros de mesa y decoración temática.</p>
+        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+      </article>
+
+      <!-- 2 -->
+      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
+        <h3>👑 XV Años</h3>
+        <p>Cajas para sobres personalizadas y detalles con nombre.</p>
+        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+      </article>
+
+      <!-- 3 -->
+      <article class="tarjeta tarjeta-celebracion">
+        <h3>👰 Bodas</h3>
+        <p>Letreros elegantes y caja para sobres MDF + acrílico.</p>
+        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+      </article>
+
+      <!-- 4 -->
+      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--larga">
+        <h3>✝ Primera Comunión / Bautizo</h3>
+        <p>Cruces, palomas, toppers y diseños religiosos.</p>
+        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+      </article>
+
+      <!-- 5 -->
+      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--larga">
+        <h3>💖 Día de las Madres</h3>
+        <p>Portarretratos y cajas corazón para regalar.</p>
+        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+      </article>
+
+      <!-- 6 -->
+      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--larga">
+        <h3>👩‍🏫 Día del Maestro</h3>
+        <p>Lapiceras personalizadas y regalos escolares.</p>
+        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+      </article>
+
+      <!-- 7 -->
+      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
+        <h3>🐰 Pascua</h3>
+        <p>Canastas y decoraciones para temporada.</p>
+        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+      </article>
+
+      <!-- 8 -->
+      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
+        <h3>🎮 Línea Geek</h3>
+        <p>Mario, Minecraft, Stitch, Friends y más.</p>
+        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+      </article>
+    </div>
+
+    <!-- Imagen de “fallback” centrada (TABLET/DESKTOP angosto) y otra para MÓVIL -->
+    <div class="celebrando-imagen-final">
+      <picture>
+        <!-- Móvil -->
+        <source media="(max-width: 640px)" srcset="imgs/queestascelebrando-movil.webp">
+        <!-- Tablet / Desktop ya sin espacio lateral -->
+        <img
+          src="imgs/queestascelebrando-central.webp"
+          alt="Ideas y celebraciones en Creaciones MGI"
+          class="celebrando-imagen-final__img"
+          loading="lazy"
+        />
+      </picture>
+    </div>
+
+  </div>
+</section>
+
+<!-- ✅ Ajuste rápido (pegar en tu styles.css abajo o en un bloque nuevo) -->
+<style>
+  /* Tarjetas con contenido centrado y botón pegado al “final” */
+  .tarjeta-celebracion{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .tarjeta-celebracion h3{
+    width: 100%;
+    text-align: center;
+  }
+
+  .tarjeta-celebracion p{
+    width: 100%;
+    text-align: center;
+    margin: 0; /* para que no se desbalancee */
+  }
+
+  /* El botón siempre queda centrado al final */
+  .btn-ver-ideas{
+    margin-top: auto;          /* empuja al fondo */
+    align-self: center;        /* centrado horizontal */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;     /* quita subrayado */
+    padding: 12px 18px;        /* un poquito más compacto */
+    font-size: 14px;
+  }
+
+  .tarjeta-celebracion h3{
+  line-height: 1.1;   /* reduce espacio entre líneas */
+  margin: 0 0 6px;    /* elimina espacio extra arriba */
+}
+
+.btn-ver-ideas{
+  position: absolute;
+  left: 50%;
+  bottom: -4.5px; /* controla cuánto se sale */
+  transform: translateX(-50%);
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 12px 22px;
+  text-decoration: none;
+}
+/* 1) Evita que el botón se corte al salirse */
+.tarjeta.tarjeta-celebracion{
+  overflow: visible; /* <- esto evita el recorte */
+  position: relative; /* <- necesario para absolute */
+}
+/* Base: todas las tarjetas */
+.tarjeta.tarjeta-celebracion{
+  padding-bottom: 40px; /* base (para que no se vea apretado) */
+}
+
+/* Solo las largas */
+.tarjeta.tarjeta-celebracion.tarjeta-celebracion--larga{
+  padding-bottom: 60px; /* extra */
+}
+/* =========================================
+   ANIMACIÓN GELATINA SUAVE
+========================================= */
+
+@keyframes gelatina {
+  0%   { transform: translateX(-50%) scale(1); }
+  30%  { transform: translateX(-50%) scale(1.08, 0.92); }
+  50%  { transform: translateX(-50%) scale(0.95, 1.05); }
+  70%  { transform: translateX(-50%) scale(1.03, 0.97); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+.btn-ver-ideas:hover{
+  animation: gelatina 0.45s ease;
+}
+.btn-ver-ideas:active{
+  animation: gelatina 0.35s ease;
+}
+/* Baja un poco el contenido (más aire arriba) */
+.tarjeta-celebracion--baja{
+  padding-top: 45px; /* ajusta entre 28px y 40px según gusto */
+}
+
+
+</style>
 
 
     <!-- SECCIÓN 2 -->
