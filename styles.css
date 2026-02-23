@@ -1277,3 +1277,118 @@ width: min(280px, calc(100vw - 32px));
 }
 /*AJUSTE IMAGENES QUE ESTAS CELEBRANDO - FIN /
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   BLOQUEO TOTAL: sin scroll horizontal en móvil
+========================= */
+@media (max-width: 640px){
+  html, body{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  /* Evita que algún contenedor empuje el viewport */
+  main, .hero, .seccion, .hero-contenido, .celebrando-wrap{
+    max-width: 100%;
+    overflow-x: clip; /* mejor que hidden para evitar “rebotes” */
+  }
+}
+
+/* =========================
+   FIX “margen blanco” en móvil (iOS/Android)
+   Mantiene tu CLIP, pero evita que se vea fondo blanco
+========================= */
+@media (max-width: 640px){
+
+  /* Si algo queda recortado, que el “detrás” NO sea blanco */
+  html{
+    background: #f3ede5; /* tu crema */
+  }
+  body{
+    background: #f3ede5;
+  }
+
+  /* Asegura que el fondo fijo cubra todo el ancho real del viewport (100vw) */
+  .bg-fixed{
+    width: 100vw;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  /* Esto evita “parpadeo”/bordes en iOS cuando hay fixed + filtros */
+  .bg-fixed,
+  .bg-fixed::after{
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* =========================================
+   CELEBRANDO (MÓVIL) — que NO se recorte la imagen ni la sombra
+   - La imagen ocupa 100vw (hasta orillas)
+   - El contenedor permite overflow visible
+   - Mantiene 0 scroll horizontal
+========================================= */
+@media (max-width: 640px){
+
+  /* 1) A esta zona NO le aplicamos el clip que corta la imagen */
+  #celebrando,
+  #celebrando .celebrando-wrap,
+  #celebrando .celebrando-imagen-final{
+    overflow: visible !important;
+  }
+
+  /* 2) El “marco” de la imagen ocupa todo el viewport */
+  #celebrando .celebrando-imagen-final{
+    width: 100vw !important;
+    margin-left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    /* tu alto se mantiene (ajústalo si quieres más aire) */
+    height: clamp(300px, 86vw, 380px) !important;
+  }
+
+  /* 3) Imagen: NO más de 100vw (para que no se recorte) */
+  #celebrando .celebrando-imagen-final__img{
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+
+    width: 100vw !important;     /* <-- clave */
+    max-width: 100vw !important; /* <-- clave */
+    height: auto !important;
+
+    transform: translateX(-50%) translateY(20px) scale(1.08) !important;
+
+    /* sombra por silueta, pero sin “salirse” tanto */
+    filter: drop-shadow(0 14px 22px rgba(0,0,0,.22)) !important;
+
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* 4) Bloqueo de scroll horizontal (sin cortar ESTA imagen) */
+  html, body{
+    overflow-x: hidden !important;
+  }
+}
