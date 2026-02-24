@@ -1320,12 +1320,9 @@ width: min(280px, calc(100vw - 32px));
 @media (max-width: 640px){
 
   /* Si algo queda recortado, que el “detrás” NO sea blanco */
-  html{
-    background: #f3ede5; /* tu crema */
-  }
-  body{
-    background: #f3ede5;
-  }
+ html, body{
+  background: transparent !important;  /* ✅ deja ver .bg-fixed */
+}
 
   /* Asegura que el fondo fijo cubra todo el ancho real del viewport (100vw) */
   .bg-fixed{
@@ -1390,5 +1387,44 @@ width: min(280px, calc(100vw - 32px));
   /* 4) Bloqueo de scroll horizontal (sin cortar ESTA imagen) */
   html, body{
     overflow-x: hidden !important;
+  }
+}
+
+
+/* =========================================
+   FIX: Fondo .bg-fixed cubre TODO el ancho en móvil
+   (evita que solo se vea la mitad derecha)
+========================================= */
+@media (max-width: 640px){
+
+  html, body{
+    background: transparent !important;
+    overflow-x: hidden !important;
+  }
+
+  .bg-fixed{
+    position: fixed !important;
+
+    /* NO usar translate / left 50% */
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    transform: none !important;
+    margin: 0 !important;
+
+    background-position: center !important;
+    background-size: cover !important;
+
+    z-index: -1 !important;
+  }
+
+  .bg-fixed::after{
+    width: 100vw !important;
+    height: 100vh !important;
   }
 }
