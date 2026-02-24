@@ -1279,6 +1279,581 @@ width: min(280px, calc(100vw - 32px));
 
 
 
+/* =========================================================
+   CREACIONES MGI — SECCIÓN: LOS MÁS VENDIDOS (CARRUSEL)
+ ========================================== */
+
+/* ---------- Contenedor general de la sección ---------- */
+.seccion.mas-vendidos{
+  position: relative;
+}
+
+/* ---------- Carrusel (ventana visible) ---------- */
+.mv-carrusel{
+  position: relative;
+  width: 100%;
+  overflow: hidden;            /* oculta lo que sale del carrusel */
+  padding: 8px 0 14px;         /* aire vertical */
+}
+
+/* Sombreado suave en los bordes (opcional, se ve premium) */
+.mv-carrusel::before,
+.mv-carrusel::after{
+  content:"";
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.mv-carrusel::before{
+  left: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,.95), rgba(255,255,255,0));
+}
+
+.mv-carrusel::after{
+  right: 0;
+  background: linear-gradient(270deg, rgba(255,255,255,.95), rgba(255,255,255,0));
+}
+
+/* ---------- Track: la “cinta” que se mueve ---------- */
+.mv-track{
+  display: flex;
+  gap: 18px;                   /* separación entre tarjetas */
+  width: max-content;
+  will-change: transform;
+  animation: mvScroll 22s linear infinite;
+  padding: 10px 8px 22px;      /* espacio abajo para botón que “sale” */
+}
+
+/* Pausa cuando pasas el mouse (si NO quieres pausa, elimina estas 2 reglas) */
+.mv-carrusel:hover .mv-track{
+  animation-play-state: paused;
+}
+
+/* ---------- Tarjeta de producto dentro del carrusel ---------- */
+.mv-card{
+  position: relative;          /* necesario para el botón absolute */
+  overflow: visible;           /* permite que el botón salga sin recortarse */
+  width: 320px;                /* tamaño base escritorio */
+  flex: 0 0 auto;
+  text-align: center;
+
+  /* Respetamos tu look de .tarjeta, pero le damos estructura */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* IMPORTANTÍSIMO: deja aire abajo para que el botón no tape texto */
+  padding-bottom: 46px;
+}
+
+/* Ajuste de tipografía para que use tus fuentes */
+.mv-card,
+.mv-card *{
+  font-family: "DM Sans", "Montserrat", system-ui, -apple-system, sans-serif;
+}
+
+/* Contenido interior */
+.mv-card__contenido{
+  width: 100%;
+  display: grid;
+  gap: 8px;
+  padding: 0 8px;
+}
+
+.mv-card__contenido h3{
+  margin: 0;
+  line-height: 1.15;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.mv-card__contenido p{
+  margin: 0;
+  color: rgba(0,0,0,.72);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mv-card__contenido strong{
+  color: #111;
+  font-weight: 900;
+}
+
+/* ---------- Botón carrito (sale 50% del borde inferior) ---------- */
+.mv-buy{
+  position: absolute;
+  left: 50%;
+  bottom: -18px;               /* controla cuánto se sale */
+  transform: translateX(-50%);
+  z-index: 5;
+
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  /* Look premium */
+  background: linear-gradient(90deg, var(--naranja), var(--azul));
+  box-shadow: 0 14px 26px rgba(0,0,0,.16);
+  border: 1px solid rgba(255,255,255,.22);
+
+  transition: transform var(--trans), box-shadow var(--trans), filter var(--trans);
+}
+
+.mv-buy img{
+  width: 26px;
+  height: 26px;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+}
+
+/* Efecto “gelatina” suave SOLO (no se mueve a la derecha) */
+@keyframes mvGelatina{
+  0%   { transform: translateX(-50%) scale(1); }
+  30%  { transform: translateX(-50%) scale(1.10, .92); }
+  55%  { transform: translateX(-50%) scale(.95, 1.06); }
+  75%  { transform: translateX(-50%) scale(1.03, .97); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+.mv-buy:hover{
+  filter: brightness(1.03);
+  box-shadow: 0 18px 34px rgba(0,0,0,.20);
+  animation: mvGelatina .55s ease-in-out both;
+}
+
+.mv-buy:active{
+  animation: mvGelatina .55s ease-in-out both;
+}
+
+/* Hover sutil a la tarjeta completa */
+.mv-card{
+  transition: transform var(--trans), box-shadow var(--trans), filter var(--trans);
+}
+
+.mv-card:hover{
+  transform: translateY(-3px);
+  filter: brightness(1.01);
+}
+
+/* ---------- Animación horizontal infinita ---------- */
+/* Como duplicaste las 6 tarjetas, el track puede recorrer “la mitad” sin salto.
+   Ajusta 50% si tu duplicado es exacto (lo es). */
+@keyframes mvScroll{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px){
+  .mv-track{
+    animation-duration: 26s;   /* un poco más lento en tablet */
+    gap: 14px;
+  }
+
+  .mv-card{
+    width: 280px;
+  }
+}
+
+@media (max-width: 600px){
+  .mv-carrusel::before,
+  .mv-carrusel::after{
+    width: 36px;               /* sombras laterales más delgadas */
+  }
+
+  .mv-track{
+    animation-duration: 28s;
+    gap: 12px;
+    padding-bottom: 26px;
+  }
+
+  .mv-card{
+    width: 240px;              /* más compacto en móvil */
+    padding-bottom: 48px;
+  }
+
+  .mv-card__contenido h3{
+    font-size: 16px;
+  }
+
+  .mv-card__contenido p{
+    font-size: 13px;
+  }
+
+  .mv-buy{
+    width: 50px;
+    height: 50px;
+    bottom: -16px;
+  }
+
+  .mv-buy img{
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ---------- Accesibilidad (focus visible) ---------- */
+.mv-buy:focus-visible{
+  outline: 3px solid rgba(37,27,189,.25);
+  outline-offset: 4px;
+}
+
+/* ---------- Reduce motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  .mv-track{
+    animation: none !important;
+  }
+  .mv-buy,
+  .mv-card{
+    transition: none !important;
+  }
+}
+
+/* =========================================================
+   INDEX — SECCIÓN: LOS MÁS VENDIDOS (CARRUSEL)
+   Requiere: .seccion y .titulo-seccion (ya existentes)
+   Imágenes: imgs/masvendido1.webp ... masvendido6.webp
+   Botón carrito: imgs/icono-carrito.webp
+========================================================= */
+
+
+
+/* Contenedor del carrusel */
+.mv-carousel{
+  width: 100%;
+  padding: 18px 0 26px;
+}
+
+/* viewport: NO recorta sombras */
+.mv-viewport{
+  overflow: visible;          /* <- evita que se corten sombras */
+  position: relative;
+}
+
+/* Track horizontal */
+.mv-track{
+  display: flex;
+  gap: 22px;
+  align-items: stretch;
+
+  /* IMPORTANTÍSIMO: permite sombras fuera */
+  overflow: visible;
+  padding: 22px 22px 44px;    /* bottom extra para botón sobresalido */
+  will-change: transform;
+}
+
+/* Tarjeta */
+.mv-card{
+  flex: 0 0 320px;
+  background: var(--crema);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  position: relative;
+  overflow: visible;          /* <- el botón sobresale sin recorte */
+}
+
+/* Línea punteada (estilo MGI) */
+.mv-card::before{
+  content:"";
+  position:absolute;
+  inset: 14px;
+  border-radius: 16px;
+  border: 2px dashed var(--punteado);
+  pointer-events:none;
+}
+
+/* Tab decorativo arriba */
+.mv-card::after{
+  content:"";
+  position:absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 14px;
+  border-radius: 10px;
+  background: rgba(90, 80, 220, .55);
+  box-shadow: 0 10px 14px rgba(90, 80, 220, .22);
+}
+
+/* Inner (contenido centrado) */
+.mv-card__inner{
+  position: relative;
+  z-index: 2;
+  padding: 30px 22px 20px; /* espacio para que no se tape con el botón */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/* =========================================
+   LOS MÁS VENDIDOS – AJUSTE ESPACIO MÓVIL
+========================================= */
+@media (max-width: 520px){
+
+  /* 1️⃣ Reduce espacio interno abajo */
+  .mv-card{
+    padding-bottom: 34px;  /* antes ~46–48px */
+  }
+
+  /* 2️⃣ Sube un poco el botón carrito */
+  .mv-buy{
+    bottom: -14px;         /* antes -18px o -22px */
+  }
+
+  /* 3️⃣ Acerca un poco el precio al botón */
+  .mv-price{
+    margin-bottom: 4px;    /* reduce separación visual */
+  }
+
+}
+
+
+
+
+
+
+
+/* Título */
+/* ===== Los más vendidos: Título (bajarlo + diseño) ===== */
+.mv-title{
+  margin: 25px 0 0;            /* ⬅️ antes estaba muy arriba; sube/baja aquí */
+  padding: 10px 12px;          /* cajita suave */
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 1.1;
+
+  /* color y estilo */
+  color: #2419b8;
+  background: rgba(37,27,189,.06);
+  border: 1px solid rgba(37,27,189,.12);
+  border-radius: 14px;
+
+  display: inline-block;       /* para que la “cajita” abrace el texto */
+  max-width: 100%;
+}
+
+/* Imagen centrada */
+.mv-media{
+  width: 100%;
+  display: grid;
+  place-items: center;
+  margin-top: 4px;
+}
+
+.mv-media img{
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 16px;
+  filter: drop-shadow(0 14px 20px rgba(0,0,0,.14));
+  transition: transform var(--trans), filter var(--trans);
+}
+
+.mv-card:hover .mv-media img{
+  transform: translateY(-2px) scale(1.02);
+  filter: drop-shadow(0 18px 26px rgba(0,0,0,.18));
+}
+
+/* Descripción */
+.mv-desc{
+  margin: 0;
+  color: rgba(0,0,0,.70);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.35;
+  font-family: var(--font-body, "DM Sans", sans-serif);
+}
+
+/* Precio llamativo */
+/* ===== Los más vendidos: Precio (bajarlo + badge) ===== */
+.mv-price{
+  margin: 12px 0 0;            /* ⬅️ baja/sube el precio aquí */
+  padding: 10px 14px;
+
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: .2px;
+
+  /* badge llamativo */
+  color: #fff;
+  background: linear-gradient(90deg, var(--naranja), var(--azul));
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  box-shadow: 0 14px 22px rgba(0,0,0,.14);
+}
+
+/* ícono antes del precio (si quieres) */
+.mv-price::before{
+  content:"💸";
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.18));
+}
+
+/* Botón carrito (sobresale 50%) */
+.mv-buy{
+  position: absolute;
+  left: 50%;
+  bottom: -22px;              /* sobresale */
+  transform: translateX(-50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(90deg, var(--naranja), var(--azul));
+  box-shadow: 0 18px 30px rgba(0,0,0,.22);
+  z-index: 5;
+
+  /* evita “movimiento a la derecha” */
+  will-change: transform;
+  transition: transform var(--trans), filter var(--trans);
+}
+
+.mv-buy img{
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 16px rgba(0,0,0,.18));
+}
+
+/* Gelatina suave */
+@keyframes gelatinaMv{
+  0%   { transform: translateX(-50%) scale(1); }
+  30%  { transform: translateX(-50%) scale(1.08, 0.92); }
+  50%  { transform: translateX(-50%) scale(0.95, 1.05); }
+  70%  { transform: translateX(-50%) scale(1.03, 0.97); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* ===== Animación gelatina para el precio ===== */
+@keyframes gelatinaPrecio{
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.08, 0.92); }
+  50%  { transform: scale(0.95, 1.05); }
+  70%  { transform: scale(1.03, 0.97); }
+  100% { transform: scale(1); }
+}
+
+.mv-price:hover{
+  animation: gelatinaPrecio .55s ease;
+  filter: brightness(1.03);
+}
+
+.mv-price:active{
+  animation: gelatinaPrecio .45s ease;
+}
+
+.mv-buy:hover{
+  animation: gelatinaMv .55s ease;
+  filter: brightness(1.03);
+}
+
+.mv-buy:active{
+  animation: gelatinaMv .45s ease;
+}
+@media (max-width: 520px){
+  .mv-title{
+    font-size: 18px;
+    margin-top: 16px;
+    padding: 9px 10px;
+  }
+
+  .mv-price{
+    font-size: 14px;
+    padding: 9px 12px;
+    margin-top: 14px;
+  }
+}
+/* Responsive */
+@media (max-width: 900px){
+  .mv-track{
+    gap: 16px;
+    padding: 18px 16px 44px;
+  }
+  .mv-card{
+    flex-basis: 280px;
+  }
+  .mv-media img{
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 520px){
+  .mv-card{
+    flex-basis: 240px;
+  }
+  .mv-title{
+    font-size: 18px;
+  }
+  .mv-card__inner{
+    padding: 20px 18px 56px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1312,7 +1887,23 @@ width: min(280px, calc(100vw - 32px));
     overflow-x: clip; /* mejor que hidden para evitar “rebotes” */
   }
 }
-
+@media (max-width: 768px){
+  .seccion.mas-vendidos{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+/* =========================================
+   FULL WIDTH – SECCIÓN LOS MÁS VENDIDOS
+========================================= */
+/*
+.seccion.mas-vendidos{
+  max-width: 100% !important;
+  width: 100%;
+  margin: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
+}*/
 /* =========================
    FIX “margen blanco” en móvil (iOS/Android)
    Mantiene tu CLIP, pero evita que se vea fondo blanco
@@ -1339,6 +1930,72 @@ width: min(280px, calc(100vw - 32px));
     transform: translateZ(0);
   }
 }
+
+.seccion.full-width{
+  max-width: none;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+
+
+/* =========================================================
+   FIX DEFINITIVO — Los más vendidos centrado en móvil/desktop
+   (sin correrse a la derecha)
+========================================================= */
+
+/* 1) Mantén la sección centrada pero full width REAL */
+.seccion.mas-vendidos{
+  max-width: none !important;      /* rompe el límite de 1180 */
+  width: 100% !important;
+  margin: 0 auto !important;       /* centrado correcto */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  left: auto !important;
+  right: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 2) El carrusel ocupa 100% del ancho */
+.mv-carrusel{
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 3) El track NO debe tener cosas que lo empujen */
+.mv-track{
+  margin: 0;
+  padding-left: 16px;    /* aire a los costados */
+  padding-right: 16px;
+}
+
+/* 4) Evita que algo haga “offset” raro */
+.mv-carrusel,
+.mv-track{
+  transform: none;
+}
+
+/* 5) En móvil, todavía más control */
+@media (max-width: 640px){
+  .mv-track{
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 /* =========================================
    CELEBRANDO (MÓVIL) — que NO se recorte la imagen ni la sombra
@@ -1426,5 +2083,83 @@ width: min(280px, calc(100vw - 32px));
   .bg-fixed::after{
     width: 100vw !important;
     height: 100vh !important;
+  }
+}
+
+/* =========================================
+   FIX MÓVIL — menos espacio entre PRECIO y BOTÓN carrito
+   (pegar AL FINAL del CSS)
+========================================= */
+@media (max-width: 520px){
+
+  /* menos “aire” abajo dentro de la tarjeta */
+  .mv-card .mv-card__inner{
+    padding-bottom: 20px !important;  /* prueba 28–36 si quieres más pegado */
+  }
+
+  /* sube el botón (menos salida) para acercarlo al precio */
+  .mv-card .mv-buy{
+    bottom: -10px !important;  /* prueba -8px a -12px */
+  }
+
+  /* opcional: si tu precio tiene margen extra, lo bajamos */
+  .mv-card .mv-price{
+    margin-bottom: 6px !important; /* antes podía quedar muy alto */
+  }
+}
+
+/* =========================================
+   FIX iPad / TABLET — Carrusel “Los más vendidos”
+   (768px a 1024px)
+========================================= */
+@media (min-width: 768px) and (max-width: 1024px){
+
+  /* 1) Full width pero SIN desfasarse (evita corrido a la derecha) */
+  .seccion.mas-vendidos{
+    left: auto !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 2) Que el título tenga padding normal */
+  .seccion.mas-vendidos .titulo-seccion{
+    padding: 0 16px;
+  }
+
+  /* 3) El viewport del carrusel ocupa todo y se centra */
+  .mv-carousel{
+    width: 100%;
+    padding: 14px 0 22px;
+  }
+
+  .mv-viewport{
+    width: 100%;
+    overflow: visible !important; /* sombras ok */
+  }
+
+  /* 4) Track centrado visualmente y con padding lateral */
+  .mv-track{
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    gap: 16px !important;
+  }
+
+  /* 5) Tarjetas un poquito más compactas en iPad */
+  .mv-card{
+    flex-basis: 260px !important;
+  }
+
+  .mv-card .mv-card__inner{
+    padding: 20px 18px 46px !important; /* menos alto */
+  }
+
+  /* 6) Botón carrito un poco menos separado */
+  .mv-buy{
+    bottom: -14px !important;
+    width: 52px !important;
+    height: 52px !important;
   }
 }

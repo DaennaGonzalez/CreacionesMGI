@@ -124,32 +124,128 @@
     </section>
 
     <!-- SECCIÓN 1 -->
-<section class="seccion">
-  <h2 class="titulo-seccion">Productos destacados</h2>
+<!-- SECCIÓN: LOS MÁS VENDIDOS (CARRUSEL) -->
+<section class="seccion mas-vendidos" id="mas-vendidos">
+  <h2 class="titulo-seccion">Los más vendidos</h2>
 
-  <div class="grid-productos">
-    <article class="tarjeta">
-      <h3>Altar de muertos</h3>
-      <p>Decoración tradicional en MDF con grabado láser.</p>
-    </article>
+  <div class="mv-carousel" aria-label="Carrusel de productos más vendidos">
+    <div class="mv-viewport">
+      <!-- Track (JS lo duplicará para loop infinito) -->
+      <div class="mv-track" id="mvTrack">
 
-    <article class="tarjeta">
-      <h3>Cajas personalizadas</h3>
-      <p>Ideales para regalos, sobres y recuerdos.</p>
-    </article>
+        <!-- 1 -->
+        <article class="mv-card">
+          <div class="mv-card__inner">
+            <h3 class="mv-title">Caja para sobres XV personalizada</h3>
 
-    <article class="tarjeta">
-      <h3>Lapiceras</h3>
-      <p>Diseños únicos con nombres y colores personalizados.</p>
-    </article>
+            <div class="mv-media">
+              <img src="imgs/masvendido1.webp" alt="Caja para sobres XV personalizada" loading="lazy">
+            </div>
 
-    <article class="tarjeta">
-      <h3>Portallaves</h3>
-      <p>Funcionales y decorativos para el hogar u oficina.</p>
-    </article>
+            <p class="mv-desc">20x20x20 cm • MDF + acrílico</p>
+            <p class="mv-price">$329.00 MXN</p>
+          </div>
+
+          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Caja para sobres XV">
+            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
+          </a>
+        </article>
+
+        <!-- 2 -->
+        <article class="mv-card">
+          <div class="mv-card__inner">
+            <h3 class="mv-title">Caja para sobres Boda</h3>
+
+            <div class="mv-media">
+              <img src="imgs/masvendido2.webp" alt="Caja para sobres Boda" loading="lazy">
+            </div>
+
+            <p class="mv-desc">20x20x20 cm • MDF + acrílico</p>
+            <p class="mv-price">$349.00 MXN</p>
+          </div>
+
+          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Caja para sobres Boda">
+            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
+          </a>
+        </article>
+
+        <!-- 3 -->
+        <article class="mv-card">
+          <div class="mv-card__inner">
+            <h3 class="mv-title">Letrero Happy Birthday (grande)</h3>
+
+            <div class="mv-media">
+              <img src="imgs/masvendido3.webp" alt="Letrero Happy Birthday grande" loading="lazy">
+            </div>
+
+            <p class="mv-desc">25x75 cm • MDF 3mm</p>
+            <p class="mv-price">$160.00 MXN</p>
+          </div>
+
+          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Letrero Happy Birthday grande">
+            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
+          </a>
+        </article>
+
+        <!-- 4 -->
+        <article class="mv-card">
+          <div class="mv-card__inner">
+            <h3 class="mv-title">Letrero Happy Birthday circular</h3>
+
+            <div class="mv-media">
+              <img src="imgs/masvendido4.webp" alt="Letrero Happy Birthday circular" loading="lazy">
+            </div>
+
+            <p class="mv-desc">60x60 cm • MDF 3mm</p>
+            <p class="mv-price">$175.00 MXN</p>
+          </div>
+
+          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Letrero circular">
+            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
+          </a>
+        </article>
+
+        <!-- 5 -->
+        <article class="mv-card">
+          <div class="mv-card__inner">
+            <h3 class="mv-title">Lapicera personalizada</h3>
+
+            <div class="mv-media">
+              <img src="imgs/masvendido5.webp" alt="Lapicera personalizada" loading="lazy">
+            </div>
+
+            <p class="mv-desc">Ideal para regalos • Personalizada</p>
+            <p class="mv-price">$80.00 MXN</p>
+          </div>
+
+          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Lapicera">
+            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
+          </a>
+        </article>
+
+        <!-- 6 -->
+        <article class="mv-card">
+          <div class="mv-card__inner">
+            <h3 class="mv-title">Alcancía temática (Geek)</h3>
+
+            <div class="mv-media">
+              <img src="imgs/masvendido6.webp" alt="Alcancía temática Geek" loading="lazy">
+            </div>
+
+            <p class="mv-desc">Modelos infantiles • Varios diseños</p>
+            <p class="mv-price">$195.00 MXN</p>
+          </div>
+
+          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Alcancía Geek">
+            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
+          </a>
+        </article>
+
+      </div>
+    </div>
   </div>
 
-  <!-- 👇 IMAGEN DESTACADA DEBAJO DE LAS TARJETAS -->
+  <!-- 👇 IMAGEN DESTACADA DEBAJO (SE QUEDA IGUAL) -->
   <div class="destacado-imagen">
     <img
       src="imgs/trabajadora-sorprendida.webp"
@@ -159,6 +255,7 @@
     />
   </div>
 </section>
+
 
 <!-- SECCIÓN 2 (NUEVA): ¿QUÉ ESTÁS CELEBRANDO? -->
 <section class="seccion seccion-celebrando" id="celebrando">
@@ -303,7 +400,7 @@
   position: absolute;
   left: 50%;
   bottom: -4.5px; /* controla cuánto se sale */
-  transform: translateX(-50%);
+
   
   display: inline-flex;
   align-items: center;
