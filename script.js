@@ -421,3 +421,227 @@ function setupMobileMenuBehaviors() {
 })();
 
 
+/* =========================================================
+   PERSONALIZA TU DISEÑO — Modal catálogo PDF (Drive)
+   Compatible con tu HTML actual:
+   - #btnAbrirCatalogo abre
+   - #btnCerrarCatalogo cierra
+   - #modalCatalogo (div) con clase .modal-catalogo
+   - .modal-catalogo__overlay cierra al click
+   - ESC cierra
+   ========================================================= */
+(() => {
+  "use strict";
+
+  const openBtn = document.getElementById("btnAbrirCatalogo");
+  const modal = document.getElementById("modalCatalogo");
+  const closeBtn = document.getElementById("btnCerrarCatalogo");
+  const overlay = modal ? modal.querySelector(".modal-catalogo__overlay") : null;
+  const panel = modal ? modal.querySelector(".modal-catalogo__panel") : null;
+  const iframe = modal ? modal.querySelector(".catalogo-pdf") : null;
+
+  if (!openBtn || !modal || !panel) {
+    console.warn("[Catalogo] Faltan elementos:", { openBtn, modal, panel });
+    return;
+  }
+
+  // (Opcional) Si quieres que el iframe SOLO cargue al abrir:
+  const DRIVE_PREVIEW =
+  "https://drive.google.com/file/d/1qrMfTDpX4idLxtEInIWqW4DTrWMPYQIW/preview";
+
+  const isOpen = () => modal.classList.contains("is-open");
+
+  const openModal = () => {
+    // Carga diferida del PDF (si ya tiene src, no hace nada)
+    if (iframe && (!iframe.getAttribute("src") || iframe.getAttribute("src") === "")) {
+      iframe.setAttribute("src", DRIVE_PREVIEW);
+    }
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+
+    // foco al cerrar (accesibilidad)
+    if (closeBtn) closeBtn.focus({ preventScroll: true });
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+
+    // regresa el foco al botón abrir
+    openBtn.focus({ preventScroll: true });
+  };
+
+  // Abrir
+  openBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    openModal();
+  });
+
+  // Cerrar con X
+  if (closeBtn) {
+    closeBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeModal();
+    });
+  }
+
+  // Cerrar al click en overlay
+  if (overlay) {
+    overlay.addEventListener("click", () => closeModal());
+  }
+
+  // Evita que clicks dentro del panel cierren
+  panel.addEventListener("click", (e) => e.stopPropagation());
+
+  // Cerrar con ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isOpen()) closeModal();
+  });
+})();
+
+
+
+/* =========================================================
+   CREACIONES MGI — SECCIÓN: ENVÍOS Y ATENCIÓN
+   Funciones:
+   1) Botón WhatsApp con mensaje prellenado
+   2) Animación al aparecer (cards + imagen + botón)
+   3) Rebote al click (gelatina)
+   Pegar AL FINAL de tu script.js
+========================================================= */
+
+(() => {
+  "use strict";
+
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+
+  // ✅ CONFIG
+  const WHATSAPP_NUMBER = "5218123439492"; // 52 + 1 + 10 dígitos (MX)
+  const DEFAULT_MESSAGE =
+    "Hola 😊, vengo desde su página. Me interesa información sobre envíos y atención. ¿Me pueden apoyar? 🙏✨";
+
+  // Botón esperado
+  const btnWA = $("#btnEnviosWhatsApp");
+
+  /* -----------------------------
+     1) WhatsApp prellenado
+  ----------------------------- */
+  function setupEnviosWhatsApp() {
+    if (!btnWA) return;
+
+    const buildUrl = () => {
+      const text = encodeURIComponent(DEFAULT_MESSAGE);
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+    };
+
+    // Si es <a>, actualizamos href
+    if (btnWA.tagName.toLowerCase() === "a") {
+      btnWA.setAttribute("href", buildUrl());
+      btnWA.setAttribute("target", "_blank");
+      btnWA.setAttribute("rel", "noopener");
+    } else {
+      // Si fuera button, abrimos por JS
+      btnWA.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.open(buildUrl(), "_blank", "noopener");
+      });
+    }
+  }
+
+  setupEnviosWhatsApp();
+
+  /* -----------------------------
+     2) Animación al aparecer
+     (Cards + imagen + botón)
+  ----------------------------- */
+  function setupEnviosReveal() {
+    const section = $("#envios-atencion") || $(".seccion-envios");
+    if (!section) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduceMotion.matches) return;
+
+    const cards = $$(".envios-card", section);
+    const img = $(".envios-imagen__img", section);
+    const cta = $(".envios-cta", section);
+
+    const items = [
+      ...(img ? [img] : []),
+      ...cards,
+      ...(cta ? [cta] : []),
+    ];
+
+    if (!items.length) return;
+
+    // Estado inicial (sin CSS extra)
+    items.forEach((el) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(14px)";
+      el.style.transition = "opacity 520ms ease, transform 520ms ease";
+    });
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+
+          // Escalonado suave (stagger)
+          const el = en.target;
+          const delay = items.indexOf(el) * 90;
+
+          setTimeout(() => {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+          }, delay);
+
+          io.unobserve(el);
+        });
+      },
+      { threshold: 0.18 }
+    );
+
+    items.forEach((el) => io.observe(el));
+  }
+
+  setupEnviosReveal();
+
+  /* -----------------------------
+     3) Efecto “gelatina” al click
+     (solo al botón WA)
+  ----------------------------- */
+  function setupEnviosButtonBounce() {
+    if (!btnWA) return;
+
+    const cls = "js-wa-bounce";
+
+    // Inyectamos keyframes en <style> una sola vez
+    if (!document.getElementById("envios-wa-style")) {
+      const style = document.createElement("style");
+      style.id = "envios-wa-style";
+      style.textContent = `
+        @keyframes enviosWABounce {
+          0% { transform: translateY(0) scale(1); }
+          30% { transform: translateY(-3px) scale(1.06, .93); }
+          55% { transform: translateY(0) scale(.96, 1.05); }
+          75% { transform: translateY(-1px) scale(1.02, .98); }
+          100% { transform: translateY(0) scale(1); }
+        }
+        .${cls}{
+          animation: enviosWABounce 520ms ease !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    btnWA.addEventListener("click", () => {
+      btnWA.classList.remove(cls);
+      void btnWA.offsetWidth;
+      btnWA.classList.add(cls);
+      setTimeout(() => btnWA.classList.remove(cls), 560);
+    });
+  }
+
+  setupEnviosButtonBounce();
+})();

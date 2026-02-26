@@ -461,52 +461,371 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 3 -->
-    <section class="seccion" id="cotiza">
-      <h2 class="titulo-seccion">Cotiza tu diseño</h2>
 
-      <form class="formulario">
-        <input type="text" placeholder="Nombre completo" required>
-        <input type="tel" placeholder="Teléfono / WhatsApp" required>
-        <input type="email" placeholder="Correo electrónico" required>
-        <textarea placeholder="Describe tu idea o producto" required></textarea>
+<!-- =========================================================
+     SECCIÓN: PERSONALIZA TU DISEÑO (NUEVA)
+     + Imagen inferior
+     + Modal con PDF de catálogo (Google Drive)
+========================================================= -->
+<section id="personaliza" class="seccion seccion-personaliza">
+  <div class="personaliza-wrap">
 
-        <button type="submit" class="btn-principal">
-          Enviar cotización
-        </button>
-      </form>
-    </section>
+    <!-- TARJETA / MARCO -->
+    <div class="personaliza-card">
+      <div class="personaliza-inner">
 
-  </main>
+        <!-- Título -->
+        <header class="personaliza-header">
+          <h2 class="personaliza-titulo">Personaliza tu diseño</h2>
+          <p class="personaliza-subtitulo">
+            Cuéntanos tu idea o elige un producto del catálogo y lo adaptamos a tu medida, con tu nombre o frase.
+          </p>
+        </header>
+
+        <!-- Beneficios (SIN ✔) -->
+        <div class="personaliza-grid" role="list">
+          <article class="personaliza-item" role="listitem">
+            <h3 class="personaliza-item__titulo">Nombre o frase</h3>
+            <p class="personaliza-item__mini">Agrega el texto que quieras en tu diseño.</p>
+          </article>
+
+          <article class="personaliza-item" role="listitem">
+            <h3 class="personaliza-item__titulo">Colores a elegir</h3>
+            <p class="personaliza-item__mini">Combinamos tonos según tu evento o estilo.</p>
+          </article>
+
+          <article class="personaliza-item" role="listitem">
+            <h3 class="personaliza-item__titulo">Medidas personalizadas</h3>
+            <p class="personaliza-item__mini">Lo adaptamos a las dimensiones que necesites.</p>
+          </article>
+
+          <article class="personaliza-item" role="listitem">
+            <h3 class="personaliza-item__titulo">Diseños por temporada o evento</h3>
+            <p class="personaliza-item__mini">Cumpleaños, bodas, baby shower, etc.</p>
+          </article>
+        </div>
+
+        <!-- Botones -->
+        <div class="personaliza-cta">
+          <!-- WhatsApp (funciona sin JS) -->
+          <a
+            class="btn-personaliza btn-personaliza--wa"
+            href="https://wa.me/5218123439492?text=Hola%20Creaciones%20MGI%2C%20quiero%20personalizar%20un%20dise%C3%B1o.%20Mi%20idea%20es%3A%20"
+            target="_blank"
+            rel="noopener"
+          >
+            Enviar mi idea
+          </a>
+
+          <!-- Abre modal -->
+          <button
+            type="button"
+            class="btn-personaliza btn-personaliza--sec"
+            id="btnAbrirCatalogo"
+            aria-haspopup="dialog"
+            aria-controls="modalCatalogo"
+          >
+            Ver catálogo
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- IMAGEN INFERIOR (debajo de la tarjeta) -->
+    <div class="personaliza-imagen">
+      <img
+        src="imgs/creaciones-manualidades.webp"
+        alt="Creaciones y manualidades"
+        class="personaliza-imagen__img"
+        loading="lazy"
+      />
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================================================
+     MODAL: CATÁLOGO (PDF en Google Drive)
+========================================================= -->
+<div class="modal-catalogo" id="modalCatalogo" aria-hidden="true">
+  <!-- overlay para cerrar al dar click fuera -->
+  <div class="modal-catalogo__overlay" data-close="true"></div>
+
+  <div
+    class="modal-catalogo__panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloCatalogo"
+  >
+    <div class="modal-catalogo__header">
+      <h3 class="modal-catalogo__titulo" id="tituloCatalogo">Catálogo</h3>
+
+      <!-- ✅ X para cerrar -->
+      <button
+        type="button"
+        class="modal-catalogo__cerrar"
+        id="btnCerrarCatalogo"
+        aria-label="Cerrar catálogo"
+        title="Cerrar"
+      >
+        ✕
+      </button>
+    </div>
+
+    <div class="modal-catalogo__body">
+      <iframe
+        class="catalogo-pdf"
+        src=""
+        allow="autoplay"
+        loading="lazy"
+        title="Catálogo Creaciones MGI"
+      ></iframe>
+
+      <p class="catalogo-fallback">
+        Si no se muestra el catálogo, ábrelo aquí:
+        <a
+          class="catalogo-link"
+          href="https://drive.google.com/file/d/1qrMfTDpX4idLxtEInIWqW4DTrWMPYQIW/view?usp=sharing"
+          target="_blank"
+          rel="noopener"
+        >Ver PDF en Google Drive</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- =========================================================
+     SECCIÓN: RESEÑAS (CARRUSEL AUTOMÁTICO / INFINITO)
+========================================================= -->
+<section class="seccion seccion-resenas" id="resenas">
+  <h2 class="titulo-seccion">Reseñas</h2>
+
+  <div class="resenas-carrusel" aria-label="Carrusel de reseñas de clientes">
+    <div class="resenas-viewport">
+      <div class="resenas-track" id="resenasTrack">
+
+        <!-- 1 -->
+        <article class="resena-card">
+          <div class="resena-card__inner">
+            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="resena-texto">
+              “Súper bonito el trabajo y la atención rapidísima. Me ayudaron a elegir colores y quedó mejor de lo que imaginaba.”
+            </p>
+            <p class="resena-nombre">— Mariana López</p>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="resena-card">
+          <div class="resena-card__inner">
+            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="resena-texto">
+              “Pedí una caja para sobres y llegó impecable. Se nota la calidad y el detalle. Los recomiendo al 100%.”
+            </p>
+            <p class="resena-nombre">— José Luis Martínez</p>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="resena-card">
+          <div class="resena-card__inner">
+            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="resena-texto">
+              “Me encantó la comunicación, siempre atentos. Mandé mi idea por WhatsApp y me la ajustaron a la medida exacta.”
+            </p>
+            <p class="resena-nombre">— Fernanda Garza</p>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="resena-card">
+          <div class="resena-card__inner">
+            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="resena-texto">
+              “Excelente servicio. Compré un letrero para cumpleaños y quedó precioso. Entrega rápida en Monterrey.”
+            </p>
+            <p class="resena-nombre">— Ricardo Hernández</p>
+          </div>
+        </article>
+
+        <!-- 5 -->
+        <article class="resena-card">
+          <div class="resena-card__inner">
+            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="resena-texto">
+              “Todo muy profesional, desde la cotización hasta la entrega. El acabado se ve súper limpio y elegante.”
+            </p>
+            <p class="resena-nombre">— Karla Sánchez</p>
+          </div>
+        </article>
+
+        <!-- 6 -->
+        <article class="resena-card">
+          <div class="resena-card__inner">
+            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="resena-texto">
+              “Hicieron un diseño por temporada y quedó hermoso. Me guiaron con opciones y respondieron rapidísimo.”
+            </p>
+            <p class="resena-nombre">— Daniel Ramírez</p>
+          </div>
+        </article>
+
+        <!-- 7 -->
+        <article class="resena-card">
+          <div class="resena-card__inner">
+            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="resena-texto">
+              “La calidad del MDF y el acrílico está excelente. Se ve resistente y muy bonito. Volveré a pedir sin duda.”
+            </p>
+            <p class="resena-nombre">— Paola Castillo</p>
+          </div>
+        </article>
+
+        <!-- 8 -->
+        <article class="resena-card">
+          <div class="resena-card__inner">
+            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="resena-texto">
+              “Me salvaron con un pedido urgente. Muy amables y cumplidos. El resultado quedó espectacular.”
+            </p>
+            <p class="resena-nombre">— Alejandra Torres</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FIN SECCIÓN: RESEÑAS (CARRUSEL AUTOMÁTICO / INFINITO)
+========================================================= -->
+
+
+<!-- =========================================================
+     SECCIÓN 7: ENVÍOS + UBICACIÓN + HORARIO (NUEVA – confianza)
+========================================================= -->
+<!-- =========================================================
+     SECCIÓN: ENVÍOS + UBICACIÓN + HORARIO (NUEVA)
+========================================================= -->
+<section id="envios-atencion" class="seccion seccion-envios">
+  <!-- Fondo suave tipo “sombreado azulito” (igual que como trabajamos) -->
+  <div class="envios-fondo">
+    <h2 class="titulo-seccion">Envíos y atención</h2>
+
+    <!-- Imagen centrada -->
+    <div class="envios-imagen" aria-hidden="true">
+      <img
+        src="imgs/servicio-domicilio.webp"
+        alt=""
+        class="envios-imagen__img"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Grid de tarjetas -->
+    <div class="envios-grid" role="list">
+      <!-- 1 -->
+      <article class="envios-card" role="listitem">
+        <h3 class="envios-card__titulo">🚚 Envíos a domicilio</h3>
+        <p class="envios-card__texto">Entregas en Monterrey y área metropolitana.</p>
+      </article>
+
+      <!-- 2 -->
+      <article class="envios-card" role="listitem">
+        <h3 class="envios-card__titulo">🕒 Horario</h3>
+        <p class="envios-card__texto">Lunes a viernes • 9:00 a.m. a 4:00 p.m.</p>
+      </article>
+
+      <!-- 3 (CLICKEABLE COMPLETA a ubicacion.html) -->
+      <a class="envios-card envios-card--link" role="listitem" href="ubicacion.html">
+        <div class="envios-card__top">
+          <h3 class="envios-card__titulo">📍 Visítanos</h3>
+
+          <!-- icono adicional (maps) -->
+          <img
+            src="imgs/icono-maps.png"
+            alt="Abrir ubicación"
+            class="envios-card__icon"
+            loading="lazy"
+          />
+        </div>
+
+        <p class="envios-card__texto">
+          Calle Río Jánitzio 1868, Col. Central, Monterrey NL.
+        </p>
+
+        <span class="envios-card__hint">Ver ubicación</span>
+      </a>
+
+      <!-- 4 -->
+      <article class="envios-card" role="listitem">
+        <h3 class="envios-card__titulo">💬 Atención directa</h3>
+        <p class="envios-card__texto">Escríbenos y te respondemos rápido.</p>
+      </article>
+    </div>
+
+    <!-- Botón grande WhatsApp -->
+    <div class="envios-cta">
+      <a id="btnEnviosWhatsApp" class="btn-envios-wa" href="#">
+        <img
+          class="btn-envios-wa__icon"
+          src="imgs/icono-whatsapp.png"
+          alt=""
+          aria-hidden="true"
+        />
+        Escríbenos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FIN SECCIÓN 7: ENVÍOS + UBICACIÓN + HORARIO (NUEVA – confianza)
+========================================================= -->
+
 
   <!-- PIE DE PÁGINA -->
   <footer class="footer">
     <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+
+    <!-- Firma (muy pequeña) -->
+    <p class="footer-firma">Creado por Daenna González</p>
   </footer>
 
-  <!-- BURBUJAS FLOTANTES -->
-  <div class="burbujas">
-    <a href="https://wa.me/5210000000000" target="_blank" class="burbuja whatsapp">
-      <img src="imgs/icono-whatsapp.png" alt="WhatsApp">
-    </a>
+ <!-- BURBUJAS FLOTANTES -->
+<div class="burbujas">
 
-    <a href="https://facebook.com" target="_blank" class="burbuja facebook">
-      <img src="imgs/logo-facebook.png" alt="Facebook">
-    </a>
-  </div>
+  <!-- WhatsApp -->
+  <a href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos."
+     target="_blank"
+     rel="noopener"
+     class="burbuja whatsapp"
+     aria-label="WhatsApp">
+    <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+  </a>
 
-  <!-- MODAL COTIZACIÓN -->
-  <dialog id="cotizaModal" class="modal">
-    <form method="dialog" class="modal-contenido">
-      <h2>Cotiza tu diseño</h2>
-      <input type="text" placeholder="Nombre" required>
-      <input type="tel" placeholder="WhatsApp" required>
-      <textarea placeholder="Describe tu idea" required></textarea>
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/profile.php?id=61559132295014"
+     target="_blank"
+     rel="noopener"
+     class="burbuja facebook"
+     aria-label="Facebook">
+    <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+  </a>
 
-      <button class="btn-principal">Enviar</button>
-      <button class="btn-secundario">Cerrar</button>
-    </form>
-  </dialog>
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/creacionesmgi/"
+     target="_blank"
+     rel="noopener"
+     class="burbuja instagram"
+     aria-label="Instagram">
+    <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
+  </a>
+
+</div>
 
   <!-- JS (se agregará después) -->
   <script src="script.js"></script>
