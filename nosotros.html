@@ -6,8 +6,11 @@
   <meta name="description" content="Conoce Creaciones MGI: nuestra historia, valores y cómo trabajamos tus ideas en MDF y acrílico." />
   <title>Creaciones MGI | Nosotros</title>
 
+  <!-- ✅ MISMO CSS del index -->
   <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="nosotros.css" />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -18,7 +21,7 @@
 <body class="mgi-body">
   <div class="bg-fixed" aria-hidden="true"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER (igual al index) -->
   <header class="site-header">
     <div class="header-inner">
 
@@ -52,36 +55,127 @@
 
   <main>
 
-    <!-- SECCIÓN 1: Presentación (tarjetas) -->
-    <section class="seccion">
-      <h2 class="titulo-seccion">Nuestra historia</h2>
+    <!-- HERO / INTRO -->
+    <!-- NOTA: Aquí ya NO ponemos la imagen para evitar duplicado.
+         La imagen (personaje) va más abajo, superpuesta encima de la tarjeta. -->
+    <section class="nosotros-hero" aria-labelledby="nosotros-title">
+      <div class="nosotros-hero-card">
+
+        <div class="nosotros-hero-inner">
+          <div>
+            <div class="nosotros-kicker"></div>
+
+            <h1 class="nosotros-title" id="nosotros-title">
+              Creamos piezas que se sienten personales
+            </h1>
+
+            <p class="nosotros-lead">
+              <strong>Somos una empresa especializada en el diseño, corte y grabado</strong> de productos innovadores,
+              fijos y por temporada. Trabajamos principalmente con <strong>MDF y acrílico</strong>, cuidando cada detalle:
+              desde la idea y el diseño, hasta el acabado final y la entrega.
+            </p>
+          </div>
+        </div>
+
+        <!-- ✅ Personaje: MÁS ABAJO y por ENCIMA de la tarjeta (overlay) -->
+        <!-- Se posiciona con CSS (absolute/translate) para que sobresalga -->
+        <div class="nosotros-worker-overlay" aria-hidden="true">
+          <img src="imgs/trabajador-mgi.webp" alt="" loading="eager" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN 1: Historia / Quiénes somos -->
+    <section class="seccion" aria-labelledby="historia">
+      <h2 class="titulo-seccion" id="historia">Nuestra historia</h2>
 
       <div class="grid-productos">
         <article class="tarjeta">
-          <h3>¿Quiénes somos?</h3>
-          <p>En Creaciones MGI fabricamos piezas personalizadas en MDF y acrílico: regalos, decoración y detalles para eventos. Cada diseño se hace con dedicación, cuidando acabados y tiempos.</p>
+          <div class="mini-k">✨ ¿Quiénes somos?</div>
+          <h3>Diseño + producción con detalle</h3>
+          <p>
+            En <strong>Creaciones MGI</strong> diseñamos, cortamos y grabamos productos personalizados para regalos,
+            decoración, eventos y negocios. Nos gusta que cada pieza se vea limpia, bien terminada y “como la imaginaste”,
+            con una atención cercana de principio a fin.
+          </p>
         </article>
 
         <article class="tarjeta">
-          <h3>Nuestra misión</h3>
-          <p>Convertir tus ideas en productos únicos, con atención cercana, materiales de calidad y producción responsable. Buscamos que cada pieza cuente una historia.</p>
+          <div class="mini-k">🎯 Nuestra misión</div>
+          <h3>Convertir ideas en productos únicos</h3>
+          <p>
+            Transformar tus ideas en piezas memorables mediante materiales de calidad, asesoría en el diseño y procesos
+            de corte/grabado precisos. Buscamos que tu pedido sea especial, funcional y con un acabado que se note a primera vista.
+          </p>
         </article>
 
         <article class="tarjeta">
-          <h3>Nuestra visión</h3>
-          <p>Ser una marca reconocida por creatividad, precisión y confianza, llevando nuestros productos personalizados a más personas y negocios.</p>
+          <div class="mini-k">🚀 Nuestra visión</div>
+          <h3>Crecer sin perder el trato humano</h3>
+          <p>
+            Ser una marca reconocida por su creatividad, precisión y confianza, ampliando nuestro catálogo de productos
+            fijos y de temporada, y llevando soluciones personalizadas a más clientes y negocios.
+          </p>
         </article>
 
         <article class="tarjeta">
-          <h3>Lo que nos distingue</h3>
-          <p>Personalización real, asesoría en el diseño, grabado y corte, y un trato directo para que tu pedido salga tal como lo imaginaste.</p>
+          <div class="mini-k">🧩 Lo que nos distingue</div>
+          <h3>Personalización real y acompañamiento</h3>
+          <p>
+            Aquí no vendemos “algo genérico”: adaptamos el diseño, tamaño, tipografía, grabado y detalles.
+            Te orientamos para que el resultado final se vea premium: limpio, equilibrado y listo para regalar o exhibir.
+          </p>
         </article>
       </div>
     </section>
 
-    <!-- SECCIÓN 2: Valores (fondo azul) -->
-    <section class="seccion fondo-azul">
-      <h2 class="titulo-seccion">Nuestros valores</h2>
+    <!-- SECCIÓN 2: Especialidad -->
+    <section class="seccion" aria-labelledby="especialidad">
+      <h2 class="titulo-seccion" id="especialidad">¿Qué hacemos?</h2>
+
+      <div class="grid-productos">
+        <article class="tarjeta">
+          <div class="mini-k">🧠 Diseño</div>
+          <h3>Propuestas que sí combinan</h3>
+          <p>
+            Creamos o adaptamos tu idea para que se vea clara y bonita: jerarquía de texto, composición,
+            tamaños y detalles que se leen bien en MDF o acrílico.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="mini-k">✂️ Corte</div>
+          <h3>Precisión y limpieza</h3>
+          <p>
+            Realizamos cortes con enfoque en acabado: bordes definidos, proporciones correctas y piezas bien alineadas,
+            listas para armado o entrega final.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="mini-k">🪄 Grabado</div>
+          <h3>Detalle que resalta</h3>
+          <p>
+            Grabados nítidos para nombres, frases, logos o fechas importantes. Ideal para regalos, premios, letreros,
+            mesas de dulces y detalles de evento.
+          </p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="mini-k">🗓️ Temporada</div>
+          <h3>Productos por temporada</h3>
+          <p>
+            Además de nuestro catálogo fijo, diseñamos piezas especiales para fechas clave (celebraciones, eventos,
+            campañas y temporadas), manteniendo el estilo MGI.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: Valores -->
+    <section class="seccion fondo-azul valores-mgi2" aria-labelledby="valores">
+      <h2 class="titulo-seccion" id="valores">Nuestros valores</h2>
 
       <div class="pasos">
         <div class="paso">Cercanía: te acompañamos en tu idea</div>
@@ -90,11 +184,15 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 3: CTA (formulario como base de “contacto rápido”) -->
-    <section class="seccion">
-      <h2 class="titulo-seccion">Cuéntanos tu idea</h2>
+    <!-- SECCIÓN 4: CTA -->
+    <section class="seccion" aria-labelledby="cta">
+      <h2 class="titulo-seccion" id="cta">Cuéntanos tu idea</h2>
 
       <form class="formulario">
+        <p class="nota-form">
+          Escríbenos qué necesitas (evento, regalo, negocio, temporada) y te orientamos con el diseño y el material ideal.
+        </p>
+
         <input type="text" placeholder="Nombre" required>
         <input type="tel" placeholder="WhatsApp" required>
         <textarea placeholder="¿Qué te gustaría crear? (evento, regalo, decoración, etc.)" required></textarea>
@@ -105,19 +203,31 @@
 
   </main>
 
+  <!-- PIE DE PÁGINA (igual al index) -->
   <footer class="footer">
     <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
   </footer>
 
+  <!-- BURBUJAS FLOTANTES (igual al index) -->
   <div class="burbujas">
-    <a href="https://wa.me/5210000000000" target="_blank" class="burbuja whatsapp">
-      <img src="imgs/icono-whatsapp.png" alt="WhatsApp">
+    <a href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos."
+       target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
     </a>
-    <a href="https://facebook.com" target="_blank" class="burbuja facebook">
-      <img src="imgs/logo-facebook.png" alt="Facebook">
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
     </a>
   </div>
 
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>

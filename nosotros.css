@@ -1,0 +1,1909 @@
+/* =========================================================
+   NOSOTROS — DESKTOP ONLY (>= 1025px)
+   - Hero con tabla grande + texto abajo sin taparse
+   - Personaje encima SIEMPRE
+   - Secciones debajo quedan por debajo de la tabla
+   - Valores: diseño nuevo + imagen trabajadora minnie
+========================================================= */
+
+@media (min-width: 1025px){
+
+  :root{
+    --azul:#251bbd;
+    --azul-2:#2f2ad6;
+    --naranja:#f28a1a;
+    --naranja-2:#ff9f3a;
+    --crema:#f3ede5;
+
+    --radio: 28px;
+    --sombra: 0 18px 40px rgba(0,0,0,.16);
+    --punteado: rgba(0,0,0,.35);
+    --trans: 220ms ease;
+  }
+
+  /* =========================
+     HERO
+  ========================= */
+  .nosotros-hero{
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    /* ✅ espacio arriba para que NO se tape el texto con tabla */
+     padding: 150px 20px 60px; /* ✅ más compacta debajo del header */
+
+    overflow: visible;
+    z-index: 1;
+  }
+
+  /* TABLA "NOSOTROS" — decorativa */
+  .nosotros-hero::before{
+    content:"";
+    position: absolute;
+
+    /* ✅ tabla arriba */
+    top: 10px;
+
+    /* ✅ menos recorte izquierdo (se ve más completa) */
+    left: -140px;
+
+    /* ✅ tamaño grande tipo el que te gustó */
+    width: clamp(600px, 55vw, 650px);
+    height: clamp(650px, 55vw, 650px);
+
+    background: url("imgs/tabla-nosotros.webp") no-repeat;
+    background-size: contain;
+    background-position: left top;
+
+    /* ✅ sin transparencia */
+    opacity: 1;
+
+    /* ✅ la tabla debe estar arriba del punteado, pero debajo del personaje */
+    z-index: 15;
+
+    pointer-events: none;
+    user-select: none;
+
+    filter: drop-shadow(0 18px 30px rgba(0,0,0,.18));
+  }
+
+  /* Tarjeta Hero */
+  .nosotros-hero-card{
+    position: relative;
+    background: var(--crema);
+    border-radius: 34px;
+    box-shadow: var(--sombra);
+
+    /* ✅ mucho aire para que se vea premium */
+     padding: 90px 78px 120px;  /* ✅ reduce alto general */
+
+    overflow: visible;
+    z-index: 8; /* encima del fondo y debajo del personaje */
+  }
+
+  /* Punteado interior */
+  .nosotros-hero-card::before{
+    content:"";
+    position:absolute;
+    inset: 26px;
+    border-radius: 22px;
+    border: 2px dashed var(--punteado);
+    pointer-events:none;
+    z-index: 1;
+  }
+
+  /* Contenido dentro */
+  .nosotros-hero-inner{
+    position: relative;
+    z-index: 10;
+
+    /* ✅ deja espacio a la derecha para el personaje */
+    max-width: 900px;
+    padding-right: 360px;
+
+    /* ✅ baja un poco el bloque (si quieres aún más, subimos este número) */
+    padding-top: 28px;
+  }
+
+  .nosotros-title{
+    margin: 0 0 16px;
+    font-size: 54px;
+    line-height: 1.03;
+    font-weight: 950;
+
+    /* ✅ degradado pro */
+    background: linear-gradient(90deg, var(--azul), var(--naranja));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    /* ✅ glow suave */
+    filter: drop-shadow(0 2px 0 rgba(255,255,255,.85))
+            drop-shadow(0 18px 24px rgba(37,27,189,.10));
+  }
+
+  .nosotros-lead{
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: rgba(0,0,0,.72);
+    font-weight: 600;
+  }
+
+  /* =========================
+     PERSONAJE (trabajador)
+     - siempre encima
+     - sin recorte
+  ========================= */
+  .nosotros-worker-overlay{
+    position: absolute;
+    right: 36px;
+
+    /* ✅ sobresale abajo */
+    bottom: -180px;
+
+    /* ✅ tamaño desktop */
+    width: 500px;
+
+    z-index: 9999; /* por encima de TODO */
+    pointer-events: none;
+  }
+
+  .nosotros-worker-overlay img{
+    width: 100%;
+    height: auto;
+    display: block;
+
+    filter: drop-shadow(0 34px 50px rgba(0,0,0,.34));
+  }
+
+  
+
+
+  /* =========================
+     SECCIÓN SIGUIENTE
+     Debe quedar “debajo” del hero
+     (y que la tabla siga arriba visualmente)
+  ========================= */
+  .seccion{
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    /* ✅ subimos la sección un poco, pero
+       como el personaje baja, dejamos margen extra */
+    margin-top: -20px;
+
+    /* ✅ aire superior para que no choque con el personaje */
+    padding-top: 130px;
+
+    z-index: 1;
+  }
+
+  /* Título sección */
+  .titulo-seccion{
+    margin: 0 0 26px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 950;
+
+    background: linear-gradient(90deg, var(--azul), var(--naranja));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color: transparent;
+
+    filter: drop-shadow(0 2px 0 rgba(255,255,255,.85));
+  }
+
+  /* Grid de tarjetas */
+  .grid-productos{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+
+  .tarjeta{
+    background: var(--crema);
+    border-radius: var(--radio);
+    padding: 30px 26px;
+    box-shadow: var(--sombra);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .tarjeta::before{
+    content:"";
+    position:absolute;
+    inset: 18px;
+    border-radius: 18px;
+    border: 2px dashed rgba(0,0,0,.28);
+    pointer-events:none;
+  }
+
+  .mini-k{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .2px;
+
+    background: linear-gradient(90deg, rgba(242,138,26,.16), rgba(37,27,189,.16));
+    border: 1px solid rgba(37,27,189,.18);
+    color: var(--azul);
+
+    margin-bottom: 12px;
+  }
+
+  .tarjeta h3{
+    margin: 0 0 10px;
+    font-size: 20px;
+    font-weight: 950;
+    color: #1b1b1b;
+  }
+
+  .tarjeta p{
+    margin: 0;
+    font-size: 14.8px;
+    line-height: 1.5;
+    color: rgba(0,0,0,.72);
+    font-weight: 600;
+  }
+
+  /* =========================================================
+     VALORES — DISEÑO NUEVO (distinto)
+     + imagen trabajadora minnie (trabajadoraminnie-mgi.webp)
+     Requiere: <section class="seccion valores-mgi"> ... </section>
+              o usar tu .fondo-azul con clase extra.
+  ========================================================= */
+
+  .valores-mgi{
+    position: relative;
+    padding: 46px 26px 44px;
+    margin-top: 34px;
+
+    /* ✅ look distinto */
+    background: linear-gradient(180deg,
+      rgba(37,27,189,.07),
+      rgba(242,138,26,.06)
+    );
+
+    border-radius: 34px;
+    box-shadow: 0 18px 40px rgba(37,27,189,.10);
+    overflow: visible;
+  }
+
+  /* marco elegante */
+  .valores-mgi::before{
+    content:"";
+    position:absolute;
+    inset: 18px;
+    border-radius: 26px;
+    border: 2px solid rgba(255,255,255,.42);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+    pointer-events:none;
+  }
+
+  /* decoración: trabajadora minnie */
+  .valores-mgi::after{
+    content:"";
+    position:absolute;
+
+    /* ✅ a la derecha, arriba, sin tapar el título */
+    right: -24px;
+    top: -34px;
+
+    width: 340px;
+    height: 340px;
+
+    background: url("imgs/trabajadoraminnie-mgi.webp") no-repeat;
+    background-size: contain;
+    background-position: right top;
+
+    z-index: 50;
+    pointer-events:none;
+    user-select:none;
+
+    filter: drop-shadow(0 22px 32px rgba(0,0,0,.22));
+  }
+
+  /* título de valores, un poco más compacto */
+  .valores-mgi .titulo-seccion{
+    margin-bottom: 18px;
+  }
+
+  /* Valores: cards estilo “chips premium” */
+  .valores-mgi .pasos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    /* ✅ para que no choquen con la imagen decorativa */
+    padding-right: 260px;
+  }
+
+  .valores-mgi .paso{
+    background: rgba(255,255,255,.70);
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 22px;
+    padding: 18px 18px;
+
+    box-shadow:
+      0 16px 28px rgba(0,0,0,.12),
+      0 10px 20px rgba(37,27,189,.10);
+
+    font-weight: 950;
+    font-size: 16px;
+    color: #1b1b1b;
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+
+    transition: transform var(--trans), filter var(--trans);
+  }
+
+  .valores-mgi .paso::before{
+    content:"";
+    position:absolute;
+    inset:-40px;
+    background: radial-gradient(circle at 30% 25%,
+      rgba(255,255,255,.70),
+      rgba(255,255,255,0) 58%);
+    opacity: .9;
+    pointer-events:none;
+  }
+
+  .valores-mgi .paso:hover{
+    transform: translateY(-3px);
+    filter: brightness(1.02);
+  }
+
+}
+
+@media (max-width: 1024px) and (min-width: 900px){
+
+  .seccion.fondo-azul.valores-mgi2{
+    padding: 50px 30px 260px !important;
+  }
+
+  .seccion.fondo-azul.valores-mgi2 .pasos{
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px !important;
+    justify-items: center !important;
+  }
+
+  .seccion.fondo-azul.valores-mgi2 .paso{
+    max-width: 320px;
+  }
+
+  .seccion.fondo-azul.valores-mgi2::after{
+    width: 340px;
+    height: 340px;
+    bottom: -12px;
+  }
+}
+@media (max-width: 1024px) and (min-width: 900px){
+
+  .seccion.fondo-azul.valores-mgi2{
+    padding: 50px 30px 260px !important;
+  }
+
+  .seccion.fondo-azul.valores-mgi2 .pasos{
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px !important;
+    justify-items: center !important;
+  }
+
+  .seccion.fondo-azul.valores-mgi2 .paso{
+    max-width: 320px;
+  }
+
+  .seccion.fondo-azul.valores-mgi2::after{
+    width: 340px;
+    height: 340px;
+    bottom: -12px;
+  }
+}
+@media (max-width: 640px) and (min-width: 520px){
+
+  .seccion.fondo-azul.valores-mgi2{
+    padding: 40px 20px 220px !important;
+  }
+
+  .seccion.fondo-azul.valores-mgi2 .pasos{
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .seccion.fondo-azul.valores-mgi2 .paso{
+    max-width: 340px;
+    font-size: 16px;
+  }
+
+  .seccion.fondo-azul.valores-mgi2::after{
+    width: 260px;
+    height: 260px;
+    bottom: -6px;
+  }
+}
+/* =========================================================
+   VALORES — REDISEÑO 3 (DESKTOP >= 1025px)
+   - Paleta: Azul rey + Naranja + Morado (premium)
+   - Cards tipo “botón” con glow + borde degradado
+   - Imagen Minnie arriba derecha sin tapar
+   Requiere:
+   <section class="seccion fondo-azul valores-mgi3" ...>
+========================================================= */
+
+@media (min-width: 1025px){
+
+  .valores-mgi3{
+    position: relative;
+    margin-top: 40px;
+    padding: 56px 38px 50px;
+    border-radius: 38px;
+    overflow: visible;
+
+    /* ✅ fondo premium (sin celeste) */
+    background:
+      radial-gradient(880px 420px at 16% 22%, rgba(242,138,26,.22), rgba(0,0,0,0) 60%),
+      radial-gradient(760px 380px at 62% 10%, rgba(37,27,189,.22), rgba(0,0,0,0) 62%),
+      radial-gradient(900px 520px at 78% 86%, rgba(140,60,255,.14), rgba(0,0,0,0) 64%),
+      linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.66));
+
+    box-shadow:
+      0 26px 60px rgba(0,0,0,.14),
+      0 18px 34px rgba(37,27,189,.10);
+  }
+
+  /* marco elegante */
+  .valores-mgi3::before{
+    content:"";
+    position:absolute;
+    inset: 18px;
+    border-radius: 30px;
+    border: 1px solid rgba(0,0,0,.10);
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.45),
+      inset 0 0 0 2px rgba(255,255,255,.10);
+    pointer-events:none;
+    z-index: 1;
+  }
+
+  /* ✅ Minnie (arriba derecha, no tapa) */
+  .valores-mgi3::after{
+    content:"";
+    position:absolute;
+    right: -12px;
+    top: -92px;                 /* ⬅️ súbela/bájala aquí */
+    width: 380px;               /* ⬅️ tamaño Minnie */
+    height: 380px;
+
+    background: url("imgs/trabajadoraminnie-mgi.webp") no-repeat;
+    background-size: contain;
+    background-position: right top;
+
+    z-index: 60;
+    pointer-events:none;
+    user-select:none;
+
+    filter: drop-shadow(0 28px 44px rgba(0,0,0,.24));
+  }
+
+  /* título (degradado azul→naranja→morado) */
+  .valores-mgi3 .titulo-seccion{
+    position: relative;
+    z-index: 3;
+
+    margin: 0 0 22px;
+    text-align: left;            /* ✅ distinto, como el diseño ejemplo */
+    font-size: 36px;
+    font-weight: 950;
+    line-height: 1.05;
+
+    background: linear-gradient(90deg, #251bbd 0%, #f28a1a 55%, #8c3cff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    filter: drop-shadow(0 2px 0 rgba(255,255,255,.92));
+  }
+
+  /* grid con espacio para Minnie */
+  .valores-mgi3 .pasos{
+    position: relative;
+    z-index: 3;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    padding-right: 280px;        /* ⬅️ evita choque con Minnie */
+  }
+
+  /* =========================
+     BOTONES / CARDS PREMIUM
+  ========================= */
+  .valores-mgi3 .paso{
+    position: relative;
+    border-radius: 24px;
+    padding: 20px 18px;
+    text-align: center;
+
+    font-weight: 950;
+    font-size: 17px;             /* ✅ un poco más grande */
+    letter-spacing: .2px;
+
+    color: #141414;
+    cursor: default;
+    overflow: hidden;
+
+    background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.62));
+
+    box-shadow:
+      0 18px 30px rgba(0,0,0,.12),
+      0 14px 22px rgba(37,27,189,.12);
+
+    transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+  }
+
+  /* borde degradado (azul→naranja→morado) */
+  .valores-mgi3 .paso::before{
+    content:"";
+    position:absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 2px;
+
+    background: linear-gradient(90deg, #251bbd, #f28a1a, #8c3cff);
+
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    pointer-events:none;
+    opacity: .95;
+  }
+
+  /* glow interno (sin celeste) */
+  .valores-mgi3 .paso::after{
+    content:"";
+    position:absolute;
+    inset: -46px;
+
+    background:
+      radial-gradient(circle at 30% 22%, rgba(242,138,26,.28), rgba(0,0,0,0) 55%),
+      radial-gradient(circle at 72% 16%, rgba(37,27,189,.26), rgba(0,0,0,0) 56%),
+      radial-gradient(circle at 62% 86%, rgba(140,60,255,.20), rgba(0,0,0,0) 58%);
+
+    opacity: .95;
+    pointer-events:none;
+    transform: translateY(8px);
+  }
+
+  /* hover pro */
+  .valores-mgi3 .paso:hover{
+    transform: translateY(-4px);
+    filter: brightness(1.03);
+
+    box-shadow:
+      0 26px 46px rgba(0,0,0,.14),
+      0 22px 36px rgba(242,138,26,.16),
+      0 22px 36px rgba(37,27,189,.16),
+      0 22px 36px rgba(140,60,255,.14);
+  }
+
+  /* ✅ color distinto por valor (texto + acento) */
+  .valores-mgi3 .paso:nth-child(1){ color: #1d1b55; } /* Cercanía */
+  .valores-mgi3 .paso:nth-child(2){ color: #6a3a06; } /* Calidad */
+  .valores-mgi3 .paso:nth-child(3){ color: #3b155a; } /* Puntualidad */
+
+  /* ✅ Si tu .fondo-azul trae fondo fuerte, lo neutralizamos SOLO aquí */
+  .fondo-azul.valores-mgi3{
+    background-color: transparent !important;
+  }
+}
+
+
+/* =========================================================
+   NOSOTROS.CSS — COMPLETO
+   - Desktop (tu versión ideal) + proporcional para:
+     Desktop pequeño / Tablet / Móvil
+   - Hero: tabla-nosotros arriba, texto sin taparse, trabajador encima
+   - Secciones/tarjetas: mismo look “premium” en todas las medidas
+   - Valores: valores-mgi2 centrado y Minnie visible en todas las medidas
+========================================================= */
+
+
+/* =========================================================
+   0) VARIABLES “NOSOTROS”
+   (No las toco en styles.css; solo aquí)
+========================================================= */
+:root{
+  --azul:#251bbd;
+  --azul-2:#2f2ad6;
+  --naranja:#f28a1a;
+  --naranja-2:#ff9f3a;
+  --crema:#f3ede5;
+
+  --radio: 28px;
+  --sombra: 0 18px 40px rgba(0,0,0,.16);
+  --punteado: rgba(0,0,0,.35);
+  --trans: 220ms ease;
+}
+
+/* =========================================================
+   1) BASE (aplica a TODO tamaño)
+   - Aquí damos el “look premium” de secciones/tarjetas
+   - Desktop lo perfecciona arriba, pero esto asegura móvil/tablet
+========================================================= */
+
+/* HERO contenedor */
+.nosotros-hero{
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* Tabla decorativa (siempre existe; tamaños por breakpoints) */
+.nosotros-hero::before{
+  content:"";
+  position: absolute;
+  background: url("imgs/tabla-nosotros.webp") no-repeat;
+  background-size: contain;
+  background-position: left top;
+  pointer-events: none;
+  user-select: none;
+  opacity: 1; /* sin transparencia */
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,.18));
+  z-index: 15; /* arriba del punteado */
+}
+
+/* Tarjeta del hero */
+.nosotros-hero-card{
+  position: relative;
+  background: var(--crema);
+  border-radius: 34px;
+  box-shadow: var(--sombra);
+  overflow: visible;
+  z-index: 8; /* debajo del mono */
+}
+
+/* Punteado */
+.nosotros-hero-card::before{
+  content:"";
+  position:absolute;
+  border-radius: 22px;
+  border: 2px dashed var(--punteado);
+  pointer-events:none;
+  z-index: 1;
+}
+
+/* Contenido */
+.nosotros-hero-inner{
+  position: relative;
+  z-index: 10;
+}
+
+/* Título degradado */
+.nosotros-title{
+  font-weight: 950;
+  background: linear-gradient(90deg, var(--azul), var(--naranja));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter:
+    drop-shadow(0 2px 0 rgba(255,255,255,.85))
+    drop-shadow(0 18px 24px rgba(37,27,189,.10));
+}
+
+/* Lead */
+.nosotros-lead{
+  color: rgba(0,0,0,.72);
+  font-weight: 600;
+}
+
+/* =========================
+   MONO (trabajador)
+========================= */
+.nosotros-worker-overlay{
+  position: absolute;
+  z-index: 9999; /* por encima de TODO */
+  pointer-events: none;
+}
+.nosotros-worker-overlay img{
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 34px 50px rgba(0,0,0,.34));
+}
+
+/* =========================
+   SECCIONES y TARJETAS (look premium)
+   -> aplica a móvil/tablet también
+========================= */
+.seccion{
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.titulo-seccion{
+  text-align: center;
+  font-weight: 950;
+  background: linear-gradient(90deg, var(--azul), var(--naranja));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color: transparent;
+  filter: drop-shadow(0 2px 0 rgba(255,255,255,.85));
+}
+
+/* Grid tarjetas */
+.grid-productos{
+  display: grid;
+  gap: 18px;
+}
+
+/* Tarjeta premium */
+.tarjeta{
+  background: var(--crema);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.tarjeta::before{
+  content:"";
+  position:absolute;
+  inset: 18px;
+  border-radius: 18px;
+  border: 2px dashed rgba(0,0,0,.28);
+  pointer-events:none;
+}
+
+.mini-k{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .2px;
+  background: linear-gradient(90deg, rgba(242,138,26,.16), rgba(37,27,189,.16));
+  border: 1px solid rgba(37,27,189,.18);
+  color: var(--azul);
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.tarjeta h3{
+  margin: 0 0 10px;
+  font-weight: 950;
+  color: #1b1b1b;
+  position: relative;
+  z-index: 2;
+}
+
+.tarjeta p{
+  margin: 0;
+  color: rgba(0,0,0,.72);
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================================
+   2) DESKTOP IDEAL (>= 1025px)
+   ✅ TU CÓDIGO TAL CUAL (no lo modifico)
+========================================================= */
+@media (min-width: 1025px){
+
+  .nosotros-hero{
+    padding: 150px 20px 60px;
+  }
+
+  .nosotros-hero::before{
+    top: 10px;
+    left: -140px;
+    width: clamp(600px, 55vw, 650px);
+    height: clamp(650px, 55vw, 650px);
+  }
+
+  .nosotros-hero-card{
+    padding: 90px 78px 120px;
+  }
+
+  .nosotros-hero-card::before{
+    inset: 26px;
+  }
+
+  .nosotros-hero-inner{
+    max-width: 900px;
+    padding-right: 360px; /* espacio mono */
+    padding-top: 28px;
+  }
+
+  .nosotros-title{
+    margin: 0 0 16px;
+    font-size: 54px;
+    line-height: 1.03;
+  }
+
+  .nosotros-lead{
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  /* ===== MONO (DESKTOP) ===== */
+  .nosotros-worker-overlay{
+    /* ✅ CONTROLES MONO DESKTOP */
+    right: 36px;     /* ← cambia para izquierda/derecha */
+    bottom: -180px;  /* ← cambia para arriba/abajo */
+    width: 500px;    /* ← tamaño */
+  }
+
+  /* Secciones debajo del hero */
+  .seccion{
+    padding: 0 20px;
+    margin-top: -20px;
+    padding-top: 130px;
+    z-index: 1;
+  }
+
+  .titulo-seccion{
+    margin: 0 0 26px;
+    font-size: 36px;
+  }
+
+  .grid-productos{
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+
+  .tarjeta{
+    padding: 30px 26px;
+  }
+
+  .tarjeta h3{
+    font-size: 20px;
+  }
+
+  .tarjeta p{
+    font-size: 14.8px;
+    line-height: 1.5;
+  }
+}
+
+
+/* =========================================================
+   3) DESKTOP PEQUEÑO (900px–1024px)
+   - Misma estética, proporcional
+========================================================= */
+@media (max-width: 1024px) and (min-width: 900px){
+
+  .nosotros-hero{
+    padding: 140px 18px 44px;
+    max-width: 1100px;
+  }
+
+  .nosotros-hero::before{
+    top: 8px;
+    left: -90px;
+    width: clamp(520px, 62vw, 620px);
+    height: clamp(560px, 62vw, 620px);
+  }
+
+  .nosotros-hero-card{
+    padding: 78px 44px 110px;
+    border-radius: 32px;
+  }
+
+  .nosotros-hero-card::before{
+    inset: 22px;
+    border-radius: 20px;
+  }
+
+  .nosotros-hero-inner{
+    max-width: 860px;
+    padding-right: 300px; /* espacio mono */
+    padding-top: 22px;
+  }
+
+  .nosotros-title{
+    margin: 0 0 14px;
+    font-size: 44px;
+    line-height: 1.05;
+  }
+
+  .nosotros-lead{
+    font-size: 16.5px;
+    line-height: 1.55;
+  }
+
+  .nosotros-worker-overlay{
+    /* ✅ CONTROLES MONO DESKTOP PEQUEÑO */
+    right: 18px;
+    bottom: -160px;
+    width: 440px;
+  }
+
+  /* Secciones / tarjetas */
+  .seccion{
+    padding: 0 18px;
+    margin-top: -12px;
+    padding-top: 120px;
+  }
+
+  .titulo-seccion{
+    margin: 0 0 22px;
+    font-size: 32px;
+  }
+
+  .grid-productos{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .tarjeta{
+    padding: 28px 22px;
+  }
+
+  .tarjeta h3{
+    font-size: 19px;
+  }
+
+  .tarjeta p{
+    font-size: 14.6px;
+    line-height: 1.5;
+  }
+}
+
+
+/* =========================================================
+   4) TABLET (641px–899px)
+   - Texto centrado
+   - Mono centrado abajo y más grande
+   - Tarjetas 2 columnas
+========================================================= */
+@media (max-width: 899px) and (min-width: 641px){
+
+  .nosotros-hero{
+    padding: 130px 16px 30px;
+    max-width: 980px;
+  }
+
+  .nosotros-hero::before{
+    top: 6px;
+    left: -60px;
+    width: clamp(460px, 78vw, 600px);
+    height: clamp(480px, 78vw, 600px);
+  }
+
+  .nosotros-hero-card{
+    padding: 64px 22px 240px; /* espacio para mono abajo */
+    border-radius: 28px;
+  }
+
+  .nosotros-hero-card::before{
+    inset: 18px;
+    border-radius: 18px;
+  }
+
+  .nosotros-hero-inner{
+    max-width: 100%;
+    padding: 0;
+    padding-top: 18px;
+    text-align: center;
+  }
+
+  .nosotros-title{
+    margin: 0 0 12px;
+    font-size: 38px;
+    line-height: 1.06;
+  }
+
+  .nosotros-lead{
+    font-size: 15.6px;
+    line-height: 1.55;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .nosotros-worker-overlay{
+    /* ✅ CONTROLES MONO TABLET */
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: -190px; /* más abajo: -220px */
+    width: 420px;   /* tamaño */
+  }
+
+  /* Secciones / tarjetas */
+  .seccion{
+    padding: 0 16px;
+    margin-top: 0;
+    padding-top: 120px; /* deja aire por mono */
+  }
+
+  .titulo-seccion{
+    margin: 0 0 20px;
+    font-size: 30px;
+  }
+
+  .grid-productos{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .tarjeta{
+    padding: 26px 20px;
+  }
+
+  .tarjeta h3{
+    font-size: 18.5px;
+  }
+
+  .tarjeta p{
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+}
+
+
+/* =========================================================
+   5) MÓVIL (<= 640px)
+   - 1 columna
+   - Mono centrado y MÁS grande
+   - Hero más compacto pero con aire para tabla
+========================================================= */
+@media (max-width: 640px){
+
+  .nosotros-hero{
+    padding: 118px 12px 18px;
+    max-width: 100%;
+  }
+
+  .nosotros-hero::before{
+    top: 4px;
+    left: -26px;
+    width: clamp(340px, 96vw, 520px);
+    height: clamp(360px, 96vw, 520px);
+  }
+
+  .nosotros-hero-card{
+    padding: 54px 16px 240px;
+    border-radius: 24px;
+  }
+
+  .nosotros-hero-card::before{
+    inset: 14px;
+    border-radius: 14px;
+  }
+
+  .nosotros-hero-inner{
+    padding: 0;
+    padding-top: 16px;
+    text-align: center;
+  }
+
+  .nosotros-title{
+    margin: 0 0 10px;
+    font-size: 32px;
+    line-height: 1.08;
+  }
+
+  .nosotros-lead{
+    font-size: 14.6px;
+    line-height: 1.55;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .nosotros-worker-overlay{
+    /* ✅ CONTROLES MONO MÓVIL */
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: -185px; /* sube: -160px | baja: -220px */
+    width: 380px;   /* más grande: 400px */
+  }
+
+  /* Secciones / tarjetas */
+  .seccion{
+    padding: 0 12px;
+    padding-top: 120px;
+  }
+
+  .titulo-seccion{
+    margin: 0 0 16px;
+    font-size: 28px;
+  }
+
+  .grid-productos{
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .tarjeta{
+    padding: 24px 18px;
+  }
+
+  .tarjeta h3{
+    font-size: 18px;
+  }
+
+  .tarjeta p{
+    font-size: 14.4px;
+    line-height: 1.5;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   6) VALORES — valores-mgi2 (MÓVIL + TABLET + DESKTOP)
+   - Minnie centrada abajo en TODOS los tamaños
+   - Ajustes por breakpoints
+========================================================= */
+
+/* BASE (todo) */
+.seccion.fondo-azul.valores-mgi2{
+  position: relative !important;
+  margin-top: 40px !important;
+  padding: 46px 18px 260px !important;
+  border-radius: 30px !important;
+  overflow: hidden !important;
+  text-align: center;
+
+  background:
+    radial-gradient(880px 420px at 16% 22%, rgba(242,138,26,.22), rgba(0,0,0,0) 60%),
+    radial-gradient(760px 380px at 62% 10%, rgba(37,27,189,.22), rgba(0,0,0,0) 62%),
+    radial-gradient(900px 520px at 78% 86%, rgba(140,60,255,.14), rgba(0,0,0,0) 64%),
+    linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.66)) !important;
+
+  box-shadow:
+    0 26px 60px rgba(0,0,0,.14),
+    0 18px 34px rgba(37,27,189,.10) !important;
+}
+
+.seccion.fondo-azul.valores-mgi2::before{
+  content:"";
+  position:absolute;
+  inset: 16px;
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.45),
+    inset 0 0 0 2px rgba(255,255,255,.10);
+  pointer-events:none;
+  z-index: 1;
+}
+
+/* Minnie centrada abajo SIEMPRE */
+.seccion.fondo-azul.valores-mgi2::after{
+  content:"";
+  position:absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 320px;
+
+  background: url("imgs/trabajadoraminnie-mgi.webp") no-repeat;
+  background-size: contain;
+  background-position: center bottom;
+
+  z-index: 2; /* detrás del contenido */
+  pointer-events:none;
+  user-select:none;
+
+  filter: drop-shadow(0 26px 40px rgba(0,0,0,.22));
+  opacity: 1;
+}
+
+.seccion.fondo-azul.valores-mgi2 .titulo-seccion,
+.seccion.fondo-azul.valores-mgi2 .pasos{
+  position: relative;
+  z-index: 5;
+}
+
+.seccion.fondo-azul.valores-mgi2 .titulo-seccion{
+  margin: 0 0 18px !important;
+  font-size: 32px !important;
+  line-height: 1.05 !important;
+
+  background: linear-gradient(90deg, #251bbd 0%, #f28a1a 55%, #8c3cff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+
+.seccion.fondo-azul.valores-mgi2 .pasos{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+  justify-items: center !important;
+  padding: 0 !important;
+}
+
+.seccion.fondo-azul.valores-mgi2 .paso{
+  width: 100%;
+  max-width: 360px;
+  border-radius: 22px;
+  padding: 18px 16px;
+  text-align: center;
+  font-weight: 950;
+  font-size: 17px;
+
+  overflow: hidden;
+  position: relative;
+
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.66)) !important;
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.12),
+    0 14px 22px rgba(37,27,189,.12) !important;
+
+  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+}
+
+.seccion.fondo-azul.valores-mgi2 .paso::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  border-radius: 22px;
+  padding: 2px;
+  background: linear-gradient(90deg, #251bbd, #f28a1a, #8c3cff);
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events:none;
+  opacity: .95;
+}
+
+.seccion.fondo-azul.valores-mgi2 .paso::after{
+  content:"";
+  position:absolute;
+  inset: -46px;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(242,138,26,.30), rgba(0,0,0,0) 55%),
+    radial-gradient(circle at 72% 16%, rgba(37,27,189,.26), rgba(0,0,0,0) 56%),
+    radial-gradient(circle at 62% 86%, rgba(140,60,255,.20), rgba(0,0,0,0) 58%);
+  opacity: .95;
+  pointer-events:none;
+  transform: translateY(8px);
+}
+
+.seccion.fondo-azul.valores-mgi2 .paso:hover{
+  transform: translateY(-4px);
+  filter: brightness(1.03);
+  box-shadow:
+    0 26px 46px rgba(0,0,0,.14),
+    0 22px 36px rgba(242,138,26,.18),
+    0 22px 36px rgba(37,27,189,.18),
+    0 22px 36px rgba(140,60,255,.16) !important;
+}
+
+.seccion.fondo-azul.valores-mgi2 .paso:nth-child(1){ color: #251bbd; }
+.seccion.fondo-azul.valores-mgi2 .paso:nth-child(2){ color: #b85a00; }
+.seccion.fondo-azul.valores-mgi2 .paso:nth-child(3){ color: #6a1bbd; }
+
+.fondo-azul.valores-mgi2{
+  background-color: transparent !important;
+}
+
+/* TABLET: 2 columnas + Minnie más grande */
+@media (min-width: 641px){
+  .seccion.fondo-azul.valores-mgi2{
+    padding: 54px 26px 320px !important;
+    border-radius: 34px !important;
+  }
+  .seccion.fondo-azul.valores-mgi2 .titulo-seccion{
+    font-size: 36px !important;
+    margin-bottom: 20px !important;
+  }
+  .seccion.fondo-azul.valores-mgi2 .pasos{
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+  .seccion.fondo-azul.valores-mgi2::after{
+    width: 360px;
+    height: 360px;
+    bottom: -12px;
+  }
+}
+
+/* DESKTOP: 3 columnas + Minnie grande */
+@media (min-width: 1025px){
+  .seccion.fondo-azul.valores-mgi2{
+    padding: 60px 40px 360px !important;
+    border-radius: 38px !important;
+  }
+  .seccion.fondo-azul.valores-mgi2 .titulo-seccion{
+    font-size: 40px !important;
+    margin-bottom: 22px !important;
+  }
+  .seccion.fondo-azul.valores-mgi2 .pasos{
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 18px !important;
+  }
+  .seccion.fondo-azul.valores-mgi2::after{
+    width: 460px;
+    height: 460px;
+    bottom: -18px;
+  }
+  .seccion.fondo-azul.valores-mgi2 .paso{
+    max-width: 320px;
+    padding: 22px 18px;
+    font-size: 18px;
+    border-radius: 24px;
+  }
+}
+/* =========================================================
+   HERO - FIX TABLET (iPad 768x1024) + MÓVIL (3 MEDIDAS)
+   - Evita que el trabajador tape el texto
+   - Da MÁS espacio vertical a la tarjeta
+   - Centra y normaliza el texto en pantallas chicas
+   Pegar al FINAL de nosotros.css
+========================================================= */
+
+
+/* =========================
+   TABLET / iPad (portrait y similares)
+   768 - 1024 aprox
+========================= */
+@media (max-width: 1024px) and (min-width: 768px){
+
+  /* Más aire arriba/abajo del hero para que no choque con header y con la siguiente sección */
+  .nosotros-hero{
+    max-width: 980px;
+    padding: 130px 18px 80px;  /* ↑ baja el contenido + más espacio abajo */
+  }
+
+  /* Tabla decorativa: menos invasiva en tablet */
+  .nosotros-hero::before{
+    top: 6px;
+    left: -80px;               /* menos recorte */
+    width: clamp(520px, 70vw, 640px);
+    height: clamp(520px, 70vw, 640px);
+    z-index: 12;               /* sigue arriba pero no estorba */
+  }
+
+  /* Tarjeta: más alta para que “quepa” el mono sin tapar texto */
+  .nosotros-hero-card{
+    padding: 70px 34px 550px;  /* 👈 ESTE ES EL AJUSTE CLAVE (más fondo para el mono) */
+    border-radius: 30px;
+  }
+
+  .nosotros-hero-card::before{
+    inset: 20px;               /* punteado más compacto */
+    border-radius: 20px;
+  }
+
+  /* Texto: ya NO debe reservar 360px a la derecha (porque en tablet estorba) */
+  .nosotros-hero-inner{
+    max-width: 100%;
+    padding-right: 0;          /* 👈 IMPORTANTÍSIMO */
+    padding-top: 10px;
+    text-align: center;        /* se ve más limpio en tablet */
+  }
+
+  .nosotros-title{
+    font-size: 44px;
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+
+  .nosotros-lead{
+    font-size: 16.5px;
+    line-height: 1.55;
+    max-width: 560px;          /* evita que se haga una “línea infinita” */
+    margin: 0 auto;
+  }
+
+  /* TRABAJADOR: lo bajamos y lo centramos para que no tape texto */
+  .nosotros-worker-overlay{
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+
+    /* ✅ controla altura / espacio del mono */
+    bottom: -190px;            /* 👈 más abajo para que NO tape */
+    width: 420px;              /* tamaño tablet */
+
+    z-index: 9999;
+  }
+
+  /* (Opcional) por si se ve “pegado” */
+  .nosotros-worker-overlay img{
+    filter: drop-shadow(0 30px 44px rgba(0,0,0,.30));
+  }
+}
+
+
+/* =========================
+   MÓVIL GRANDE (481 - 640)
+========================= */
+@media (max-width: 640px) and (min-width: 481px){
+
+  .nosotros-hero{
+    padding: 118px 14px 90px;  /* más aire */
+  }
+
+  .nosotros-hero::before{
+    top: 0px;
+    left: -40px;
+    width: clamp(420px, 92vw, 560px);
+    height: clamp(420px, 92vw, 560px);
+    z-index: 12;
+  }
+
+  .nosotros-hero-card{
+    padding: 64px 18px 360px;  /* 👈 mucho fondo para el mono */
+    border-radius: 26px;
+  }
+
+  .nosotros-hero-card::before{
+    inset: 18px;
+    border-radius: 18px;
+  }
+
+  .nosotros-hero-inner{
+    padding-right: 0;
+    padding-top: 6px;
+    text-align: center;
+  }
+
+  .nosotros-title{
+    font-size: 38px;
+    line-height: 1.06;
+  }
+
+  .nosotros-lead{
+    font-size: 15.8px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* Mono centrado y más grande, pero sin tapar */
+  .nosotros-worker-overlay{
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+
+    width: 380px;      /* 👈 tamaño (sube/baja aquí) */
+    bottom: -240px;    /* 👈 posición vertical (sube/baja aquí) */
+
+    z-index: 9999;
+  }
+}
+
+
+/* =========================
+   MÓVIL MEDIANO (391 - 480)
+========================= */
+@media (max-width: 480px) and (min-width: 391px){
+
+  .nosotros-hero{
+    padding: 112px 12px 96px;
+  }
+
+  .nosotros-hero::before{
+    top: -4px;
+    left: -26px;
+    width: clamp(380px, 98vw, 520px);
+    height: clamp(380px, 98vw, 520px);
+  }
+
+  .nosotros-hero-card{
+    padding: 58px 14px 390px;  /* 👈 más alto para que no choque con “Nuestra historia” */
+    border-radius: 24px;
+  }
+
+  .nosotros-hero-card::before{
+    inset: 16px;
+    border-radius: 16px;
+  }
+
+  .nosotros-hero-inner{
+    padding-right: 0;
+    padding-top: 4px;
+    text-align: center;
+  }
+
+  .nosotros-title{
+    font-size: 34px;
+    line-height: 1.07;
+  }
+
+  .nosotros-lead{
+    font-size: 15.3px;
+    line-height: 1.55;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .nosotros-worker-overlay{
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+
+    width: 330px;     /* 👈 tamaño del mono */
+    bottom: -200px;   /* 👈 bájalo más si aún tapa texto */
+
+    z-index: 9999;
+  }
+}
+
+
+/* =========================
+   MÓVIL PEQUEÑO (<= 390)
+========================= */
+@media (max-width: 390px){
+
+  .nosotros-hero{
+    padding: 108px 10px 102px;
+  }
+
+  .nosotros-hero::before{
+    top: -6px;
+    left: -18px;
+    width: clamp(340px, 105vw, 500px);
+    height: clamp(340px, 105vw, 500px);
+  }
+
+  .nosotros-hero-card{
+    padding: 54px 12px 420px;  /* 👈 aún más alto para que el mono “quepa” */
+    border-radius: 22px;
+  }
+
+  .nosotros-hero-card::before{
+    inset: 14px;
+    border-radius: 14px;
+  }
+
+  .nosotros-hero-inner{
+    padding-right: 0;
+    padding-top: 2px;
+    text-align: center;
+  }
+
+  .nosotros-title{
+    font-size: 32px;
+    line-height: 1.08;
+  }
+
+  .nosotros-lead{
+    font-size: 15px;
+    line-height: 1.55;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .nosotros-worker-overlay{
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+
+    width: 340px;     /* 👈 tamaño */
+    bottom: -190px;   /* 👈 posición vertical */
+
+    z-index: 9999;
+  }
+}
+
+
+/* =========================================================
+   MINI-GUÍA RÁPIDA (para ti)
+   - Mover mono:
+     .nosotros-worker-overlay { bottom: ...; left/right: ...; width: ...; }
+   - Hacer más espacio para el mono:
+     .nosotros-hero-card { padding-bottom: ...; }  (el número grande)
+========================================================= */
+
+/* =========================================================
+   VALORES — REDISEÑO (MÓVIL + TABLET + DESKTOP) — valores-mgi2
+   HTML:
+   <section class="seccion fondo-azul valores-mgi2" aria-labelledby="valores">
+========================================================= */
+
+/* =========================
+   BASE (aplica a TODO)
+========================= */
+.seccion.fondo-azul.valores-mgi2{
+  position: relative !important;
+  margin-top: 40px !important;
+
+  /* ✅ dejamos espacio para que la Minnie (abajo) NO tape contenido */
+  padding: 46px 18px 260px !important;
+
+  border-radius: 30px !important;
+  overflow: hidden !important;
+  text-align: center;
+
+  background:
+    radial-gradient(880px 420px at 16% 22%, rgba(242,138,26,.22), rgba(0,0,0,0) 60%),
+    radial-gradient(760px 380px at 62% 10%, rgba(37,27,189,.22), rgba(0,0,0,0) 62%),
+    radial-gradient(900px 520px at 78% 86%, rgba(140,60,255,.14), rgba(0,0,0,0) 64%),
+    linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.66)) !important;
+
+  box-shadow:
+    0 26px 60px rgba(0,0,0,.14),
+    0 18px 34px rgba(37,27,189,.10) !important;
+}
+
+/* marco elegante */
+.seccion.fondo-azul.valores-mgi2::before{
+  content:"";
+  position:absolute;
+  inset: 16px;
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.45),
+    inset 0 0 0 2px rgba(255,255,255,.10);
+  pointer-events:none;
+  z-index: 1;
+}
+
+/* ✅ Minnie CENTRADA y PEGADA abajo */
+.seccion.fondo-azul.valores-mgi2::after{
+  content:"";
+  position:absolute;
+
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+
+  width: 320px;
+  height: 320px;
+
+  background: url("imgs/trabajadoraminnie-mgi.webp") no-repeat;
+  background-size: contain;
+  background-position: center bottom;
+
+  z-index: 2; /* detrás del texto */
+  pointer-events:none;
+  user-select:none;
+
+  filter: drop-shadow(0 26px 40px rgba(0,0,0,.22));
+  opacity: 1;
+}
+
+/* contenido arriba de marco y de Minnie */
+.seccion.fondo-azul.valores-mgi2 .titulo-seccion,
+.seccion.fondo-azul.valores-mgi2 .pasos{
+  position: relative;
+  z-index: 5;
+}
+
+/* ✅ Título centrado y degradado */
+.seccion.fondo-azul.valores-mgi2 .titulo-seccion{
+  margin: 0 0 18px !important;
+  text-align: center !important;
+  font-size: 32px !important;
+  font-weight: 950 !important;
+  line-height: 1.05 !important;
+
+  background: linear-gradient(90deg, #251bbd 0%, #f28a1a 55%, #8c3cff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+
+/* grid responsive centrado */
+.seccion.fondo-azul.valores-mgi2 .pasos{
+  display: grid !important;
+  grid-template-columns: 1fr !important; /* móvil base */
+  gap: 14px !important;
+  justify-items: center !important;
+  padding: 0 !important;
+}
+
+/* cards/botones */
+.seccion.fondo-azul.valores-mgi2 .paso{
+  width: 100%;
+  max-width: 360px;
+
+  border-radius: 22px;
+  padding: 18px 16px;
+  text-align: center;
+
+  font-weight: 950;
+  font-size: 17px;
+  letter-spacing: .2px;
+
+  color: #141414;
+  overflow: hidden;
+  position: relative;
+
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.66)) !important;
+
+  box-shadow:
+    0 18px 30px rgba(0,0,0,.12),
+    0 14px 22px rgba(37,27,189,.12) !important;
+
+  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+}
+
+/* borde degradado */
+.seccion.fondo-azul.valores-mgi2 .paso::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  border-radius: 22px;
+  padding: 2px;
+  background: linear-gradient(90deg, #251bbd, #f28a1a, #8c3cff);
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events:none;
+  opacity: .95;
+}
+
+/* glow */
+.seccion.fondo-azul.valores-mgi2 .paso::after{
+  content:"";
+  position:absolute;
+  inset: -46px;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(242,138,26,.30), rgba(0,0,0,0) 55%),
+    radial-gradient(circle at 72% 16%, rgba(37,27,189,.26), rgba(0,0,0,0) 56%),
+    radial-gradient(circle at 62% 86%, rgba(140,60,255,.20), rgba(0,0,0,0) 58%);
+  opacity: .95;
+  pointer-events:none;
+  transform: translateY(8px);
+}
+
+.seccion.fondo-azul.valores-mgi2 .paso:hover{
+  transform: translateY(-4px);
+  filter: brightness(1.03);
+  box-shadow:
+    0 26px 46px rgba(0,0,0,.14),
+    0 22px 36px rgba(242,138,26,.18),
+    0 22px 36px rgba(37,27,189,.18),
+    0 22px 36px rgba(140,60,255,.16) !important;
+}
+
+/* colores distintos por cada valor */
+.seccion.fondo-azul.valores-mgi2 .paso:nth-child(1){ color: #251bbd; }
+.seccion.fondo-azul.valores-mgi2 .paso:nth-child(2){ color: #b85a00; }
+.seccion.fondo-azul.valores-mgi2 .paso:nth-child(3){ color: #6a1bbd; }
+
+/* por si tu .fondo-azul mete fondo sólido */
+.fondo-azul.valores-mgi2{
+  background-color: transparent !important;
+}
+
+
+/* =========================
+   TABLET (>= 641px)
+========================= */
+@media (min-width: 641px){
+  .seccion.fondo-azul.valores-mgi2{
+    padding: 54px 26px 300px !important;
+    border-radius: 34px !important;
+  }
+
+  .seccion.fondo-azul.valores-mgi2 .titulo-seccion{
+    font-size: 36px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .seccion.fondo-azul.valores-mgi2 .pasos{
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  .seccion.fondo-azul.valores-mgi2::after{
+    width: 360px;
+    height: 360px;
+    bottom: -12px;
+  }
+}
+
+
+/* =========================
+   DESKTOP (>= 1025px)
+========================= */
+@media (min-width: 1025px){
+  .seccion.fondo-azul.valores-mgi2{
+    padding: 60px 40px 340px !important;
+    border-radius: 38px !important;
+  }
+
+  .seccion.fondo-azul.valores-mgi2 .titulo-seccion{
+    font-size: 40px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .seccion.fondo-azul.valores-mgi2 .pasos{
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 18px !important;
+  }
+
+  /* Minnie más grande en desktop */
+  .seccion.fondo-azul.valores-mgi2::after{
+    width: 460px;
+    height: 460px;
+    bottom: -18px;
+  }
+
+  .seccion.fondo-azul.valores-mgi2 .paso{
+    max-width: 320px;
+    padding: 22px 18px;
+    font-size: 18px;
+    border-radius: 24px;
+  }
+}
+
+/* =========================
+   NOSOTROS HERO — más aire contra el punteado
+========================= */
+.nosotros-hero{
+  --inset-linea: 22px;     /* aleja la línea punteada de la orilla */
+  --pad-contenido: 32px;   /* más padding interno para texto */
+}
+
+/* Si esa sección usa .tarjeta, con esto queda perfecto */
+.nosotros-hero .tarjeta{
+  padding: var(--pad-contenido);
+  padding-top: calc(var(--pad-contenido) + 10px);
+}
+
+/* Fuerza el inset del punteado dentro de esa sección */
+.nosotros-hero .tarjeta::before{
+  inset: var(--inset-linea);
+}
+@media (max-width: 768px){
+  .nosotros-hero{
+    --inset-linea: 18px;
+    --pad-contenido: 24px;
+  }
+}
