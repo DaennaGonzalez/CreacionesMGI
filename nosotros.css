@@ -1907,3 +1907,186 @@
     --pad-contenido: 24px;
   }
 }
+
+/* =========================================================
+   FIX DEFINITIVO TABLA-NOSOTROS (MISMA POSICIÓN / TAMAÑO)
+   - Se controla con variables
+   - Gana a reglas duplicadas por estar al FINAL
+========================================================= */
+
+.nosotros-hero{
+  /* valores por defecto (mobile-first) */
+  --tabla-top: 4px;
+  --tabla-left: -26px;
+  --tabla-w: clamp(340px, 96vw, 520px);
+  --tabla-h: clamp(360px, 96vw, 520px);
+}
+
+/* Aplicación única */
+.nosotros-hero::before{
+  top: var(--tabla-top) !important;
+  left: var(--tabla-left) !important;
+  width: var(--tabla-w) !important;
+  height: var(--tabla-h) !important;
+  z-index: 15 !important;
+  opacity: 1 !important;
+  background-size: contain !important;
+  background-position: left top !important;
+}
+
+/* =========================
+   TABLET (641px–899px)
+========================= */
+@media (min-width: 641px) and (max-width: 899px){
+  .nosotros-hero{
+    --tabla-top: 6px;
+    --tabla-left: -60px;
+    --tabla-w: clamp(460px, 78vw, 600px);
+    --tabla-h: clamp(480px, 78vw, 600px);
+  }
+}
+
+/* =========================
+   iPad / Tablet grande (768px–1024px)
+   (Esto evita que tu "HERO FIX" cambie la tabla)
+========================= */
+@media (min-width: 768px) and (max-width: 1024px){
+  .nosotros-hero{
+    --tabla-top: 6px;
+    --tabla-left: -80px;
+    --tabla-w: clamp(520px, 70vw, 640px);
+    --tabla-h: clamp(520px, 70vw, 640px);
+  }
+}
+
+/* =========================
+   Desktop pequeño (900px–1024px)
+========================= */
+@media (min-width: 900px) and (max-width: 1024px){
+  .nosotros-hero{
+    --tabla-top: 8px;
+    --tabla-left: -90px;
+    --tabla-w: clamp(520px, 62vw, 620px);
+    --tabla-h: clamp(560px, 62vw, 620px);
+  }
+}
+
+/* =========================
+   Desktop (>=1025px) — TU MEDIDA EXACTA
+========================= */
+@media (min-width: 1025px){
+  .nosotros-hero{
+    --tabla-top: 10px;
+    --tabla-left: -140px;
+    --tabla-w: clamp(600px, 55vw, 650px);
+    --tabla-h: clamp(650px, 55vw, 650px);
+  }
+}
+
+/* =========================================================
+   NOSOTROS — Animaciones al hacer SCROLL (reveal)
+   ✅ Requiere el JS de IntersectionObserver que ya agregaste a script.js:
+      - elementos con [data-animate] reciben .reveal + .in-view
+   ✅ Cómo usar en nosotros.html:
+      agrega data-animate="up" o data-animate="fade"
+      y opcional data-delay="80" (ms)
+   Ej:
+      <h2 class="titulo-seccion" data-animate="up">...</h2>
+      <article class="tarjeta" data-animate="up" data-delay="80">...</article>
+========================================================= */
+
+/* Reduce motion (accesibilidad) */
+@media (prefers-reduced-motion: reduce){
+  .reveal{
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    filter: none !important;
+  }
+}
+
+/* Base: oculto antes de entrar */
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(10px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(.2,.8,.2,1),
+    filter 900ms ease;
+  will-change: opacity, transform, filter;
+}
+
+/* Variantes por tipo */
+[data-animate="fade"].reveal{
+  transform: translateY(0);
+  filter: blur(12px);
+}
+
+[data-animate="up"].reveal{
+  transform: translateY(18px);
+}
+
+/* Cuando entra en viewport */
+.reveal.in-view{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* =========================================================
+   “REBOTE SUAVE” al entrar (solo si pones data-animate="bounce")
+   Tip: úsalo en títulos o en el personaje, no en TODO.
+========================================================= */
+@keyframes mgiRevealBounce{
+  0%   { transform: translateY(18px) scale(.98); opacity: 0; }
+  60%  { transform: translateY(-6px) scale(1.01); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+[data-animate="bounce"].reveal.in-view{
+  animation: mgiRevealBounce 850ms cubic-bezier(.2,.8,.2,1) both;
+  filter: blur(0);
+}
+
+/* =========================================================
+   Efecto extra “glow” sutil en tarjetas cuando aparecen
+   (se siente más premium con tus degradados)
+========================================================= */
+.tarjeta.reveal{
+  box-shadow: 0 20px 45px rgba(0,0,0,.10);
+}
+
+.tarjeta.reveal.in-view{
+  box-shadow: 0 26px 60px rgba(0,0,0,.14);
+}
+
+/* =========================================================
+   Personaje overlay (trabajador) — aparición suave
+   Solo si le agregas data-animate en el HTML:
+   <div class="nosotros-worker-overlay" data-animate="bounce">...</div>
+========================================================= */
+.nosotros-worker-overlay.reveal{
+  transform: translateY(26px) scale(.98);
+  filter: blur(14px);
+}
+
+.nosotros-worker-overlay.reveal.in-view{
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* =========================================================
+   Ajuste móvil: menos blur y menos desplazamiento
+========================================================= */
+@media (max-width: 640px){
+  .reveal{
+    transform: translateY(12px);
+    filter: blur(8px);
+    transition:
+      opacity 620ms ease,
+      transform 620ms cubic-bezier(.2,.8,.2,1),
+      filter 820ms ease;
+  }
+}
+

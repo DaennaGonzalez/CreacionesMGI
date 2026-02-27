@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Realiza tu pedido en Creaciones MGI: proceso, tiempos y formulario para cotizar tu diseño." />
+  <meta name="description" content="Haz tu pedido en Creaciones MGI: cotiza por WhatsApp o envíanos tu información por correo. Personalizamos en MDF y acrílico." />
   <title>Creaciones MGI | Pedidos</title>
 
+  <!-- ✅ MISMO CSS del index -->
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="pedidos.css" />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -18,7 +21,7 @@
 <body class="mgi-body">
   <div class="bg-fixed" aria-hidden="true"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER (igual al index) -->
   <header class="site-header">
     <div class="header-inner">
 
@@ -52,74 +55,610 @@
 
   <main>
 
-    <!-- SECCIÓN 1 -->
-    <section class="seccion">
-      <h2 class="titulo-seccion">¿Cómo hago mi pedido?</h2>
+    <!-- =====================================================
+         HERO / INTRO (PEDIDOS)
+         - Tabla decorativa: .pedidos-hero::before (tabla-pedidos.webp) en pedidos.css
+         - Animaciones scroll: data-animate
+    ====================================================== -->
+    <section class="pedidos-hero" aria-labelledby="pedidos-title">
+      <div class="pedidos-hero-card" data-animate="up">
 
-      <div class="grid-productos">
-        <article class="tarjeta">
-          <h3>1) Envíanos tu idea</h3>
-          <p>Cuéntanos qué necesitas: tipo de producto, medidas aproximadas, colores, texto, temática y fecha para entrega.</p>
+        <div class="pedidos-hero-inner">
+          <div>
+            <div class="pedidos-kicker" data-animate="fade"></div>
+
+            <h1 class="pedidos-title" id="pedidos-title" data-animate="up">
+              Haz tu pedido fácil y personalizado
+            </h1>
+
+            <p class="pedidos-lead" data-animate="up" data-delay="80">
+              Cuéntanos tu idea y la convertimos en una pieza única en <strong>MDF</strong> o <strong>acrílico</strong>.
+              Te asesoramos en diseño, medidas y acabados para que tu pedido quede <strong>limpio, bien terminado</strong> y listo para tu evento.
+            </p>
+
+            <div class="pedidos-hero-cta" data-animate="up" data-delay="140">
+              <a class="btn btn-primario btn-grande btn-bounce"
+                 href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20cotizar%20un%20pedido.%20Mi%20idea%20es:"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                Cotizar por WhatsApp
+              </a>
+
+              <button class="btn btn-secundario btn-grande btn-bounce"
+                      type="button"
+                      data-copy-email="creacionesmgi24@gmail.com"
+                      aria-label="Copiar correo de Creaciones MGI">
+                <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+                Copiar correo
+              </button>
+            </div>
+
+            <p class="pedidos-hero-mini" data-animate="fade" data-delay="220">
+              También puedes enviarnos tu información por correo:
+              <button class="link-copy" type="button" data-copy-email="creacionesmgi24@gmail.com">creacionesmgi24@gmail.com</button>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pedidos-paquetes">
+  <img src="imgs/paquetes.webp" alt="Paquetes personalizados Creaciones MGI">
+</div>
+    </section>
+
+
+    <!-- =====================================================
+         1) ¿CÓMO HAGO MI PEDIDO? (4 tarjetas + botón)
+    ====================================================== -->
+    <section class="seccion" aria-labelledby="como-pido">
+      <h2 class="titulo-seccion" id="como-pido" data-animate="up">¿Cómo hago mi pedido?</h2>
+
+      <div class="grid-productos pedidos-grid-4">
+        <article class="tarjeta" data-animate="up">
+          <div class="mini-k">1) Envíanos tu idea</div>
+          <h3>Cuéntanos qué necesitas</h3>
+          <p>
+            Dinos qué necesitas: producto, evento, medidas aproximadas, colores, texto y fecha para entrega.
+            Si tienes foto o referencia, mejor.
+          </p>
         </article>
 
-        <article class="tarjeta">
-          <h3>2) Te cotizamos</h3>
-          <p>Te enviamos opciones, precio estimado y tiempo de fabricación. Si tu idea requiere ajuste, te proponemos alternativas.</p>
+        <article class="tarjeta" data-animate="up" data-delay="60">
+          <div class="mini-k">2) Te cotizamos</div>
+          <h3>Precio y propuesta</h3>
+          <p>
+            Te enviamos precio, opciones de material (MDF o acrílico), tiempo estimado y propuesta según tu idea.
+          </p>
         </article>
 
-        <article class="tarjeta">
-          <h3>3) Confirmas diseño</h3>
-          <p>Una vez aprobado el diseño, se agenda tu pedido. Aquí confirmamos detalles finales para que quede tal como lo imaginas.</p>
+        <article class="tarjeta" data-animate="up" data-delay="120">
+          <div class="mini-k">3) Confirmas tu diseño</div>
+          <h3>Ajustes finales</h3>
+          <p>
+            Ajustamos detalles (nombre, colores, tamaño) y confirmamos el diseño final para iniciar fabricación.
+          </p>
         </article>
 
-        <article class="tarjeta">
-          <h3>4) Fabricación y entrega</h3>
-          <p>Fabricamos y te entregamos según lo acordado. Te avisamos en cuanto esté listo para entrega o envío.</p>
+        <article class="tarjeta" data-animate="up" data-delay="180">
+          <div class="mini-k">4) Fabricación y entrega</div>
+          <h3>Listo para recibir</h3>
+          <p>
+            Fabricamos tu pedido y te avisamos cuando esté listo para entrega o envío a domicilio.
+          </p>
         </article>
+      </div>
+
+      <div class="pedidos-cta-bloque" data-animate="up" data-delay="140">
+        <a class="btn btn-primario btn-grande btn-bounce"
+           href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20hacer%20un%20pedido.%20Estos%20son%20los%20detalles:%20"
+           target="_blank" rel="noopener">
+          <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+          Cotizar por WhatsApp
+        </a>
+
+        <a class="btn btn-secundario btn-grande btn-bounce" href="#solicita-tu-pedido">
+          <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+          Ir a Solicitar pedido
+        </a>
       </div>
     </section>
 
-    <!-- SECCIÓN 2 -->
-    <section class="seccion fondo-azul">
-      <h2 class="titulo-seccion">Tiempos y detalles</h2>
+
+    <!-- =====================================================
+         2) PARA COTIZAR RÁPIDO (6 tarjetas checklist + botones)
+    ====================================================== -->
+    <section class="seccion" aria-labelledby="cotizar-rapido">
+      <h2 class="titulo-seccion" id="cotizar-rapido" data-animate="up">Para cotizar rápido, envíanos esto:</h2>
+
+      <div class="grid-productos pedidos-grid-6">
+        <article class="tarjeta tarjeta-check" data-animate="up">
+          <div class="mini-k">✅ Tipo de producto</div>
+          <p>(caja, letrero, topper, alcancía…)</p>
+        </article>
+
+        <article class="tarjeta tarjeta-check" data-animate="up" data-delay="50">
+          <div class="mini-k">✅ Medida aproximada</div>
+          <p>(en cm si se puede)</p>
+        </article>
+
+        <article class="tarjeta tarjeta-check" data-animate="up" data-delay="100">
+          <div class="mini-k">✅ Texto / nombre</div>
+          <p>(tal cual debe ir)</p>
+        </article>
+
+        <article class="tarjeta tarjeta-check" data-animate="up" data-delay="150">
+          <div class="mini-k">✅ Colores o estilo</div>
+          <p>(ej. azul, dorado, glitter, tema…)</p>
+        </article>
+
+        <article class="tarjeta tarjeta-check" data-animate="up" data-delay="200">
+          <div class="mini-k">✅ Cantidad</div>
+          <p>(1, 10, 50…)</p>
+        </article>
+
+        <article class="tarjeta tarjeta-check" data-animate="up" data-delay="250">
+          <div class="mini-k">✅ Fecha del evento</div>
+          <p>(día en que lo necesitas)</p>
+        </article>
+      </div>
+
+      <div class="pedidos-cta-bloque" data-animate="up">
+        <a class="btn btn-primario btn-grande btn-bounce"
+           href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20cotizar%20r%C3%A1pido.%20Te%20mando:%20Tipo%20de%20producto:%20%0AMedida:%20%0ATexto:%20%0AColores/estilo:%20%0ACantidad:%20%0AFecha%20del%20evento:%20"
+           target="_blank" rel="noopener">
+          <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+          Enviar por WhatsApp
+        </a>
+
+        <button class="btn btn-secundario btn-grande btn-bounce"
+                type="button"
+                data-copy-email="creacionesmgi24@gmail.com">
+          <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+          Copiar correo para enviar
+        </button>
+      </div>
+
+      <!-- Imagen decorativa pegada al final de la sección (paquetero) -->
+<div class="pedidos-packshot" aria-hidden="true">
+  <img src="imgs/paquetero-creacionesmgi.webp" alt="">
+</div>
+
+    </section>
+
+
+    <!-- =====================================================
+         3) TIEMPOS Y DETALLES (fondo azul) + nota
+    ====================================================== -->
+    <section class="seccion fondo-azul pedidos-tiempos" aria-labelledby="tiempos-detalles">
+      <h2 class="titulo-seccion" id="tiempos-detalles" data-animate="up">Tiempos y detalles</h2>
 
       <div class="pasos">
-        <div class="paso">⏱️ Tiempo estimado: según diseño y volumen</div>
-        <div class="paso">📌 Recomendación: pedir con anticipación</div>
-        <div class="paso">✅ Personalización: nombres, frases, temática</div>
+        <div class="paso" data-animate="up">⏱️ Tiempo estimado: depende del diseño y cantidad (te lo confirmamos al cotizar)</div>
+        <div class="paso" data-animate="up" data-delay="70">📌 Recomendación: pide con anticipación para asegurar entrega a tiempo</div>
+        <div class="paso" data-animate="up" data-delay="140">✨ Personalización: nombres, frases, temáticas, colores y medidas</div>
+      </div>
+
+      <p class="pedidos-nota-mini" data-animate="fade" data-delay="160">
+        <strong>Pedidos urgentes:</strong> consúltanos disponibilidad por WhatsApp.
+      </p>
+
+      <div class="pedidos-cta-bloque" data-animate="up" data-delay="180">
+        <a class="btn btn-primario btn-grande btn-bounce"
+           href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20tengo%20un%20pedido%20urgente.%20%C2%BFHay%20disponibilidad%20para%20esta%20fecha%3F%20"
+           target="_blank" rel="noopener">
+          <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+          Consultar urgencia
+        </a>
       </div>
     </section>
 
-    <!-- SECCIÓN 3 -->
-    <section class="seccion" id="pedido">
-      <h2 class="titulo-seccion">Solicita tu pedido</h2>
 
-      <form class="formulario">
-        <input type="text" placeholder="Nombre completo" required>
-        <input type="tel" placeholder="WhatsApp" required>
-        <input type="email" placeholder="Correo (opcional)" >
-        <input type="text" placeholder="Producto (ej. caja, letrero, evento...)" required>
-        <textarea placeholder="Describe tu pedido (medidas, colores, texto, temática, fecha de entrega)" required></textarea>
+    <!-- =====================================================
+         4) ENTREGA Y ENVÍOS (3 tarjetas + botón)
+         - incluye icono camioncito: servicio-domicilio.webp
+    ====================================================== -->
+    <section class="seccion" aria-labelledby="entrega-envios">
+      <h2 class="titulo-seccion" id="entrega-envios" data-animate="up">Entrega y envíos</h2>
 
-        <button type="submit" class="btn-principal">Enviar pedido</button>
+      <div class="grid-productos pedidos-grid-3">
+        <article class="tarjeta" data-animate="up">
+          <div class="mini-k">📍 Entrega local</div>
+          <h3>Recoge tu pedido</h3>
+          <p>Puedes recoger tu pedido (previa confirmación).</p>
+        </article>
+
+        <article class="tarjeta" data-animate="up" data-delay="80">
+          <div class="mini-k">🚚 Envío a domicilio</div>
+          <h3>Monterrey y área metropolitana</h3>
+          <p>Hacemos envíos en Monterrey y área metropolitana (según zona y disponibilidad).</p>
+          <img class="tarjeta-ico" src="imgs/servicio-domicilio.webp" alt="Envío a domicilio">
+        </article>
+
+        <article class="tarjeta" data-animate="up" data-delay="160">
+          <div class="mini-k">📦 Empaque seguro</div>
+          <h3>Protección en traslado</h3>
+          <p>Cuidamos el empaque para que llegue en buenas condiciones.</p>
+        </article>
+      </div>
+
+      <div class="pedidos-cta-bloque" data-animate="up">
+        <a class="btn btn-secundario btn-grande btn-bounce" href="ubicacion.html">
+          Ver ubicación
+        </a>
+
+        <a class="btn btn-primario btn-grande btn-bounce"
+           href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20%C2%BFme%20puedes%20confirmar%20costo%20y%20zona%20de%20env%C3%ADo%20a%20domicilio%3F%20Mi%20colonia%20es:%20"
+           target="_blank" rel="noopener">
+          <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+          Preguntar por envío
+        </a>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         5) SOLICITA TU PEDIDO (envío por CORREO o WHATSAPP)
+         - NO envía formulario tradicional
+         - Botón correo abre mailto con datos
+         - Botón WhatsApp construye mensaje con valores del form
+         - Botón copiar correo copia al portapapeles
+    ====================================================== -->
+    <section class="seccion" aria-labelledby="solicita-tu-pedido">
+      <h2 class="titulo-seccion" id="solicita-tu-pedido" data-animate="up">Solicita tu pedido</h2>
+
+      <p class="pedidos-intro-form" data-animate="up" data-delay="60">
+        Llena este formulario para armar tu mensaje.
+        Puedes enviarlo por <strong>WhatsApp</strong> o por <strong>correo</strong>.
+        Si tienes una imagen de referencia, envíala por WhatsApp.
+      </p>
+
+      <form class="pedidos-form" id="pedidoForm" autocomplete="on" data-animate="up" data-delay="90">
+        <div class="pedidos-grid-form">
+          <div class="pedidos-campo">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required />
+          </div>
+
+          <div class="pedidos-campo">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej. 81 2343 9492" required />
+          </div>
+
+          <div class="pedidos-campo">
+            <label for="correoCliente">Correo (opcional)</label>
+            <input type="email" id="correoCliente" name="correoCliente" placeholder="tucorreo@ejemplo.com" />
+          </div>
+
+          <div class="pedidos-campo">
+            <label for="producto">Producto</label>
+            <input type="text" id="producto" name="producto" placeholder="Ej. caja, letrero, topper, evento…" required />
+          </div>
+        </div>
+
+        <div class="pedidos-campo pedidos-campo-full">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" name="descripcion" rows="6"
+            placeholder="Incluye medidas, colores, texto, temática y fecha del evento."
+            required></textarea>
+        </div>
+
+        <div class="pedidos-botones">
+          <a class="btn btn-primario btn-grande btn-bounce" id="btnEnviarWhats" href="#" target="_blank" rel="noopener">
+            <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+            Enviar por WhatsApp
+          </a>
+
+          <a class="btn btn-secundario btn-grande btn-bounce" id="btnEnviarMail" href="#" target="_blank" rel="noopener">
+            <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+            Enviar por correo
+          </a>
+
+          <button class="btn btn-terciario btn-grande btn-bounce" type="button" data-copy-email="creacionesmgi24@gmail.com">
+            <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+            Copiar correo
+          </button>
+        </div>
+
+        <p class="pedidos-nota-form" data-animate="fade" data-delay="120">
+          Si tu pedido es para un evento con fecha cercana, escríbenos directo por WhatsApp para confirmar disponibilidad.
+        </p>
+
+        <div class="pedidos-correo-mini" data-animate="fade" data-delay="160">
+          Correo: <button class="link-copy" type="button" data-copy-email="creacionesmgi24@gmail.com">creacionesmgi24@gmail.com</button>
+        </div>
       </form>
+    </section>
+
+
+    <!-- =====================================================
+         6) PREGUNTAS FRECUENTES (DINÁMICAS)
+         - Acordeón (details/summary) + clases para estilos
+         - “Más preguntas” como pediste
+    ====================================================== -->
+    <section class="seccion" aria-labelledby="faq-pedidos">
+      <h2 class="titulo-seccion" id="faq-pedidos" data-animate="up">Preguntas frecuentes</h2>
+
+      <div class="faq-wrap" data-animate="up" data-delay="80">
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            ¿Puedo pedir un diseño que vi en internet?
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            Sí. Mándanos la referencia y lo adaptamos a tu estilo, medidas y materiales disponibles.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            ¿Hacen pedidos por volumen?
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            Sí. Manejamos pedidos por cantidad para eventos y negocios. Entre más piezas, mejor optimizamos tiempos y propuesta.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            ¿Puedo cambiar algo después de confirmar?
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            Se puede antes de fabricar. Una vez iniciada producción, ya no es posible cambiar el diseño final.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            ¿Cómo sé cuándo está listo?
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            Te avisamos por WhatsApp en cuanto esté terminado para coordinar entrega o envío.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            ¿Trabajan con MDF y acrílico? ¿Cuál conviene?
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            Sí, trabajamos ambos. MDF suele ser ideal para estructuras y cajas; acrílico luce premium para letreros y piezas con brillo.
+            Te recomendamos según tu idea.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            ¿Qué pasa si no tengo medidas exactas?
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            No pasa nada. Con una medida aproximada (o foto con referencia) te ayudamos a definir el tamaño ideal.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            ¿Hacen envíos fuera de Monterrey?
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            Podemos revisarlo caso por caso. Escríbenos por WhatsApp con tu ciudad y te confirmamos opciones de envío.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            ¿Puedo pagar y apartar mi pedido?
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            Sí. Te indicamos el proceso al cotizar para asegurar tu fecha de entrega.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            ¿Cuánto tarda un pedido?
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            Depende del diseño, cantidad y agenda. Te confirmamos tiempo estimado al momento de cotizar.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            ¿Puedo mandar una imagen de referencia?
+            <span class="faq-plus" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">
+            ¡Sí! Es lo mejor. Envíala por WhatsApp y con eso avanzamos más rápido.
+          </div>
+        </details>
+
+      </div>
+
+      <div class="pedidos-cta-bloque" data-animate="up" data-delay="120">
+        <a class="btn btn-primario btn-grande btn-bounce"
+           href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20tengo%20una%20pregunta%20sobre%20un%20pedido:%20"
+           target="_blank" rel="noopener">
+          <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+          Preguntar por WhatsApp
+        </a>
+      </div>
     </section>
 
   </main>
 
+  <!-- PIE DE PÁGINA (igual al index) -->
   <footer class="footer">
     <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
   </footer>
 
+  <!-- BURBUJAS FLOTANTES (igual al index) -->
   <div class="burbujas">
-    <a href="https://wa.me/5210000000000" target="_blank" class="burbuja whatsapp">
-      <img src="imgs/icono-whatsapp.png" alt="WhatsApp">
+    <a href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos."
+       target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
     </a>
-    <a href="https://facebook.com" target="_blank" class="burbuja facebook">
-      <img src="imgs/logo-facebook.png" alt="Facebook">
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
     </a>
   </div>
 
+  <!-- =====================================================
+       JS (animaciones scroll + construir links + copiar correo)
+       ✅ No rompe tu script.js, solo complementa
+  ====================================================== -->
   <script src="script.js"></script>
+
+  <script>
+    // =========================
+    // 1) Copiar correo al portapapeles
+    // =========================
+    (function(){
+      const email = "creacionesmgi24@gmail.com";
+
+      async function copyToClipboard(text){
+        try{
+          await navigator.clipboard.writeText(text);
+          toast("Correo copiado: " + text);
+        }catch(e){
+          // fallback
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "absolute";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          toast("Correo copiado: " + text);
+        }
+      }
+
+      document.addEventListener("click", (ev) => {
+        const btn = ev.target.closest("[data-copy-email]");
+        if(btn){
+          const value = btn.getAttribute("data-copy-email") || email;
+          copyToClipboard(value);
+        }
+      });
+
+      // Toast simple (puedes estilizarlo en pedidos.css)
+      function toast(msg){
+        let t = document.querySelector(".mgi-toast");
+        if(!t){
+          t = document.createElement("div");
+          t.className = "mgi-toast";
+          document.body.appendChild(t);
+        }
+        t.textContent = msg;
+        t.classList.add("show");
+        clearTimeout(window.__mgiToast);
+        window.__mgiToast = setTimeout(()=> t.classList.remove("show"), 2400);
+      }
+    })();
+
+    // =========================
+    // 2) Construir mensaje para WhatsApp / Mail desde el form
+    // =========================
+    (function(){
+      const form = document.getElementById("pedidoForm");
+      const btnWhats = document.getElementById("btnEnviarWhats");
+      const btnMail = document.getElementById("btnEnviarMail");
+
+      if(!form || !btnWhats || !btnMail) return;
+
+      function getVal(id){
+        const el = document.getElementById(id);
+        return (el && el.value ? el.value.trim() : "");
+      }
+
+      function buildMessage(){
+        const nombre = getVal("nombre");
+        const whatsapp = getVal("whatsapp");
+        const correoCliente = getVal("correoCliente");
+        const producto = getVal("producto");
+        const desc = getVal("descripcion");
+
+        const lines = [
+          "Hola Creaciones MGI, quiero hacer un pedido.",
+          "",
+          "Nombre: " + nombre,
+          "WhatsApp: " + whatsapp,
+          (correoCliente ? "Correo: " + correoCliente : "Correo: (no proporcionado)"),
+          "Producto: " + producto,
+          "Descripción: " + desc
+        ];
+
+        return lines.join("\n");
+      }
+
+      function updateLinks(){
+        const msg = buildMessage();
+
+        const waBase = "https://wa.me/18123439492?text=";
+        btnWhats.href = waBase + encodeURIComponent(msg);
+
+        const subject = "Pedido / Cotización - Creaciones MGI";
+        const mailTo = "mailto:creacionesmgi24@gmail.com"
+          + "?subject=" + encodeURIComponent(subject)
+          + "&body=" + encodeURIComponent(msg);
+
+        btnMail.href = mailTo;
+      }
+
+      // Actualiza en vivo
+      form.addEventListener("input", updateLinks);
+      form.addEventListener("change", updateLinks);
+
+      // Inicial
+      updateLinks();
+
+      // Evita submit normal
+      form.addEventListener("submit", (e) => e.preventDefault());
+    })();
+
+    // =========================
+    // 3) Animaciones al hacer scroll (IntersectionObserver)
+    //    Usa data-animate="up|fade" y data-delay="ms"
+    // =========================
+    (function(){
+      const items = document.querySelectorAll("[data-animate]");
+      if(!items.length) return;
+
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            const el = entry.target;
+            const delay = parseInt(el.getAttribute("data-delay") || "0", 10);
+            setTimeout(()=> el.classList.add("in-view"), Math.max(0, delay));
+            io.unobserve(el);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      items.forEach(el => {
+        el.classList.add("reveal"); // base para CSS
+        io.observe(el);
+      });
+    })();
+  </script>
 </body>
 </html>

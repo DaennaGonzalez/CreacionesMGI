@@ -645,3 +645,28 @@ function setupMobileMenuBehaviors() {
 
   setupEnviosButtonBounce();
 })();
+
+/* ======================================
+   FIX MOVIMIENTO TABLET RESEÑAS
+====================================== */
+
+(function(){
+
+  const track = document.querySelector(".resenas-track");
+  if(!track) return;
+
+  function forceTabletMotion(){
+    const width = window.innerWidth;
+
+    if(width >= 700 && width <= 1024){
+      track.style.animationPlayState = "running";
+      track.style.animationDuration = "22s";
+      track.style.animationTimingFunction = "linear";
+      track.style.animationIterationCount = "infinite";
+    }
+  }
+
+  window.addEventListener("resize", forceTabletMotion);
+  window.addEventListener("load", forceTabletMotion);
+
+})();
