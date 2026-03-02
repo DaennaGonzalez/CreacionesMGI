@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Contacto Creaciones MGI: WhatsApp, redes sociales y formulario para mensajes y cotizaciones." />
-  <title>Creaciones MGI | Contacto</title>
+  <meta name="description" content="Contacta a Creaciones MGI por WhatsApp, correo o visita nuestra ubicación. Te ayudamos con pedidos personalizados en MDF y acrílico." />
+  <title>Creaciones MGI | Contáctanos</title>
 
+  <!-- CSS general + CSS específico -->
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="contacto.css" />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
 </head>
@@ -18,7 +21,7 @@
 <body class="mgi-body">
   <div class="bg-fixed" aria-hidden="true"></div>
 
-  <!-- HEADER -->
+  <!-- HEADER (igual al index/blog/productos) -->
   <header class="site-header">
     <div class="header-inner">
 
@@ -52,73 +55,265 @@
 
   <main>
 
-    <!-- SECCIÓN 1 -->
-    <section class="seccion">
-      <h2 class="titulo-seccion">Contáctanos</h2>
+    <!-- =====================================================
+         HERO CONTACTO
+    ====================================================== -->
+    <section class="contacto-hero" aria-labelledby="contacto-title">
+      <div class="contacto-hero-card" data-animate="up">
 
-      <div class="grid-productos">
-        <article class="tarjeta">
-          <h3>WhatsApp</h3>
-          <p>Escríbenos para cotizar o resolver dudas. Envíanos foto o referencia si ya tienes una idea.</p>
+        <div class="contacto-hero-inner">
+          <div class="contacto-kicker" data-animate="fade"></div>
+
+          <h1 class="contacto-title" id="contacto-title" data-animate="up">
+            Contáctanos
+          </h1>
+
+          <p class="contacto-lead" data-animate="up" data-delay="80">
+            ¿Tienes dudas o quieres cotizar? Escríbenos por <strong>WhatsApp</strong>, envíanos un <strong>correo</strong>
+            o visita nuestra ubicación. Te respondemos lo antes posible.
+          </p>
+
+          <div class="contacto-hero-cta" data-animate="up" data-delay="140">
+            <a class="btn btn-primario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20informaci%C3%B3n%20o%20cotizar%20un%20pedido."
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              WhatsApp
+            </a>
+
+            <button class="btn btn-secundario btn-grande btn-bounce"
+                    type="button"
+                    data-copy-email="creacionesmgi24@gmail.com"
+                    aria-label="Copiar correo de Creaciones MGI">
+              <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+              Copiar correo
+            </button>
+
+            <a class="btn btn-secundario btn-grande btn-bounce"
+               href="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
+              Ver en Maps
+            </a>
+          </div>
+
+          <p class="contacto-mini" data-animate="fade" data-delay="220">
+            Teléfono: <strong>81 2343 9492</strong> ·
+            Correo: <button class="link-copy" type="button" data-copy-email="creacionesmgi24@gmail.com">creacionesmgi24@gmail.com</button>
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    
+    
+    <!-- =====================================================
+         SECCIÓN 1: TARJETAS DE CONTACTO (Whats/Correo/Maps)
+    ====================================================== -->
+    <!-- Imagen decorativa empleado -->
+<div class="empleado-wrapper">
+  <img src="imgs/empleado-contactanos.webp" 
+       alt="Asesor de Creaciones MGI"
+       class="empleado-img">
+</div>
+    
+    <section class="seccion contacto-cards" aria-labelledby="contacto-opciones">
+      <h2 class="titulo-seccion" id="contacto-opciones" data-animate="up">Formas de contacto</h2>
+
+      <div class="grid-productos contacto-grid-3">
+        <!-- WhatsApp -->
+        <article class="tarjeta contacto-tarjeta" data-animate="up">
+          <div class="mini-k">💬 WhatsApp</div>
+          <h3>Respuesta rápida</h3>
+          <p>
+            Envíanos tu idea (producto, medidas, colores, texto y fecha). Si tienes referencia, mándala también.
+          </p>
+
+          <div class="contacto-actions">
+            <a class="btn btn-primario btn-mini btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20cotizar.%20Mi%20idea%20es:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Escribir
+            </a>
+
+            <button class="btn btn-secundario btn-mini btn-bounce" type="button" data-copy-text="81 2343 9492">
+              Copiar teléfono
+            </button>
+          </div>
         </article>
 
-        <article class="tarjeta">
-          <h3>Facebook</h3>
-          <p>Revisa publicaciones, ejemplos de trabajos y novedades. También puedes mandar mensaje por inbox.</p>
+        <!-- Correo -->
+        <article class="tarjeta contacto-tarjeta" data-animate="up" data-delay="80">
+          <div class="mini-k">✉️ Correo</div>
+          <h3>Envíanos tu información</h3>
+          <p>
+            Si prefieres correo, puedes mandarnos el detalle de tu pedido. Te respondemos para confirmar.
+          </p>
+
+          <div class="contacto-actions">
+            <a class="btn btn-primario btn-mini btn-bounce"
+               href="mailto:creacionesmgi24@gmail.com?subject=Cotizaci%C3%B3n%20-%20Creaciones%20MGI&body=Hola%20Creaciones%20MGI,%0A%0AQuiero%20cotizar:%0A-%20Producto:%0A-%20Medidas:%0A-%20Colores/estilo:%0A-%20Texto:%0A-%20Cantidad:%0A-%20Fecha%20del%20evento:%0A%0AGracias."
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+              Abrir correo
+            </a>
+
+            <button class="btn btn-secundario btn-mini btn-bounce" type="button" data-copy-email="creacionesmgi24@gmail.com">
+              Copiar correo
+            </button>
+          </div>
         </article>
 
-        <article class="tarjeta">
-          <h3>Correo</h3>
-          <p>Si tu pedido es grande o necesitas detalles formales, puedes enviarnos tu solicitud por correo.</p>
-        </article>
 
-        <article class="tarjeta">
-          <h3>Atención personalizada</h3>
-          <p>Te ayudamos a definir tamaño, colores, materiales y acabados para que tu diseño quede perfecto.</p>
+        
+        <!-- Maps -->
+        <article class="tarjeta contacto-tarjeta" data-animate="up" data-delay="160">
+          <div class="mini-k">📍 Ubicación</div>
+          <h3>Visítanos</h3>
+          <p>
+            Abre la ubicación en Google Maps para llegar más fácil.
+          </p>
+
+          <div class="contacto-actions">
+            <a class="btn btn-primario btn-mini btn-bounce"
+               href="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
+              Abrir Maps
+            </a>
+
+            <button class="btn btn-secundario btn-mini btn-bounce" type="button" data-copy-text="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6">
+              Copiar link
+            </button>
+          </div>
         </article>
       </div>
     </section>
 
-    <!-- SECCIÓN 2 -->
-    <section class="seccion fondo-azul">
-      <h2 class="titulo-seccion">Tiempo de respuesta</h2>
+    <!-- =====================================================
+         SECCIÓN 2: MAPA + FORM (con imagen pegada en la orilla)
+         Imagen: empleado-contactanos.webp
+    ====================================================== -->
+    <section class="seccion contacto-mapa-form" aria-labelledby="contacto-mapa-title">
+      <h2 class="titulo-seccion" id="contacto-mapa-title" data-animate="up">Encuéntranos y escríbenos</h2>
 
-      <div class="pasos">
-        <div class="paso">💬 Respondemos lo antes posible</div>
-        <div class="paso">📦 Cotización según diseño y volumen</div>
-        <div class="paso">🧩 Adjunta detalles para avanzar rápido</div>
+      <div class="contacto-layout" data-animate="up" data-delay="60">
+        <!-- MAPA -->
+        <div class="formulario contacto-panel">
+          <h3 class="contacto-subtitle">Ubicación en Google Maps</h3>
+
+          <div class="contacto-map-embed" aria-label="Mapa de Creaciones MGI">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.4490689171853!2d-100.3419761!3d25.722659000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662957c8615284f%3A0xe289932e1da44a57!2sMGI%20CREACIONES!5e0!3m2!1ses-419!2smx!4v1772487956864!5m2!1ses-419!2smx"
+              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+          <div class="contacto-map-actions">
+            <a class="btn btn-primario btn-mini btn-bounce"
+               href="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
+              Abrir en Maps
+            </a>
+
+            <button class="btn btn-secundario btn-mini btn-bounce" type="button" data-copy-text="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6">
+              Copiar link
+            </button>
+          </div>
+        </div>
+
+        <!-- FORM (arma mensaje WhatsApp/correo) -->
+        <div class="formulario contacto-panel">
+          <h3 class="contacto-subtitle">Mensaje rápido</h3>
+
+          <p class="contacto-intro">
+            Llena este formulario para armar tu mensaje y enviarlo por WhatsApp o correo.
+          </p>
+
+          <form class="contacto-form" id="contactoForm" autocomplete="on">
+            <div class="contacto-grid">
+              <div class="contacto-campo">
+                <label for="cNombre">Nombre</label>
+                <input id="cNombre" name="cNombre" type="text" placeholder="Tu nombre" required>
+              </div>
+
+              <div class="contacto-campo">
+                <label for="cTelefono">Teléfono / WhatsApp</label>
+                <input id="cTelefono" name="cTelefono" type="tel" placeholder="81 2343 9492" required>
+              </div>
+
+              <div class="contacto-campo contacto-full">
+                <label for="cCorreo">Correo (opcional)</label>
+                <input id="cCorreo" name="cCorreo" type="email" placeholder="tucorreo@ejemplo.com">
+              </div>
+
+              <div class="contacto-campo contacto-full">
+                <label for="cMensaje">Mensaje</label>
+                <textarea id="cMensaje" name="cMensaje" rows="5" placeholder="Cuéntanos qué necesitas (producto, medidas, colores, texto y fecha)..." required></textarea>
+              </div>
+            </div>
+
+            <div class="contacto-botones">
+              <a class="btn btn-primario btn-grande btn-bounce" id="cEnviarWhats" href="#" target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                Enviar por WhatsApp
+              </a>
+
+              <a class="btn btn-secundario btn-grande btn-bounce" id="cEnviarMail" href="#" target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+                Enviar por correo
+              </a>
+
+              <button class="btn btn-terciario btn-grande btn-bounce" type="button" data-copy-email="creacionesmgi24@gmail.com">
+                <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+                Copiar correo
+              </button>
+            </div>
+
+            <p class="contacto-nota">
+              Teléfono: <strong>81 2343 9492</strong> · Correo: <strong>creacionesmgi24@gmail.com</strong>
+            </p>
+          </form>
+        </div>
       </div>
-    </section>
-
-    <!-- SECCIÓN 3 -->
-    <section class="seccion" id="mensaje">
-      <h2 class="titulo-seccion">Envíanos un mensaje</h2>
-
-      <form class="formulario">
-        <input type="text" placeholder="Nombre" required>
-        <input type="tel" placeholder="WhatsApp" required>
-        <input type="email" placeholder="Correo (opcional)">
-        <textarea placeholder="Escribe tu mensaje o lo que deseas cotizar" required></textarea>
-
-        <button type="submit" class="btn-principal">Enviar mensaje</button>
-      </form>
     </section>
 
   </main>
 
+  <!-- PIE DE PÁGINA -->
   <footer class="footer">
     <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
   </footer>
 
+  <!-- BURBUJAS FLOTANTES -->
   <div class="burbujas">
-    <a href="https://wa.me/5210000000000" target="_blank" class="burbuja whatsapp">
-      <img src="imgs/icono-whatsapp.png" alt="WhatsApp">
+    <a href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos."
+       target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
     </a>
-    <a href="https://facebook.com" target="_blank" class="burbuja facebook">
-      <img src="imgs/logo-facebook.png" alt="Facebook">
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
     </a>
   </div>
 
+  <!-- JS -->
   <script src="script.js"></script>
+  <script src="contacto.js" defer></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>

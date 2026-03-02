@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Ubicación de Creaciones MGI: dirección, horarios, referencias y mapa para llegar." />
+  <meta name="description" content="Ubicación de Creaciones MGI. Abre el mapa, copia el link y contáctanos por WhatsApp o correo." />
   <title>Creaciones MGI | Ubicación</title>
 
+  <!-- CSS general + CSS específico -->
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="ubicacion.css" />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
 </head>
@@ -52,77 +55,172 @@
 
   <main>
 
-    <!-- SECCIÓN 1 -->
-    <section class="seccion">
-      <h2 class="titulo-seccion">Ubicación</h2>
+    <!-- =====================================================
+         HERO UBICACIÓN
+         IMPORTANTE: la tabla decorativa (tabla-pedidos.webp)
+         se colocará en ubicacion.css con EXACTA misma posición:
+         top:10px; left:-140px; width/height clamp(600..650)
+    ====================================================== -->
+    <section class="ubicacion-hero" aria-labelledby="ubicacion-title">
+      <div class="ubicacion-hero-card" data-animate="up">
+        <div class="ubicacion-hero-inner">
 
-      <div class="grid-productos">
-        <article class="tarjeta">
-          <h3>Dirección</h3>
-          <p>Coloca aquí tu dirección completa (calle, número, colonia, ciudad).</p>
-        </article>
+          <div class="ubicacion-kicker" data-animate="fade"></div>
 
-        <article class="tarjeta">
-          <h3>Horarios</h3>
-          <p>Lun a Sáb: 9:00 a 18:00<br>Dom: (si aplica) / Cerrado</p>
-        </article>
+          <h1 class="ubicacion-title" id="ubicacion-title" data-animate="up">
+            Nuestra ubicación
+          </h1>
 
-        <article class="tarjeta">
-          <h3>Referencia</h3>
-          <p>Agrega una referencia fácil: “a un lado de…”, “frente a…”, “cerca de…”.</p>
-        </article>
+          <p class="ubicacion-lead" data-animate="up" data-delay="80">
+            Abre el mapa para llegar más fácil. También puedes escribirnos por <strong>WhatsApp</strong>
+            o enviarnos un correo.
+          </p>
 
-        <article class="tarjeta">
-          <h3>Entrega / Punto de encuentro</h3>
-          <p>Si entregas en un punto específico, describe cómo se coordina la entrega.</p>
-        </article>
+          <div class="ubicacion-cta" data-animate="up" data-delay="140">
+            <a class="btn btn-primario btn-grande btn-bounce"
+               href="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
+              Abrir en Maps
+            </a>
+
+            <a class="btn btn-secundario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20llegar%20a%20su%20ubicaci%C3%B3n.%20%C2%BFMe%20pueden%20apoyar%3F"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              WhatsApp
+            </a>
+
+            <button class="btn btn-terciario btn-grande btn-bounce"
+                    type="button"
+                    data-copy-email="mgicreaciones24@gmail.com"
+                    aria-label="Copiar correo de Creaciones MGI">
+              <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+              Copiar correo
+            </button>
+          </div>
+
+          <p class="ubicacion-mini" data-animate="fade" data-delay="220">
+            Correo: <button class="link-copy" type="button" data-copy-email="mgicreaciones24@gmail.com">mgicreaciones24@gmail.com</button>
+          </p>
+
+        </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 2 -->
-    <section class="seccion fondo-azul">
-      <h2 class="titulo-seccion">¿Cómo llegar?</h2>
+    <!-- =====================================================
+         MAPA GRANDE + INFO
+    ====================================================== -->
+    <section class="seccion ubicacion-wrap" aria-labelledby="mapa-title">
+      <h2 class="titulo-seccion" id="mapa-title" data-animate="up">Mapa</h2>
 
-      <div class="pasos">
-        <div class="paso">🚗 Si vienes en auto: revisa el mapa y la ruta más rápida</div>
-        <div class="paso">🚌 Transporte: indica la ruta o punto cercano (si aplica)</div>
-        <div class="paso">📲 Si no ubicas: escríbenos y te guiamos</div>
-      </div>
-    </section>
+      <div class="ubicacion-grid" data-animate="up" data-delay="60">
+        <!-- MAPA GRANDE -->
+        <div class="formulario ubicacion-mapa">
+          <h3 class="ubicacion-subtitle">Ubicación en Google Maps</h3>
 
-    <!-- SECCIÓN 3 -->
-    <section class="seccion" id="mapa">
-      <h2 class="titulo-seccion">Mapa</h2>
+          <div class="ubicacion-map-embed" aria-label="Mapa de Creaciones MGI">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.4490689171853!2d-100.3419761!3d25.722659000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662957c8615284f%3A0xe289932e1da44a57!2sMGI%20CREACIONES!5e0!3m2!1ses-419!2smx!4v1772487956864!5m2!1ses-419!2smx"
+              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
 
-      <!-- Mapa en tarjeta para que se vea integrado con tu estilo -->
-      <div class="formulario" style="padding: 0; overflow: hidden;">
-        <iframe
-          title="Mapa de ubicación Creaciones MGI"
-          src="https://www.google.com/maps?q=Mexico&output=embed"
-          width="100%"
-          height="380"
-          style="border:0; display:block;"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+          <div class="ubicacion-map-actions">
+            <a class="btn btn-primario btn-mini btn-bounce"
+               href="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
+              Abrir ruta
+            </a>
+
+            <button class="btn btn-secundario btn-mini btn-bounce" type="button" data-copy-text="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6">
+              Copiar link
+            </button>
+          </div>
+        </div>
+
+        <!-- INFO -->
+        <aside class="formulario ubicacion-info">
+          <h3 class="ubicacion-subtitle">Datos rápidos</h3>
+
+          <div class="ubicacion-pills">
+            <span class="ubi-pill">
+              <img class="ubi-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
+              Link de ubicación listo
+            </span>
+
+            <span class="ubi-pill">
+              <img class="ubi-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              WhatsApp: <strong>81 2343 9492</strong>
+            </span>
+
+            <span class="ubi-pill">
+              <img class="ubi-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+              Correo: <strong>mgicreaciones24@gmail.com</strong>
+            </span>
+          </div>
+
+          <hr class="ubicacion-sep">
+
+          <p class="ubicacion-texto">
+            Si vienes a recoger pedido, escríbenos antes para confirmar disponibilidad y coordinar la entrega.
+          </p>
+
+          <div class="ubicacion-botones">
+            <a class="btn btn-primario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20pasar%20a%20recoger%20un%20pedido.%20%C2%BFMe%20pueden%20confirmar%20horario%3F"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Confirmar por WhatsApp
+            </a>
+
+            <button class="btn btn-secundario btn-grande btn-bounce" type="button" data-copy-email="mgicreaciones24@gmail.com">
+              <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+              Copiar correo
+            </button>
+
+            <a class="btn btn-terciario btn-grande btn-bounce" href="productos.html">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+              Ver productos
+            </a>
+          </div>
+        </aside>
       </div>
     </section>
 
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
   </footer>
 
+  <!-- BURBUJAS FLOTANTES -->
   <div class="burbujas">
-    <a href="https://wa.me/5210000000000" target="_blank" class="burbuja whatsapp">
-      <img src="imgs/icono-whatsapp.png" alt="WhatsApp">
+    <a href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos."
+       target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
     </a>
-    <a href="https://facebook.com" target="_blank" class="burbuja facebook">
-      <img src="imgs/logo-facebook.png" alt="Facebook">
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
     </a>
   </div>
 
+  <!-- JS -->
   <script src="script.js"></script>
+  <script src="ubicacion.js" defer></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
