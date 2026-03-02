@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Carrito de compras Creaciones MGI. Revisa tus productos, ajusta cantidades y finaliza tu pedido." />
+  <title>Creaciones MGI | Compras</title>
+
+  <!-- CSS general -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- CSS exclusivo de compras -->
+  <link rel="stylesheet" href="compras.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER (igual al blog/index) -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- INTRO -->
+    <section class="seccion compras-intro" aria-labelledby="compras-title">
+      <h2 class="titulo-seccion" id="compras-title">Carrito de compras</h2>
+
+      <div class="formulario compras-intro__card">
+        <p>
+          Revisa tus productos, ajusta cantidades y completa tu información para finalizar el pedido.
+          Si necesitas personalización (color, nombre, tamaño), puedes anotarlo en “Notas”.
+        </p>
+
+        <div class="compras-intro__cta">
+          <a href="productos.html" class="btn-principal">Seguir comprando</a>
+
+          <a href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20ayuda%20con%20mi%20carrito%20de%20compras."
+             target="_blank" rel="noopener" class="btn-principal">
+            Ayuda por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="seccion compras-wrap" aria-labelledby="resumen-title">
+      <h2 class="titulo-seccion" id="resumen-title">Resumen del pedido</h2>
+
+      <!-- Estado vacío -->
+      <div class="formulario compras-empty" id="carritoEmpty" hidden aria-live="polite">
+        <p><strong>Tu carrito está vacío.</strong></p>
+        <p>Vuelve al catálogo y agrega productos para continuar.</p>
+        <a href="productos.html" class="btn-principal">Ver productos</a>
+      </div>
+
+      <div class="compras-layout">
+
+        <!-- LISTA DE PRODUCTOS -->
+        <div class="formulario compras-panel">
+          <div class="compras-panel__head">
+            <h3 class="compras-panel__title">Productos</h3>
+
+            <button type="button" class="btn-principal compras-btn-danger" id="btnVaciarCarrito">
+              Vaciar carrito
+            </button>
+          </div>
+
+          <!-- Aquí el JS renderiza tarjetas/filas -->
+          <div class="compras-lista" id="carritoLista" aria-live="polite"></div>
+
+          <p class="compras-nota">
+            * Precios en MXN. Productos personalizados pueden variar según diseño/material.
+          </p>
+        </div>
+
+        <!-- DATOS DEL COMPRADOR + TOTALES -->
+        <aside class="formulario compras-resumen">
+          <h3 class="compras-panel__title">Tus datos</h3>
+
+          <form id="checkoutForm" class="compras-form" autocomplete="on">
+
+            <div class="compras-grid">
+              <div class="compras-campo">
+                <label for="buyerName">Nombre completo *</label>
+                <input id="buyerName" name="buyerName" type="text" placeholder="Ej. Ana López" required>
+              </div>
+
+              <div class="compras-campo">
+                <label for="buyerPhone">Teléfono / WhatsApp *</label>
+                <input id="buyerPhone" name="buyerPhone" type="tel" placeholder="Ej. 81 1234 5678" required>
+              </div>
+
+              <div class="compras-campo compras-col-full">
+                <label for="buyerEmail">Correo (opcional)</label>
+                <input id="buyerEmail" name="buyerEmail" type="email" placeholder="Ej. correo@ejemplo.com">
+              </div>
+
+              <div class="compras-campo compras-col-full">
+                <label for="buyerAddress">Dirección / Domicilio *</label>
+                <input id="buyerAddress" name="buyerAddress" type="text" placeholder="Calle, número, colonia, ciudad, estado, CP" required>
+              </div>
+
+              <div class="compras-campo compras-col-full">
+                <label for="buyerNote">Notas del pedido (opcional)</label>
+                <textarea id="buyerNote" name="buyerNote" rows="3" placeholder="Color, nombre a grabar, fecha, temática, referencias de entrega…"></textarea>
+              </div>
+            </div>
+
+            <hr class="compras-sep">
+
+            <h3 class="compras-panel__title">Totales</h3>
+
+            <div class="compras-totales">
+              <div class="compras-fila">
+                <span>Subtotal</span>
+                <strong id="subtotalTxt">$0.00</strong>
+              </div>
+
+              <div class="compras-fila">
+                <span>Envío</span>
+                <strong id="envioTxt">$0.00</strong>
+              </div>
+
+              <div class="compras-fila compras-total">
+                <span>Total</span>
+                <strong id="totalTxt">$0.00</strong>
+              </div>
+            </div>
+
+            <div class="compras-acciones">
+              <button type="submit" class="btn-principal" id="btnGuardarPedido">
+                Guardar y finalizar pedido
+              </button>
+
+              <button type="button" class="btn-principal compras-btn-outline" id="btnEnviarWhats">
+                Enviar pedido por WhatsApp
+              </button>
+
+              <!-- Mercado Pago (placeholder visual; lo activamos cuando conectemos) -->
+              <button type="button" class="btn-principal compras-btn-mp" id="btnMercadoPago" disabled>
+                <img src="imgs/icono-mercadopago.png" alt="" aria-hidden="true" class="mp-ico">
+                Pagar con Mercado Pago (próximamente)
+              </button>
+            </div>
+
+            <p class="compras-ayuda">
+              Al finalizar, tu pedido se guardará. El pago con Mercado Pago lo activamos cuando conectemos Supabase + Mercado Pago.
+            </p>
+
+          </form>
+        </aside>
+
+      </div>
+    </section>
+
+    <noscript>
+      <section class="seccion">
+        <div class="formulario">
+          <p><strong>Para usar el carrito necesitas habilitar JavaScript.</strong></p>
+        </div>
+      </section>
+    </noscript>
+
+  </main>
+
+  <!-- FOOTER (igual al blog/index) -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- BURBUJAS FLOTANTES (igual al blog) -->
+  <div class="burbujas">
+    <a href="https://wa.me/18123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="WhatsApp">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61559132295014" target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="Facebook">
+    </a>
+    <a href="https://www.instagram.com/creacionesmgi/" target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="Instagram">
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script src="compras.js" defer></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
+<!-- MODAL: Pedido guardado -->
+<div class="mgi-modal" id="modalPedido" hidden>
+  <div class="mgi-modal__backdrop" data-close-modal></div>
+
+  <div class="mgi-modal__card" role="dialog" aria-modal="true" aria-labelledby="modalPedidoTitle">
+    <button class="mgi-modal__close" type="button" aria-label="Cerrar" data-close-modal>×</button>
+
+    <div class="mgi-modal__icon" aria-hidden="true">
+      <img src="imgs/icono-carrito3d.webp" alt="">
+    </div>
+
+    <h3 class="mgi-modal__title" id="modalPedidoTitle">¡Pedido guardado!</h3>
+    <p class="mgi-modal__text">Tu pedido se guardó en el sistema. Conserva tu folio:</p>
+
+    <div class="mgi-modal__folio">
+      <span>Folio:</span>
+      <strong id="modalFolio">—</strong>
+      <button class="mgi-modal__copy" type="button" id="btnCopiarFolio">Copiar</button>
+    </div>
+
+    <div class="mgi-modal__actions">
+      <a class="btn-principal" href="confirmacion.html" id="btnIrConfirmacion">Ver confirmación</a>
+      <button class="btn-principal compras-btn-outline" type="button" data-close-modal>Seguir aquí</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

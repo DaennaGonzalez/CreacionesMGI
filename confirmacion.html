@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Confirmación de pedido Creaciones MGI. Tu pedido fue guardado en sistema." />
+  <title>Creaciones MGI | Confirmación</title>
+
+  <!-- CSS general -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- CSS exclusivo -->
+  <link rel="stylesheet" href="confirmacion.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER (igual al blog/index) -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO CONFIRMACIÓN -->
+    <section class="seccion conf-hero" aria-labelledby="conf-title">
+      <h2 class="titulo-seccion" id="conf-title">¡Pedido guardado!</h2>
+
+      <div class="formulario conf-card">
+        <div class="conf-icono" aria-hidden="true">
+          <img src="imgs/icono-carrito3d.webp" alt="">
+        </div>
+
+        <p class="conf-texto">
+          Gracias por tu compra. Tu pedido fue registrado correctamente.
+          Conserva tu folio para cualquier seguimiento.
+        </p>
+
+        <div class="conf-folio" aria-live="polite">
+          <span class="conf-folio__label">Folio:</span>
+          <strong class="conf-folio__value" id="orderId">—</strong>
+        </div>
+
+        <div class="conf-cta">
+          <a href="productos.html" class="btn-principal">Seguir comprando</a>
+
+          <a href="compras.html" class="btn-principal conf-btn-outline">
+            Ver carrito
+          </a>
+
+          <button type="button" class="btn-principal conf-btn-whats" id="btnWhatsConfirm">
+            Enviar por WhatsApp
+          </button>
+        </div>
+
+        <p class="conf-ayuda">
+          Si deseas pagar por Mercado Pago, lo activaremos en el siguiente paso.
+          Por ahora, puedes enviarnos tu pedido por WhatsApp para confirmación.
+        </p>
+      </div>
+    </section>
+
+    <!-- RESUMEN -->
+    <section class="seccion conf-resumen" aria-labelledby="conf-resumen-title">
+      <h2 class="titulo-seccion" id="conf-resumen-title">Resumen del pedido</h2>
+
+      <div class="compras-layout conf-layout">
+        <!-- Items -->
+        <div class="formulario conf-panel">
+          <h3 class="compras-panel__title">Productos</h3>
+          <div class="compras-lista" id="orderItems" aria-live="polite"></div>
+
+          <p class="compras-nota">
+            * Este resumen se toma del último pedido guardado en tu navegador.
+          </p>
+        </div>
+
+        <!-- Totales -->
+        <aside class="formulario conf-totales">
+          <h3 class="compras-panel__title">Totales</h3>
+
+          <div class="compras-totales">
+            <div class="compras-fila">
+              <span>Subtotal</span>
+              <strong id="subtotalTxt">$0.00</strong>
+            </div>
+
+            <div class="compras-fila">
+              <span>Envío</span>
+              <strong id="envioTxt">$0.00</strong>
+            </div>
+
+            <div class="compras-fila compras-total">
+              <span>Total</span>
+              <strong id="totalTxt">$0.00</strong>
+            </div>
+          </div>
+
+          <div class="conf-mini">
+            <p><strong>¿Necesitas cambios?</strong></p>
+            <p>Escríbenos por WhatsApp y menciona tu folio para ayudarte más rápido.</p>
+
+            <a class="btn-principal conf-btn-whats" target="_blank" rel="noopener"
+               href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20ayuda%20con%20mi%20pedido.%20Mi%20folio%20es:%20">
+              Abrir WhatsApp
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <noscript>
+      <section class="seccion">
+        <div class="formulario">
+          <p><strong>Para ver el resumen necesitas habilitar JavaScript.</strong></p>
+        </div>
+      </section>
+    </noscript>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- BURBUJAS FLOTANTES -->
+  <div class="burbujas">
+    <a href="https://wa.me/18123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="WhatsApp">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61559132295014" target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="Facebook">
+    </a>
+    <a href="https://www.instagram.com/creacionesmgi/" target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="Instagram">
+    </a>
+  </div>
+
+  <script src="confirmacion.js" defer></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,12 +1,11 @@
 /* =========================================================
-   PRODUCTOS.CSS — COMPLETO
-   Estilo premium consistente con Nosotros/Pedidos
-   - Hero con tabla (tabla-nosotros.webp) (misma lógica de posiciones)
-   - Grids: evento / tipo / materiales / paquetes / tienda
-   - Tarjetas premium crema + punteado + degradados/blur
-   - Botones (si styles.css ya trae btn, aquí solo refinamos en Productos)
-   - Tienda: cards con imagen SIN marco (sin fondo), precio/material, acciones
-   - Responsive completo (desktop / tablet / móvil)
+   PRODUCTOS.CSS — COMPLETO (CORREGIDO + LISTO)
+   - Premium consistente con tu estilo
+   - Buscador con ícono (HTML: .productos-search-ico)
+   - Toolbar + select + badge
+   - Cards sin marco en imagen (transparente)
+   - Estado vacío (#productosEmpty)
+   - Clase utilitaria .is-hidden (para JS si la usas)
 ========================================================= */
 
 /* =========================
@@ -32,8 +31,11 @@
 img{ max-width: 100%; height: auto; }
 code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
+/* Utilidad para ocultar (por si lo usas en JS) */
+.is-hidden{ display:none !important; }
+
 /* =========================================================
-   1) HERO / INTRO (tabla-nosotros.webp)
+   1) HERO / INTRO
 ========================================================= */
 .productos-hero{
   position: relative;
@@ -41,8 +43,6 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   margin: 0 auto;
   overflow: visible;
   z-index: 1;
-
-  /* igual que tus páginas */
   padding: 150px 20px 60px;
 }
 
@@ -50,36 +50,29 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
 .productos-hero::before{
   content:"";
   position:absolute;
-
   top: 10px;
   left: -140px;
-
   width: clamp(600px, 55vw, 650px);
   height: clamp(650px, 55vw, 650px);
-
   background: url("imgs/tabla-productos.webp") no-repeat;
   background-size: contain;
   background-position: left top;
-
   opacity: 1;
-  z-index: 60; /* delante de la tarjeta si lo quieres pro */
   pointer-events: none;
   user-select: none;
-
   filter: drop-shadow(0 18px 30px rgba(0,0,0,.18));
+  z-index: 80 !important; /* tabla encima */
 }
 
 .productos-hero-card{
   position: relative;
-  z-index: 20; /* contenido por encima del card */
+  z-index: 20 !important;
   background: rgba(243,237,229,.95);
   border-radius: 34px;
   box-shadow: var(--sombra2);
   overflow: visible;
-
   padding: 90px 78px 78px;
   text-align: center;
-
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -96,7 +89,7 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
 
 .productos-hero-inner{
   position: relative;
-  z-index: 60; /* texto arriba de la tabla */
+  z-index: 90 !important; /* texto arriba de todo */
   max-width: 900px;
   margin: 0 auto;
 }
@@ -114,12 +107,10 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   font-size: 54px;
   line-height: 1.05;
   font-weight: 950;
-
   background: linear-gradient(90deg, var(--azul), var(--naranja), #8c3cff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-
   filter:
     drop-shadow(0 2px 0 rgba(255,255,255,.9))
     drop-shadow(0 18px 22px rgba(37,27,189,.10));
@@ -134,46 +125,23 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   font-weight: 650;
 }
 
+/* CTA HERO: iguales de ancho */
 .productos-hero-cta{
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  flex-wrap: wrap;
+  align-items: stretch;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Compra fácil */
-.productos-compra-facil{
-  margin: 22px auto 0;
-  max-width: 980px;
-  padding: 18px 18px 16px;
-  border-radius: 26px;
-
-  background:
-    radial-gradient(700px 240px at 18% 20%, rgba(242,138,26,.18), rgba(0,0,0,0) 60%),
-    radial-gradient(760px 320px at 72% 10%, rgba(37,27,189,.18), rgba(0,0,0,0) 62%),
-    linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.66));
-
-  box-shadow:
-    0 20px 40px rgba(0,0,0,.12),
-    0 16px 30px rgba(37,27,189,.08);
-
-  position: relative;
-  z-index: 70;
-}
-
-.compra-facil-texto{
-  margin: 0 auto 12px;
-  text-align: center;
-  font-weight: 700;
-  color: rgba(0,0,0,.74);
-}
-
-.compra-facil-botones{
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+.productos-hero-cta .btn{
+  width: 100%;
+  min-height: 58px;
+  border-radius: 22px;
+  font-size: 15.8px;
 }
 
 /* =========================================================
@@ -193,16 +161,14 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   font-size: 36px;
   line-height: 1.08;
   font-weight: 950;
-
   background: linear-gradient(90deg, var(--azul), var(--naranja), #8c3cff);
   -webkit-background-clip:text;
   background-clip:text;
   color: transparent;
-
   filter: drop-shadow(0 2px 0 rgba(255,255,255,.88));
 }
 
-/* Para reutilizar tu CTA centrada */
+/* CTA centrada */
 .pedidos-cta-bloque{
   margin-top: 22px;
   display: flex;
@@ -212,199 +178,74 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
 }
 
 /* =========================================================
-   3) TARJETAS PREMIUM (para grids de evento/tipo/material/paquetes)
+   3) TOOLBAR (Buscador + filtro + carrito)
 ========================================================= */
-.grid-productos{
-  display: grid;
-  gap: 22px;
-  justify-items: center;
+.productos-controles{
+  margin-top: 10px;
 }
 
-.tarjeta{
-  width: 100%;
-  max-width: 420px;
-  background: rgba(243,237,229,.95);
-  border-radius: var(--radio);
-  padding: 28px 24px;
-  box-shadow: var(--sombra);
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  transition: transform var(--trans), filter var(--trans);
-}
-
-.tarjeta::before{
-  content:"";
-  position:absolute;
-  inset: 18px;
-  border-radius: 18px;
-  border: 2px dashed rgba(0,0,0,.26);
-  pointer-events:none;
-}
-
-.tarjeta:hover{
-  transform: translateY(-6px);
-  filter: brightness(1.02);
-}
-
-.mini-k{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  padding: 8px 14px;
-  border-radius: 999px;
-
-  font-size: 13px;
-  font-weight: 950;
-  letter-spacing: .2px;
-
-  background: linear-gradient(90deg, rgba(242,138,26,.16), rgba(37,27,189,.16));
-  border: 1px solid rgba(37,27,189,.18);
-  color: var(--azul);
-
-  margin: 0 auto 10px;
-  position: relative;
-  z-index: 2;
-}
-
-.tarjeta h3{
-  margin: 10px 0 10px;
-  font-weight: 950;
-  font-size: 18.5px;
-  color: #1b1b1b;
-  position: relative;
-  z-index: 2;
-}
-
-.tarjeta p{
-  margin: 0;
-  font-size: 14.8px;
-  line-height: 1.55;
-  color: rgba(0,0,0,.72);
-  font-weight: 650;
-  position: relative;
-  z-index: 2;
-}
-
-/* botones mini dentro de tarjetas */
-.btn-mini{
-  margin-top: 14px;
-  padding: 10px 14px !important;
-  font-size: 13.5px !important;
-}
-
-/* =========================================================
-   4) GRIDS específicos
-========================================================= */
-.productos-eventos-grid{
-  grid-template-columns: repeat(4, minmax(0,1fr));
-}
-
-.productos-tipo-grid{
-  grid-template-columns: repeat(5, minmax(0,1fr));
-}
-
-.productos-materiales-grid{
-  grid-template-columns: repeat(4, minmax(0,1fr));
-}
-
-.productos-paquetes-grid{
-  grid-template-columns: repeat(3, minmax(0,1fr));
-}
-
-/* =========================================================
-   5) ESTILO (fondo azul, botones tipo paso)
-========================================================= */
-.seccion.fondo-azul.productos-estilo{
-  padding: 62px 40px 48px;
-  border-radius: 38px;
-
-  background:
-    radial-gradient(880px 420px at 18% 20%, rgba(242,138,26,.22), rgba(0,0,0,0) 60%),
-    radial-gradient(760px 380px at 62% 10%, rgba(37,27,189,.22), rgba(0,0,0,0) 62%),
-    radial-gradient(900px 520px at 78% 86%, rgba(140,60,255,.16), rgba(0,0,0,0) 64%),
-    linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.66));
-
-  box-shadow:
-    0 26px 60px rgba(0,0,0,.14),
-    0 18px 34px rgba(37,27,189,.10);
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.productos-estilo-botones{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  justify-items: center;
-}
-
-.paso-link{
-  text-decoration: none;
-  cursor: pointer;
-
-  background: rgba(243,237,229,.95);
-  border-radius: 24px;
-  padding: 20px 18px;
-  text-align: center;
-  font-weight: 950;
-  font-size: 16px;
-  color: rgba(0,0,0,.82);
-
-  box-shadow:
-    0 18px 30px rgba(0,0,0,.12),
-    0 14px 22px rgba(37,27,189,.10);
-
-  transition: transform var(--trans), filter var(--trans);
-}
-
-.paso-link:hover{
-  transform: translateY(-4px);
-  filter: brightness(1.03);
-}
-
-.productos-estilo-texto{
-  margin: 18px auto 0;
-  max-width: 880px;
-  text-align: center;
-  font-size: 14.8px;
-  color: rgba(0,0,0,.72);
-  font-weight: 650;
-}
-
-/* =========================================================
-   6) TIENDA (cards producto)
-========================================================= */
-.productos-tienda .productos-toolbar{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.productos-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 18px;
+
+  padding: 16px 16px;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(700px 240px at 18% 20%, rgba(242,138,26,.14), rgba(0,0,0,0) 60%),
+    radial-gradient(760px 320px at 72% 10%, rgba(37,27,189,.14), rgba(0,0,0,0) 62%),
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.66));
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.12),
+    0 16px 30px rgba(37,27,189,.08);
+
+  border: 1px solid rgba(0,0,0,.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
+/* Buscador con ícono */
 .productos-busqueda{
   flex: 1 1 380px;
   max-width: 640px;
+  position: relative;
+}
+
+.productos-search-ico{
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: .85;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.12));
+}
+
+.productos-search-ico img{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
 .productos-input{
   width: 100%;
-  padding: 14px 14px;
-  border-radius: 14px;
+  padding: 14px 14px 14px 48px; /* espacio para lupa */
+  border-radius: 16px;
   border: 1px solid rgba(0,0,0,.14);
   background: rgba(255,255,255,.90);
   font-family: inherit;
   font-size: 15px;
   outline: none;
+  min-height: 52px;
   transition: box-shadow var(--trans), border-color var(--trans);
 }
 
@@ -413,10 +254,42 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   box-shadow: 0 0 0 4px rgba(37,27,189,.14);
 }
 
+/* Select premium */
+.productos-filtros{
+  flex: 0 1 260px;
+  min-width: 240px;
+}
+
+.productos-select{
+  width: 100%;
+  padding: 14px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,.14);
+  background: rgba(255,255,255,.90);
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  min-height: 52px;
+  transition: box-shadow 260ms ease, border-color 260ms ease, transform 260ms ease;
+}
+
+.productos-select:focus{
+  border-color: rgba(37,27,189,.30);
+  box-shadow: 0 0 0 4px rgba(37,27,189,.14);
+  transform: translateY(-1px);
+}
+
+/* Carrito */
 .productos-carrito{
   flex: 0 0 auto;
 }
 
+.productos-carrito .btn{
+  min-height: 52px;
+  border-radius: 18px;
+}
+
+/* Badge */
 .carrito-badge{
   display: inline-flex;
   align-items: center;
@@ -426,40 +299,113 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   padding: 0 8px;
   margin-left: 8px;
   border-radius: 999px;
-  background: rgba(255,255,255,.86);
+
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow: 0 12px 22px rgba(0,0,0,.10);
+
   color: rgba(0,0,0,.78);
   font-weight: 950;
   font-size: 13px;
 }
 
-/* subtítulo por evento */
-.productos-subtitulo{
-  margin: 28px auto 14px;
+/* Estado vacío */
+.productos-empty{
+  margin: 14px auto 0;
   text-align: center;
-  font-weight: 950;
-  font-size: 20px;
-  color: rgba(0,0,0,.82);
-  max-width: 900px;
+  max-width: 980px;
+  font-size: 14.8px;
+  font-weight: 750;
+  color: rgba(0,0,0,.74);
 
-  padding: 10px 14px;
+  padding: 12px 14px;
   border-radius: 999px;
   background: linear-gradient(90deg, rgba(242,138,26,.14), rgba(37,27,189,.14));
   border: 1px solid rgba(37,27,189,.16);
 }
 
-/* grid de tienda */
+/* =========================================================
+   4) CATEGORÍAS (secciones) — badge automático
+========================================================= */
+.productos-seccion{
+  position: relative;
+  padding: 26px 0 10px;
+  border-radius: 34px;
+}
+
+.productos-seccion::before{
+  content:"";
+  position:absolute;
+  inset: -6px -6px auto -6px;
+  height: 140px;
+  border-radius: 34px;
+
+  background:
+    radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+    radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.14), rgba(0,0,0,0) 70%);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+.productos-seccion > *{
+  position: relative;
+  z-index: 1;
+}
+
+.productos-seccion .titulo-seccion{
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 18px;
+}
+
+.productos-seccion .titulo-seccion::before{
+  content: "CATEGORÍA";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: .35px;
+
+  color: rgba(0,0,0,.78);
+  background: linear-gradient(90deg, rgba(242,138,26,.18), rgba(37,27,189,.16));
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow: 0 14px 24px rgba(0,0,0,.10);
+}
+
+.productos-seccion .titulo-seccion::after{
+  content:"";
+  display:block;
+  height: 10px;
+  width: min(220px, 66%);
+  margin: 14px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+  box-shadow: 0 14px 24px rgba(0,0,0,.08);
+}
+
+/* =========================================================
+   5) GRID + TARJETA DE PRODUCTO
+========================================================= */
 .productos-grid{
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: 22px;
   justify-items: center;
+  margin-top: 12px;
 }
 
-/* Card producto */
 .producto-card{
   width: 100%;
   max-width: 420px;
-
   background: rgba(243,237,229,.95);
   border-radius: 30px;
   padding: 22px 20px;
@@ -503,15 +449,11 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   max-height: 170px;
   width: auto;
   object-fit: contain;
-
-  /* sin borde/marco */
   border: none;
   background: transparent;
-
   filter: drop-shadow(0 18px 28px rgba(0,0,0,.18));
 }
 
-/* Nombre */
 .producto-nombre{
   margin: 8px 0 8px;
   font-weight: 950;
@@ -521,434 +463,6 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   z-index: 2;
 }
 
-/* meta pills */
-.producto-meta{
-  margin: 0 0 12px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-}
-
-.meta-pill{
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-size: 13.5px;
-  font-weight: 850;
-  color: rgba(0,0,0,.74);
-
-  background: linear-gradient(90deg, rgba(255,255,255,.86), rgba(255,255,255,.62));
-  border: 1px solid rgba(0,0,0,.08);
-  box-shadow: 0 10px 18px rgba(0,0,0,.08);
-}
-
-.producto-bottom{
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 2;
-}
-
-/* =========================================================
-   7) Form (Cotiza un producto)
-========================================================= */
-.productos-intro-form{
-  text-align: center;
-  max-width: 860px;
-  margin: 0 auto 22px;
-  font-size: 16.2px;
-  line-height: 1.6;
-  color: rgba(0,0,0,.72);
-  font-weight: 650;
-}
-
-.productos-form{
-  max-width: 980px;
-  margin: 0 auto;
-
-  background: rgba(243,237,229,.95);
-  border-radius: 30px;
-  padding: 40px 34px;
-
-  box-shadow: var(--sombra2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  position: relative;
-  overflow: hidden;
-}
-
-.productos-form::before{
-  content:"";
-  position:absolute;
-  inset: 18px;
-  border-radius: 22px;
-  border: 2px dashed rgba(0,0,0,.22);
-  pointer-events:none;
-}
-
-.productos-grid-form{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-  position: relative;
-  z-index: 2;
-}
-
-.productos-campo{
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: left;
-}
-
-.productos-campo label{
-  font-weight: 900;
-  color: rgba(0,0,0,.82);
-}
-
-.productos-campo input,
-.productos-campo textarea{
-  border: 1px solid rgba(0,0,0,.14);
-  border-radius: 14px;
-  padding: 14px 14px;
-  font-family: inherit;
-  font-size: 15px;
-  background: rgba(255,255,255,.90);
-  outline: none;
-  transition: box-shadow var(--trans), border-color var(--trans);
-}
-
-.productos-campo input:focus,
-.productos-campo textarea:focus{
-  border-color: rgba(37,27,189,.30);
-  box-shadow: 0 0 0 4px rgba(37,27,189,.14);
-}
-
-.productos-campo-full{
-  margin-top: 16px;
-  position: relative;
-  z-index: 2;
-}
-
-.productos-botones{
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 2;
-}
-
-.productos-nota-form{
-  margin: 14px auto 0;
-  text-align: center;
-  max-width: 820px;
-  font-size: 14.6px;
-  color: rgba(0,0,0,.72);
-  font-weight: 650;
-  position: relative;
-  z-index: 2;
-}
-
-/* =========================================================
-   8) Accesibilidad / utilidades
-========================================================= */
-.sr-only{
-  position:absolute !important;
-  width:1px !important;
-  height:1px !important;
-  padding:0 !important;
-  margin:-1px !important;
-  overflow:hidden !important;
-  clip: rect(0,0,0,0) !important;
-  white-space:nowrap !important;
-  border:0 !important;
-}
-
-/* =========================================================
-   9) RESPONSIVE (misma lógica que tus otras páginas)
-========================================================= */
-
-/* Desktop pequeño (900–1024) */
-@media (max-width: 1024px) and (min-width: 900px){
-  .productos-hero{
-    padding: 140px 18px 44px;
-    max-width: 1100px;
-  }
-  .productos-hero::before{
-    top: 8px;
-    left: -90px;
-    width: clamp(520px, 62vw, 620px);
-    height: clamp(560px, 62vw, 620px);
-  }
-
-  .productos-title{ font-size: 44px; }
-  .productos-hero-card{ padding: 78px 44px 60px; }
-
-  .productos-eventos-grid{ grid-template-columns: repeat(2, 1fr); }
-  .productos-tipo-grid{ grid-template-columns: repeat(3, 1fr); }
-  .productos-materiales-grid{ grid-template-columns: repeat(2, 1fr); }
-  .productos-paquetes-grid{ grid-template-columns: repeat(2, 1fr); }
-
-  .productos-grid{ grid-template-columns: repeat(2, 1fr); }
-}
-
-/* Tablet (641–899) */
-@media (max-width: 899px) and (min-width: 641px){
-  .productos-hero{
-    padding: 130px 16px 30px;
-    max-width: 980px;
-  }
-  .productos-hero::before{
-    top: 6px;
-    left: -60px;
-    width: clamp(460px, 78vw, 600px);
-    height: clamp(480px, 78vw, 600px);
-  }
-
-  .productos-title{ font-size: 40px; }
-  .productos-lead{ font-size: 16.4px; }
-  .productos-hero-card{ padding: 66px 26px 54px; }
-
-  .titulo-seccion{ font-size: 32px; }
-
-  .productos-eventos-grid{ grid-template-columns: repeat(2, 1fr); }
-  .productos-tipo-grid{ grid-template-columns: repeat(2, 1fr); }
-  .productos-materiales-grid{ grid-template-columns: repeat(2, 1fr); }
-  .productos-paquetes-grid{ grid-template-columns: repeat(2, 1fr); }
-
-  .productos-grid{ grid-template-columns: repeat(2, 1fr); }
-
-  .productos-grid-form{ grid-template-columns: 1fr; }
-}
-
-/* Móvil (<= 640) */
-@media (max-width: 640px){
-  .productos-hero{
-    padding: 118px 12px 18px;
-    max-width: 100%;
-  }
-  .productos-hero::before{
-    top: 4px;
-    left: -26px;
-    width: clamp(340px, 96vw, 520px);
-    height: clamp(360px, 96vw, 520px);
-  }
-
-  .productos-hero-card{
-    padding: 56px 14px 44px;
-    border-radius: 24px;
-  }
-  .productos-hero-card::before{
-    inset: 14px;
-    border-radius: 14px;
-  }
-
-  .productos-title{
-    font-size: 30px;
-    line-height: 1.12;
-    padding: 0 10px;
-  }
-  .productos-lead{
-    font-size: 14.7px;
-    padding: 0 10px;
-  }
-
-  .seccion{
-    padding: 0 12px;
-    margin-top: 64px;
-  }
-
-  .titulo-seccion{
-    font-size: 28px;
-    margin-bottom: 16px;
-    padding: 0 10px;
-  }
-
-  .productos-eventos-grid,
-  .productos-tipo-grid,
-  .productos-materiales-grid,
-  .productos-paquetes-grid,
-  .productos-grid{
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .productos-toolbar{
-    flex-direction: column;
-    gap: 12px;
-    align-items: stretch;
-  }
-
-  .productos-busqueda{
-    width: 100%;
-    max-width: 520px;
-  }
-
-  .productos-carrito a{
-    width: 100%;
-    max-width: 520px;
-    justify-content: center;
-  }
-
-  .producto-img{
-    height: 150px;
-  }
-
-  .producto-img img{
-    max-height: 150px;
-  }
-
-  .productos-form{
-    padding: 34px 14px;
-  }
-  .productos-grid-form{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* iPad fix (768–1024) */
-@media (max-width: 1024px) and (min-width: 768px){
-  .productos-hero{
-    max-width: 980px;
-    padding: 130px 18px 80px;
-  }
-  .productos-hero::before{
-    top: 6px;
-    left: -80px;
-    width: clamp(520px, 70vw, 640px);
-    height: clamp(520px, 70vw, 640px);
-    z-index: 50;
-  }
-}
-
-/* Móvil mediano (391–480) */
-@media (max-width: 480px) and (min-width: 391px){
-  .productos-title{ font-size: 28px; }
-}
-
-/* Móvil pequeño (<= 390) */
-@media (max-width: 390px){
-  .seccion{ padding: 0 10px; }
-  .productos-title{ font-size: 26px; padding: 0 8px; }
-  .productos-lead{ padding: 0 8px; }
-}
-
-/* =========================================================
-   10) Compat con tu reveal JS (si no lo tienes global, ignora)
-========================================================= */
-@media (prefers-reduced-motion: reduce){
-  .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; filter: none !important; }
-}
-.reveal{
-  opacity: 0;
-  transform: translateY(18px);
-  filter: blur(10px);
-  transition:
-    opacity 700ms ease,
-    transform 700ms cubic-bezier(.2,.8,.2,1),
-    filter 900ms ease;
-  will-change: opacity, transform, filter;
-}
-.reveal.in-view{
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-/* =========================================================
-   PRODUCTOS — EXTRA UI (toolbar, select, botones tienda, estados)
-   Pegar al FINAL de productos.css
-========================================================= */
-
-/* Toolbar: layout y cajas */
-.productos-controles{
-  margin-top: 10px;
-}
-
-.productos-toolbar{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap: 14px;
-  flex-wrap: wrap;
-
-  padding: 16px 16px;
-  border-radius: 22px;
-
-  background:
-    radial-gradient(700px 240px at 18% 20%, rgba(242,138,26,.14), rgba(0,0,0,0) 60%),
-    radial-gradient(760px 320px at 72% 10%, rgba(37,27,189,.14), rgba(0,0,0,0) 62%),
-    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.66));
-
-  box-shadow:
-    0 20px 40px rgba(0,0,0,.12),
-    0 16px 30px rgba(37,27,189,.08);
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-/* Select premium */
-.productos-filtros{
-  flex: 0 1 260px;
-  min-width: 240px;
-}
-
-.productos-select{
-  width: 100%;
-  padding: 14px 14px;
-  border-radius: 14px;
-  border: 1px solid rgba(0,0,0,.14);
-  background: rgba(255,255,255,.90);
-  font-family: inherit;
-  font-size: 15px;
-  outline: none;
-
-  transition: box-shadow 260ms ease, border-color 260ms ease, transform 260ms ease;
-}
-
-.productos-select:focus{
-  border-color: rgba(37,27,189,.30);
-  box-shadow: 0 0 0 4px rgba(37,27,189,.14);
-  transform: translateY(-1px);
-}
-
-/* Texto ayuda */
-.productos-ayuda{
-  margin: 12px auto 0;
-  text-align: center;
-  max-width: 980px;
-  font-size: 14.4px;
-  color: rgba(0,0,0,.72);
-  font-weight: 650;
-}
-
-.productos-ayuda code{
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: rgba(37,27,189,.12);
-  border: 1px solid rgba(37,27,189,.18);
-}
-
-.productos-ayuda .price{
-  font-weight: 950;
-}
-
-/* Grid de productos: respira mejor en desktop */
-.productos-seccion .productos-grid{
-  margin-top: 12px;
-}
-
-/* Descripción producto */
 .producto-desc{
   margin: 0 0 12px;
   font-size: 14.4px;
@@ -960,13 +474,24 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   padding: 0 8px;
 }
 
-/* Precio estilo “badge” */
+.producto-bottom{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+  margin-top: 10px;
+}
+
+/* Precio tipo badge */
 .producto-precio{
   display:inline-flex;
   align-items:center;
   gap: 6px;
 
-  padding: 10px 12px;
+  min-height: 46px;
+  padding: 10px 14px;
   border-radius: 999px;
 
   font-weight: 950;
@@ -976,25 +501,21 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   background: linear-gradient(90deg, rgba(242,138,26,.14), rgba(37,27,189,.14));
   border: 1px solid rgba(0,0,0,.10);
   box-shadow: 0 10px 18px rgba(0,0,0,.08);
-
-  position: relative;
-  z-index: 2;
 }
 
-.producto-precio .price{
-  font-size: 15px;
-}
+.producto-precio .price{ font-size: 15px; }
 
-/* Botón Agregar: ancho cómodo */
+/* Botón Agregar */
 .producto-add{
-  padding: 12px 14px !important;
+  min-height: 46px;
+  padding: 12px 16px !important;
   border-radius: 16px !important;
   font-weight: 950 !important;
   min-width: 140px;
   justify-content: center;
 }
 
-/* Estado: agregado */
+/* Estado agregado */
 .producto-add.is-added{
   filter: brightness(1.06);
   transform: translateY(-1px);
@@ -1006,69 +527,15 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   font-weight: 950;
 }
 
-/* Estado: deshabilitado momentáneo */
 .producto-add[disabled]{
   opacity: .65;
   cursor: not-allowed;
   transform: none !important;
 }
 
-/* Badge carrito más “shop” */
-.carrito-badge{
-  background: rgba(255,255,255,.88);
-  border: 1px solid rgba(0,0,0,.10);
-  box-shadow: 0 12px 22px rgba(0,0,0,.10);
-  font-weight: 950;
-}
-
-/* Micro separación y look final CTA */
-.productos-final{
-  padding-bottom: 40px;
-}
-
-/* Responsive toolbar */
-@media (max-width: 640px){
-  .productos-filtros,
-  .productos-busqueda,
-  .productos-carrito{
-    width: 100%;
-    max-width: 520px;
-  }
-
-  .productos-toolbar{
-    padding: 14px 12px;
-    border-radius: 18px;
-  }
-
-  .producto-add{
-    width: 100%;
-    max-width: 520px;
-  }
-
-  .producto-precio{
-    width: 100%;
-    max-width: 520px;
-    justify-content: center;
-  }
-
-  .producto-bottom{
-    gap: 10px;
-  }
-}
-
 /* =========================================================
-   PRODUCTOS.CSS — PATCH / OVERRIDES PARA HTML (CTA + CATEGORÍAS)
-   Pegar AL FINAL de productos.css
-   - Arregla tamaños de botones del hero
-   - Estiliza categorías con “badge”
-   - Alinea iconos, alturas, paddings
-   - Mantiene paleta: azul / naranja / crema
+   6) BOTONES (fallback consistente en productos)
 ========================================================= */
-
-/* -------------------------
-   1) BOTONES (fallback + sizing)
-   Si styles.css no trae .btn o viene diferente, aquí queda consistente
-------------------------- */
 .btn{
   display: inline-flex;
   align-items: center;
@@ -1109,7 +576,6 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   transform: translateY(0);
 }
 
-/* tamaños */
 .btn-grande{
   padding: 16px 22px;
   border-radius: 20px;
@@ -1124,7 +590,6 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   border-radius: 16px;
 }
 
-/* primario / secundario */
 .btn-primario{
   color: #fff;
   background: linear-gradient(90deg, var(--azul), var(--azul-2));
@@ -1146,33 +611,102 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   filter: brightness(1.04);
 }
 
-/* animación bounce (si no existe) */
 .btn-bounce:hover{
   transform: translateY(-3px);
 }
 
-/* -------------------------
-   2) CTA HERO: iguales de ancho y bien alineados
-------------------------- */
-.productos-hero-cta{
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  align-items: stretch;
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
+/* =========================================================
+   7) Accesibilidad
+========================================================= */
+.sr-only{
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  padding:0 !important;
+  margin:-1px !important;
+  overflow:hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space:nowrap !important;
+  border:0 !important;
 }
 
-.productos-hero-cta .btn{
-  width: 100%;
-  min-height: 58px;
-  border-radius: 22px;
-  font-size: 15.8px;
+/* =========================================================
+   8) RESPONSIVE
+========================================================= */
+
+/* Desktop pequeño (900–1024) */
+@media (max-width: 1024px) and (min-width: 900px){
+  .productos-hero{
+    padding: 140px 18px 44px;
+    max-width: 1100px;
+  }
+  .productos-hero::before{
+    top: 8px;
+    left: -90px;
+    width: clamp(520px, 62vw, 620px);
+    height: clamp(560px, 62vw, 620px);
+  }
+
+  .productos-title{ font-size: 44px; }
+  .productos-hero-card{ padding: 78px 44px 60px; }
+
+  .productos-grid{ grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Tablet (641–899) */
+@media (max-width: 899px) and (min-width: 641px){
+  .productos-hero{
+    padding: 130px 16px 30px;
+    max-width: 980px;
+  }
+  .productos-hero::before{
+    top: 6px;
+    left: -60px;
+    width: clamp(460px, 78vw, 600px);
+    height: clamp(480px, 78vw, 600px);
+  }
+
+  .productos-title{ font-size: 40px; }
+  .productos-lead{ font-size: 16.4px; }
+  .productos-hero-card{ padding: 66px 26px 54px; }
+
+  .titulo-seccion{ font-size: 32px; }
+
+  .productos-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Móvil (<= 640) */
 @media (max-width: 640px){
+  .productos-hero{
+    padding: 118px 12px 18px;
+    max-width: 100%;
+  }
+  .productos-hero::before{
+    top: 4px;
+    left: -26px;
+    width: clamp(340px, 96vw, 520px);
+    height: clamp(360px, 96vw, 520px);
+  }
+
+  .productos-hero-card{
+    padding: 56px 14px 44px;
+    border-radius: 24px;
+  }
+  .productos-hero-card::before{
+    inset: 14px;
+    border-radius: 14px;
+  }
+
+  .productos-title{
+    font-size: 30px;
+    line-height: 1.12;
+    padding: 0 10px;
+  }
+  .productos-lead{
+    font-size: 14.7px;
+    padding: 0 10px;
+  }
+
   .productos-hero-cta{
     grid-template-columns: 1fr;
     max-width: 520px;
@@ -1180,160 +714,367 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
   .productos-hero-cta .btn{
     min-height: 56px;
   }
+
+  .seccion{
+    padding: 0 12px;
+    margin-top: 64px;
+  }
+
+  .titulo-seccion{
+    font-size: 28px;
+    margin-bottom: 16px;
+    padding: 0 10px;
+  }
+
+  .productos-grid{
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .productos-toolbar{
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+    padding: 14px 12px;
+    border-radius: 18px;
+  }
+
+  .productos-filtros,
+  .productos-busqueda,
+  .productos-carrito{
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .productos-carrito .btn{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .producto-img{
+    height: 150px;
+  }
+
+  .producto-img img{
+    max-height: 150px;
+  }
+
+  .producto-add{
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .producto-precio{
+    width: 100%;
+    max-width: 520px;
+    justify-content: center;
+  }
+
+  .producto-bottom{
+    gap: 10px;
+  }
 }
 
-/* -------------------------
-   3) “CATEGORÍAS” con look premium (badge arriba del título)
-   No requiere cambiar HTML: usamos pseudo-elemento
-------------------------- */
-.productos-seccion{
-  position: relative;
+/* iPad fix (768–1024) */
+@media (max-width: 1024px) and (min-width: 768px){
+  .productos-hero{
+    max-width: 980px;
+    padding: 130px 18px 80px;
+  }
+  .productos-hero::before{
+    top: 6px;
+    left: -80px;
+    width: clamp(520px, 70vw, 640px);
+    height: clamp(520px, 70vw, 640px);
+  }
 }
 
-/* badge encima del h2 de cada categoría */
-.productos-seccion .titulo-seccion{
-  position: relative;
-  display: inline-block;
+/* Móvil mediano (391–480) */
+@media (max-width: 480px) and (min-width: 391px){
+  .productos-title{ font-size: 28px; }
+}
+
+/* Móvil pequeño (<= 390) */
+@media (max-width: 390px){
+  .seccion{ padding: 0 10px; }
+  .productos-title{ font-size: 26px; padding: 0 8px; }
+  .productos-lead{ padding: 0 8px; }
+}
+
+/* =========================================================
+   9) Reveal (si tu script global lo usa)
+========================================================= */
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; filter: none !important; }
+}
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(10px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(.2,.8,.2,1),
+    filter 900ms ease;
+  will-change: opacity, transform, filter;
+}
+.reveal.in-view{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* =========================================================
+   PATCH DEFINITIVO — PRODUCTOS TOOLBAR (DESKTOP/TABLET/MÓVIL)
+   Pegar AL FINAL de productos.css
+
+   Problema que corrige (según tus capturas):
+   - La lupa se “despega” del input y cae hacia abajo (se ve sola).
+   - El input no ocupa el ancho correcto y el contenedor queda raro.
+   - Falta espacio lateral (la UI queda “a ras” del borde).
+
+   Solución:
+   - Convertimos .productos-busqueda en contenedor real con display:flex
+   - Ponemos la lupa “dentro” del mismo flujo (ya NO absolute)
+   - Aseguramos padding lateral global en toolbar y en secciones
+   - Ajustes por breakpoints para márgenes y tamaños
+========================================================= */
+
+/* 1) Espacio lateral general (evita “a ras”) */
+.seccion{
+  padding-left: clamp(12px, 3.2vw, 22px) !important;
+  padding-right: clamp(12px, 3.2vw, 22px) !important;
+}
+
+/* 2) Toolbar: que no pegue al borde y respire */
+.productos-toolbar{
+  width: 100%;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 18px;
+
+  padding-left: clamp(12px, 2.8vw, 18px) !important;
+  padding-right: clamp(12px, 2.8vw, 18px) !important;
 }
 
-/* “Etiqueta” arriba del título */
-.productos-seccion .titulo-seccion::before{
-  content: "CATEGORÍA";
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
+/* =========================================================
+   3) BUSCADOR: FIX REAL (lupa dentro del input, SIN absolute)
+========================================================= */
+.productos-busqueda{
+  /* el contenedor ahora “arma” el input + icono */
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
 
-  padding: 8px 14px;
-  border-radius: 999px;
+  width: 100% !important;
+  max-width: 720px !important;
 
-  font-size: 12px;
-  font-weight: 950;
-  letter-spacing: .35px;
-
-  color: rgba(0,0,0,.78);
-  background: linear-gradient(90deg, rgba(242,138,26,.18), rgba(37,27,189,.16));
-  border: 1px solid rgba(0,0,0,.10);
-  box-shadow: 0 14px 24px rgba(0,0,0,.10);
-}
-
-/* línea decorativa abajo del título */
-.productos-seccion .titulo-seccion::after{
-  content:"";
-  display:block;
-  height: 10px;
-  width: min(220px, 66%);
-  margin: 14px auto 0;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
-  box-shadow: 0 14px 24px rgba(0,0,0,.08);
-}
-
-/* fondo suave por sección para separar visualmente */
-.productos-seccion{
-  padding: 26px 0 10px;
-  border-radius: 34px;
-}
-
-.productos-seccion::before{
-  content:"";
-  position:absolute;
-  inset: -6px -6px auto -6px;
-  height: 140px;
-  border-radius: 34px;
-
-  background:
-    radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
-    radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.14), rgba(0,0,0,0) 70%);
-
-  pointer-events: none;
-  z-index: 0;
-}
-
-.productos-seccion > *{
-  position: relative;
-  z-index: 1;
-}
-
-/* -------------------------
-   4) PRODUCT CARD: micro-ajustes (botón + precio + icono)
-------------------------- */
-.producto-bottom{
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.producto-add{
-  min-height: 46px;
-  padding: 12px 16px !important;
-  border-radius: 16px !important;
-}
-
-.producto-precio{
-  min-height: 46px;
-  padding: 10px 14px;
-}
-
-/* -------------------------
-   5) TOOLBAR: mejor spacing y responsive
-------------------------- */
-.productos-toolbar{
-  border: 1px solid rgba(0,0,0,.08);
-}
-
-.productos-input,
-.productos-select{
-  min-height: 52px;
+  position: relative !important;
+  background: rgba(255,255,255,.90);
+  border: 1px solid rgba(0,0,0,.14);
   border-radius: 16px;
+  padding: 0 12px;           /* padding interno del “input-group” */
+  min-height: 54px;
+
+  box-sizing: border-box;
+}
+
+/* La lupa deja de ser absolute para que NO “se caiga” */
+.productos-search-ico{
+  position: static !important;
+  transform: none !important;
+
+  width: 22px !important;
+  height: 22px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  opacity: .9;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.12));
+}
+
+.productos-search-ico img{
+  width: 22px !important;
+  height: 22px !important;
+  object-fit: contain !important;
+  display: block;
+}
+
+/* El input ya no necesita padding-left para lupa (porque la lupa está afuera) */
+.productos-input{
+  flex: 1 1 auto !important;
+  width: 100% !important;
+
+  border: 0 !important;
+  outline: none !important;
+  background: transparent !important;
+
+  padding: 0 !important;          /* el padding lo da el contenedor */
+  min-height: 54px !important;
+
+  box-shadow: none !important;    /* evita “doble borde” */
+}
+
+/* Cuando enfoca, aplica “focus ring” al contenedor */
+.productos-busqueda:focus-within{
+  border-color: rgba(37,27,189,.30);
+  box-shadow: 0 0 0 4px rgba(37,27,189,.14);
+}
+
+/* =========================================================
+   4) SELECT + BOTÓN: tamaños y anchos coherentes
+========================================================= */
+.productos-filtros{
+  width: 100%;
+  max-width: 320px;
+  min-width: 220px;
+}
+
+.productos-select{
+  width: 100%;
+  min-height: 54px;
 }
 
 .productos-carrito .btn{
-  min-height: 52px;
-  border-radius: 18px;
+  min-height: 54px;
 }
 
+/* =========================================================
+   5) BREAKPOINTS
+========================================================= */
+
+/* Desktop amplio */
+@media (min-width: 1025px){
+  .productos-toolbar{
+    gap: 16px;
+  }
+
+  .productos-busqueda{
+    max-width: 760px !important;
+  }
+
+  .productos-filtros{
+    max-width: 300px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 641px){
+  .productos-toolbar{
+    gap: 14px;
+  }
+
+  .productos-busqueda{
+    max-width: 100% !important;
+  }
+
+  .productos-filtros{
+    max-width: 320px;
+  }
+}
+
+/* Móvil */
 @media (max-width: 640px){
+  .productos-toolbar{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .productos-busqueda{
+    max-width: 100% !important;
+    min-height: 56px;
+    padding: 0 14px;
+    border-radius: 18px;
+  }
+
+  .productos-input{
+    min-height: 56px !important;
+    font-size: 16px; /* evita zoom en iOS */
+  }
+
+  .productos-filtros{
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .productos-select{
+    min-height: 56px;
+    border-radius: 18px;
+  }
+
   .productos-carrito .btn{
     width: 100%;
+    justify-content: center;
+    min-height: 56px;
   }
-  .carrito-badge{
-    margin-left: 10px;
+}
+
+/* Móvil pequeño */
+@media (max-width: 390px){
+  .productos-busqueda{
+    min-height: 54px;
+    padding: 0 12px;
+  }
+  .productos-input{
+    min-height: 54px !important;
+  }
+  .productos-select{
+    min-height: 54px;
+  }
+  .productos-carrito .btn{
+    min-height: 54px;
   }
 }
 
-/* -------------------------
-   6) FIX: stacking del hero con la “tabla” decorativa
-------------------------- */
-.productos-hero{
-  overflow: visible;
-}
+/* =========================================================
+   PATCH 5 — FIX REAL DEL “HUECO” (MÓVIL)
+   Pegar AL FINAL de productos.css
 
-.productos-hero::before{
-  z-index: 10; /* tabla */
-}
+   CAUSA (por qué seguía igual):
+   - En tu CSS original, estos tienen:
+       .productos-busqueda { flex: 1 1 380px; }
+       .productos-filtros  { flex: 0 1 260px; }
+     En móvil tú pones la toolbar en COLUMNA (flex-direction: column),
+     y en columna el flex-basis (380px / 260px) se vuelve ALTURA.
+     Eso crea el espacio gigante entre el select y el botón.
 
-.productos-hero-card{
-  z-index: 20; /* card encima */
-}
+   SOLUCIÓN:
+   - En móvil, anulamos esos flex-basis y dejamos auto.
+========================================================= */
 
-.productos-hero-inner{
-  z-index: 30; /* texto + botones arriba de todo */
-}
+@media (max-width: 640px){
 
-/* TABLA por ENCIMA de la tarjeta */
-.productos-hero::before{
-  z-index: 80 !important;
-}
+  .productos-toolbar{
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
 
-/* Tarjeta debajo de la tabla */
-.productos-hero-card{
-  z-index: 20 !important;
-}
+  /* ✅ Quita el flex-basis gigante (que se vuelve altura en columna) */
+  .productos-busqueda,
+  .productos-filtros,
+  .productos-carrito{
+    flex: 0 0 auto !important;     /* nada de crecer por “basis” */
+    flex-basis: auto !important;   /* elimina 380px / 260px */
+    min-height: 0 !important;
+  }
 
-/* Texto/botones arriba de todo */
-.productos-hero-inner{
-  z-index: 90 !important;
+  /* Por si algún min-width estaba empujando el layout */
+  .productos-filtros{
+    min-width: 0 !important;
+  }
+
+  /* Compacta un poquito más */
+  .productos-toolbar{
+    gap: 8px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  /* Asegura que el botón no tenga margen raro */
+  .productos-carrito .btn{
+    margin: 0 !important;
+  }
 }

@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Explora productos de Creaciones MGI: regalos, decoración, geek, temporada y más. Agrega al carrito y paga en compras.html." />
+  <meta name="description" content="Explora productos de Creaciones MGI: cajas, portarretratos, MDF, acrílico, neon, temporada y más. Agrega al carrito y paga en compras.html." />
   <title>Creaciones MGI | Productos</title>
 
-  <!-- ✅ MISMO CSS del index + CSS específico (lo hacemos después) -->
+  <!-- CSS global + CSS específico -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="productos.css" />
 
@@ -55,11 +55,7 @@
 
   <main>
 
-    <!-- =====================================================
-         HERO / INTRO (PRODUCTOS)
-         - Tabla decorativa (CSS): .productos-hero::before con tabla-productos.webp
-         - Animaciones scroll: data-animate (si usas el reveal del script.js)
-    ====================================================== -->
+    <!-- HERO -->
     <section class="productos-hero" aria-labelledby="productos-title">
       <div class="productos-hero-card" data-animate="up">
 
@@ -68,12 +64,13 @@
             <div class="productos-kicker" data-animate="fade"></div>
 
             <h1 class="productos-title" id="productos-title" data-animate="up">
-              Productos listos para regalar (y personalizar)
+              Catálogo de productos Creaciones MGI
             </h1>
 
             <p class="productos-lead" data-animate="up" data-delay="80">
               Explora nuestro catálogo por categorías. Puedes agregar al carrito y finalizar tu compra en
-              <strong>compras.html</strong>. Si quieres cambios de color, nombre o tamaño, también te ayudamos.
+              <strong>compras.html</strong>.
+              <span aria-hidden="true"> (Por ahora, todas las tarjetas usan la misma imagen para pruebas; después podrás cambiar cada imagen manualmente.)</span>
             </p>
 
             <div class="productos-hero-cta" data-animate="up" data-delay="140">
@@ -96,10 +93,7 @@
     </section>
 
 
-    <!-- =====================================================
-         CONTROLES: Buscador + Filtro por categoría + Ir a carrito
-         (El JS lo hacemos después, pero el HTML ya queda listo)
-    ====================================================== -->
+    <!-- CONTROLES -->
     <section class="seccion productos-controles" id="catalogo" aria-labelledby="catalogo-title">
       <h2 class="titulo-seccion" id="catalogo-title" data-animate="up">Catálogo de productos</h2>
 
@@ -107,6 +101,12 @@
         <!-- Buscador -->
         <div class="productos-busqueda">
           <label for="buscador" class="sr-only">Buscar productos</label>
+
+          <!-- Ícono lupa -->
+          <span class="productos-search-ico" aria-hidden="true">
+            <img src="imgs/buscador.png" alt="" aria-hidden="true">
+          </span>
+
           <input
             type="search"
             id="buscador"
@@ -114,6 +114,7 @@
             placeholder="Buscar por nombre, categoría o etiqueta…"
             autocomplete="off"
             data-search="productos"
+            inputmode="search"
           />
         </div>
 
@@ -122,25 +123,22 @@
           <label for="filtroCategoria" class="sr-only">Filtrar por categoría</label>
           <select id="filtroCategoria" class="productos-select" data-filter="categoria">
             <option value="all">Todas las categorías</option>
-            <option value="pascua">Productos Pascua</option>
-            <option value="geek">Productos Geek</option>
+            <option value="cajas">Cajas</option>
+            <option value="portarretratos">Portarretratos</option>
+            <option value="mdf">MDF (sin pintar)</option>
+            <option value="acrilico">Productos en acrílico</option>
+            <option value="xv">XV años</option>
+            <option value="bodas">Boda</option>
             <option value="cumple">Cumpleaños</option>
-            <option value="bodas">Bodas</option>
-            <option value="bautizo">Bautizo / Primera Comunión</option>
-            <option value="hogar">Hogar y decoración</option>
-            <option value="negocios">Negocios (logos/letreros)</option>
-            <option value="escuela">Escolar</option>
-            <option value="navidad">Navidad</option>
-            <option value="halloween">Halloween</option>
-            <option value="sanvalentin">San Valentín</option>
+            <option value="neon">Neón (renta/venta)</option>
             <option value="mama">Día de las Madres</option>
-            <option value="papa">Día del Padre</option>
-            <option value="graduacion">Graduación</option>
-            <option value="reconocimientos">Reconocimientos</option>
-            <option value="bebes">Bebés / baby shower</option>
-            <option value="mascotas">Mascotas</option>
-            <option value="personalizados">Personalizados (nombre)</option>
-            <option value="ofertas">Ofertas</option>
+            <option value="escuela">Día del Maestro / Escolar</option>
+            <option value="pascua">Pascua</option>
+            <option value="geek">Línea Geek</option>
+            <option value="diademuertos">Altar de Muertos</option>
+            <option value="navidad">Navidad</option>
+            <option value="licencias">Licencias / Temáticos</option>
+            <option value="personalizados">Nombres personalizados</option>
           </select>
         </div>
 
@@ -154,157 +152,220 @@
         </div>
       </div>
 
-      
+      <!-- Mensaje vacío -->
+      <p class="productos-empty" id="productosEmpty" hidden>
+        No se encontraron productos con tu búsqueda.
+      </p>
     </section>
 
 
     <!-- =====================================================
-         CATEGORÍAS + PRODUCTOS (20 categorías)
-         - Cada tarjeta tiene:
-           data-id, data-name, data-category, data-price, data-img
-         - Imagen sin fondo: NO le pondremos marco (CSS después)
-         - Botón agrega al carrito (JS después)
+         PRODUCTOS (basados en el PDF)
+         NOTA: IMAGEN DE PRUEBA
+         - Cambia "imgs/masvendido5.webp" por la imagen real de cada producto cuando lo necesites.
+         AJUSTES PARA CARRITO:
+         - data-id único
+         - data-price numérico
+         - data-category consistente con el select
     ====================================================== -->
 
-    <!-- 1) Pascua -->
-    <section class="seccion productos-seccion" data-category-section="pascua" aria-labelledby="cat-pascua">
-      <h2 class="titulo-seccion" id="cat-pascua" data-animate="up">Productos Pascua</h2>
+    <!-- 1) CAJAS -->
+    <section class="seccion productos-seccion" data-category-section="cajas" aria-labelledby="cat-cajas">
+      <h2 class="titulo-seccion" id="cat-cajas" data-animate="up">Cajas</h2>
 
       <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="pascua-1" data-name="Topper Conejito" data-category="pascua" data-price="89" data-img="imgs/producto1.webp">
+        <article class="producto-card" data-animate="up"
+          data-id="cajas-1" data-name="Caja dulcera MDF 3mm" data-category="cajas" data-tags="mdf dulcera" data-price="39.99"
+          data-img="imgs/masvendido5.webp">
           <div class="producto-img">
-            <img src="imgs/producto1.webp" alt="Topper Conejito" loading="lazy">
+            <img src="imgs/masvendido5.webp" alt="Caja dulcera MDF 3mm" loading="lazy">
           </div>
-          <h3 class="producto-nombre">Topper Conejito</h3>
-          <p class="producto-desc">Ideal para pastel o mesa dulce.</p>
+          <h3 class="producto-nombre">Caja dulcera MDF 3mm</h3>
+          <p class="producto-desc">Ideal para dulces y regalos. Medidas aprox: 20×20×7 cm.</p>
           <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">89</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
-              Agregar
+            <span class="producto-precio">$<span class="price">39.99</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Caja dulcera MDF 3mm al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
             </button>
           </div>
         </article>
 
-        <article class="producto-card" data-animate="up" data-delay="60" data-id="pascua-2" data-name="Huevito Decorativo" data-category="pascua" data-price="129" data-img="imgs/producto2.webp">
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="cajas-2" data-name="Caja alcancía MDF" data-category="cajas" data-tags="alcancia mdf" data-price="109.99"
+          data-img="imgs/masvendido5.webp">
           <div class="producto-img">
-            <img src="imgs/producto2.webp" alt="Huevito Decorativo" loading="lazy">
+            <img src="imgs/masvendido5.webp" alt="Caja alcancía MDF" loading="lazy">
           </div>
-          <h3 class="producto-nombre">Huevito Decorativo</h3>
-          <p class="producto-desc">Personalizable con nombre.</p>
+          <h3 class="producto-nombre">Caja alcancía MDF</h3>
+          <p class="producto-desc">Alcancía de MDF. Medidas aprox: 20×20×7 cm.</p>
           <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">129</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
-              Agregar
+            <span class="producto-precio">$<span class="price">109.99</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Caja alcancía MDF al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
             </button>
           </div>
         </article>
 
-        <article class="producto-card" data-animate="up" data-delay="120" data-id="pascua-3" data-name="Cajita Pascua MDF" data-category="pascua" data-price="199" data-img="imgs/producto3.webp">
+        <article class="producto-card" data-animate="up" data-delay="120"
+          data-id="cajas-3" data-name="Caja alcancía MDF con acrílico" data-category="cajas" data-tags="alcancia acrilico" data-price="134.99"
+          data-img="imgs/masvendido5.webp">
           <div class="producto-img">
-            <img src="imgs/producto3.webp" alt="Cajita Pascua MDF" loading="lazy">
+            <img src="imgs/masvendido5.webp" alt="Caja alcancía MDF con acrílico" loading="lazy">
           </div>
-          <h3 class="producto-nombre">Cajita Pascua MDF</h3>
-          <p class="producto-desc">Perfecta para chocolates.</p>
+          <h3 class="producto-nombre">Caja alcancía MDF con acrílico</h3>
+          <p class="producto-desc">Alcancía con frente de acrílico. Medidas aprox: 20×20×7 cm.</p>
           <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">199</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
-              Agregar
+            <span class="producto-precio">$<span class="price">134.99</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Caja alcancía MDF con acrílico al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="180"
+          data-id="cajas-4" data-name="Caja dulcera con bisagra" data-category="cajas" data-tags="bisagra mdf" data-price="85.99"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img">
+            <img src="imgs/masvendido5.webp" alt="Caja dulcera con bisagra" loading="lazy">
+          </div>
+          <h3 class="producto-nombre">Caja dulcera con bisagra</h3>
+          <p class="producto-desc">Caja tipo cofre con bisagra. Medidas aprox: 25×10×6 cm.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">85.99</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Caja dulcera con bisagra al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
             </button>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- 2) Geek -->
-    <section class="seccion productos-seccion" data-category-section="geek" aria-labelledby="cat-geek">
-      <h2 class="titulo-seccion" id="cat-geek" data-animate="up">Productos Geek</h2>
+    <!-- 2) PORTARRETRATOS -->
+    <section class="seccion productos-seccion" data-category-section="portarretratos" aria-labelledby="cat-porta">
+      <h2 class="titulo-seccion" id="cat-porta" data-animate="up">Portarretratos</h2>
 
       <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="geek-1" data-name="Llavero Gamer" data-category="geek" data-price="79" data-img="imgs/producto4.webp">
-          <div class="producto-img">
-            <img src="imgs/producto4.webp" alt="Llavero Gamer" loading="lazy">
-          </div>
-          <h3 class="producto-nombre">Llavero Gamer</h3>
-          <p class="producto-desc">Acrílico premium, varios colores.</p>
+        <article class="producto-card" data-animate="up"
+          data-id="porta-1" data-name="Portarretrato Instagram" data-category="portarretratos" data-tags="instagram foto" data-price="34.99"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Portarretrato Instagram" loading="lazy"></div>
+          <h3 class="producto-nombre">Portarretrato Instagram</h3>
+          <p class="producto-desc">Marco estilo Instagram para foto. Producto premium.</p>
           <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">79</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
-              Agregar
+            <span class="producto-precio">$<span class="price">34.99</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Portarretrato Instagram al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
             </button>
           </div>
         </article>
 
-        <article class="producto-card" data-animate="up" data-delay="60" data-id="geek-2" data-name="Letrero Neon Geek" data-category="geek" data-price="349" data-img="imgs/producto5.webp">
-          <div class="producto-img">
-            <img src="imgs/producto5.webp" alt="Letrero Neon Geek" loading="lazy">
-          </div>
-          <h3 class="producto-nombre">Letrero Neon Geek</h3>
-          <p class="producto-desc">Ideal para setup / escritorio.</p>
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="porta-2" data-name="Portarretrato (15×11 cm)" data-category="portarretratos" data-tags="foto marco" data-price="29.99"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Portarretrato 15×11 cm" loading="lazy"></div>
+          <h3 class="producto-nombre">Portarretrato (15×11 cm)</h3>
+          <p class="producto-desc">Portarretrato para foto. Medidas aprox: 15×11 cm.</p>
           <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">349</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
-              Agregar
-            </button>
-          </div>
-        </article>
-
-        <article class="producto-card" data-animate="up" data-delay="120" data-id="geek-3" data-name="Display Personaje" data-category="geek" data-price="219" data-img="imgs/producto6.webp">
-          <div class="producto-img">
-            <img src="imgs/producto6.webp" alt="Display Personaje" loading="lazy">
-          </div>
-          <h3 class="producto-nombre">Display Personaje</h3>
-          <p class="producto-desc">Recorte en acrílico (stand).</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">219</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
-              Agregar
+            <span class="producto-precio">$<span class="price">29.99</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Portarretrato 15×11 cm al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
             </button>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- 3) Cumpleaños -->
-    <section class="seccion productos-seccion" data-category-section="cumple" aria-labelledby="cat-cumple">
-      <h2 class="titulo-seccion" id="cat-cumple" data-animate="up">Cumpleaños</h2>
+    <!-- 3) MDF (SIN PINTAR) -->
+    <section class="seccion productos-seccion" data-category-section="mdf" aria-labelledby="cat-mdf">
+      <h2 class="titulo-seccion" id="cat-mdf" data-animate="up">MDF (sin pintar)</h2>
+
       <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="cumple-1" data-name="Topper Nombre" data-category="cumple" data-price="99" data-img="imgs/producto7.webp">
-          <div class="producto-img"><img src="imgs/producto7.webp" alt="Topper Nombre" loading="lazy"></div>
-          <h3 class="producto-nombre">Topper Nombre</h3>
-          <p class="producto-desc">Nombre personalizado para pastel.</p>
+        <article class="producto-card" data-animate="up"
+          data-id="mdf-1" data-name="Centro de mesa Castillo Disney" data-category="mdf" data-tags="centro mesa disney" data-price="54.99"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Centro de mesa Castillo Disney" loading="lazy"></div>
+          <h3 class="producto-nombre">Centro de mesa Castillo Disney</h3>
+          <p class="producto-desc">Centro de mesa en MDF (sin pintar). Opción pintado con costo extra.</p>
           <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">99</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
+            <span class="producto-precio">$<span class="price">54.99</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Centro de mesa Castillo Disney al carrito">
               <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
             </button>
           </div>
         </article>
 
-        <article class="producto-card" data-animate="up" data-delay="60" data-id="cumple-2" data-name="Cake Topper Edad" data-category="cumple" data-price="89" data-img="imgs/producto8.webp">
-          <div class="producto-img"><img src="imgs/producto8.webp" alt="Cake Topper Edad" loading="lazy"></div>
-          <h3 class="producto-nombre">Cake Topper Edad</h3>
-          <p class="producto-desc">Ideal para fotos y mesa dulce.</p>
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="mdf-2" data-name="Porta joyero MDF 3mm" data-category="mdf" data-tags="joyero" data-price="29.99"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Porta joyero MDF 3mm" loading="lazy"></div>
+          <h3 class="producto-nombre">Porta joyero MDF 3mm</h3>
+          <p class="producto-desc">Porta joyero en MDF. Ideal para escritorio.</p>
           <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">89</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
+            <span class="producto-precio">$<span class="price">29.99</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Porta joyero MDF 3mm al carrito">
               <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
             </button>
           </div>
         </article>
 
-        <article class="producto-card" data-animate="up" data-delay="120" data-id="cumple-3" data-name="Centro de Mesa" data-category="cumple" data-price="149" data-img="imgs/producto9.webp">
-          <div class="producto-img"><img src="imgs/producto9.webp" alt="Centro de Mesa" loading="lazy"></div>
-          <h3 class="producto-nombre">Centro de Mesa</h3>
-          <p class="producto-desc">Temática personalizada.</p>
+        <article class="producto-card" data-animate="up" data-delay="120"
+          data-id="mdf-3" data-name="Toppers MDF 3mm" data-category="mdf" data-tags="toppers" data-price="84.99"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Toppers MDF 3mm" loading="lazy"></div>
+          <h3 class="producto-nombre">Toppers MDF 3mm</h3>
+          <p class="producto-desc">Toppers en MDF (sin pintar). Opción con color con costo extra.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">84.99</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Toppers MDF 3mm al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4) PRODUCTOS EN ACRÍLICO -->
+    <section class="seccion productos-seccion" data-category-section="acrilico" aria-labelledby="cat-acrilico">
+      <h2 class="titulo-seccion" id="cat-acrilico" data-animate="up">Productos en acrílico</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="acr-1" data-name="Topper Paloma con cruz (Bautizo)" data-category="acrilico" data-tags="topper bautizo" data-price="11.99"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Topper Paloma con cruz (Bautizo)" loading="lazy"></div>
+          <h3 class="producto-nombre">Topper Paloma con cruz (Bautizo)</h3>
+          <p class="producto-desc">Topper en acrílico. (Precio por pieza).</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">11.99</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Topper Paloma con cruz (Bautizo) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="acr-2" data-name="Llavero corazón acrílico (5 cm)" data-category="acrilico" data-tags="llavero corazon" data-price="9.99"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Llavero corazón acrílico (5 cm)" loading="lazy"></div>
+          <h3 class="producto-nombre">Llavero corazón acrílico (5 cm)</h3>
+          <p class="producto-desc">Llavero en acrílico. Ideal para regalo.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">9.99</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Llavero corazón acrílico (5 cm) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="120"
+          data-id="acr-3" data-name="Señal de baño (Hombre/Mujer) 15 cm" data-category="acrilico" data-tags="senal baño" data-price="149"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Señal de baño (Hombre/Mujer) 15 cm" loading="lazy"></div>
+          <h3 class="producto-nombre">Señal de baño (Hombre/Mujer) 15 cm</h3>
+          <p class="producto-desc">Señal decorativa para baño en acrílico (por pieza).</p>
           <div class="producto-bottom">
             <span class="producto-precio">$<span class="price">149</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Señal de baño (Hombre/Mujer) 15 cm al carrito">
               <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
             </button>
           </div>
@@ -312,379 +373,451 @@
       </div>
     </section>
 
-    <!-- 4) Bodas -->
+    <!-- 5) XV AÑOS -->
+    <section class="seccion productos-seccion" data-category-section="xv" aria-labelledby="cat-xv">
+      <h2 class="titulo-seccion" id="cat-xv" data-animate="up">XV años</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="xv-1" data-name="Caja para sobres personalizada (XV)" data-category="xv" data-tags="sobres xv" data-price="329"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Caja para sobres personalizada (XV)" loading="lazy"></div>
+          <h3 class="producto-nombre">Caja para sobres personalizada (XV)</h3>
+          <p class="producto-desc">Caja 20×20×20 cm. Opción con brillantina.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">329</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Caja para sobres personalizada (XV) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6) BODA -->
     <section class="seccion productos-seccion" data-category-section="bodas" aria-labelledby="cat-bodas">
-      <h2 class="titulo-seccion" id="cat-bodas" data-animate="up">Bodas</h2>
+      <h2 class="titulo-seccion" id="cat-bodas" data-animate="up">Boda</h2>
+
       <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="bodas-1" data-name="Letrero Bienvenidos" data-category="bodas" data-price="499" data-img="imgs/producto10.webp">
-          <div class="producto-img"><img src="imgs/producto10.webp" alt="Letrero Bienvenidos" loading="lazy"></div>
-          <h3 class="producto-nombre">Letrero Bienvenidos</h3>
-          <p class="producto-desc">Acrílico/MDF, nombres y fecha.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">499</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-
-        <article class="producto-card" data-animate="up" data-delay="60" data-id="bodas-2" data-name="Números de Mesa" data-category="bodas" data-price="259" data-img="imgs/producto11.webp">
-          <div class="producto-img"><img src="imgs/producto11.webp" alt="Números de Mesa" loading="lazy"></div>
-          <h3 class="producto-nombre">Números de Mesa</h3>
-          <p class="producto-desc">Set elegante para recepción.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">259</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-
-        <article class="producto-card" data-animate="up" data-delay="120" data-id="bodas-3" data-name="Caja Sobres" data-category="bodas" data-price="699" data-img="imgs/producto12.webp">
-          <div class="producto-img"><img src="imgs/producto12.webp" alt="Caja Sobres" loading="lazy"></div>
-          <h3 class="producto-nombre">Caja Sobres</h3>
-          <p class="producto-desc">MDF con nombres grabados.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">699</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 5) Bautizo / Comunión -->
-    <section class="seccion productos-seccion" data-category-section="bautizo" aria-labelledby="cat-bautizo">
-      <h2 class="titulo-seccion" id="cat-bautizo" data-animate="up">Bautizo / Primera Comunión</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="bautizo-1" data-name="Recuerdo Angelito" data-category="bautizo" data-price="59" data-img="imgs/producto13.webp">
-          <div class="producto-img"><img src="imgs/producto13.webp" alt="Recuerdo Angelito" loading="lazy"></div>
-          <h3 class="producto-nombre">Recuerdo Angelito</h3>
-          <p class="producto-desc">Acrílico, ideal para invitados.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">59</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-
-        <article class="producto-card" data-animate="up" data-delay="60" data-id="bautizo-2" data-name="Centro Mesa Cruz" data-category="bautizo" data-price="149" data-img="imgs/producto14.webp">
-          <div class="producto-img"><img src="imgs/producto14.webp" alt="Centro Mesa Cruz" loading="lazy"></div>
-          <h3 class="producto-nombre">Centro Mesa Cruz</h3>
-          <p class="producto-desc">Temática delicada y elegante.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">149</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 6) Hogar -->
-    <section class="seccion productos-seccion" data-category-section="hogar" aria-labelledby="cat-hogar">
-      <h2 class="titulo-seccion" id="cat-hogar" data-animate="up">Hogar y decoración</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="hogar-1" data-name="Letrero Hogar" data-category="hogar" data-price="229" data-img="imgs/producto15.webp">
-          <div class="producto-img"><img src="imgs/producto15.webp" alt="Letrero Hogar" loading="lazy"></div>
-          <h3 class="producto-nombre">Letrero Hogar</h3>
-          <p class="producto-desc">Decoración con frase.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">229</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-
-        <article class="producto-card" data-animate="up" data-delay="60" data-id="hogar-2" data-name="Portallaves" data-category="hogar" data-price="199" data-img="imgs/producto16.webp">
-          <div class="producto-img"><img src="imgs/producto16.webp" alt="Portallaves" loading="lazy"></div>
-          <h3 class="producto-nombre">Portallaves</h3>
-          <p class="producto-desc">MDF, práctico y bonito.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">199</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 7) Negocios -->
-    <section class="seccion productos-seccion" data-category-section="negocios" aria-labelledby="cat-negocios">
-      <h2 class="titulo-seccion" id="cat-negocios" data-animate="up">Negocios (logos/letreros)</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="neg-1" data-name="Logo Acrílico" data-category="negocios" data-price="599" data-img="imgs/producto17.webp">
-          <div class="producto-img"><img src="imgs/producto17.webp" alt="Logo Acrílico" loading="lazy"></div>
-          <h3 class="producto-nombre">Logo Acrílico</h3>
-          <p class="producto-desc">Ideal para mostrador.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">599</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-
-        <article class="producto-card" data-animate="up" data-delay="60" data-id="neg-2" data-name="Letrero Horario" data-category="negocios" data-price="299" data-img="imgs/producto18.webp">
-          <div class="producto-img"><img src="imgs/producto18.webp" alt="Letrero Horario" loading="lazy"></div>
-          <h3 class="producto-nombre">Letrero Horario</h3>
-          <p class="producto-desc">Acrílico con vinil opcional.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">299</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 8) Escolar -->
-    <section class="seccion productos-seccion" data-category-section="escuela" aria-labelledby="cat-escuela">
-      <h2 class="titulo-seccion" id="cat-escuela" data-animate="up">Escolar</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="esc-1" data-name="Identificador Mochila" data-category="escuela" data-price="49" data-img="imgs/producto19.webp">
-          <div class="producto-img"><img src="imgs/producto19.webp" alt="Identificador Mochila" loading="lazy"></div>
-          <h3 class="producto-nombre">Identificador Mochila</h3>
-          <p class="producto-desc">Nombre grabado, varios colores.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">49</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-
-        <article class="producto-card" data-animate="up" data-delay="60" data-id="esc-2" data-name="Llavero Escolar" data-category="escuela" data-price="39" data-img="imgs/producto20.webp">
-          <div class="producto-img"><img src="imgs/producto20.webp" alt="Llavero Escolar" loading="lazy"></div>
-          <h3 class="producto-nombre">Llavero Escolar</h3>
-          <p class="producto-desc">Acrílico, resistente.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">39</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 9) Navidad -->
-    <section class="seccion productos-seccion" data-category-section="navidad" aria-labelledby="cat-navidad">
-      <h2 class="titulo-seccion" id="cat-navidad" data-animate="up">Navidad</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="nav-1" data-name="Esfera Personalizada" data-category="navidad" data-price="79" data-img="imgs/producto21.webp">
-          <div class="producto-img"><img src="imgs/producto21.webp" alt="Esfera Personalizada" loading="lazy"></div>
-          <h3 class="producto-nombre">Esfera Personalizada</h3>
-          <p class="producto-desc">Nombre grabado, varios estilos.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">79</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 10) Halloween -->
-    <section class="seccion productos-seccion" data-category-section="halloween" aria-labelledby="cat-halloween">
-      <h2 class="titulo-seccion" id="cat-halloween" data-animate="up">Halloween</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="hal-1" data-name="Topper Calabaza" data-category="halloween" data-price="89" data-img="imgs/producto22.webp">
-          <div class="producto-img"><img src="imgs/producto22.webp" alt="Topper Calabaza" loading="lazy"></div>
-          <h3 class="producto-nombre">Topper Calabaza</h3>
-          <p class="producto-desc">Perfecto para mesa temática.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">89</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 11) San Valentín -->
-    <section class="seccion productos-seccion" data-category-section="sanvalentin" aria-labelledby="cat-sanvalentin">
-      <h2 class="titulo-seccion" id="cat-sanvalentin" data-animate="up">San Valentín</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="sv-1" data-name="Letrero Love" data-category="sanvalentin" data-price="169" data-img="imgs/producto23.webp">
-          <div class="producto-img"><img src="imgs/producto23.webp" alt="Letrero Love" loading="lazy"></div>
-          <h3 class="producto-nombre">Letrero Love</h3>
-          <p class="producto-desc">Acrílico, ideal para fotos.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">169</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 12) Día de las Madres -->
-    <section class="seccion productos-seccion" data-category-section="mama" aria-labelledby="cat-mama">
-      <h2 class="titulo-seccion" id="cat-mama" data-animate="up">Día de las Madres</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="mama-1" data-name="Placa Mamá" data-category="mama" data-price="199" data-img="imgs/producto24.webp">
-          <div class="producto-img"><img src="imgs/producto24.webp" alt="Placa Mamá" loading="lazy"></div>
-          <h3 class="producto-nombre">Placa Mamá</h3>
-          <p class="producto-desc">Frase + nombres personalizados.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">199</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 13) Día del Padre -->
-    <section class="seccion productos-seccion" data-category-section="papa" aria-labelledby="cat-papa">
-      <h2 class="titulo-seccion" id="cat-papa" data-animate="up">Día del Padre</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="papa-1" data-name="Llavero Papá" data-category="papa" data-price="69" data-img="imgs/producto25.webp">
-          <div class="producto-img"><img src="imgs/producto25.webp" alt="Llavero Papá" loading="lazy"></div>
-          <h3 class="producto-nombre">Llavero Papá</h3>
-          <p class="producto-desc">Acrílico con frase.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">69</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 14) Graduación -->
-    <section class="seccion productos-seccion" data-category-section="graduacion" aria-labelledby="cat-graduacion">
-      <h2 class="titulo-seccion" id="cat-graduacion" data-animate="up">Graduación</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="grad-1" data-name="Topper Graduación" data-category="graduacion" data-price="109" data-img="imgs/producto26.webp">
-          <div class="producto-img"><img src="imgs/producto26.webp" alt="Topper Graduación" loading="lazy"></div>
-          <h3 class="producto-nombre">Topper Graduación</h3>
-          <p class="producto-desc">Nombre + año.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">109</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 15) Reconocimientos -->
-    <section class="seccion productos-seccion" data-category-section="reconocimientos" aria-labelledby="cat-recon">
-      <h2 class="titulo-seccion" id="cat-recon" data-animate="up">Reconocimientos</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="rec-1" data-name="Reconocimiento Acrílico" data-category="reconocimientos" data-price="399" data-img="imgs/producto27.webp">
-          <div class="producto-img"><img src="imgs/producto27.webp" alt="Reconocimiento Acrílico" loading="lazy"></div>
-          <h3 class="producto-nombre">Reconocimiento Acrílico</h3>
-          <p class="producto-desc">Grabado nítido, look premium.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">399</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 16) Bebés -->
-    <section class="seccion productos-seccion" data-category-section="bebes" aria-labelledby="cat-bebes">
-      <h2 class="titulo-seccion" id="cat-bebes" data-animate="up">Bebés / Baby shower</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="bebe-1" data-name="Nombre Bebé" data-category="bebes" data-price="179" data-img="imgs/producto28.webp">
-          <div class="producto-img"><img src="imgs/producto28.webp" alt="Nombre Bebé" loading="lazy"></div>
-          <h3 class="producto-nombre">Nombre Bebé</h3>
-          <p class="producto-desc">Ideal para sesión de fotos.</p>
+        <article class="producto-card" data-animate="up"
+          data-id="boda-1" data-name="Letrero circular (60×60 cm)" data-category="bodas" data-tags="letrero circular" data-price="179"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Letrero circular (60×60 cm)" loading="lazy"></div>
+          <h3 class="producto-nombre">Letrero circular (60×60 cm)</h3>
+          <p class="producto-desc">Material MDF y acrílico (según diseño). Pintado con costo extra.</p>
           <div class="producto-bottom">
             <span class="producto-precio">$<span class="price">179</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Letrero circular (60×60 cm) al carrito">
               <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
             </button>
           </div>
         </article>
-      </div>
-    </section>
 
-    <!-- 17) Mascotas -->
-    <section class="seccion productos-seccion" data-category-section="mascotas" aria-labelledby="cat-mascotas">
-      <h2 class="titulo-seccion" id="cat-mascotas" data-animate="up">Mascotas</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="mas-1" data-name="Placa Mascota" data-category="mascotas" data-price="69" data-img="imgs/producto29.webp">
-          <div class="producto-img"><img src="imgs/producto29.webp" alt="Placa Mascota" loading="lazy"></div>
-          <h3 class="producto-nombre">Placa Mascota</h3>
-          <p class="producto-desc">Nombre + teléfono.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">69</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 18) Personalizados -->
-    <section class="seccion productos-seccion" data-category-section="personalizados" aria-labelledby="cat-pers">
-      <h2 class="titulo-seccion" id="cat-pers" data-animate="up">Personalizados (nombre)</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="per-1" data-name="Nombre Acrílico" data-category="personalizados" data-price="249" data-img="imgs/producto30.webp">
-          <div class="producto-img"><img src="imgs/producto30.webp" alt="Nombre Acrílico" loading="lazy"></div>
-          <h3 class="producto-nombre">Nombre Acrílico</h3>
-          <p class="producto-desc">Varios colores y tamaños.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">249</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 19) Ofertas -->
-    <section class="seccion productos-seccion" data-category-section="ofertas" aria-labelledby="cat-ofertas">
-      <h2 class="titulo-seccion" id="cat-ofertas" data-animate="up">Ofertas</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="of-1" data-name="Paquete Llaveros" data-category="ofertas" data-price="199" data-img="imgs/producto31.webp">
-          <div class="producto-img"><img src="imgs/producto31.webp" alt="Paquete Llaveros" loading="lazy"></div>
-          <h3 class="producto-nombre">Paquete Llaveros</h3>
-          <p class="producto-desc">Ahorra comprando en paquete.</p>
-          <div class="producto-bottom">
-            <span class="producto-precio">$<span class="price">199</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 20) Recomendados -->
-    <section class="seccion productos-seccion" data-category-section="recomendados" aria-labelledby="cat-reco">
-      <h2 class="titulo-seccion" id="cat-reco" data-animate="up">Recomendados</h2>
-      <div class="productos-grid">
-        <article class="producto-card" data-animate="up" data-id="rec-2" data-name="Caja Regalo MDF" data-category="recomendados" data-price="349" data-img="imgs/producto32.webp">
-          <div class="producto-img"><img src="imgs/producto32.webp" alt="Caja Regalo MDF" loading="lazy"></div>
-          <h3 class="producto-nombre">Caja Regalo MDF</h3>
-          <p class="producto-desc">Personalizable para cualquier ocasión.</p>
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="boda-2" data-name="Caja para sobres (Boda)" data-category="bodas" data-tags="sobres boda" data-price="349"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Caja para sobres (Boda)" loading="lazy"></div>
+          <h3 class="producto-nombre">Caja para sobres (Boda)</h3>
+          <p class="producto-desc">Caja 20×20×20 cm. Material MDF (pintado con costo extra).</p>
           <div class="producto-bottom">
             <span class="producto-precio">$<span class="price">349</span> MXN</span>
-            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Caja para sobres (Boda) al carrito">
               <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
             </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 7) CUMPLEAÑOS -->
+    <section class="seccion productos-seccion" data-category-section="cumple" aria-labelledby="cat-cumple">
+      <h2 class="titulo-seccion" id="cat-cumple" data-animate="up">Cumpleaños</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="cumple-1" data-name="Letrero para cumpleaños (65×47 cm)" data-category="cumple" data-tags="letrero" data-price="329"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Letrero para cumpleaños (65×47 cm)" loading="lazy"></div>
+          <h3 class="producto-nombre">Letrero para cumpleaños (65×47 cm)</h3>
+          <p class="producto-desc">Letrero grande para mesa o pared. Ideal para fotos.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">329</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Letrero para cumpleaños (65×47 cm) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="cumple-2" data-name="Letrero Happy Birthday (25×75 cm)" data-category="cumple" data-tags="happy birthday" data-price="160"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Letrero Happy Birthday (25×75 cm)" loading="lazy"></div>
+          <h3 class="producto-nombre">Letrero Happy Birthday (25×75 cm)</h3>
+          <p class="producto-desc">Material MDF 3mm. Opción pintado con costo extra.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">160</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Letrero Happy Birthday (25×75 cm) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="120"
+          data-id="cumple-3" data-name="Letrero Happy Birthday circular (60×60 cm)" data-category="cumple" data-tags="happy birthday circular" data-price="175"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Letrero Happy Birthday circular (60×60 cm)" loading="lazy"></div>
+          <h3 class="producto-nombre">Letrero Happy Birthday circular (60×60 cm)</h3>
+          <p class="producto-desc">Material MDF 3mm. Opción pintado con costo extra.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">175</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Letrero Happy Birthday circular (60×60 cm) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 8) NEÓN (RENTA/VENTA) -->
+    <section class="seccion productos-seccion" data-category-section="neon" aria-labelledby="cat-neon">
+      <h2 class="titulo-seccion" id="cat-neon" data-animate="up">Neón (renta / venta)</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="neon-1" data-name="Letras / Números neón (Renta)" data-category="neon" data-tags="renta neon" data-price="269"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Letras / Números neón (Renta)" loading="lazy"></div>
+          <h3 class="producto-nombre">Letras / Números neón (Renta)</h3>
+          <p class="producto-desc">Renta por evento. Consulta disponibilidad.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">269</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Letras / Números neón (Renta) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="neon-2" data-name="Letras / Números neón (Venta)" data-category="neon" data-tags="venta neon acrilico" data-price="1189"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Letras / Números neón (Venta)" loading="lazy"></div>
+          <h3 class="producto-nombre">Letras / Números neón (Venta)</h3>
+          <p class="producto-desc">Con acrílico transparente (según modelo).</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">1189</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Letras / Números neón (Venta) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="120"
+          data-id="neon-3" data-name="Letrero neón (Renta)" data-category="neon" data-tags="letrero renta" data-price="279"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Letrero neón (Renta)" loading="lazy"></div>
+          <h3 class="producto-nombre">Letrero neón (Renta)</h3>
+          <p class="producto-desc">Renta por evento. Ideal para fondos de fotos.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">279</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Letrero neón (Renta) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="180"
+          data-id="neon-4" data-name="Letrero neón (Venta)" data-category="neon" data-tags="letrero venta" data-price="1249"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Letrero neón (Venta)" loading="lazy"></div>
+          <h3 class="producto-nombre">Letrero neón (Venta)</h3>
+          <p class="producto-desc">Venta. Con hoyos para colgarse (según modelo).</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">1249</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Letrero neón (Venta) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 9) DÍA DE LAS MADRES -->
+    <section class="seccion productos-seccion" data-category-section="mama" aria-labelledby="cat-mama">
+      <h2 class="titulo-seccion" id="cat-mama" data-animate="up">Día de las Madres</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="mama-1" data-name="Portarretrato para Mamá" data-category="mama" data-tags="mama regalo" data-price="69"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Portarretrato para Mamá" loading="lazy"></div>
+          <h3 class="producto-nombre">Portarretrato para Mamá</h3>
+          <p class="producto-desc">Regalo especial para mamá. Ideal para foto.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">69</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Portarretrato para Mamá al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="mama-2" data-name="Caja dulcera corazón" data-category="mama" data-tags="corazon dulcera" data-price="49"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Caja dulcera corazón" loading="lazy"></div>
+          <h3 class="producto-nombre">Caja dulcera corazón</h3>
+          <p class="producto-desc">Caja en forma de corazón, ideal para dulces y detalles.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">49</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Caja dulcera corazón al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 10) DÍA DEL MAESTRO / ESCOLAR -->
+    <section class="seccion productos-seccion" data-category-section="escuela" aria-labelledby="cat-escuela">
+      <h2 class="titulo-seccion" id="cat-escuela" data-animate="up">Día del Maestro / Escolar</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="esc-1" data-name="Lapicera personalizada" data-category="escuela" data-tags="maestro lapicera" data-price="80"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Lapicera personalizada" loading="lazy"></div>
+          <h3 class="producto-nombre">Lapicera personalizada</h3>
+          <p class="producto-desc">Ideal para maestros. Personalizable (nombre/tema).</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">80</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Lapicera personalizada al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 11) PASCUA -->
+    <section class="seccion productos-seccion" data-category-section="pascua" aria-labelledby="cat-pascua">
+      <h2 class="titulo-seccion" id="cat-pascua" data-animate="up">Pascua</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="pascua-1" data-name="Producto de Pascua (modelo 1)" data-category="pascua" data-tags="pascua" data-price="139"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Producto de Pascua (modelo 1)" loading="lazy"></div>
+          <h3 class="producto-nombre">Producto de Pascua (modelo 1)</h3>
+          <p class="producto-desc">Producto de Pascua. 1 color a elegir (según disponibilidad).</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">139</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Producto de Pascua (modelo 1) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="pascua-2" data-name="Producto de Pascua (modelo 2)" data-category="pascua" data-tags="pascua" data-price="229"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Producto de Pascua (modelo 2)" loading="lazy"></div>
+          <h3 class="producto-nombre">Producto de Pascua (modelo 2)</h3>
+          <p class="producto-desc">Producto de Pascua. Ideal para regalar en temporada.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">229</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Producto de Pascua (modelo 2) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 12) LÍNEA GEEK -->
+    <section class="seccion productos-seccion" data-category-section="geek" aria-labelledby="cat-geek">
+      <h2 class="titulo-seccion" id="cat-geek" data-animate="up">Línea Geek</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="geek-1" data-name="Caja alcancía Geek (MDF + Acrílico)" data-category="geek" data-tags="alcancia geek" data-price="175"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Caja alcancía Geek (MDF + Acrílico)" loading="lazy"></div>
+          <h3 class="producto-nombre">Caja alcancía Geek (MDF + Acrílico)</h3>
+          <p class="producto-desc">Alcancía temática. Material MDF y acrílico.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">175</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Caja alcancía Geek al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="geek-2" data-name="Cofre Geek (MDF)" data-category="geek" data-tags="cofre geek" data-price="169"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Cofre Geek (MDF)" loading="lazy"></div>
+          <h3 class="producto-nombre">Cofre Geek (MDF)</h3>
+          <p class="producto-desc">Cofre en MDF, ideal para regalo o decoración.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">169</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Cofre Geek (MDF) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 13) ALTAR DE MUERTOS -->
+    <section class="seccion productos-seccion" data-category-section="diademuertos" aria-labelledby="cat-ddm">
+      <h2 class="titulo-seccion" id="cat-ddm" data-animate="up">Altar de Muertos</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="ddm-1" data-name="Altar de Muertos (tamaño pequeño)" data-category="diademuertos" data-tags="altar muertos" data-price="399"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Altar de Muertos (tamaño pequeño)" loading="lazy"></div>
+          <h3 class="producto-nombre">Altar de Muertos (tamaño pequeño)</h3>
+          <p class="producto-desc">Altar decorativo para temporada. Consulta tamaños disponibles.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">399</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Altar de Muertos (tamaño pequeño) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 14) NAVIDAD -->
+    <section class="seccion productos-seccion" data-category-section="navidad" aria-labelledby="cat-navidad">
+      <h2 class="titulo-seccion" id="cat-navidad" data-animate="up">Navidad</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="nav-1" data-name="Pino de Navidad decorativo" data-category="navidad" data-tags="pino navidad" data-price="85"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Pino de Navidad decorativo" loading="lazy"></div>
+          <h3 class="producto-nombre">Pino de Navidad decorativo</h3>
+          <p class="producto-desc">Pino MDF decorativo. Ideal para escritorio o centro de mesa.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">85</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Pino de Navidad decorativo al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="nav-2" data-name="Esferas MDF sin color (10×10 cm)" data-category="navidad" data-tags="esferas mdf" data-price="9"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Esferas MDF sin color (10×10 cm)" loading="lazy"></div>
+          <h3 class="producto-nombre">Esferas MDF sin color (10×10 cm)</h3>
+          <p class="producto-desc">Esfera MDF (sin pintar). Precio por unidad.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">9</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Esferas MDF sin color (10×10 cm) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="120"
+          data-id="nav-3" data-name="Esfera personalizada (acrílico) 10×12 cm" data-category="navidad" data-tags="esfera personalizada acrilico" data-price="19"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Esfera personalizada (acrílico) 10×12 cm" loading="lazy"></div>
+          <h3 class="producto-nombre">Esfera personalizada (acrílico) 10×12 cm</h3>
+          <p class="producto-desc">Esfera en acrílico, personalizable. Precio por unidad.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">19</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Esfera personalizada (acrílico) 10×12 cm al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 15) LICENCIAS / TEMÁTICOS -->
+    <section class="seccion productos-seccion" data-category-section="licencias" aria-labelledby="cat-licencias">
+      <h2 class="titulo-seccion" id="cat-licencias" data-animate="up">Licencias / Temáticos</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="lic-1" data-name="Lapicera personalizada (Lilo & Stitch)" data-category="licencias" data-tags="lilo stitch lapicera" data-price="109"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Lapicera personalizada (Lilo & Stitch)" loading="lazy"></div>
+          <h3 class="producto-nombre">Lapicera personalizada (Lilo & Stitch)</h3>
+          <p class="producto-desc">Lapicera temática. Ideal para regalo.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">109</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Lapicera personalizada (Lilo & Stitch) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="60"
+          data-id="lic-2" data-name="Caja desayunadora (Lilo & Stitch)" data-category="licencias" data-tags="desayunadora lilo stitch" data-price="189"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Caja desayunadora (Lilo & Stitch)" loading="lazy"></div>
+          <h3 class="producto-nombre">Caja desayunadora (Lilo & Stitch)</h3>
+          <p class="producto-desc">Caja desayunadora temática. Ideal para sorpresa.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">189</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Caja desayunadora (Lilo & Stitch) al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="120"
+          data-id="lic-3" data-name="Alcancía (Mario Bros) 15×15 cm" data-category="licencias" data-tags="mario bros alcancia" data-price="195"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Alcancía (Mario Bros) 15×15 cm" loading="lazy"></div>
+          <h3 class="producto-nombre">Alcancía (Mario Bros) 15×15 cm</h3>
+          <p class="producto-desc">Alcancía temática. Material MDF 3mm.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">195</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Alcancía (Mario Bros) 15×15 cm al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+
+        <article class="producto-card" data-animate="up" data-delay="180"
+          data-id="lic-4" data-name="Caja grande (Mario Bros) 20×20 cm" data-category="licencias" data-tags="mario bros caja" data-price="249"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Caja grande (Mario Bros) 20×20 cm" loading="lazy"></div>
+          <h3 class="producto-nombre">Caja grande (Mario Bros) 20×20 cm</h3>
+          <p class="producto-desc">Caja grande temática. Ideal para regalo.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">249</span> MXN</span>
+            <button class="btn btn-secundario btn-bounce producto-add" type="button" data-add-to-cart aria-label="Agregar Caja grande (Mario Bros) 20×20 cm al carrito">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 16) NOMBRES PERSONALIZADOS (cotización) -->
+    <section class="seccion productos-seccion" data-category-section="personalizados" aria-labelledby="cat-pers">
+      <h2 class="titulo-seccion" id="cat-pers" data-animate="up">Nombres personalizados</h2>
+
+      <div class="productos-grid">
+        <article class="producto-card" data-animate="up"
+          data-id="pers-1" data-name="Nombre personalizado (cotización)" data-category="personalizados" data-tags="nombre letrero personalizado" data-price="0"
+          data-img="imgs/masvendido5.webp">
+          <div class="producto-img"><img src="imgs/masvendido5.webp" alt="Nombre personalizado (cotización)" loading="lazy"></div>
+          <h3 class="producto-nombre">Nombre personalizado (cotización)</h3>
+          <p class="producto-desc">Contamos con más de 15 colores. Hasta 90 cm (según diseño). Cotiza el tuyo por WhatsApp.</p>
+          <div class="producto-bottom">
+            <span class="producto-precio">$<span class="price">0</span> MXN</span>
+            <a class="btn btn-secundario btn-bounce" target="_blank" rel="noopener"
+              href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20cotizar%20un%20nombre%20personalizado.%20Medida%20aprox:%20%20Color:%20%20Texto:%20">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Cotizar
+            </a>
           </div>
         </article>
       </div>
@@ -711,13 +844,13 @@
 
   </main>
 
-  <!-- PIE DE PÁGINA (igual al index) -->
+  <!-- PIE DE PÁGINA -->
   <footer class="footer">
     <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
     <p class="footer-firma">Creado por Daenna González</p>
   </footer>
 
-  <!-- BURBUJAS FLOTANTES (igual al index) -->
+  <!-- BURBUJAS FLOTANTES -->
   <div class="burbujas">
     <a href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos."
        target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
