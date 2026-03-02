@@ -1576,3 +1576,15 @@ main{
   }
 
 }
+
+html, body{
+  height: auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* evita que main sea contenedor scrolleable */
+main{
+  height: auto !important;
+  overflow: visible !important;
+}
