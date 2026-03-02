@@ -166,6 +166,47 @@
 
 
     <!-- =====================================================
+     NUEVO: PAGO DIRECTO EN LA PÁGINA (carrito)
+     Insertar ANTES de "Para cotizar rápido"
+====================================================== -->
+<section class="seccion pedidos-pago-directo" aria-labelledby="pago-directo">
+  <h2 class="titulo-seccion" id="pago-directo" data-animate="up">Paga directo en la página</h2>
+
+  <div class="formulario pedidos-pago-card" data-animate="up" data-delay="60">
+    <p class="pedidos-pago-texto">
+      Si ya elegiste productos del catálogo, puedes ir a <strong>compras (el botón de abajo)</strong> para
+      <strong>revisar tu carrito</strong>, ajustar cantidades y <strong>finalizar tu pedido</strong> desde la página.
+    </p>
+
+    <p class="pedidos-pago-aviso" id="pagoAviso" aria-live="polite">
+      Tip: Si tu carrito está vacío, primero ve a <strong>Productos</strong> y agrega lo que te guste.
+    </p>
+
+    <div class="pedidos-cta-bloque" data-animate="up" data-delay="120">
+      <a class="btn btn-primario btn-grande btn-bounce" href="compras.html">
+        <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+        Ir a compras (carrito)
+      </a>
+
+      <a class="btn btn-secundario btn-grande btn-bounce" href="productos.html">
+        <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+        Ver productos
+      </a>
+    </div>
+
+    <!-- (Opcional) badge visual si luego quieres mostrar cantidad con JS -->
+    <p class="pedidos-pago-badge" data-animate="fade" data-delay="160">
+      Productos en carrito: <strong id="carritoCountMini">0</strong>
+    </p>
+  </div>
+</section>
+
+<!-- Imagen decorativa entre secciones -->
+<div class="pedidos-img-separador" aria-hidden="true">
+  <img src="imgs/persona-pagoweb.webp" alt="">
+</div>
+
+    <!-- =====================================================
          2) PARA COTIZAR RÁPIDO (6 tarjetas checklist + botones)
     ====================================================== -->
     <section class="seccion" aria-labelledby="cotizar-rapido">
@@ -660,5 +701,62 @@
       });
     })();
   </script>
+
+  <script>
+/* =========================================================
+   PEDIDOS — Pago directo (mini JS)
+   - Lee carrito desde localStorage (mgi_cart_v1)
+   - Actualiza contador #carritoCountMini
+   - Ajusta texto #pagoAviso según carrito vacío / con productos
+========================================================= */
+(function(){
+  const CART_KEY = "mgi_cart_v1";
+
+  function safeJSONParse(value, fallback){
+    try { return JSON.parse(value); } catch { return fallback; }
+  }
+
+  function getCart(){
+    const raw = localStorage.getItem(CART_KEY);
+    if(raw === null) return [];
+    const parsed = safeJSONParse(raw, []);
+    return Array.isArray(parsed) ? parsed : [];
+  }
+
+  function cartCount(cart){
+    return cart.reduce((acc, it) => acc + (Number(it?.qty) || 0), 0);
+  }
+
+  function updatePagoDirectoUI(){
+    const cart = getCart();
+    const count = cartCount(cart);
+
+    const countEl = document.getElementById("carritoCountMini");
+    const avisoEl = document.getElementById("pagoAviso");
+
+    if(countEl) countEl.textContent = String(count);
+
+    if(avisoEl){
+      if(count > 0){
+        avisoEl.innerHTML = `✅ Tu carrito tiene <strong>${count}</strong> producto(s). Puedes ir a <strong>Compras</strong> para pagar y finalizar tu pedido.`;
+      }else{
+        avisoEl.innerHTML = `Tip: Si tu carrito está vacío, primero ve a <strong>Productos</strong> y agrega lo que te guste.`;
+      }
+    }
+  }
+
+  // Actualiza al cargar
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", updatePagoDirectoUI);
+  }else{
+    updatePagoDirectoUI();
+  }
+
+  // Opcional: si el usuario vuelve a esta pestaña y cambió el carrito en otra
+  window.addEventListener("focus", updatePagoDirectoUI);
+})();
+</script>
+
+
 </body>
 </html>
