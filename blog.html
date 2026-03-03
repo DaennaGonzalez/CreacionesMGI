@@ -6,11 +6,14 @@
   <meta name="description" content="Blog de Creaciones MGI: ideas, tips y tendencias en MDF y acrílico para regalos y eventos." />
   <title>Creaciones MGI | Blog</title>
 
+  <!-- CSS general + CSS del blog -->
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="blog.css" />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
 </head>
@@ -52,83 +55,132 @@
 
   <main>
 
-    <!-- SECCIÓN 1 -->
-    <section class="seccion">
-      <h2 class="titulo-seccion">Blog</h2>
+    <!-- =====================================================
+         HERO BLOG (tabla-blog.webp en blog.css con MISMA POSICIÓN)
+    ====================================================== -->
+    <section class="blog-hero" aria-labelledby="blog-title">
+      <div class="blog-hero-card" data-animate="up">
+        <div class="blog-hero-inner">
 
-      <div class="formulario">
-        <p style="margin:0; position:relative; z-index:1;">
-          Aquí compartimos ideas, inspiración y tips para que tus regalos y decoraciones en MDF y acrílico
-          se vean increíbles. Encuentra guías rápidas, tendencias y recomendaciones para elegir el diseño perfecto.
-        </p>
+          <div class="blog-kicker" data-animate="fade"></div>
+
+          <h1 class="blog-title" id="blog-title" data-animate="up">
+            Blog Creaciones MGI
+          </h1>
+
+          <p class="blog-lead" data-animate="up" data-delay="80">
+            Ideas, inspiración y tips para regalos, eventos y decoración en <strong>MDF</strong> y <strong>acrílico</strong>.
+            Explora por tema o busca un artículo.
+          </p>
+
+          <div class="blog-hero-cta" data-animate="up" data-delay="140">
+            <a class="btn btn-primario btn-grande btn-bounce" href="#articulos">
+              <img class="btn-ico" src="imgs/icono-librito3d.webp" alt="" aria-hidden="true">
+              Ver artículos
+            </a>
+
+            <a class="btn btn-secundario btn-grande btn-bounce" href="productos.html">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+              Ver productos
+            </a>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 2 -->
-    <section class="seccion">
-      <h2 class="titulo-seccion">Artículos recientes</h2>
+    <!-- =====================================================
+         TOOLS: filtros + buscador
+    ====================================================== -->
+    <section class="seccion blog-tools" id="articulos" aria-labelledby="blog-tools-title">
+      <h2 class="titulo-seccion" id="blog-tools-title" data-animate="up">Explora por tema</h2>
 
-      <div class="grid-productos">
-        <article class="tarjeta">
-          <h3>5 ideas de regalos personalizados</h3>
-          <p>Opciones en MDF y acrílico que se adaptan a cualquier ocasión: cumpleaños, bodas, aniversarios y más.</p>
-          <p style="margin-top:12px; font-weight:800; color:#2a1ea9; position:relative; z-index:1;">
-            <a href="blog-articulo-1.html">Leer más →</a>
-          </p>
-        </article>
+      <div class="blog-toolbar" data-animate="up" data-delay="60">
+        <!-- chips -->
+        <div class="blog-chips" role="tablist" aria-label="Filtros del blog">
+          <button class="blog-chip is-active" type="button" data-filter="all" role="tab" aria-selected="true">Todo</button>
+          <button class="blog-chip" type="button" data-filter="regalos" role="tab">Regalos</button>
+          <button class="blog-chip" type="button" data-filter="eventos" role="tab">Eventos</button>
+          <button class="blog-chip" type="button" data-filter="xv" role="tab">XV</button>
+          <button class="blog-chip" type="button" data-filter="bodas" role="tab">Bodas</button>
+          <button class="blog-chip" type="button" data-filter="cumple" role="tab">Cumpleaños</button>
+          <button class="blog-chip" type="button" data-filter="cuidados" role="tab">Cuidados</button>
+          <button class="blog-chip" type="button" data-filter="tips" role="tab">Tips</button>
+          <button class="blog-chip" type="button" data-filter="temporada" role="tab">Temporada</button>
+        </div>
 
-        <article class="tarjeta">
-          <h3>Cómo elegir el tamaño ideal</h3>
-          <p>Te explicamos qué considerar según el uso del producto: mesa, pared, evento o recuerdo.</p>
-          <p style="margin-top:12px; font-weight:800; color:#2a1ea9; position:relative; z-index:1;">
-            <a href="blog-articulo-2.html">Leer más →</a>
-          </p>
-        </article>
-
-        <article class="tarjeta">
-          <h3>Ideas para eventos: bodas y XV</h3>
-          <p>Señalética, centros de mesa, recuerdos y detalles que se ven premium y súper personalizados.</p>
-          <p style="margin-top:12px; font-weight:800; color:#2a1ea9; position:relative; z-index:1;">
-            <a href="blog-articulo-3.html">Leer más →</a>
-          </p>
-        </article>
-
-        <article class="tarjeta">
-          <h3>Cuidados de tus piezas</h3>
-          <p>Cómo limpiar, guardar y mantener tus piezas para que duren más y se vean como nuevas.</p>
-          <p style="margin-top:12px; font-weight:800; color:#2a1ea9; position:relative; z-index:1;">
-            <a href="blog-articulo-4.html">Leer más →</a>
-          </p>
-        </article>
+        <!-- buscador -->
+        <form class="blog-search" id="blogSearchForm" role="search" aria-label="Buscar artículos">
+          <span class="blog-search-ico" aria-hidden="true">
+            <img src="imgs/buscador.png" alt="" aria-hidden="true">
+          </span>
+          <input type="search" id="blogSearch" placeholder="Buscar artículo por título o tema…" autocomplete="off" />
+          <button type="submit" class="btn btn-primario btn-mini btn-bounce">Buscar</button>
+        </form>
       </div>
+
+      <!-- ✅ Meta dinámico (renderizado por blog.js si existe) -->
+      <p id="blogMeta" class="blog-meta" aria-live="polite"></p>
+
+      <!-- Empty state (si lo sigues usando en CSS/JS) -->
+      <p class="blog-empty" id="blogEmpty" hidden>No se encontraron artículos con esa búsqueda.</p>
     </section>
 
-    <!-- SECCIÓN 3 -->
-    <section class="seccion fondo-azul">
-      <h2 class="titulo-seccion">¿Quieres ideas nuevas?</h2>
+    <!-- =====================================================
+         LISTADO ARTÍCULOS (se renderiza por blog.js)
+    ====================================================== -->
+    <section class="seccion blog-list" aria-labelledby="blog-list-title">
+      <h2 class="titulo-seccion" id="blog-list-title" data-animate="up">Artículos</h2>
 
-      <form class="formulario">
-        <input type="text" placeholder="Tu nombre" required>
-        <input type="email" placeholder="Tu correo" required>
-        <button type="submit" class="btn-principal">Suscribirme</button>
-      </form>
+      <!-- ✅ Grid vacío: blog.js lo llena -->
+      <div class="blog-grid" id="blogGrid"></div>
+
+      <!-- PAGINACIÓN -->
+      <div class="blog-pagination" data-animate="up" data-delay="80">
+        <button id="blogPrev" class="btn btn-secundario btn-mini btn-bounce" type="button">← Anterior</button>
+        <div id="blogPages" class="blog-pages" aria-label="Páginas del blog"></div>
+        <button id="blogNext" class="btn btn-secundario btn-mini btn-bounce" type="button">Siguiente →</button>
+      </div>
+
+      <!-- CTA -->
+      <div class="blog-cta-final" data-animate="up" data-delay="120">
+        <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+          <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+          Ver productos
+        </a>
+        <a class="btn btn-secundario btn-grande btn-bounce"
+           href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20vengo%20del%20blog%20y%20quiero%20cotizar%20un%20pedido."
+           target="_blank" rel="noopener">
+          <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+          Cotizar por WhatsApp
+        </a>
+      </div>
+
     </section>
 
   </main>
 
   <footer class="footer">
     <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
   </footer>
 
   <div class="burbujas">
-    <a href="https://wa.me/5210000000000" target="_blank" class="burbuja whatsapp">
-      <img src="imgs/icono-whatsapp.png" alt="WhatsApp">
+    <a href="https://wa.me/528123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
     </a>
-    <a href="https://facebook.com" target="_blank" class="burbuja facebook">
-      <img src="imgs/logo-facebook.png" alt="Facebook">
+    <a href="https://www.facebook.com/profile.php?id=61559132295014" target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+    <a href="https://www.instagram.com/creacionesmgi/" target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
     </a>
   </div>
 
   <script src="script.js"></script>
+  <script src="blog.js"></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

@@ -670,3 +670,80 @@ function setupMobileMenuBehaviors() {
   window.addEventListener("load", forceTabletMotion);
 
 })();
+
+
+/* =========================================================
+   COPIAR CORREO / COPIAR LINK — Creaciones MGI
+   (Agregar al final de script.js)
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  async function copiarTexto(texto) {
+    if (!texto) return false;
+
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(texto);
+        return true;
+      }
+    } catch (err) {
+      console.warn("Clipboard API falló, usando fallback");
+    }
+
+    // Fallback para navegadores más antiguos o HTTP
+    try {
+      const textarea = document.createElement("textarea");
+      textarea.value = texto;
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      const exitoso = document.execCommand("copy");
+      document.body.removeChild(textarea);
+      return exitoso;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function mostrarFeedback(boton, exito) {
+    const textoOriginal = boton.dataset.textoOriginal || boton.innerHTML;
+
+    if (!boton.dataset.textoOriginal) {
+      boton.dataset.textoOriginal = textoOriginal;
+    }
+
+    if (exito) {
+      boton.innerHTML = "✔ Copiado";
+      boton.classList.add("copiado-exito");
+    } else {
+      boton.innerHTML = "✖ Error";
+      boton.classList.add("copiado-error");
+    }
+
+    setTimeout(() => {
+      boton.innerHTML = textoOriginal;
+      boton.classList.remove("copiado-exito", "copiado-error");
+    }, 1500);
+  }
+
+  // Delegación global (funciona para todos los botones con data-copy-*)
+  document.addEventListener("click", async function (e) {
+    const boton = e.target.closest("[data-copy-email], [data-copy-text]");
+    if (!boton) return;
+
+    e.preventDefault();
+
+    const email = boton.getAttribute("data-copy-email");
+    const texto = boton.getAttribute("data-copy-text");
+
+    const valor = email || texto;
+    const resultado = await copiarTexto(valor);
+
+    mostrarFeedback(boton, resultado);
+  });
+
+});

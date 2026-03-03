@@ -55,141 +55,176 @@
 
   <main>
 
-    <!-- =====================================================
-         HERO UBICACIÓN
-         IMPORTANTE: la tabla decorativa (tabla-pedidos.webp)
-         se colocará en ubicacion.css con EXACTA misma posición:
-         top:10px; left:-140px; width/height clamp(600..650)
-    ====================================================== -->
-    <section class="ubicacion-hero" aria-labelledby="ubicacion-title">
-      <div class="ubicacion-hero-card" data-animate="up">
-        <div class="ubicacion-hero-inner">
+  <!-- =====================================================
+       HERO UBICACIÓN
+       + IMAGEN (trabajadora-mapa.webp) AL LADO EN DESKTOP
+       + EN MÓVIL BAJA ABAJO (con CSS que ajustaremos enseguida)
+       IMPORTANTE: la tabla decorativa (tabla-ubicacion.webp)
+       se mantiene en ubicacion.css con la misma posición
+  ====================================================== -->
+  <section class="ubicacion-hero" aria-labelledby="ubicacion-title">
+    <div class="ubicacion-hero-card" data-animate="up">
+      <div class="ubicacion-hero-inner">
 
-          <div class="ubicacion-kicker" data-animate="fade"></div>
+        <!-- NUEVO: layout para 2 columnas (texto + imagen) -->
+        <div class="ubicacion-hero-layout">
 
-          <h1 class="ubicacion-title" id="ubicacion-title" data-animate="up">
-            Nuestra ubicación
-          </h1>
+          <!-- TEXTO / CTA -->
+          <div class="ubicacion-hero-texto">
 
-          <p class="ubicacion-lead" data-animate="up" data-delay="80">
-            Abre el mapa para llegar más fácil. También puedes escribirnos por <strong>WhatsApp</strong>
-            o enviarnos un correo.
-          </p>
+            <div class="ubicacion-kicker" data-animate="fade"></div>
 
-          <div class="ubicacion-cta" data-animate="up" data-delay="140">
-            <a class="btn btn-primario btn-grande btn-bounce"
-               href="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6"
-               target="_blank" rel="noopener">
-              <img class="btn-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
-              Abrir en Maps
-            </a>
+            <h1 class="ubicacion-title" id="ubicacion-title" data-animate="up">
+              Nuestra ubicación
+            </h1>
 
-            <a class="btn btn-secundario btn-grande btn-bounce"
-               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20llegar%20a%20su%20ubicaci%C3%B3n.%20%C2%BFMe%20pueden%20apoyar%3F"
-               target="_blank" rel="noopener">
-              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
-              WhatsApp
-            </a>
+            <p class="ubicacion-lead" data-animate="up" data-delay="80">
+              Abre el mapa para llegar más fácil. También puedes escribirnos por <strong>WhatsApp</strong>
+              o enviarnos un correo.
+            </p>
 
-            <button class="btn btn-terciario btn-grande btn-bounce"
-                    type="button"
-                    data-copy-email="mgicreaciones24@gmail.com"
-                    aria-label="Copiar correo de Creaciones MGI">
-              <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
-              Copiar correo
-            </button>
+            <div class="ubicacion-cta" data-animate="up" data-delay="140">
+              <a class="btn btn-primario btn-grande btn-bounce"
+                 href="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
+                Abrir en Maps
+              </a>
+
+              <a class="btn btn-secundario btn-grande btn-bounce"
+                 href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20llegar%20a%20su%20ubicaci%C3%B3n.%20%C2%BFMe%20pueden%20apoyar%3F"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                WhatsApp
+              </a>
+
+              <button class="btn btn-terciario btn-grande btn-bounce"
+                      type="button"
+                      data-copy-email="mgicreaciones24@gmail.com"
+                      aria-label="Copiar correo de Creaciones MGI">
+                <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+                Copiar correo
+              </button>
+            </div>
+
+            <p class="ubicacion-mini" data-animate="fade" data-delay="220">
+              Correo:
+              <button class="link-copy" type="button" data-copy-email="mgicreaciones24@gmail.com">
+                mgicreaciones24@gmail.com
+              </button>
+            </p>
+
           </div>
 
-          <p class="ubicacion-mini" data-animate="fade" data-delay="220">
-            Correo: <button class="link-copy" type="button" data-copy-email="mgicreaciones24@gmail.com">mgicreaciones24@gmail.com</button>
-          </p>
+          <!-- IMAGEN ACOMPAÑANDO -->
+          <div class="ubicacion-hero-media" data-animate="up" data-delay="120">
+            <img
+              src="imgs/trabajadora-mapa.webp"
+              alt="Creaciones MGI: atención y ubicación"
+              class="ubicacion-hero-img"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
 
         </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- =====================================================
-         MAPA GRANDE + INFO
-    ====================================================== -->
-    <section class="seccion ubicacion-wrap" aria-labelledby="mapa-title">
-      <h2 class="titulo-seccion" id="mapa-title" data-animate="up">Mapa</h2>
+  <!-- =====================================================
+       MAPA GRANDE + INFO
+       + SEPARACIÓN EXTRA para que "Datos rápidos" no quede pegado
+  ====================================================== -->
+  <section class="seccion ubicacion-wrap" aria-labelledby="mapa-title">
+    <h2 class="titulo-seccion" id="mapa-title" data-animate="up">Mapa</h2>
 
-      <div class="ubicacion-grid" data-animate="up" data-delay="60">
-        <!-- MAPA GRANDE -->
-        <div class="formulario ubicacion-mapa">
-          <h3 class="ubicacion-subtitle">Ubicación en Google Maps</h3>
+    <div class="ubicacion-grid" data-animate="up" data-delay="60">
 
-          <div class="ubicacion-map-embed" aria-label="Mapa de Creaciones MGI">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.4490689171853!2d-100.3419761!3d25.722659000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662957c8615284f%3A0xe289932e1da44a57!2sMGI%20CREACIONES!5e0!3m2!1ses-419!2smx!4v1772487956864!5m2!1ses-419!2smx"
-              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
+      <!-- MAPA GRANDE -->
+      <div class="formulario ubicacion-mapa">
+        <h3 class="ubicacion-subtitle">Ubicación en Google Maps</h3>
 
-          <div class="ubicacion-map-actions">
-            <a class="btn btn-primario btn-mini btn-bounce"
-               href="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6"
-               target="_blank" rel="noopener">
-              <img class="btn-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
-              Abrir ruta
-            </a>
-
-            <button class="btn btn-secundario btn-mini btn-bounce" type="button" data-copy-text="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6">
-              Copiar link
-            </button>
-          </div>
+        <div class="ubicacion-map-embed" aria-label="Mapa de Creaciones MGI">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.4490689171853!2d-100.3419761!3d25.722659000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662957c8615284f%3A0xe289932e1da44a57!2sMGI%20CREACIONES!5e0!3m2!1ses-419!2smx!4v1772487956864!5m2!1ses-419!2smx"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
-        <!-- INFO -->
-        <aside class="formulario ubicacion-info">
-          <h3 class="ubicacion-subtitle">Datos rápidos</h3>
+        <div class="ubicacion-map-actions">
+          <a class="btn btn-primario btn-mini btn-bounce"
+             href="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6"
+             target="_blank" rel="noopener">
+            <img class="btn-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
+            Abrir ruta
+          </a>
 
-          <div class="ubicacion-pills">
-            <span class="ubi-pill">
-              <img class="ubi-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
-              Link de ubicación listo
-            </span>
-
-            <span class="ubi-pill">
-              <img class="ubi-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
-              WhatsApp: <strong>81 2343 9492</strong>
-            </span>
-
-            <span class="ubi-pill">
-              <img class="ubi-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
-              Correo: <strong>mgicreaciones24@gmail.com</strong>
-            </span>
-          </div>
-
-          <hr class="ubicacion-sep">
-
-          <p class="ubicacion-texto">
-            Si vienes a recoger pedido, escríbenos antes para confirmar disponibilidad y coordinar la entrega.
-          </p>
-
-          <div class="ubicacion-botones">
-            <a class="btn btn-primario btn-grande btn-bounce"
-               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20pasar%20a%20recoger%20un%20pedido.%20%C2%BFMe%20pueden%20confirmar%20horario%3F"
-               target="_blank" rel="noopener">
-              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
-              Confirmar por WhatsApp
-            </a>
-
-            <button class="btn btn-secundario btn-grande btn-bounce" type="button" data-copy-email="mgicreaciones24@gmail.com">
-              <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
-              Copiar correo
-            </button>
-
-            <a class="btn btn-terciario btn-grande btn-bounce" href="productos.html">
-              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
-              Ver productos
-            </a>
-          </div>
-        </aside>
+          <button class="btn btn-secundario btn-mini btn-bounce"
+                  type="button"
+                  data-copy-text="https://maps.app.goo.gl/756s5Tw9CCJ7te7i6">
+            Copiar link
+          </button>
+        </div>
       </div>
-    </section>
 
-  </main>
+      <!-- NUEVO: separador (aire) entre mapa y datos rápidos -->
+      <div class="ubicacion-space" aria-hidden="true"></div>
+
+      <!-- INFO -->
+      <aside class="formulario ubicacion-info">
+        <h3 class="ubicacion-subtitle">Datos rápidos</h3>
+
+        <div class="ubicacion-pills">
+          <span class="ubi-pill">
+            <img class="ubi-ico" src="imgs/icono-maps.png" alt="" aria-hidden="true">
+            C. Río Janitzio 1868, Central, 64190 Monterrey, N.L.
+          </span>
+
+          <span class="ubi-pill">
+            <img class="ubi-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+            WhatsApp: <strong>81 2343 9492</strong>
+          </span>
+
+          <span class="ubi-pill">
+            <img class="ubi-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+            Correo: <strong>mgicreaciones24@gmail.com</strong>
+          </span>
+        </div>
+
+        <hr class="ubicacion-sep">
+
+        <p class="ubicacion-texto">
+          Si vienes a recoger pedido, escríbenos antes para confirmar disponibilidad y coordinar la entrega.
+        </p>
+
+        <div class="ubicacion-botones">
+          <a class="btn btn-primario btn-grande btn-bounce"
+             href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20pasar%20a%20recoger%20un%20pedido.%20%C2%BFMe%20pueden%20confirmar%20horario%3F"
+             target="_blank" rel="noopener">
+            <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+            Confirmar por WhatsApp
+          </a>
+
+          <button class="btn btn-secundario btn-grande btn-bounce"
+                  type="button"
+                  data-copy-email="mgicreaciones24@gmail.com">
+            <img class="btn-ico" src="imgs/logo-email.webp" alt="" aria-hidden="true">
+            Copiar correo
+          </button>
+
+          <a class="btn btn-terciario btn-grande btn-bounce" href="productos.html">
+            <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+            Ver productos
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -216,11 +251,12 @@
   </div>
 
   <!-- JS -->
-  <script src="script.js"></script>
-  <script src="ubicacion.js" defer></script>
-  <script>
-    document.getElementById("anio").textContent = new Date().getFullYear();
-  </script>
+  <!-- JS -->
+<script src="script.js" defer></script>
+<script src="ubicacion.js" defer></script>
+<script>
+  document.getElementById("anio").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>

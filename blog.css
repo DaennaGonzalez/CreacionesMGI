@@ -1,0 +1,1431 @@
+/* =========================================================
+   blog.css — COMPLETO (premium coherente con tu estilo) — CORREGIDO
+   ✅ Hero con tabla-blog.webp (misma posición)
+   ✅ Toolbar: chips + buscador con ícono (ajuste móvil +2px arriba)
+   ✅ Grid + hover
+   ✅ Paginación (CORREGIDA para .blog-page-btn que genera el JS)
+   ✅ Meta dinámico (#blogMeta)
+   ✅ Tag de categoría (.blog-tag) que genera el JS
+   ✅ CTA final (botones finales con look premium exclusivo)
+   ✅ Responsive completo
+========================================================= */
+
+:root{
+  --azul:#251bbd;
+  --azul-2:#2f2ad6;
+  --naranja:#f28a1a;
+  --naranja-2:#ff9f3a;
+  --crema:#f3ede5;
+
+  --radio: 28px;
+  --sombra: 0 18px 40px rgba(0,0,0,.16);
+  --sombra2: 0 26px 60px rgba(0,0,0,.14);
+  --punteado: rgba(0,0,0,.26);
+  --trans: 260ms cubic-bezier(.2,.8,.2,1);
+}
+
+img{ max-width:100%; height:auto; }
+.is-hidden{ display:none !important; }
+
+/* =========================================================
+   1) HERO BLOG (tabla-blog.webp)
+   ✅ Misma posición exacta:
+      top:10px; left:-140px; width/height clamp(600..650)
+========================================================= */
+.blog-hero{
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: visible;
+  z-index: 1;
+  padding: 150px 20px 60px;
+}
+
+.blog-hero::before{
+  content:"";
+  position:absolute;
+  top: 10px;
+  left: -140px;
+
+  width: clamp(600px, 55vw, 650px);
+  height: clamp(650px, 55vw, 650px);
+
+  background: url("imgs/tabla-blog.webp") no-repeat;
+  background-size: contain;
+  background-position: left top;
+
+  opacity: 1;
+  z-index: 80;
+  pointer-events: none;
+  user-select: none;
+
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,.18));
+}
+
+.blog-hero-card{
+  position: relative;
+  z-index: 20;
+
+  background: rgba(243,237,229,.95);
+  border-radius: 34px;
+  box-shadow: var(--sombra2);
+  overflow: visible;
+
+  padding: 90px 78px 78px;
+  text-align: center;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.blog-hero-card::before{
+  content:"";
+  position:absolute;
+  inset: 26px;
+  border-radius: 22px;
+  border: 2px dashed var(--punteado);
+  pointer-events:none;
+  z-index: 1;
+}
+
+.blog-hero-inner{
+  position: relative;
+  z-index: 90;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.blog-kicker{
+  height: 10px;
+  width: 120px;
+  margin: 0 auto 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+}
+
+.blog-title{
+  margin: 0 0 14px;
+  font-size: 54px;
+  line-height: 1.05;
+  font-weight: 950;
+
+  background: linear-gradient(90deg, var(--azul), var(--naranja));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color: transparent;
+
+  filter:
+    drop-shadow(0 2px 0 rgba(255,255,255,.9))
+    drop-shadow(0 18px 22px rgba(37,27,189,.10));
+}
+
+.blog-lead{
+  margin: 0 auto;
+  max-width: 820px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(0,0,0,.75);
+  font-weight: 650;
+}
+
+.blog-hero-cta{
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-hero-cta .btn{
+  width: 100%;
+  min-height: 58px;
+  border-radius: 22px;
+}
+
+/* =========================================================
+   2) SECCIONES base
+========================================================= */
+.seccion{
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  margin-top: 84px;
+}
+
+/* =========================================================
+   3) TOOLBAR (chips + search)
+========================================================= */
+.blog-tools{
+  margin-top: 14px;
+}
+
+/* Título Explora por tema: premium */
+.blog-tools .titulo-seccion{
+  font-weight: 950;
+  background: linear-gradient(90deg, var(--azul), var(--naranja));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 0 rgba(255,255,255,.88));
+}
+
+.blog-toolbar{
+  display: grid;
+  gap: 14px;
+
+  padding: 16px 16px;
+  border-radius: 26px;
+
+  background:
+    radial-gradient(700px 240px at 18% 20%, rgba(242,138,26,.14), rgba(0,0,0,0) 60%),
+    radial-gradient(760px 320px at 72% 10%, rgba(37,27,189,.14), rgba(0,0,0,0) 62%),
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.66));
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.12),
+    0 16px 30px rgba(37,27,189,.08);
+
+  border: 1px solid rgba(0,0,0,.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Chips */
+.blog-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.blog-chip{
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  cursor: pointer;
+
+  padding: 9px 13px;
+  border-radius: 999px;
+
+  font-weight: 950;
+  font-size: 13.3px;
+  letter-spacing: .2px;
+
+  color: rgba(0,0,0,.82);
+  background: rgba(255,255,255,.74);
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow: 0 10px 18px rgba(0,0,0,.08);
+
+  transition: transform var(--trans), filter var(--trans), box-shadow var(--trans);
+}
+
+.blog-chip:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+}
+
+.blog-chip.is-active{
+  color: #fff;
+  background: linear-gradient(90deg, var(--azul), var(--azul-2));
+  border-color: rgba(37,27,189,.22);
+  box-shadow: 0 20px 36px rgba(37,27,189,.22), 0 12px 22px rgba(0,0,0,.10);
+}
+
+/* Search */
+.blog-search{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.blog-search-ico{
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: .85;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.12));
+}
+
+/* ✅ evita “baseline gap” del <img> */
+.blog-search-ico img{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
+#blogSearch{
+  width: 100%;
+  padding: 14px 14px 14px 48px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,.14);
+  background: rgba(255,255,255,.90);
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  min-height: 52px;
+
+  transition: box-shadow var(--trans), border-color var(--trans);
+}
+
+#blogSearch:focus{
+  border-color: rgba(37,27,189,.30);
+  box-shadow: 0 0 0 4px rgba(37,27,189,.14);
+}
+
+/* Meta dinámico (Mostrando 1–12 de 35...) */
+.blog-meta{
+  margin: 12px auto 0;
+  text-align: center;
+  max-width: 980px;
+  font-size: 14.4px;
+  font-weight: 750;
+  color: rgba(0,0,0,.72);
+}
+
+/* Empty */
+.blog-empty{
+  margin: 14px auto 0;
+  text-align: center;
+  max-width: 980px;
+  font-size: 14.8px;
+  font-weight: 750;
+  color: rgba(0,0,0,.74);
+
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(242,138,26,.14), rgba(37,27,189,.14));
+  border: 1px solid rgba(37,27,189,.16);
+}
+
+/* =========================================================
+   4) GRID de artículos
+========================================================= */
+.blog-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  justify-items: center;
+  margin-top: 12px;
+}
+
+.blog-card{
+  width: 100%;
+  max-width: 420px;
+
+  background: rgba(243,237,229,.95);
+  border-radius: 30px;
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  position: relative;
+
+  transition: transform var(--trans), filter var(--trans);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.blog-card::before{
+  content:"";
+  position:absolute;
+  inset: 16px;
+  border-radius: 20px;
+  border: 2px dashed rgba(0,0,0,.22);
+  pointer-events:none;
+  z-index: 1;
+}
+
+.blog-card:hover{
+  transform: translateY(-6px);
+  filter: brightness(1.02);
+}
+
+.blog-card__image{
+  display: block;
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,.75);
+}
+
+.blog-card__image img{
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-card__content{
+  position: relative;
+  z-index: 2;
+  padding: 16px 16px 18px;
+  text-align: left;
+}
+
+/* ✅ Tag de categoría (lo genera el JS) */
+.blog-tag{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 7px 10px;
+  border-radius: 999px;
+
+  font-weight: 950;
+  font-size: 12.8px;
+  letter-spacing: .2px;
+
+  margin-bottom: 10px;
+
+  color: rgba(0,0,0,.82);
+  background: linear-gradient(90deg, rgba(242,138,26,.16), rgba(37,27,189,.14));
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow: 0 10px 18px rgba(0,0,0,.08);
+}
+
+.blog-card__content h3{
+  margin: 0 0 8px;
+  font-weight: 950;
+  font-size: 18px;
+  color: rgba(0,0,0,.86);
+  line-height: 1.25;
+}
+
+.blog-card__content p{
+  margin: 0 0 12px;
+  color: rgba(0,0,0,.72);
+  font-weight: 650;
+  line-height: 1.55;
+  font-size: 14.4px;
+}
+
+.blog-readmore{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 12px;
+  border-radius: 999px;
+
+  font-weight: 950;
+  text-decoration: none;
+
+  color: rgba(0,0,0,.84);
+  background: linear-gradient(90deg, rgba(242,138,26,.18), rgba(37,27,189,.16));
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow: 0 12px 22px rgba(0,0,0,.10);
+
+  transition: transform var(--trans), filter var(--trans);
+}
+
+/* ✅ flecha por CSS (ya no duplicada en HTML/JS) */
+.blog-readmore::after{
+  content: "→";
+  font-weight: 950;
+  opacity: .85;
+}
+
+.blog-readmore:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+}
+
+/* =========================================================
+   5) Paginación (CORREGIDA para lo que genera blog.js)
+   JS genera: .blog-page-btn + .is-active + .blog-ellipsis
+========================================================= */
+.blog-pagination{
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.blog-pages{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ✅ botones reales */
+.blog-page-btn{
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+
+  min-width: 44px;
+  height: 44px;
+  border-radius: 16px;
+
+  font-weight: 950;
+  font-size: 14px;
+  color: rgba(0,0,0,.82);
+
+  background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.70));
+  border: 1px solid rgba(0,0,0,.10);
+
+  box-shadow:
+    0 14px 26px rgba(0,0,0,.10),
+    0 10px 18px rgba(37,27,189,.06);
+
+  transition: transform var(--trans), filter var(--trans), box-shadow var(--trans);
+}
+
+.blog-page-btn:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+}
+
+.blog-page-btn.is-active{
+  background: linear-gradient(90deg, var(--azul), var(--azul-2));
+  color: #fff;
+  border-color: rgba(37,27,189,.28);
+  box-shadow: 0 22px 44px rgba(37,27,189,.24), 0 12px 24px rgba(0,0,0,.12);
+}
+
+.blog-ellipsis{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  padding: 0 6px;
+  color: rgba(0,0,0,.55);
+  font-weight: 950;
+}
+
+/* Botones Anterior/Siguiente: consistente */
+.blog-pagination > button{
+  border-radius: 16px;
+  min-height: 44px;
+}
+
+/* =========================================================
+   6) CTA final (botones finales) — PREMIUM EXCLUSIVO
+   (sin romper .btn global)
+========================================================= */
+.blog-cta-final{
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+
+  /* ✅ Contenedor con look especial */
+  padding: 14px;
+  border-radius: 22px;
+  background:
+    radial-gradient(700px 240px at 15% 30%, rgba(242,138,26,.14), rgba(0,0,0,0) 60%),
+    radial-gradient(760px 320px at 80% 10%, rgba(37,27,189,.14), rgba(0,0,0,0) 62%),
+    linear-gradient(180deg, rgba(255,255,255,.76), rgba(255,255,255,.58));
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.blog-cta-final .btn{
+  min-width: min(360px, 100%);
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ✅ efecto brillo sutil */
+.blog-cta-final .btn::before{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-30%;
+  width: 60%;
+  height: 180%;
+  background: linear-gradient(90deg, rgba(255,255,255,.00), rgba(255,255,255,.34), rgba(255,255,255,.00));
+  transform: rotate(18deg);
+  opacity: .0;
+  transition: opacity var(--trans), transform var(--trans);
+  pointer-events:none;
+}
+
+.blog-cta-final .btn:hover::before{
+  opacity: .85;
+  transform: rotate(18deg) translateX(26%);
+}
+
+.blog-cta-final .btn:hover{
+  transform: translateY(-3px);
+  filter: brightness(1.03);
+}
+
+.blog-cta-final .btn:active{
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   7) Botones fallback coherentes
+========================================================= */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+
+  border-radius: 18px;
+  padding: 14px 18px;
+
+  font-family: inherit;
+  font-weight: 950;
+  letter-spacing: .2px;
+  line-height: 1;
+
+  transition: transform var(--trans), filter var(--trans), box-shadow var(--trans);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn .btn-ico{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.16));
+}
+
+.btn:hover{ transform: translateY(-2px); filter: brightness(1.02); }
+.btn:active{ transform: translateY(0); }
+
+.btn-grande{
+  padding: 16px 22px;
+  border-radius: 20px;
+  min-height: 54px;
+  font-size: 15.5px;
+}
+.btn-mini{
+  min-height: 42px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  border-radius: 16px;
+}
+
+.btn-primario{
+  color: #fff;
+  background: linear-gradient(90deg, var(--azul), var(--azul-2));
+  box-shadow: 0 18px 34px rgba(37,27,189,.22), 0 10px 22px rgba(0,0,0,.12);
+}
+
+.btn-secundario{
+  color: rgba(0,0,0,.86);
+  background: linear-gradient(90deg, rgba(242,138,26,.22), rgba(255,159,58,.18));
+  border: 1px solid rgba(242,138,26,.34);
+  box-shadow: 0 18px 34px rgba(242,138,26,.16), 0 10px 22px rgba(0,0,0,.10);
+}
+
+/* =========================================================
+   8) Responsive
+========================================================= */
+
+/* Desktop pequeño */
+@media (max-width: 1024px) and (min-width: 900px){
+  .blog-hero{
+    padding: 140px 18px 44px;
+    max-width: 1100px;
+  }
+  .blog-hero::before{
+    top: 8px;
+    left: -90px;
+    width: clamp(520px, 62vw, 620px);
+    height: clamp(560px, 62vw, 620px);
+  }
+  .blog-title{ font-size: 44px; }
+  .blog-hero-card{ padding: 78px 44px 60px; }
+  .blog-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tablet */
+@media (max-width: 899px) and (min-width: 641px){
+  .blog-hero{
+    padding: 130px 16px 30px;
+    max-width: 980px;
+  }
+  .blog-hero::before{
+    top: 6px;
+    left: -60px;
+    width: clamp(460px, 78vw, 600px);
+    height: clamp(480px, 78vw, 600px);
+  }
+  .blog-title{ font-size: 40px; }
+  .blog-lead{ font-size: 16.4px; }
+  .blog-hero-card{ padding: 66px 26px 54px; }
+
+  .blog-hero-cta{ grid-template-columns: 1fr; max-width: 520px; }
+  .blog-grid{ grid-template-columns: repeat(2, 1fr); }
+
+  .blog-search{ max-width: 680px; }
+}
+
+/* Móvil */
+@media (max-width: 640px){
+  .blog-hero{
+    padding: 118px 12px 18px;
+    max-width: 100%;
+  }
+  .blog-hero::before{
+    top: 4px;
+    left: -26px;
+    width: clamp(340px, 96vw, 520px);
+    height: clamp(360px, 96vw, 520px);
+  }
+
+  .blog-hero-card{
+    padding: 56px 14px 44px;
+    border-radius: 24px;
+  }
+  .blog-hero-card::before{
+    inset: 14px;
+    border-radius: 14px;
+  }
+
+  .blog-title{
+    font-size: 30px;
+    line-height: 1.12;
+    padding: 0 10px;
+  }
+  .blog-lead{
+    font-size: 14.7px;
+    padding: 0 10px;
+  }
+
+  .seccion{
+    padding: 0 12px;
+    margin-top: 64px;
+  }
+
+  .blog-hero-cta{
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+
+  .blog-grid{
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .blog-toolbar{
+    padding: 14px 12px;
+    border-radius: 18px;
+  }
+
+  .blog-search{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .blog-pagination{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .blog-pagination button{
+    width: 100%;
+  }
+
+  /* ✅ ajuste real: sube 2px el icono en móvil */
+  .blog-search-ico{
+    transform: translateY(calc(-50% - 2px));
+  }
+
+  /* CTA final en móvil: botones full */
+  .blog-cta-final{
+    padding: 12px;
+  }
+  .blog-cta-final .btn{
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   9) Reveal compat (si tu script global lo usa)
+========================================================= */
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; filter: none !important; }
+}
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(10px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(.2,.8,.2,1),
+    filter 900ms ease;
+  will-change: opacity, transform, filter;
+}
+.reveal.in-view{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* =========================================================
+   blog.css — COMPLETO (premium coherente con tu estilo)
+   - Hero con tabla-contacto.webp (MISMA POSICIÓN DE SIEMPRE)
+   - Toolbar: chips + buscador con ícono
+   - Grid de 30 artículos + hover
+   - Paginación bonita
+   - Responsive completo
+========================================================= */
+
+:root{
+  --azul:#251bbd;
+  --azul-2:#2f2ad6;
+  --naranja:#f28a1a;
+  --naranja-2:#ff9f3a;
+  --crema:#f3ede5;
+
+  --radio: 28px;
+  --sombra: 0 18px 40px rgba(0,0,0,.16);
+  --sombra2: 0 26px 60px rgba(0,0,0,.14);
+  --punteado: rgba(0,0,0,.26);
+  --trans: 260ms cubic-bezier(.2,.8,.2,1);
+}
+
+img{ max-width:100%; height:auto; }
+.is-hidden{ display:none !important; }
+
+/* =========================================================
+   1) HERO BLOG (tabla-contacto.webp)
+   ✅ Misma posición exacta:
+      top:10px; left:-140px; width/height clamp(600..650)
+========================================================= */
+.blog-hero{
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: visible;
+  z-index: 1;
+  padding: 150px 20px 60px;
+}
+
+.blog-hero::before{
+  content:"";
+  position:absolute;
+  top: 10px;
+  left: -140px;
+
+  width: clamp(600px, 55vw, 650px);
+  height: clamp(650px, 55vw, 650px);
+
+  background: url("imgs/tabla-contacto.webp") no-repeat;
+  background-size: contain;
+  background-position: left top;
+
+  opacity: 1;
+  z-index: 80;
+  pointer-events: none;
+  user-select: none;
+
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,.18));
+}
+
+.blog-hero-card{
+  position: relative;
+  z-index: 20;
+
+  background: rgba(243,237,229,.95);
+  border-radius: 34px;
+  box-shadow: var(--sombra2);
+  overflow: visible;
+
+  padding: 90px 78px 78px;
+  text-align: center;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.blog-hero-card::before{
+  content:"";
+  position:absolute;
+  inset: 26px;
+  border-radius: 22px;
+  border: 2px dashed var(--punteado);
+  pointer-events:none;
+  z-index: 1;
+}
+
+.blog-hero-inner{
+  position: relative;
+  z-index: 90;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.blog-kicker{
+  height: 10px;
+  width: 120px;
+  margin: 0 auto 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+}
+
+.blog-title{
+  margin: 0 0 14px;
+  font-size: 54px;
+  line-height: 1.05;
+  font-weight: 950;
+
+  background: linear-gradient(90deg, var(--azul), var(--naranja));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color: transparent;
+
+  filter:
+    drop-shadow(0 2px 0 rgba(255,255,255,.9))
+    drop-shadow(0 18px 22px rgba(37,27,189,.10));
+}
+
+.blog-lead{
+  margin: 0 auto;
+  max-width: 820px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(0,0,0,.75);
+  font-weight: 650;
+}
+
+.blog-hero-cta{
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-hero-cta .btn{
+  width: 100%;
+  min-height: 58px;
+  border-radius: 22px;
+}
+
+/* =========================================================
+   2) SECCIONES base
+========================================================= */
+.seccion{
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  margin-top: 84px;
+}
+
+/* =========================================================
+   3) TOOLBAR (chips + search)
+========================================================= */
+.blog-tools{
+  margin-top: 14px;
+}
+
+.blog-toolbar{
+  display: grid;
+  gap: 14px;
+
+  padding: 16px 16px;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(700px 240px at 18% 20%, rgba(242,138,26,.14), rgba(0,0,0,0) 60%),
+    radial-gradient(760px 320px at 72% 10%, rgba(37,27,189,.14), rgba(0,0,0,0) 62%),
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.66));
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.12),
+    0 16px 30px rgba(37,27,189,.08);
+
+  border: 1px solid rgba(0,0,0,.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Chips */
+.blog-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.blog-chip{
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  cursor: pointer;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  font-weight: 950;
+  font-size: 13.5px;
+  letter-spacing: .2px;
+
+  color: rgba(0,0,0,.82);
+  background: rgba(255,255,255,.74);
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow: 0 12px 22px rgba(0,0,0,.08);
+
+  transition: transform var(--trans), filter var(--trans), box-shadow var(--trans);
+}
+
+.blog-chip:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.blog-chip.is-active{
+  color: #fff;
+  background: linear-gradient(90deg, var(--azul), var(--azul-2));
+  border-color: rgba(37,27,189,.22);
+  box-shadow: 0 18px 34px rgba(37,27,189,.20), 0 10px 22px rgba(0,0,0,.10);
+}
+
+/* Search */
+.blog-search{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.blog-search-ico{
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: .85;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.12));
+}
+
+.blog-search-ico img{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+#blogSearch{
+  width: 100%;
+  padding: 14px 14px 14px 48px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,.14);
+  background: rgba(255,255,255,.90);
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  min-height: 52px;
+
+  transition: box-shadow var(--trans), border-color var(--trans);
+}
+
+#blogSearch:focus{
+  border-color: rgba(37,27,189,.30);
+  box-shadow: 0 0 0 4px rgba(37,27,189,.14);
+}
+
+.blog-empty{
+  margin: 14px auto 0;
+  text-align: center;
+  max-width: 980px;
+  font-size: 14.8px;
+  font-weight: 750;
+  color: rgba(0,0,0,.74);
+
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(242,138,26,.14), rgba(37,27,189,.14));
+  border: 1px solid rgba(37,27,189,.16);
+}
+
+/* =========================================================
+   4) GRID de artículos
+========================================================= */
+.blog-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  justify-items: center;
+  margin-top: 12px;
+}
+
+.blog-card{
+  width: 100%;
+  max-width: 420px;
+
+  background: rgba(243,237,229,.95);
+  border-radius: 30px;
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  position: relative;
+
+  transition: transform var(--trans), filter var(--trans);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.blog-card::before{
+  content:"";
+  position:absolute;
+  inset: 16px;
+  border-radius: 20px;
+  border: 2px dashed rgba(0,0,0,.22);
+  pointer-events:none;
+  z-index: 1;
+}
+
+.blog-card:hover{
+  transform: translateY(-6px);
+  filter: brightness(1.02);
+}
+
+.blog-card__image{
+  display: block;
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,.75);
+}
+
+.blog-card__image img{
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-card__content{
+  position: relative;
+  z-index: 2;
+  padding: 16px 16px 18px;
+  text-align: left;
+}
+
+.blog-card__content h3{
+  margin: 0 0 8px;
+  font-weight: 950;
+  font-size: 18px;
+  color: rgba(0,0,0,.86);
+  line-height: 1.25;
+}
+
+.blog-card__content p{
+  margin: 0 0 12px;
+  color: rgba(0,0,0,.72);
+  font-weight: 650;
+  line-height: 1.55;
+  font-size: 14.4px;
+}
+
+.blog-readmore{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 12px;
+  border-radius: 999px;
+
+  font-weight: 950;
+  text-decoration: none;
+
+  color: rgba(0,0,0,.84);
+  background: linear-gradient(90deg, rgba(242,138,26,.18), rgba(37,27,189,.16));
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow: 0 12px 22px rgba(0,0,0,.10);
+
+  transition: transform var(--trans), filter var(--trans);
+}
+.blog-readmore:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+/* =========================================================
+   5) Paginación
+========================================================= */
+.blog-pagination{
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.blog-pages{
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.blog-page{
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+
+  min-width: 40px;
+  height: 40px;
+  border-radius: 14px;
+
+  font-weight: 950;
+  color: rgba(0,0,0,.82);
+  background: rgba(255,255,255,.76);
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow: 0 12px 22px rgba(0,0,0,.08);
+
+  transition: transform var(--trans), filter var(--trans);
+}
+.blog-page:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+.blog-page.is-active{
+  color:#fff;
+  background: linear-gradient(90deg, var(--azul), var(--azul-2));
+  border-color: rgba(37,27,189,.22);
+}
+
+/* CTA final */
+.blog-cta-final{
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   6) Botones fallback coherentes
+========================================================= */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+
+  border-radius: 18px;
+  padding: 14px 18px;
+
+  font-family: inherit;
+  font-weight: 950;
+  letter-spacing: .2px;
+  line-height: 1;
+
+  transition: transform var(--trans), filter var(--trans), box-shadow var(--trans);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn .btn-ico{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 10px 14px rgba(0,0,0,.16));
+}
+.btn:hover{ transform: translateY(-2px); filter: brightness(1.02); }
+.btn:active{ transform: translateY(0); }
+
+.btn-grande{
+  padding: 16px 22px;
+  border-radius: 20px;
+  min-height: 54px;
+  font-size: 15.5px;
+}
+.btn-mini{
+  min-height: 42px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  border-radius: 16px;
+}
+
+.btn-primario{
+  color: #fff;
+  background: linear-gradient(90deg, var(--azul), var(--azul-2));
+  box-shadow: 0 18px 34px rgba(37,27,189,.22), 0 10px 22px rgba(0,0,0,.12);
+}
+.btn-secundario{
+  color: rgba(0,0,0,.86);
+  background: linear-gradient(90deg, rgba(242,138,26,.22), rgba(255,159,58,.18));
+  border: 1px solid rgba(242,138,26,.34);
+  box-shadow: 0 18px 34px rgba(242,138,26,.16), 0 10px 22px rgba(0,0,0,.10);
+}
+
+/* =========================================================
+   7) Responsive
+========================================================= */
+
+/* Desktop pequeño */
+@media (max-width: 1024px) and (min-width: 900px){
+  .blog-hero{
+    padding: 140px 18px 44px;
+    max-width: 1100px;
+  }
+  .blog-hero::before{
+    top: 8px;
+    left: -90px;
+    width: clamp(520px, 62vw, 620px);
+    height: clamp(560px, 62vw, 620px);
+  }
+  .blog-title{ font-size: 44px; }
+  .blog-hero-card{ padding: 78px 44px 60px; }
+  .blog-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tablet */
+@media (max-width: 899px) and (min-width: 641px){
+  .blog-hero{
+    padding: 130px 16px 30px;
+    max-width: 980px;
+  }
+  .blog-hero::before{
+    top: 6px;
+    left: -60px;
+    width: clamp(460px, 78vw, 600px);
+    height: clamp(480px, 78vw, 600px);
+  }
+  .blog-title{ font-size: 40px; }
+  .blog-lead{ font-size: 16.4px; }
+  .blog-hero-card{ padding: 66px 26px 54px; }
+
+  .blog-hero-cta{ grid-template-columns: 1fr; max-width: 520px; }
+  .blog-grid{ grid-template-columns: repeat(2, 1fr); }
+
+  .blog-search{ max-width: 680px; }
+}
+
+/* Móvil */
+@media (max-width: 640px){
+  .blog-hero{
+    padding: 118px 12px 18px;
+    max-width: 100%;
+  }
+  .blog-hero::before{
+    top: 4px;
+    left: -26px;
+    width: clamp(340px, 96vw, 520px);
+    height: clamp(360px, 96vw, 520px);
+  }
+
+  .blog-hero-card{
+    padding: 56px 14px 44px;
+    border-radius: 24px;
+  }
+  .blog-hero-card::before{
+    inset: 14px;
+    border-radius: 14px;
+  }
+
+  .blog-title{
+    font-size: 30px;
+    line-height: 1.12;
+    padding: 0 10px;
+  }
+  .blog-lead{
+    font-size: 14.7px;
+    padding: 0 10px;
+  }
+
+  .seccion{
+    padding: 0 12px;
+    margin-top: 64px;
+  }
+
+  .blog-hero-cta{
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+
+  .blog-grid{
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .blog-toolbar{
+    padding: 14px 12px;
+    border-radius: 18px;
+  }
+
+  .blog-search{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .blog-pagination{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .blog-pagination button{
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   8) Reveal compat (si tu script global lo usa)
+========================================================= */
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; filter: none !important; }
+}
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(10px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(.2,.8,.2,1),
+    filter 900ms ease;
+  will-change: opacity, transform, filter;
+}
+.reveal.in-view{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* =========================================================
+   PATCH — blog.css (PEGA AL FINAL)
+   - Subir un poquito el ícono de lupa del buscador
+========================================================= */
+
+
+/* En móvil, súbelo un poco más si hace falta */
+@media (max-width: 640px){
+  .blog-search-ico{
+    top: 24% !important;
+  }
+}
