@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cómo elegir colores para un diseño que combine perfecto: guía fácil de combinaciones y tips para que tus piezas se vean armoniosas." />
+  <title>Creaciones MGI | Blog | Cómo elegir colores para un diseño que combine perfecto</title>
+
+  <!-- CSS general + blog + artículo -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="blog.css" />
+  <link rel="stylesheet" href="blog-articulo.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+
+  <!-- ✅ Extra dinámico SOLO para este artículo -->
+  <style>
+    /* ===========================================
+       BLOG 14 — Extra UI (solo aquí)
+       - Reglas rápidas (chips)
+       - Paletas sugeridas (cards)
+       - Checklist “antes de elegir”
+       - Pasos numerados con bolita degradada
+       - Ajustes móvil/tablet
+    =========================================== */
+
+    .blog14-sep{
+      border: 0;
+      height: 10px;
+      border-radius: 999px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    .blog14-glow{ position: relative; }
+    .blog14-glow::after{
+      content:"";
+      position:absolute;
+      left: 0;
+      bottom: -10px;
+      width: min(440px, 88%);
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    /* Chips reglas rápidas */
+    .blog14-chips{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 14px;
+      padding: 0;
+      list-style: none;
+    }
+    .blog14-chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 13px;
+      color: rgba(0,0,0,.78);
+      background: linear-gradient(90deg, rgba(242,138,26,.16), rgba(37,27,189,.14));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+    }
+
+    /* Pasos numerados */
+    .blog14-steps{
+      counter-reset: st;
+      list-style: none;
+      padding-left: 0;
+      margin: 12px 0 14px;
+      display: grid;
+      gap: 12px;
+    }
+    .blog14-step{
+      counter-increment: st;
+      position: relative;
+      padding: 14px 14px 14px 64px;
+      border-radius: 20px;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+    }
+    .blog14-step::before{
+      content: counter(st);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 950;
+      color: #fff;
+
+      background:
+        radial-gradient(420px 160px at 18% 10%, rgba(255,159,58,.22), rgba(0,0,0,0) 55%),
+        linear-gradient(90deg, var(--azul), var(--naranja));
+
+      box-shadow:
+        0 18px 34px rgba(37,27,189,.18),
+        0 12px 22px rgba(0,0,0,.12);
+
+      border: 1px solid rgba(255,255,255,.22);
+    }
+    .blog14-step h3{
+      margin: 0 0 6px;
+      font-size: 16.6px;
+      font-weight: 950;
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 0 rgba(255,255,255,.88));
+    }
+    .blog14-step p{
+      margin: 0;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.6;
+      font-size: 14.8px;
+    }
+
+    /* Paletas (cards) */
+    .blog14-paletas{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .blog14-card{
+      border-radius: 22px;
+      padding: 16px 16px;
+
+      background:
+        radial-gradient(700px 240px at 18% 20%, rgba(242,138,26,.14), rgba(0,0,0,0) 60%),
+        radial-gradient(760px 320px at 72% 10%, rgba(37,27,189,.14), rgba(0,0,0,0) 62%),
+        linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.66));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 20px 40px rgba(0,0,0,.12);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .blog14-card::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog14-card strong{
+      display:block;
+      margin: 0 0 10px;
+      position: relative;
+      z-index: 2;
+
+      font-weight: 950;
+      font-size: 16.6px;
+
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .blog14-card p{
+      margin: 0 0 10px;
+      position: relative;
+      z-index: 2;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.55;
+      font-size: 14.6px;
+    }
+
+    .blog14-dots{
+      position: relative;
+      z-index: 2;
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+
+    .blog14-dot{
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      box-shadow: 0 10px 18px rgba(0,0,0,.12);
+      border: 1px solid rgba(0,0,0,.10);
+    }
+    .d1{ background: #111827; } /* negro */
+    .d2{ background: #ffffff; } /* blanco */
+    .d3{ background: #d4af37; } /* dorado */
+    .d4{ background: #f28a1a; } /* naranja */
+    .d5{ background: #251bbd; } /* azul */
+    .d6{ background: #f472b6; } /* rosa */
+    .d7{ background: #22c55e; } /* verde */
+    .d8{ background: #a855f7; } /* morado */
+
+    .blog14-dot-label{
+      font-weight: 900;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.72);
+    }
+
+    @media (max-width: 899px){
+      .blog14-paletas{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px){
+      .blog14-step{ padding: 14px 14px 14px 58px; }
+      .blog14-step::before{ width: 36px; height: 36px; left: 12px; top: 12px; }
+    }
+  </style>
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html" class="activo">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blogart-hero" aria-labelledby="blogart-title">
+      <div class="blogart-hero-card" data-animate="up">
+        <div class="blogart-hero-inner">
+
+          <div class="blogart-kicker" data-animate="fade">Tips</div>
+
+          <h1 class="blogart-title" id="blogart-title" data-animate="up">
+            Cómo elegir colores para un diseño que combine perfecto
+          </h1>
+
+          <p class="blogart-meta" data-animate="up" data-delay="70">
+            <span class="blogart-pill">Combinación</span>
+            <span class="blogart-pill">Estilo</span>
+            <span class="blogart-pill">Lectura: 6–8 min</span>
+          </p>
+
+          <p class="blogart-lead" data-animate="up" data-delay="110">
+            La clave para que tu decoración se vea “pro” es que los colores se vean armoniosos.
+            Aquí va una guía fácil (sin ser experta) para que elijas rápido.
+          </p>
+
+          <div class="blogart-hero-cta" data-animate="up" data-delay="150">
+            <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+              Ver productos
+            </a>
+
+            <a class="btn btn-secundario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20%C2%BFme%20ayudas%20a%20elegir%20colores%3F%20Evento:%20%20Tema:%20%20Color%20principal:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Ayuda con colores
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CUERPO -->
+    <section class="seccion blogart-wrap" aria-labelledby="contenido-title">
+      <h2 class="sr-only" id="contenido-title">Contenido</h2>
+
+      <div class="blogart-layout">
+
+        <!-- ARTÍCULO -->
+        <article class="blogart-article formulario" data-animate="up">
+          <figure class="blogart-cover">
+            <img src="imgs/blog/blog-14.webp" alt="Elegir colores para decoración personalizada" loading="lazy">
+            <figcaption>2 colores + 1 acento = combinación que casi siempre se ve elegante.</figcaption>
+          </figure>
+
+          <div class="blogart-content">
+            <p>
+              Elegir colores no tiene que ser complicado. La mayoría de los diseños que se ven “premium”
+              siguen una regla sencilla: <strong>pocos colores, bien combinados</strong>.
+            </p>
+
+            <div class="blogart-tip">
+              <strong>Tip rápido:</strong> Si dudas entre muchos colores, quédate con <em>dos</em>.
+              El tercer color úsalo solo como acento (poquito).
+            </div>
+
+            <hr class="blog14-sep">
+
+            <h2 class="blog14-glow">Reglas rápidas (para que combine)</h2>
+            <ul class="blog14-chips">
+              <li class="blog14-chip">🎨 2 colores + 1 acento</li>
+              <li class="blog14-chip">⚪ Neutros siempre ayudan</li>
+              <li class="blog14-chip">✨ Dorado = elegante</li>
+              <li class="blog14-chip">🖼️ Piensa en las fotos</li>
+              <li class="blog14-chip">📏 En piezas grandes: menos color</li>
+              <li class="blog14-chip">🧩 En detalles: sí puedes acentuar</li>
+            </ul>
+
+            <hr class="blog14-sep">
+
+            <h2 class="blog14-glow">Paso a paso para elegir tu paleta</h2>
+
+            <ol class="blog14-steps">
+              <li class="blog14-step">
+                <h3>Elige un color principal</h3>
+                <p>El que domina (ej. rosa, azul, dorado, negro). Ese será el “protagonista”.</p>
+              </li>
+              <li class="blog14-step">
+                <h3>Agrega un neutro</h3>
+                <p>Blanco, negro o beige hacen que todo se vea más limpio y elegante.</p>
+              </li>
+              <li class="blog14-step">
+                <h3>Define un acento (opcional)</h3>
+                <p>Un color para detalles pequeños: letras, contornos, mini decoraciones.</p>
+              </li>
+            </ol>
+
+            <hr class="blog14-sep">
+
+            <h2 class="blog14-glow">Paletas que casi siempre se ven increíbles</h2>
+
+            <div class="blog14-paletas">
+              <div class="blog14-card">
+                <strong>Elegante clásica</strong>
+                <p>Perfecta para boda, XV, eventos de noche.</p>
+                <div class="blog14-dots">
+                  <span class="blog14-dot d1" aria-hidden="true"></span>
+                  <span class="blog14-dot d2" aria-hidden="true"></span>
+                  <span class="blog14-dot d3" aria-hidden="true"></span>
+                  <span class="blog14-dot-label">Negro + Blanco + Dorado</span>
+                </div>
+              </div>
+
+              <div class="blog14-card">
+                <strong>Vibrante moderna</strong>
+                <p>Ideal para cumpleaños con energía y fotos coloridas.</p>
+                <div class="blog14-dots">
+                  <span class="blog14-dot d5" aria-hidden="true"></span>
+                  <span class="blog14-dot d4" aria-hidden="true"></span>
+                  <span class="blog14-dot d2" aria-hidden="true"></span>
+                  <span class="blog14-dot-label">Azul + Naranja + Blanco</span>
+                </div>
+              </div>
+
+              <div class="blog14-card">
+                <strong>Dulce / romántica</strong>
+                <p>Para cumpleaños, baby shower o detalles tiernos.</p>
+                <div class="blog14-dots">
+                  <span class="blog14-dot d6" aria-hidden="true"></span>
+                  <span class="blog14-dot d2" aria-hidden="true"></span>
+                  <span class="blog14-dot d3" aria-hidden="true"></span>
+                  <span class="blog14-dot-label">Rosa + Blanco + Dorado</span>
+                </div>
+              </div>
+
+              <div class="blog14-card">
+                <strong>Fresh (natural)</strong>
+                <p>Se ve súper bien en decoraciones tipo “nature” o minimal.</p>
+                <div class="blog14-dots">
+                  <span class="blog14-dot d7" aria-hidden="true"></span>
+                  <span class="blog14-dot d2" aria-hidden="true"></span>
+                  <span class="blog14-dot d1" aria-hidden="true"></span>
+                  <span class="blog14-dot-label">Verde + Blanco + Negro</span>
+                </div>
+              </div>
+
+              <div class="blog14-card">
+                <strong>Morado protagonista</strong>
+                <p>Para eventos con look glam o temáticos.</p>
+                <div class="blog14-dots">
+                  <span class="blog14-dot d8" aria-hidden="true"></span>
+                  <span class="blog14-dot d2" aria-hidden="true"></span>
+                  <span class="blog14-dot d3" aria-hidden="true"></span>
+                  <span class="blog14-dot-label">Morado + Blanco + Dorado</span>
+                </div>
+              </div>
+
+              <div class="blog14-card">
+                <strong>Minimal “foto perfecta”</strong>
+                <p>Si quieres que todo se vea limpio y moderno.</p>
+                <div class="blog14-dots">
+                  <span class="blog14-dot d2" aria-hidden="true"></span>
+                  <span class="blog14-dot d1" aria-hidden="true"></span>
+                  <span class="blog14-dot d5" aria-hidden="true"></span>
+                  <span class="blog14-dot-label">Blanco + Negro + Azul</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blogart-tip">
+              <strong>Tip pro:</strong> Si tus letras no “se leen” en foto, sube el contraste:
+              texto oscuro sobre fondo claro (o al revés).
+            </div>
+
+            <div class="blogart-cta">
+              <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+                <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+                Ver catálogo
+              </a>
+
+              <a class="btn btn-secundario btn-grande btn-bounce"
+                 href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20cotizar.%20Evento:%20%20Pieza:%20%20Colores%20que%20me%20gustan:%20%20Quiero%20que%20se%20vea:%20(elegante/vibrante/minimal)%20"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                Cotizar con paleta
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ASIDE -->
+        <aside class="blogart-aside" data-animate="up" data-delay="80">
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Atajos</h3>
+            <a class="blogart-link" href="blog.html">← Volver al blog</a>
+            <a class="blogart-link" href="productos.html">Ver catálogo</a>
+            <a class="blogart-link" href="compras.html">Ver carrito / comprar</a>
+          </div>
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">¿Quieres que combine con tu tema?</h3>
+            <p class="blogart-sidep">
+              Mándanos una referencia (invitación/foto) y te sugerimos 2–3 paletas que se vean bonitas.
+            </p>
+
+            <a class="btn btn-primario btn-grande btn-bounce blogart-sidebtn"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20que%20mi%20dise%C3%B1o%20combine.%20Evento:%20%20Tengo%20referencia:%20(s%C3%AD)%20%20Colores%20que%20me%20gustan:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Escribir por WhatsApp
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- RELACIONADOS -->
+    <section class="seccion blogart-related" aria-labelledby="rel-title">
+      <h2 class="titulo-seccion" id="rel-title" data-animate="up">Te puede interesar</h2>
+
+      <div class="blogart-rel-grid" data-animate="up" data-delay="70">
+        <article class="blogart-rel-card">
+          <a href="blog-18.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-18.webp" alt="Cómo convertir una idea sencilla en un diseño increíble" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Cómo convertir una idea sencilla en un diseño increíble</h3>
+            <p>Consejos para aterrizar tu idea: referencias, colores, texto y estilo.</p>
+            <a href="blog-18.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+
+        <article class="blogart-rel-card">
+          <a href="blog-10.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-10.webp" alt="Errores comunes al pedir decoración personalizada" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Errores comunes al pedir decoración personalizada (y cómo evitarlos)</h3>
+            <p>Medidas, fechas y detalles que hacen la diferencia al cotizar.</p>
+            <a href="blog-10.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="blogart-back" data-animate="up" data-delay="110">
+        <a class="btn btn-secundario btn-grande btn-bounce" href="blog.html">← Volver al listado</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
+  </footer>
+
+  <!-- BURBUJAS -->
+  <div class="burbujas">
+    <a href="https://wa.me/528123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Errores comunes al pedir decoración personalizada (y cómo evitarlos): medidas, fechas, colores y detalles que hacen la diferencia al cotizar." />
+  <title>Creaciones MGI | Blog | Errores comunes al pedir decoración personalizada (y cómo evitarlos)</title>
+
+  <!-- CSS general + blog + artículo -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="blog.css" />
+  <link rel="stylesheet" href="blog-articulo.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+
+  <!-- ✅ Extra dinámico SOLO para este artículo -->
+  <style>
+    /* ===========================================
+       BLOG 10 — Extra UI (solo aquí)
+       - Lista de “errores” con número + badge
+       - Card “Solución rápida”
+       - Mini checklist final
+       - Separadores degradados
+       - Ajustes móvil
+    =========================================== */
+
+    .blog10-sep{
+      border: 0;
+      height: 10px;
+      border-radius: 999px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    .blog10-glow{ position: relative; }
+    .blog10-glow::after{
+      content:"";
+      position:absolute;
+      left: 0;
+      bottom: -10px;
+      width: min(380px, 82%);
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    /* Lista de errores */
+    .blog10-list{
+      counter-reset: err;
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .blog10-item{
+      counter-increment: err;
+      position: relative;
+      padding: 14px 14px 14px 64px;
+      border-radius: 20px;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      overflow: hidden;
+    }
+
+    .blog10-item::before{
+      content: counter(err);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 950;
+      color: #fff;
+
+      background:
+        radial-gradient(420px 160px at 18% 10%, rgba(255,159,58,.22), rgba(0,0,0,0) 55%),
+        linear-gradient(90deg, var(--azul), var(--naranja));
+
+      box-shadow:
+        0 18px 34px rgba(37,27,189,.18),
+        0 12px 22px rgba(0,0,0,.12);
+
+      border: 1px solid rgba(255,255,255,.22);
+    }
+
+    .blog10-title{
+      margin: 0 0 6px;
+      font-size: 16.6px;
+      font-weight: 950;
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 0 rgba(255,255,255,.88));
+    }
+
+    .blog10-text{
+      margin: 0;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.6;
+      font-size: 14.8px;
+    }
+
+    .blog10-fix{
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 10px 12px;
+      border-radius: 999px;
+
+      font-weight: 950;
+      font-size: 13px;
+      color: rgba(0,0,0,.78);
+
+      background: linear-gradient(90deg, rgba(37,27,189,.14), rgba(242,138,26,.14));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+    }
+
+    /* Card solución rápida */
+    .blog10-solution{
+      border-radius: 22px;
+      padding: 16px 16px;
+      margin: 12px 0 14px;
+
+      background:
+        radial-gradient(700px 240px at 18% 20%, rgba(242,138,26,.14), rgba(0,0,0,0) 60%),
+        radial-gradient(760px 320px at 72% 10%, rgba(37,27,189,.14), rgba(0,0,0,0) 62%),
+        linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.66));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 20px 40px rgba(0,0,0,.12);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .blog10-solution::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog10-solution h3{
+      margin: 0 0 8px;
+      position: relative;
+      z-index: 2;
+      font-weight: 950;
+      font-size: 16.8px;
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .blog10-solution p{
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.6;
+      font-size: 14.8px;
+    }
+
+    /* Checklist final (chips) */
+    .blog10-chips{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 14px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .blog10-chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 13px;
+      color: rgba(0,0,0,.78);
+
+      background: linear-gradient(90deg, rgba(242,138,26,.16), rgba(37,27,189,.14));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+    }
+
+    @media (max-width: 640px){
+      .blog10-item{ padding: 14px 14px 14px 58px; }
+      .blog10-item::before{ width: 36px; height: 36px; left: 12px; top: 12px; }
+    }
+  </style>
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html" class="activo">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blogart-hero" aria-labelledby="blogart-title">
+      <div class="blogart-hero-card" data-animate="up">
+        <div class="blogart-hero-inner">
+
+          <div class="blogart-kicker" data-animate="fade">Tips</div>
+
+          <h1 class="blogart-title" id="blogart-title" data-animate="up">
+            Errores comunes al pedir decoración personalizada (y cómo evitarlos)
+          </h1>
+
+          <p class="blogart-meta" data-animate="up" data-delay="70">
+            <span class="blogart-pill">Cotización</span>
+            <span class="blogart-pill">Medidas</span>
+            <span class="blogart-pill">Lectura: 6–8 min</span>
+          </p>
+
+          <p class="blogart-lead" data-animate="up" data-delay="110">
+            La mayoría de los problemas al cotizar se resumen en lo mismo: datos incompletos.
+            Aquí van los errores más comunes (y la forma más fácil de evitarlos).
+          </p>
+
+          <div class="blogart-hero-cta" data-animate="up" data-delay="150">
+            <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+              Ver productos
+            </a>
+
+            <a class="btn btn-secundario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20cotizar%20y%20no%20quiero%20equivocarme.%20Evento:%20%20Fecha:%20%20Piezas:%20%20Medidas:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Cotizar sin errores
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CUERPO -->
+    <section class="seccion blogart-wrap" aria-labelledby="contenido-title">
+      <h2 class="sr-only" id="contenido-title">Contenido</h2>
+
+      <div class="blogart-layout">
+
+        <!-- ARTÍCULO -->
+        <article class="blogart-article formulario" data-animate="up">
+          <figure class="blogart-cover">
+            <img src="imgs/blog/blog-10.webp" alt="Errores comunes al pedir decoración personalizada" loading="lazy">
+            <figcaption>Si mandas texto + medida + color + fecha, todo fluye mucho más rápido.</figcaption>
+          </figure>
+
+          <div class="blogart-content">
+            <p>
+              Pedir decoración personalizada es fácil cuando tienes claro lo básico.
+              Estos errores pasan muchísimo (y se pueden evitar en 2 minutos).
+            </p>
+
+            <div class="blogart-tip">
+              <strong>Tip rápido:</strong> antes de enviar mensaje, haz una mini lista: <em>evento + fecha + piezas + medidas + texto + colores</em>.
+            </div>
+
+            <hr class="blog10-sep">
+
+            <h2 class="blog10-glow">Los 8 errores más comunes (y su solución)</h2>
+
+            <ol class="blog10-list">
+              <li class="blog10-item">
+                <h3 class="blog10-title">No decir la fecha del evento</h3>
+                <p class="blog10-text">Sin fecha no se puede priorizar agenda ni sugerir tiempos reales.</p>
+                <div class="blog10-fix">✅ Solución: manda la fecha y cuándo lo necesitas entregar</div>
+              </li>
+
+              <li class="blog10-item">
+                <h3 class="blog10-title">No mandar medidas (o mandarlas “al tanteo”)</h3>
+                <p class="blog10-text">Un letrero puede verse mini o gigante si no se define el ancho.</p>
+                <div class="blog10-fix">✅ Solución: manda el ancho en cm (aunque sea aproximado)</div>
+              </li>
+
+              <li class="blog10-item">
+                <h3 class="blog10-title">Texto incompleto o mal escrito</h3>
+                <p class="blog10-text">Acentos, mayúsculas y “cómo va” el nombre importan.</p>
+                <div class="blog10-fix">✅ Solución: escribe el texto EXACTO como debe quedar</div>
+              </li>
+
+              <li class="blog10-item">
+                <h3 class="blog10-title">Cambiar de idea 5 veces (sin cerrar una versión)</h3>
+                <p class="blog10-text">Se pierde el hilo y se alarga el proceso.</p>
+                <div class="blog10-fix">✅ Solución: elige 1 estilo y 2–3 colores; luego ajustamos</div>
+              </li>
+
+              <li class="blog10-item">
+                <h3 class="blog10-title">Mandar demasiados colores</h3>
+                <p class="blog10-text">Muchos colores se ven recargados y suben el costo.</p>
+                <div class="blog10-fix">✅ Solución: 2 colores + 1 acento (opcional) es suficiente</div>
+              </li>
+
+              <li class="blog10-item">
+                <h3 class="blog10-title">No decir cuántas piezas necesitas</h3>
+                <p class="blog10-text">No es lo mismo 1 centro de mesa que 20.</p>
+                <div class="blog10-fix">✅ Solución: manda la cantidad por pieza (ej. 10 centros)</div>
+              </li>
+
+              <li class="blog10-item">
+                <h3 class="blog10-title">No mandar referencia visual</h3>
+                <p class="blog10-text">Si no hay foto, el “estilo” puede interpretarse distinto.</p>
+                <div class="blog10-fix">✅ Solución: manda 1–2 fotos de referencia o ejemplos</div>
+              </li>
+
+              <li class="blog10-item">
+                <h3 class="blog10-title">Pedir “para mañana” sin considerar producción</h3>
+                <p class="blog10-text">Personalizado requiere tiempo, corte, armado y acabado.</p>
+                <div class="blog10-fix">✅ Solución: pide con anticipación o pregunta por urgencias</div>
+              </li>
+            </ol>
+
+            <hr class="blog10-sep">
+
+            <div class="blog10-solution">
+              <h3>Solución rápida (mensaje perfecto para cotizar)</h3>
+              <p>
+                “Hola, quiero cotizar para <strong>(evento)</strong> el <strong>(fecha)</strong>.
+                Quiero <strong>(piezas y cantidades)</strong>. Medida aprox: <strong>(ancho/alto)</strong>.
+                Texto exacto: <strong>(texto)</strong>. Colores: <strong>(2–3 colores)</strong>.
+                Referencia: <strong>(foto)</strong>.”
+              </p>
+            </div>
+
+            <hr class="blogart-sep">
+
+            <h2 class="blog10-glow">Checklist final (antes de enviar tu mensaje)</h2>
+
+            <ul class="blog10-chips">
+              <li class="blog10-chip">📅 Fecha del evento</li>
+              <li class="blog10-chip">📏 Medidas (cm)</li>
+              <li class="blog10-chip">🔤 Texto exacto</li>
+              <li class="blog10-chip">🎨 Colores (2–3)</li>
+              <li class="blog10-chip">🧩 Piezas y cantidad</li>
+              <li class="blog10-chip">🖼️ Referencia (foto)</li>
+            </ul>
+
+            <div class="blogart-cta">
+              <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+                <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+                Ver catálogo
+              </a>
+
+              <a class="btn btn-secundario btn-grande btn-bounce"
+                 href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20cotizar.%20Evento:%20%20Fecha:%20%20Piezas%20y%20cantidad:%20%20Medidas:%20%20Texto:%20%20Colores:%20%20Referencia:%20"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                Enviar cotización
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ASIDE -->
+        <aside class="blogart-aside" data-animate="up" data-delay="80">
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Atajos</h3>
+            <a class="blogart-link" href="blog.html">← Volver al blog</a>
+            <a class="blogart-link" href="productos.html">Ver catálogo</a>
+            <a class="blogart-link" href="compras.html">Ver carrito / comprar</a>
+          </div>
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Te ayudamos a aterrizar tu idea</h3>
+            <p class="blogart-sidep">
+              Si no tienes medidas exactas, mándanos una foto del espacio y una medida aproximada.
+              Con eso te orientamos rapidísimo.
+            </p>
+
+            <a class="btn btn-primario btn-grande btn-bounce blogart-sidebtn"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20ayuda%20para%20cotizar.%20Evento:%20%20Fecha:%20%20Tengo%20foto%20del%20espacio%20y%20medida%20aprox:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Escribir por WhatsApp
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- RELACIONADOS -->
+    <section class="seccion blogart-related" aria-labelledby="rel-title">
+      <h2 class="titulo-seccion" id="rel-title" data-animate="up">Te puede interesar</h2>
+
+      <div class="blogart-rel-grid" data-animate="up" data-delay="70">
+        <article class="blogart-rel-card">
+          <a href="blog-29.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-29.webp" alt="Cómo cotizar rápido y sin errores (checklist)" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Cómo cotizar rápido y sin errores (checklist)</h3>
+            <p>Lo que necesitas mandar: medidas, colores, texto, fecha y referencias.</p>
+            <a href="blog-29.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+
+        <article class="blogart-rel-card">
+          <a href="blog-27.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-27.webp" alt="Cómo medir correctamente antes de pedir un letrero" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Cómo medir correctamente antes de pedir un letrero</h3>
+            <p>Guía práctica para medir espacios y evitar que el letrero quede pequeño o enorme.</p>
+            <a href="blog-27.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="blogart-back" data-animate="up" data-delay="110">
+        <a class="btn btn-secundario btn-grande btn-bounce" href="blog.html">← Volver al listado</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
+  </footer>
+
+  <!-- BURBUJAS -->
+  <div class="burbujas">
+    <a href="https://wa.me/528123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

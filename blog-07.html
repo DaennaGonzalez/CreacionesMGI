@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Decoración religiosa personalizada para bautizo y primera comunión: ideas delicadas con cruces, palomas, toppers y piezas que se ven súper bonitas." />
+  <title>Creaciones MGI | Blog | Decoración religiosa personalizada: bautizo y primera comunión</title>
+
+  <!-- CSS general + blog + artículo -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="blog.css" />
+  <link rel="stylesheet" href="blog-articulo.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+
+  <!-- ✅ Extra dinámico SOLO para este artículo -->
+  <style>
+    /* ===========================================
+       BLOG 07 — Extra UI (solo aquí)
+       - Números con bolita degradada
+       - Cards “delicado” (paleta y piezas)
+       - Comparativa: Bautizo vs Comunión
+       - Separadores degradados
+       - Ajustes móvil
+    =========================================== */
+
+    .blog7-sep{
+      border: 0;
+      height: 10px;
+      border-radius: 999px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    .blog7-glow{ position: relative; }
+    .blog7-glow::after{
+      content:"";
+      position:absolute;
+      left: 0;
+      bottom: -10px;
+      width: min(340px, 78%);
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    /* Steps */
+    .blog7-steps{
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .blog7-step{
+      counter-increment: step;
+      position: relative;
+
+      padding: 14px 14px 14px 64px;
+      border-radius: 20px;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.10), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.10), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+    }
+
+    .blog7-step::before{
+      content: counter(step);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 950;
+      color: #fff;
+
+      background:
+        radial-gradient(420px 160px at 18% 10%, rgba(255,159,58,.18), rgba(0,0,0,0) 55%),
+        linear-gradient(90deg, var(--azul), var(--naranja));
+
+      box-shadow:
+        0 18px 34px rgba(37,27,189,.18),
+        0 12px 22px rgba(0,0,0,.12);
+
+      border: 1px solid rgba(255,255,255,.22);
+    }
+
+    .blog7-step h3{
+      margin: 0 0 6px;
+      font-size: 16.6px;
+      font-weight: 950;
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 0 rgba(255,255,255,.88));
+    }
+
+    .blog7-step p{
+      margin: 0;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.6;
+      font-size: 14.8px;
+    }
+
+    /* Piezas delicadas (cards) */
+    .blog7-cards{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .blog7-card{
+      border-radius: 20px;
+      padding: 14px 14px;
+      text-align: left;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.10), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.10), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .blog7-card::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog7-pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.78);
+      background: linear-gradient(90deg, rgba(37,27,189,.12), rgba(242,138,26,.12));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 10px;
+    }
+
+    .blog7-card strong{
+      display:block;
+      font-weight: 950;
+      margin-bottom: 6px;
+      color: rgba(0,0,0,.84);
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog7-card span{
+      display:block;
+      font-weight: 650;
+      color: rgba(0,0,0,.72);
+      line-height: 1.5;
+      font-size: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Bautizo vs Comunión */
+    .blog7-compare{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .blog7-box{
+      border-radius: 20px;
+      padding: 14px 14px;
+      text-align: left;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.10), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.10), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .blog7-box::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog7-tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.78);
+      background: linear-gradient(90deg, rgba(242,138,26,.14), rgba(37,27,189,.12));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 10px;
+    }
+
+    .blog7-box ul{
+      margin: 0;
+      padding-left: 18px;
+      position: relative;
+      z-index: 2;
+    }
+    .blog7-box li{
+      margin: 6px 0;
+      color: rgba(0,0,0,.72);
+      font-weight: 650;
+      line-height: 1.55;
+      font-size: 14.2px;
+    }
+
+    @media (max-width: 899px){
+      .blog7-cards{ grid-template-columns: 1fr; }
+      .blog7-compare{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px){
+      .blog7-step{ padding: 14px 14px 14px 58px; }
+      .blog7-step::before{ width: 36px; height: 36px; left: 12px; top: 12px; }
+    }
+  </style>
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html" class="activo">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blogart-hero" aria-labelledby="blogart-title">
+      <div class="blogart-hero-card" data-animate="up">
+        <div class="blogart-hero-inner">
+
+          <div class="blogart-kicker" data-animate="fade">Eventos</div>
+
+          <h1 class="blogart-title" id="blogart-title" data-animate="up">
+            Decoración religiosa personalizada: bautizo y primera comunión
+          </h1>
+
+          <p class="blogart-meta" data-animate="up" data-delay="70">
+            <span class="blogart-pill">Delicado</span>
+            <span class="blogart-pill">MDF & Acrílico</span>
+            <span class="blogart-pill">Lectura: 6–8 min</span>
+          </p>
+
+          <p class="blogart-lead" data-animate="up" data-delay="110">
+            En estos eventos, lo que más luce es lo <strong>limpio</strong> y <strong>delicado</strong>.
+            Con cruces, palomas, flores suaves y tipografías bonitas puedes lograr un montaje súper elegante
+            sin recargar.
+          </p>
+
+          <div class="blogart-hero-cta" data-animate="up" data-delay="150">
+            <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+              Ver productos
+            </a>
+
+            <a class="btn btn-secundario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20decoraci%C3%B3n%20para%20bautizo%20o%20comuni%C3%B3n.%20Tipo:%20%20Fecha:%20%20Colores:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CUERPO -->
+    <section class="seccion blogart-wrap" aria-labelledby="contenido-title">
+      <h2 class="sr-only" id="contenido-title">Contenido</h2>
+
+      <div class="blogart-layout">
+
+        <!-- ARTÍCULO -->
+        <article class="blogart-article formulario" data-animate="up">
+          <figure class="blogart-cover">
+            <img src="imgs/blog/blog-07.webp" alt="Decoración religiosa para bautizo y primera comunión" loading="lazy">
+            <figcaption>La clave: paleta suave + una pieza protagonista + detalles repetidos.</figcaption>
+          </figure>
+
+          <div class="blogart-content">
+            <p>
+              Para bautizo y primera comunión, lo más importante es que todo se vea
+              <strong>armonioso</strong> y fácil de leer. Con MDF y acrílico puedes lograr piezas delicadas
+              que lucen perfectas en fotos.
+            </p>
+
+            <div class="blogart-tip">
+              <strong>Tip rápido:</strong> usa 2–3 colores suaves: blanco, crema, beige, azul cielo, rosa palo, dorado suave.
+              En estos eventos, menos = más.
+            </div>
+
+            <hr class="blog7-sep">
+
+            <h2 class="blog7-glow">Piezas que se ven súper bonitas (y funcionan)</h2>
+
+            <div class="blog7-cards">
+              <div class="blog7-card">
+                <span class="blog7-pill">Top</span>
+                <strong>Topper (cruz / paloma / nombre)</strong>
+                <span>Ideal para pastel o mesa principal. En acrílico se ve muy limpio.</span>
+              </div>
+
+              <div class="blog7-card">
+                <span class="blog7-pill">Pro</span>
+                <strong>Centros de mesa delicados</strong>
+                <span>Con motivo repetido (cruz/paloma). Mantén la misma paleta para coherencia.</span>
+              </div>
+
+              <div class="blog7-card">
+                <span class="blog7-pill">Must</span>
+                <strong>Recuerdos para invitados</strong>
+                <span>Pequeños detalles con nombre + fecha. Se ven lindos y se llevan a casa.</span>
+              </div>
+            </div>
+
+            <hr class="blog7-sep">
+
+            <h2 class="blog7-glow">Bautizo vs Primera Comunión (en qué cambia)</h2>
+
+            <div class="blog7-compare">
+              <div class="blog7-box">
+                <div class="blog7-tag">👶 Bautizo</div>
+                <ul>
+                  <li>Motivos más “suaves”: paloma, angelito, cruz simple.</li>
+                  <li>Colores pastel (azul cielo, rosa palo, crema).</li>
+                  <li>Textos cortos: nombre + fecha.</li>
+                  <li>Recuerdos pequeños: llaveros, toppers mini, placas.</li>
+                </ul>
+              </div>
+
+              <div class="blog7-box">
+                <div class="blog7-tag">⛪ Primera Comunión</div>
+                <ul>
+                  <li>Motivos más “elegantes”: cruz con detalles, cáliz, rosario.</li>
+                  <li>Paleta blanco + dorado / blanco + beige.</li>
+                  <li>Señalética y centros con un look más formal.</li>
+                  <li>Recuerdos: placas o detalles que se sientan “premium”.</li>
+                </ul>
+              </div>
+            </div>
+
+            <hr class="blog7-sep">
+
+            <h2 class="blog7-glow">Paso a paso para que tu decoración se vea limpia</h2>
+
+            <ol class="blog7-steps">
+              <li class="blog7-step">
+                <h3>Elige 2–3 colores</h3>
+                <p>Blanco + crema + dorado suave es el combo más seguro para un look elegante.</p>
+              </li>
+
+              <li class="blog7-step">
+                <h3>Define el motivo principal</h3>
+                <p>Paloma o cruz (y lo repites en 2–3 piezas). Eso amarra el diseño.</p>
+              </li>
+
+              <li class="blog7-step">
+                <h3>Haz una pieza protagonista</h3>
+                <p>Un topper grande o un letrero con nombre. Lo demás acompaña.</p>
+              </li>
+
+              <li class="blog7-step">
+                <h3>Tipografía legible</h3>
+                <p>Evita letras demasiado “cursivas” si el texto va a leerse de lejos.</p>
+              </li>
+
+              <li class="blog7-step">
+                <h3>Deja aire (no satures)</h3>
+                <p>Si todo está lleno de detalles, se ve pesado. Mejor pocas piezas bien colocadas.</p>
+              </li>
+            </ol>
+
+            <div class="blogart-tip">
+              <strong>Tip pro:</strong> Para fotos, acrílico transparente con letras blancas o doradas se ve súper “pro” y combina con todo.
+            </div>
+
+            <hr class="blogart-sep">
+
+            <h2 class="blog7-glow">Checklist para cotizar rápido</h2>
+
+            <ol class="blog7-steps">
+              <li class="blog7-step">
+                <h3>¿Bautizo o comunión?</h3>
+                <p>Y la fecha del evento.</p>
+              </li>
+              <li class="blog7-step">
+                <h3>Nombre + fecha exacta</h3>
+                <p>Tal cual debe ir en la pieza.</p>
+              </li>
+              <li class="blog7-step">
+                <h3>Colores</h3>
+                <p>Ej. blanco/crema/dorado o blanco/azul cielo.</p>
+              </li>
+              <li class="blog7-step">
+                <h3>Qué piezas quieres</h3>
+                <p>Topper, centros, recuerdos, señalética, etc.</p>
+              </li>
+            </ol>
+
+            <div class="blogart-cta">
+              <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+                <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+                Ver catálogo
+              </a>
+
+              <a class="btn btn-secundario btn-grande btn-bounce"
+                 href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20decoraci%C3%B3n%20religiosa.%20Tipo:%20%20Fecha:%20%20Nombre:%20%20Colores:%20%20Piezas:%20"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                Pedir propuesta
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ASIDE -->
+        <aside class="blogart-aside" data-animate="up" data-delay="80">
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Atajos</h3>
+            <a class="blogart-link" href="blog.html">← Volver al blog</a>
+            <a class="blogart-link" href="productos.html">Ver catálogo</a>
+            <a class="blogart-link" href="compras.html">Ver carrito / comprar</a>
+          </div>
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Te lo armamos delicadito</h3>
+            <p class="blogart-sidep">
+              Dinos el <strong>tipo</strong> (bautizo/comunión), <strong>colores</strong> y <strong>nombre</strong>.
+              Te sugerimos piezas que se vean bonitas y limpias.
+            </p>
+
+            <a class="btn btn-primario btn-grande btn-bounce blogart-sidebtn"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20propuesta%20para%20bautizo/comuni%C3%B3n.%20Tipo:%20%20Colores:%20%20Nombre:%20%20Fecha:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Escribir por WhatsApp
+            </a>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- RELACIONADOS -->
+    <section class="seccion blogart-related" aria-labelledby="rel-title">
+      <h2 class="titulo-seccion" id="rel-title" data-animate="up">Te puede interesar</h2>
+
+      <div class="blogart-rel-grid" data-animate="up" data-delay="70">
+        <article class="blogart-rel-card">
+          <a href="blog-04.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-04.webp" alt="Ideas para mesas de dulces con letreros" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Ideas para mesas de dulces con letreros personalizados</h3>
+            <p>Qué piezas sí o sí necesitas para que tu mesa se vea completa e impactante en fotos.</p>
+            <a href="blog-04.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+
+        <article class="blogart-rel-card">
+          <a href="blog-11.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-11.webp" alt="MDF vs Acrílico: cuál elegir" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>MDF vs Acrílico: ¿cuál elegir para tu diseño?</h3>
+            <p>Comparación clara: estética, precio, durabilidad y uso ideal en cada material.</p>
+            <a href="blog-11.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="blogart-back" data-animate="up" data-delay="110">
+        <a class="btn btn-secundario btn-grande btn-bounce" href="blog.html">← Volver al listado</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
+  </footer>
+
+  <!-- BURBUJAS -->
+  <div class="burbujas">
+    <a href="https://wa.me/528123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

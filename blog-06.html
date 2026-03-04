@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Qué detalles hacen que un XV años se vea inolvidable: caja para sobres, centros de mesa y letreros. El combo que siempre luce increíble." />
+  <title>Creaciones MGI | Blog | Qué detalles hacen que un XV años se vea inolvidable</title>
+
+  <!-- CSS general + blog + artículo -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="blog.css" />
+  <link rel="stylesheet" href="blog-articulo.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+
+  <!-- ✅ Extra dinámico SOLO para este artículo -->
+  <style>
+    /* ===========================================
+       BLOG 06 — Extra UI (solo aquí)
+       - Números con bolita degradada
+       - “Combo” cards (lo que sí luce)
+       - Timeline mini para ordenar compra
+       - Separadores degradados
+       - Ajustes móvil
+    =========================================== */
+
+    .blog6-sep{
+      border: 0;
+      height: 10px;
+      border-radius: 999px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    .blog6-glow{ position: relative; }
+    .blog6-glow::after{
+      content:"";
+      position:absolute;
+      left: 0;
+      bottom: -10px;
+      width: min(320px, 74%);
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    /* Combo cards */
+    .blog6-combo{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .blog6-card{
+      border-radius: 20px;
+      padding: 14px 14px;
+      text-align: left;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog6-card::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog6-tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.78);
+      background: linear-gradient(90deg, rgba(242,138,26,.16), rgba(37,27,189,.14));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 10px;
+    }
+
+    .blog6-card strong{
+      display:block;
+      font-weight: 950;
+      margin-bottom: 6px;
+      color: rgba(0,0,0,.84);
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog6-card span{
+      display:block;
+      font-weight: 650;
+      color: rgba(0,0,0,.72);
+      line-height: 1.5;
+      font-size: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Steps con bolita */
+    .blog6-steps{
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .blog6-step{
+      counter-increment: step;
+      position: relative;
+      padding: 14px 14px 14px 64px;
+      border-radius: 20px;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+    }
+
+    .blog6-step::before{
+      content: counter(step);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 950;
+      color: #fff;
+      background:
+        radial-gradient(420px 160px at 18% 10%, rgba(255,159,58,.22), rgba(0,0,0,0) 55%),
+        linear-gradient(90deg, var(--azul), var(--naranja));
+      box-shadow:
+        0 18px 34px rgba(37,27,189,.18),
+        0 12px 22px rgba(0,0,0,.12);
+      border: 1px solid rgba(255,255,255,.22);
+    }
+
+    .blog6-step h3{
+      margin: 0 0 6px;
+      font-size: 16.6px;
+      font-weight: 950;
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 0 rgba(255,255,255,.88));
+    }
+
+    .blog6-step p{
+      margin: 0;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.6;
+      font-size: 14.8px;
+    }
+
+    /* Timeline mini */
+    .blog6-timeline{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .blog6-time{
+      border-radius: 20px;
+      padding: 14px 14px;
+      text-align: left;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .blog6-time::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog6-time b{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.78);
+      background: linear-gradient(90deg, rgba(37,27,189,.14), rgba(242,138,26,.14));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 10px;
+    }
+
+    .blog6-time p{
+      margin: 0;
+      color: rgba(0,0,0,.72);
+      font-weight: 650;
+      line-height: 1.55;
+      font-size: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 899px){
+      .blog6-combo{ grid-template-columns: 1fr; }
+      .blog6-timeline{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px){
+      .blog6-step{ padding: 14px 14px 14px 58px; }
+      .blog6-step::before{ width: 36px; height: 36px; left: 12px; top: 12px; }
+    }
+  </style>
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html" class="activo">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blogart-hero" aria-labelledby="blogart-title">
+      <div class="blogart-hero-card" data-animate="up">
+        <div class="blogart-hero-inner">
+
+          <div class="blogart-kicker" data-animate="fade">XV</div>
+
+          <h1 class="blogart-title" id="blogart-title" data-animate="up">
+            Qué detalles hacen que un XV años se vea inolvidable
+          </h1>
+
+          <p class="blogart-meta" data-animate="up" data-delay="70">
+            <span class="blogart-pill">Combo ganador</span>
+            <span class="blogart-pill">Fotos top</span>
+            <span class="blogart-pill">Lectura: 6–8 min</span>
+          </p>
+
+          <p class="blogart-lead" data-animate="up" data-delay="110">
+            Un XV se ve espectacular cuando los detalles se sienten <strong>coordinados</strong>.
+            Aquí va el combo que casi siempre funciona: <strong>caja para sobres</strong> + <strong>centros de mesa</strong> + <strong>letrero</strong>.
+            Lo demás se arma alrededor.
+          </p>
+
+          <div class="blogart-hero-cta" data-animate="up" data-delay="150">
+            <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+              Ver productos
+            </a>
+
+            <a class="btn btn-secundario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20decoraci%C3%B3n%20para%20XV.%20Tema:%20%20Colores:%20%20Fecha:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CUERPO -->
+    <section class="seccion blogart-wrap" aria-labelledby="contenido-title">
+      <h2 class="sr-only" id="contenido-title">Contenido</h2>
+
+      <div class="blogart-layout">
+
+        <!-- ARTÍCULO -->
+        <article class="blogart-article formulario" data-animate="up">
+          <figure class="blogart-cover">
+            <img src="imgs/blog/blog-06.webp" alt="Detalles para XV años en MDF y acrílico" loading="lazy">
+            <figcaption>El secreto está en repetir estilo y dar jerarquía: una pieza protagonista y complementos.</figcaption>
+          </figure>
+
+          <div class="blogart-content">
+            <p>
+              Para que un XV se vea “de revista”, no necesitas demasiadas cosas.
+              Necesitas <strong>una base sólida</strong> y piezas que “conecten” entre sí.
+            </p>
+
+            <div class="blogart-tip">
+              <strong>Tip rápido:</strong> Elige 2–3 colores y repítelos en TODAS las piezas (letrero, centros, caja de sobres).
+              Eso hace que se vea “diseñado”.
+            </div>
+
+            <hr class="blog6-sep">
+
+            <h2 class="blog6-glow">El combo ganador (lo que siempre luce)</h2>
+
+            <div class="blog6-combo">
+              <div class="blog6-card">
+                <span class="blog6-tag">Pieza 1</span>
+                <strong>Caja para sobres (protagonista)</strong>
+                <span>Va en mesa principal o mesa de regalos. Ideal con nombre + “XV” + fecha.</span>
+              </div>
+
+              <div class="blog6-card">
+                <span class="blog6-tag">Pieza 2</span>
+                <strong>Centros de mesa (coherencia)</strong>
+                <span>3–6 diseños máximo. Repite el motivo (corona/estrellas/flores) y colores.</span>
+              </div>
+
+              <div class="blog6-card">
+                <span class="blog6-tag">Pieza 3</span>
+                <strong>Letrero principal (fotos)</strong>
+                <span>Nombre o frase. Va en fondo, entrada o mesa de dulces.</span>
+              </div>
+            </div>
+
+            <hr class="blog6-sep">
+
+            <h2 class="blog6-glow">Paso a paso para que se vea “premium”</h2>
+
+            <ol class="blog6-steps">
+              <li class="blog6-step">
+                <h3>Define tu estilo</h3>
+                <p>Glam, minimal, floral, boho, vintage. Solo elige UNO (y no lo mezcles).</p>
+              </li>
+
+              <li class="blog6-step">
+                <h3>Elige paleta (2–3 colores)</h3>
+                <p>Ej: lila + blanco + dorado. O azul + plata + blanco.</p>
+              </li>
+
+              <li class="blog6-step">
+                <h3>Repite un motivo</h3>
+                <p>Corona, mariposas, flores, estrellas… Repite en 2–3 piezas y listo.</p>
+              </li>
+
+              <li class="blog6-step">
+                <h3>Un solo protagonista</h3>
+                <p>La caja de sobres o el letrero. Lo demás acompaña.</p>
+              </li>
+
+              <li class="blog6-step">
+                <h3>Acabado que se note</h3>
+                <p>MDF + acrílico (capas 3D) hace que se vea más caro y limpio.</p>
+              </li>
+            </ol>
+
+            <div class="blogart-tip">
+              <strong>Tip pro:</strong> Si quieres “wow” en fotos, mete una pieza con brillo (acrílico espejo o un detalle metálico).
+              Solo una. Si pones muchas, se pierde el efecto.
+            </div>
+
+            <hr class="blog6-sep">
+
+            <h2 class="blog6-glow">Cuándo pedirlo (mini timeline)</h2>
+            <p>Para que no te agarre el tiempo encima:</p>
+
+            <div class="blog6-timeline">
+              <div class="blog6-time">
+                <b>3–5 semanas antes</b>
+                <p>Elegir tema, colores y textos. Mandar referencias.</p>
+              </div>
+
+              <div class="blog6-time">
+                <b>2–3 semanas antes</b>
+                <p>Confirmar medidas y cantidad de centros de mesa.</p>
+              </div>
+
+              <div class="blog6-time">
+                <b>1–2 semanas antes</b>
+                <p>Producción final y revisiones rápidas.</p>
+              </div>
+
+              <div class="blog6-time">
+                <b>3–7 días antes</b>
+                <p>Entrega / envío y pruebas de acomodo (si aplica).</p>
+              </div>
+            </div>
+
+            <hr class="blogart-sep">
+
+            <h2 class="blog6-glow">Checklist para cotizar rapidísimo</h2>
+
+            <ol class="blog6-steps">
+              <li class="blog6-step">
+                <h3>Tema y colores</h3>
+                <p>Ej. “Mariposas” + lila/blanco/dorado.</p>
+              </li>
+
+              <li class="blog6-step">
+                <h3>Textos exactos</h3>
+                <p>Nombre, “XV”, fecha y cualquier frase.</p>
+              </li>
+
+              <li class="blog6-step">
+                <h3>Qué piezas quieres</h3>
+                <p>Caja sobres + letrero + centros (y cuántos centros).</p>
+              </li>
+
+              <li class="blog6-step">
+                <h3>Fecha del evento</h3>
+                <p>Para organizar agenda y entrega.</p>
+              </li>
+            </ol>
+
+            <div class="blogart-cta">
+              <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+                <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+                Ver catálogo
+              </a>
+
+              <a class="btn btn-secundario btn-grande btn-bounce"
+                 href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20decoraci%C3%B3n%20para%20XV.%20Tema:%20%20Colores:%20%20Textos:%20%20Piezas:%20%20Fecha:%20"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                Pedir propuesta
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ASIDE -->
+        <aside class="blogart-aside" data-animate="up" data-delay="80">
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Atajos</h3>
+            <a class="blogart-link" href="blog.html">← Volver al blog</a>
+            <a class="blogart-link" href="productos.html">Ver catálogo</a>
+            <a class="blogart-link" href="compras.html">Ver carrito / comprar</a>
+          </div>
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Te armamos el combo ideal</h3>
+            <p class="blogart-sidep">
+              Dinos tu <strong>tema</strong>, <strong>colores</strong> y <strong>fecha</strong>. Te sugerimos piezas que se vean súper bonitas en fotos.
+            </p>
+
+            <a class="btn btn-primario btn-grande btn-bounce blogart-sidebtn"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20combo%20para%20XV.%20Tema:%20%20Colores:%20%20Fecha:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Escribir por WhatsApp
+            </a>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- RELACIONADOS -->
+    <section class="seccion blogart-related" aria-labelledby="rel-title">
+      <h2 class="titulo-seccion" id="rel-title" data-animate="up">Te puede interesar</h2>
+
+      <div class="blogart-rel-grid" data-animate="up" data-delay="70">
+        <article class="blogart-rel-card">
+          <a href="blog-02.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-02.webp" alt="Cómo elegir la caja perfecta para sobres" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Cómo elegir la caja perfecta para sobres: XV vs Boda</h3>
+            <p>Medidas, estilos y tips para que tu caja se vea elegante y funcional.</p>
+            <a href="blog-02.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+
+        <article class="blogart-rel-card">
+          <a href="blog-04.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-04.webp" alt="Ideas para mesas de dulces con letreros" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Ideas para mesas de dulces con letreros personalizados</h3>
+            <p>Qué piezas sí o sí necesitas para que tu mesa se vea completa e impactante en fotos.</p>
+            <a href="blog-04.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="blogart-back" data-animate="up" data-delay="110">
+        <a class="btn btn-secundario btn-grande btn-bounce" href="blog.html">← Volver al listado</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
+  </footer>
+
+  <!-- BURBUJAS -->
+  <div class="burbujas">
+    <a href="https://wa.me/528123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cómo personalizar un letrero con nombre: guía rápida. Qué datos enviar, tipografías, medidas y colores para que quede perfecto." />
+  <title>Creaciones MGI | Blog | Cómo personalizar un letrero con nombre: guía rápida</title>
+
+  <!-- CSS general + blog + artículo -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="blog.css" />
+  <link rel="stylesheet" href="blog-articulo.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+
+  <!-- ✅ Extra dinámico SOLO para este artículo -->
+  <style>
+    /* ===========================================
+       BLOG 09 — Extra UI (solo aquí)
+       - Números con bolita degradada
+       - “Checklist rápido” con chips
+       - Ejemplos listos para copiar (mini cards)
+       - Separadores degradados
+       - Ajustes móvil
+    =========================================== */
+
+    .blog9-sep{
+      border: 0;
+      height: 10px;
+      border-radius: 999px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    .blog9-glow{ position: relative; }
+    .blog9-glow::after{
+      content:"";
+      position:absolute;
+      left: 0;
+      bottom: -10px;
+      width: min(360px, 78%);
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    /* Steps */
+    .blog9-steps{
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .blog9-step{
+      counter-increment: step;
+      position: relative;
+      padding: 14px 14px 14px 64px;
+      border-radius: 20px;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+    }
+
+    .blog9-step::before{
+      content: counter(step);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 950;
+      color: #fff;
+
+      background:
+        radial-gradient(420px 160px at 18% 10%, rgba(255,159,58,.22), rgba(0,0,0,0) 55%),
+        linear-gradient(90deg, var(--azul), var(--naranja));
+
+      box-shadow:
+        0 18px 34px rgba(37,27,189,.18),
+        0 12px 22px rgba(0,0,0,.12);
+
+      border: 1px solid rgba(255,255,255,.22);
+    }
+
+    .blog9-step h3{
+      margin: 0 0 6px;
+      font-size: 16.6px;
+      font-weight: 950;
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 0 rgba(255,255,255,.88));
+    }
+
+    .blog9-step p{
+      margin: 0;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.6;
+      font-size: 14.8px;
+    }
+
+    /* Chips */
+    .blog9-chips{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 14px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .blog9-chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 13px;
+      color: rgba(0,0,0,.78);
+
+      background: linear-gradient(90deg, rgba(242,138,26,.16), rgba(37,27,189,.14));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+    }
+
+    /* Ejemplos listos */
+    .blog9-examples{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .blog9-card{
+      border-radius: 20px;
+      padding: 14px 14px;
+      text-align: left;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .blog9-card::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog9-card strong{
+      display:block;
+      margin: 0 0 8px;
+      font-weight: 950;
+      color: rgba(0,0,0,.84);
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog9-card pre{
+      margin: 0;
+      position: relative;
+      z-index: 2;
+
+      white-space: pre-wrap;
+      word-break: break-word;
+
+      border-radius: 14px;
+      padding: 12px 12px;
+
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13px;
+      color: rgba(0,0,0,.80);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 899px){
+      .blog9-examples{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px){
+      .blog9-step{ padding: 14px 14px 14px 58px; }
+      .blog9-step::before{ width: 36px; height: 36px; left: 12px; top: 12px; }
+    }
+  </style>
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html" class="activo">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blogart-hero" aria-labelledby="blogart-title">
+      <div class="blogart-hero-card" data-animate="up">
+        <div class="blogart-hero-inner">
+
+          <div class="blogart-kicker" data-animate="fade">Tips</div>
+
+          <h1 class="blogart-title" id="blogart-title" data-animate="up">
+            Cómo personalizar un letrero con nombre: guía rápida
+          </h1>
+
+          <p class="blogart-meta" data-animate="up" data-delay="70">
+            <span class="blogart-pill">Letreros</span>
+            <span class="blogart-pill">Nombre</span>
+            <span class="blogart-pill">Lectura: 5–7 min</span>
+          </p>
+
+          <p class="blogart-lead" data-animate="up" data-delay="110">
+            Para que tu letrero quede perfecto, lo más importante es mandar los datos correctos:
+            <strong>texto</strong>, <strong>medida</strong>, <strong>color</strong> y <strong>estilo</strong>.
+            Aquí va una guía clarita (y rápida).
+          </p>
+
+          <div class="blogart-hero-cta" data-animate="up" data-delay="150">
+            <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+              Ver productos
+            </a>
+
+            <a class="btn btn-secundario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20un%20letrero%20con%20nombre.%20Texto:%20%20Medida:%20%20Color:%20%20Estilo:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Cotizar por WhatsApp
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CUERPO -->
+    <section class="seccion blogart-wrap" aria-labelledby="contenido-title">
+      <h2 class="sr-only" id="contenido-title">Contenido</h2>
+
+      <div class="blogart-layout">
+
+        <!-- ARTÍCULO -->
+        <article class="blogart-article formulario" data-animate="up">
+          <figure class="blogart-cover">
+            <img src="imgs/blog/blog-09.webp" alt="Letrero con nombre personalizado" loading="lazy">
+            <figcaption>Mientras más claro envíes el texto y medida, más rápido se cotiza y queda mejor.</figcaption>
+          </figure>
+
+          <div class="blogart-content">
+            <p>
+              Un letrero con nombre se ve increíble en fondo de fotos, mesa principal o cuarto.
+              Pero para que quede <strong>del tamaño correcto</strong> y con el <strong>estilo que imaginas</strong>,
+              necesitamos ciertos datos.
+            </p>
+
+            <div class="blogart-tip">
+              <strong>Tip rápido:</strong> si no sabes la medida exacta, manda una foto del lugar con referencia
+              (ej. una silla/mesa) y una medida aproximada del ancho disponible.
+            </div>
+
+            <hr class="blog9-sep">
+
+            <h2 class="blog9-glow">Checklist rápido (lo que debes mandar)</h2>
+
+            <ul class="blog9-chips">
+              <li class="blog9-chip">✅ Texto exacto</li>
+              <li class="blog9-chip">✅ Medida (ancho)</li>
+              <li class="blog9-chip">✅ Color(es)</li>
+              <li class="blog9-chip">✅ Estilo / referencia</li>
+              <li class="blog9-chip">✅ Fecha de evento</li>
+            </ul>
+
+            <hr class="blog9-sep">
+
+            <h2 class="blog9-glow">Paso a paso (sin errores)</h2>
+
+            <ol class="blog9-steps">
+              <li class="blog9-step">
+                <h3>Escribe el texto EXACTO</h3>
+                <p>Ej. “Valentina” (con mayúsculas y acentos si aplica). Así evitamos confusiones.</p>
+              </li>
+
+              <li class="blog9-step">
+                <h3>Define la medida (ancho)</h3>
+                <p>Ej. 60 cm, 80 cm, 90 cm. Si es para fondo, mide el espacio donde irá.</p>
+              </li>
+
+              <li class="blog9-step">
+                <h3>Elige el color</h3>
+                <p>Un color sólido se ve limpio. Si quieres contraste, hacemos capas (MDF + acrílico).</p>
+              </li>
+
+              <li class="blog9-step">
+                <h3>Elige el estilo / tipografía</h3>
+                <p>Si tienes referencia (foto), envíala. Si no, dinos: elegante / moderno / romántico / divertido.</p>
+              </li>
+
+              <li class="blog9-step">
+                <h3>Indica dónde lo usarás</h3>
+                <p>Fondo, mesa, pared, cuarto. Eso define grosor, soporte y acabado.</p>
+              </li>
+            </ol>
+
+            <hr class="blog9-sep">
+
+            <h2 class="blog9-glow">Ejemplos listos para copiar y pegar</h2>
+
+            <div class="blog9-examples">
+              <div class="blog9-card">
+                <strong>Ejemplo 1 (cumple / fondo)</strong>
+                <pre>Quiero un letrero con nombre:
+Texto: “Valentina”
+Ancho: 80 cm
+Color: blanco + dorado (capas)
+Estilo: elegante (tipo script)
+Uso: fondo de fotos
+Fecha: 12/04/2026</pre>
+              </div>
+
+              <div class="blog9-card">
+                <strong>Ejemplo 2 (cuarto / pared)</strong>
+                <pre>Quiero un nombre para pared:
+Texto: “Mateo”
+Ancho: 60 cm
+Color: azul rey
+Estilo: moderno (letra limpia)
+Uso: cuarto
+Fecha: no aplica (solo decoración)</pre>
+              </div>
+            </div>
+
+            <div class="blogart-tip">
+              <strong>Tip pro:</strong> Si el nombre es largo (ej. “María Fernanda”), sube de medida para que no se vea “apretado”.
+              Como guía: 80–90 cm suele verse muy bien en fotos.
+            </div>
+
+            <hr class="blogart-sep">
+
+            <h2 class="blog9-glow">¿Qué pasa si no tengo idea de colores?</h2>
+            <p>
+              No pasa nada. Dinos el tema (ej. mariposas, minimal, boho) y el color de tu evento (globos, manteles)
+              y te proponemos combinaciones.
+            </p>
+
+            <div class="blogart-cta">
+              <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+                <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+                Ver catálogo
+              </a>
+
+              <a class="btn btn-secundario btn-grande btn-bounce"
+                 href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20un%20letrero%20con%20nombre.%20Texto:%20%20Medida:%20%20Color:%20%20Estilo:%20%20Fecha:%20"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                Cotizar ahora
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ASIDE -->
+        <aside class="blogart-aside" data-animate="up" data-delay="80">
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Atajos</h3>
+            <a class="blogart-link" href="blog.html">← Volver al blog</a>
+            <a class="blogart-link" href="productos.html">Ver catálogo</a>
+            <a class="blogart-link" href="compras.html">Ver carrito / comprar</a>
+          </div>
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Te lo cotizamos súper rápido</h3>
+            <p class="blogart-sidep">
+              Envíanos: <strong>texto</strong> + <strong>ancho</strong> + <strong>color</strong> + <strong>referencia</strong>.
+              Si no tienes referencia, dinos el estilo.
+            </p>
+
+            <a class="btn btn-primario btn-grande btn-bounce blogart-sidebtn"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20un%20letrero%20con%20nombre.%20Texto:%20%20Ancho:%20%20Color:%20%20Estilo:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Escribir por WhatsApp
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- RELACIONADOS -->
+    <section class="seccion blogart-related" aria-labelledby="rel-title">
+      <h2 class="titulo-seccion" id="rel-title" data-animate="up">Te puede interesar</h2>
+
+      <div class="blogart-rel-grid" data-animate="up" data-delay="70">
+        <article class="blogart-rel-card">
+          <a href="blog-27.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-27.webp" alt="Cómo medir correctamente antes de pedir un letrero" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Cómo medir correctamente antes de pedir un letrero</h3>
+            <p>Guía práctica para medir espacios y evitar que el letrero quede pequeño o enorme.</p>
+            <a href="blog-27.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+
+        <article class="blogart-rel-card">
+          <a href="blog-11.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-11.webp" alt="MDF vs Acrílico: cuál elegir" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>MDF vs Acrílico: ¿cuál elegir para tu diseño?</h3>
+            <p>Comparación clara: estética, precio, durabilidad y uso ideal en cada material.</p>
+            <a href="blog-11.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="blogart-back" data-animate="up" data-delay="110">
+        <a class="btn btn-secundario btn-grande btn-bounce" href="blog.html">← Volver al listado</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
+  </footer>
+
+  <!-- BURBUJAS -->
+  <div class="burbujas">
+    <a href="https://wa.me/528123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

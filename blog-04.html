@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ideas para mesas de dulces con letreros personalizados. Qué piezas sí o sí necesitas para que tu mesa se vea completa e impactante en fotos." />
+  <title>Creaciones MGI | Blog | Ideas para mesas de dulces con letreros personalizados</title>
+
+  <!-- CSS general + blog + artículo -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="blog.css" />
+  <link rel="stylesheet" href="blog-articulo.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+
+  <!-- ✅ Extra dinámico SOLO para este artículo (mismo vibe que blog-03) -->
+  <style>
+    /* ===========================================
+       BLOG 04 — Extra UI (solo aquí)
+       - Checklist premium
+       - Números con bolita degradada
+       - “Layout en capas” para organizar la mesa
+       - Separadores degradados
+       - Ajustes móvil
+    =========================================== */
+
+    .blog4-sep{
+      border: 0;
+      height: 10px;
+      border-radius: 999px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    /* Glow debajo de títulos */
+    .blog4-glow{
+      position: relative;
+    }
+    .blog4-glow::after{
+      content:"";
+      position:absolute;
+      left: 0;
+      bottom: -10px;
+      width: min(300px, 74%);
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    /* Checklist cards */
+    .blog4-checkgrid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .blog4-check{
+      border-radius: 20px;
+      padding: 14px 14px;
+      text-align: left;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog4-check::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog4-check strong{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 950;
+      margin-bottom: 6px;
+      color: rgba(0,0,0,.84);
+    }
+
+    .blog4-dot{
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      box-shadow: 0 14px 24px rgba(0,0,0,.10);
+      flex: 0 0 auto;
+      border: 1px solid rgba(255,255,255,.22);
+    }
+
+    .blog4-check span{
+      display:block;
+      font-weight: 650;
+      color: rgba(0,0,0,.72);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    /* Pasos numerados con bolita */
+    .blog4-steps{
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .blog4-step{
+      counter-increment: step;
+      position: relative;
+
+      padding: 14px 14px 14px 64px;
+      border-radius: 20px;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+    }
+
+    .blog4-step::before{
+      content: counter(step);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 950;
+      color: #fff;
+
+      background:
+        radial-gradient(420px 160px at 18% 10%, rgba(255,159,58,.22), rgba(0,0,0,0) 55%),
+        linear-gradient(90deg, var(--azul), var(--naranja));
+
+      box-shadow:
+        0 18px 34px rgba(37,27,189,.18),
+        0 12px 22px rgba(0,0,0,.12);
+
+      border: 1px solid rgba(255,255,255,.22);
+    }
+
+    .blog4-step h3{
+      margin: 0 0 6px;
+      font-size: 16.6px;
+      font-weight: 950;
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 0 rgba(255,255,255,.88));
+    }
+
+    .blog4-step p{
+      margin: 0;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.6;
+      font-size: 14.8px;
+    }
+
+    /* “Estructura” en 3 capas */
+    .blog4-layers{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .blog4-layer{
+      border-radius: 20px;
+      padding: 14px 14px;
+      text-align: left;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .blog4-layer::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog4-layer b{
+      display:block;
+      font-weight: 950;
+      color: rgba(0,0,0,.84);
+      margin-bottom: 6px;
+    }
+    .blog4-layer small{
+      display:block;
+      font-weight: 650;
+      color: rgba(0,0,0,.72);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    @media (max-width: 899px){
+      .blog4-checkgrid{ grid-template-columns: 1fr; }
+      .blog4-layers{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px){
+      .blog4-step{ padding: 14px 14px 14px 58px; }
+      .blog4-step::before{
+        width: 36px; height: 36px; left: 12px; top: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html" class="activo">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blogart-hero" aria-labelledby="blogart-title">
+      <div class="blogart-hero-card" data-animate="up">
+
+        <div class="blogart-hero-inner">
+          <div class="blogart-kicker" data-animate="fade">Eventos</div>
+
+          <h1 class="blogart-title" id="blogart-title" data-animate="up">
+            Ideas para mesas de dulces con letreros personalizados
+          </h1>
+
+          <p class="blogart-meta" data-animate="up" data-delay="70">
+            <span class="blogart-pill">Mesa de dulces</span>
+            <span class="blogart-pill">Fotos bonitas</span>
+            <span class="blogart-pill">Lectura: 6–8 min</span>
+          </p>
+
+          <p class="blogart-lead" data-animate="up" data-delay="110">
+            La mesa de dulces se ve increíble cuando tiene <strong>estructura</strong>:
+            un punto focal fuerte, piezas que conecten el tema y detalles que se vean bien en cámara.
+            Aquí va lo que sí funciona (sin recargar).
+          </p>
+
+          <div class="blogart-hero-cta" data-animate="up" data-delay="150">
+            <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+              Ver productos
+            </a>
+
+            <a class="btn btn-secundario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20decoraci%C3%B3n%20para%20mi%20mesa%20de%20dulces.%20Tema:%20%20Colores:%20%20Fecha:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Armar propuesta
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CUERPO -->
+    <section class="seccion blogart-wrap" aria-labelledby="contenido-title">
+      <h2 class="sr-only" id="contenido-title">Contenido</h2>
+
+      <div class="blogart-layout">
+
+        <!-- ARTÍCULO -->
+        <article class="blogart-article formulario" data-animate="up">
+          <figure class="blogart-cover">
+            <img src="imgs/blog/blog-04.webp" alt="Mesa de dulces con letrero personalizado" loading="lazy">
+            <figcaption>Con pocas piezas bien elegidas, tu mesa se ve completa y premium.</figcaption>
+          </figure>
+
+          <div class="blogart-content">
+            <p>
+              Para que tu mesa se vea “armada”, piensa en esto:
+              <strong>fondo</strong> + <strong>letrero protagonista</strong> + <strong>altura</strong> + <strong>piezas clave</strong>.
+              No necesitas 30 cosas. Necesitas las correctas.
+            </p>
+
+            <div class="blogart-tip">
+              <strong>Tip rápido:</strong> La cámara ama el contraste. Si tu fondo es claro, el letrero puede ir en acrílico o color fuerte.
+              Si el fondo es oscuro, usa letras claras y detalles metálicos.
+            </div>
+
+            <hr class="blog4-sep">
+
+            <h2 class="blog4-glow">Las piezas que SÍ o SÍ necesitas</h2>
+
+            <div class="blog4-checkgrid">
+              <div class="blog4-check">
+                <strong><span class="blog4-dot"></span> Letrero principal</strong>
+                <span>Nombre / “Happy Birthday” / “Mis XV” / “Bienvenidos”. Es el punto focal.</span>
+              </div>
+
+              <div class="blog4-check">
+                <strong><span class="blog4-dot"></span> 2–3 niveles de altura</strong>
+                <span>Base, stands, cajas o alzas. Altura = mesa más “pro”.</span>
+              </div>
+
+              <div class="blog4-check">
+                <strong><span class="blog4-dot"></span> Un detalle repetido</strong>
+                <span>Ej. estrellas, flores, mariposas, hojas o un ícono del tema (para coherencia).</span>
+              </div>
+            </div>
+
+            <hr class="blog4-sep">
+
+            <h2 class="blog4-glow">La estructura ganadora: 3 capas</h2>
+            <p>Esto es lo que hace que se vea completa sin saturar:</p>
+
+            <div class="blog4-layers">
+              <div class="blog4-layer">
+                <b>Capa 1: Fondo</b>
+                <small>Telón, panel, arco o pared decorada. Aquí vive el “ambiente”.</small>
+              </div>
+
+              <div class="blog4-layer">
+                <b>Capa 2: Protagonista</b>
+                <small>Letrero grande + topper principal. Lo que primero se ve en fotos.</small>
+              </div>
+
+              <div class="blog4-layer">
+                <b>Capa 3: Detalles</b>
+                <small>Piezas pequeñas (centros, números, mini letreros) para cerrar el diseño.</small>
+              </div>
+            </div>
+
+            <hr class="blog4-sep">
+
+            <h2 class="blog4-glow">Paso a paso para armarla (sin errores)</h2>
+
+            <ol class="blog4-steps">
+              <li class="blog4-step">
+                <h3>Elige tu paleta (2–3 colores)</h3>
+                <p>Base neutra + 1 color acento. Si quieres, agrega un metálico (dorado/plata).</p>
+              </li>
+
+              <li class="blog4-step">
+                <h3>Define el “punto foto”</h3>
+                <p>¿Dónde se toman fotos? Ahí pon el letrero principal y lo más bonito.</p>
+              </li>
+
+              <li class="blog4-step">
+                <h3>Crea altura</h3>
+                <p>Usa bases, cajas, stands. Evita que todo esté a la misma altura (se ve plano).</p>
+              </li>
+
+              <li class="blog4-step">
+                <h3>Repite un detalle</h3>
+                <p>El mismo ícono en 2–3 piezas diferentes se ve “diseñado” y no random.</p>
+              </li>
+
+              <li class="blog4-step">
+                <h3>Deja “aire”</h3>
+                <p>Espacios vacíos también son diseño. Si todo está lleno, se ve saturado.</p>
+              </li>
+            </ol>
+
+            <div class="blogart-tip">
+              <strong>Tip pro:</strong> Si tu mesa es pequeña, usa piezas verticales (letrero alto, números, stands) para ganar presencia.
+              Si es grande, usa un centro fuerte y distribuye “bloques” en laterales.
+            </div>
+
+            <hr class="blogart-sep">
+
+            <h2 class="blog4-glow">Checklist para cotizar rápido</h2>
+
+            <ol class="blog4-steps">
+              <li class="blog4-step">
+                <h3>Evento + fecha</h3>
+                <p>Cumple, XV, boda, bautizo… y para cuándo lo necesitas.</p>
+              </li>
+
+              <li class="blog4-step">
+                <h3>Tema + colores</h3>
+                <p>Ej. “Mar” + azul/crema/dorado.</p>
+              </li>
+
+              <li class="blog4-step">
+                <h3>Texto exacto</h3>
+                <p>Nombre(s), frase, número de edad, etc.</p>
+              </li>
+
+              <li class="blog4-step">
+                <h3>Medida aproximada del área</h3>
+                <p>¿Tu mesa mide 1.5 m? ¿El fondo es de 2 m? Con eso ajustamos tamaños.</p>
+              </li>
+            </ol>
+
+            <div class="blogart-cta">
+              <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+                <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+                Ver catálogo
+              </a>
+
+              <a class="btn btn-secundario btn-grande btn-bounce"
+                 href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20decoraci%C3%B3n%20para%20mesa%20de%20dulces.%20Evento:%20%20Fecha:%20%20Tema:%20%20Colores:%20%20Texto:%20%20Medidas:%20"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                Pedir propuesta
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ASIDE -->
+        <aside class="blogart-aside" data-animate="up" data-delay="80">
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Atajos</h3>
+            <a class="blogart-link" href="blog.html">← Volver al blog</a>
+            <a class="blogart-link" href="productos.html">Ver catálogo</a>
+            <a class="blogart-link" href="compras.html">Ver carrito / comprar</a>
+          </div>
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Te armamos tu mesa con 3 datos</h3>
+            <p class="blogart-sidep">
+              Dinos: <strong>tema</strong>, <strong>colores</strong> y <strong>medida del espacio</strong>. Con eso proponemos piezas clave.
+            </p>
+
+            <a class="btn btn-primario btn-grande btn-bounce blogart-sidebtn"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20propuesta%20para%20mesa%20de%20dulces.%20Tema:%20%20Colores:%20%20Medidas:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Escribir por WhatsApp
+            </a>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- RELACIONADOS -->
+    <section class="seccion blogart-related" aria-labelledby="rel-title">
+      <h2 class="titulo-seccion" id="rel-title" data-animate="up">Te puede interesar</h2>
+
+      <div class="blogart-rel-grid" data-animate="up" data-delay="70">
+        <article class="blogart-rel-card">
+          <a href="blog-03.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-03.webp" alt="Tendencias en decoración de cumpleaños 2026" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Tendencias en decoración de cumpleaños 2026</h3>
+            <p>Colores, temáticas y detalles que hacen que tu celebración se vea moderna y fotogénica.</p>
+            <a href="blog-03.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+
+        <article class="blogart-rel-card">
+          <a href="blog-09.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-09.webp" alt="Cómo personalizar un letrero con nombre" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Cómo personalizar un letrero con nombre: guía rápida</h3>
+            <p>Qué datos enviar, tipografías, medidas y colores para que quede perfecto.</p>
+            <a href="blog-09.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="blogart-back" data-animate="up" data-delay="110">
+        <a class="btn btn-secundario btn-grande btn-bounce" href="blog.html">← Volver al listado</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
+  </footer>
+
+  <!-- BURBUJAS -->
+  <div class="burbujas">
+    <a href="https://wa.me/528123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

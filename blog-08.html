@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ideas económicas para decorar un evento sin perder estilo: cómo armar decoración bonita con pocas piezas clave y buena combinación de colores." />
+  <title>Creaciones MGI | Blog | Ideas económicas para decorar un evento sin perder estilo</title>
+
+  <!-- CSS general + blog + artículo -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="blog.css" />
+  <link rel="stylesheet" href="blog-articulo.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+
+  <!-- ✅ Extra dinámico SOLO para este artículo -->
+  <style>
+    /* ===========================================
+       BLOG 08 — Extra UI (solo aquí)
+       - Números con bolita degradada
+       - Cards “barato pero bonito”
+       - Tabla mini (qué sí vale la pena)
+       - Separadores degradados
+       - Ajustes móvil
+    =========================================== */
+
+    .blog8-sep{
+      border: 0;
+      height: 10px;
+      border-radius: 999px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    .blog8-glow{ position: relative; }
+    .blog8-glow::after{
+      content:"";
+      position:absolute;
+      left: 0;
+      bottom: -10px;
+      width: min(360px, 78%);
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    /* Steps */
+    .blog8-steps{
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .blog8-step{
+      counter-increment: step;
+      position: relative;
+
+      padding: 14px 14px 14px 64px;
+      border-radius: 20px;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+    }
+
+    .blog8-step::before{
+      content: counter(step);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 950;
+      color: #fff;
+
+      background:
+        radial-gradient(420px 160px at 18% 10%, rgba(255,159,58,.22), rgba(0,0,0,0) 55%),
+        linear-gradient(90deg, var(--azul), var(--naranja));
+
+      box-shadow:
+        0 18px 34px rgba(37,27,189,.18),
+        0 12px 22px rgba(0,0,0,.12);
+
+      border: 1px solid rgba(255,255,255,.22);
+    }
+
+    .blog8-step h3{
+      margin: 0 0 6px;
+      font-size: 16.6px;
+      font-weight: 950;
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 0 rgba(255,255,255,.88));
+    }
+
+    .blog8-step p{
+      margin: 0;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.6;
+      font-size: 14.8px;
+    }
+
+    /* Cards: “barato pero bonito” */
+    .blog8-cards{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .blog8-card{
+      border-radius: 20px;
+      padding: 14px 14px;
+      text-align: left;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .blog8-card::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog8-pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.78);
+      background: linear-gradient(90deg, rgba(242,138,26,.16), rgba(37,27,189,.14));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 10px;
+    }
+
+    .blog8-card strong{
+      display:block;
+      font-weight: 950;
+      margin-bottom: 6px;
+      color: rgba(0,0,0,.84);
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog8-card span{
+      display:block;
+      font-weight: 650;
+      color: rgba(0,0,0,.72);
+      line-height: 1.5;
+      font-size: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Mini tabla “vale la pena” */
+    .blog8-compare{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .blog8-box{
+      border-radius: 20px;
+      padding: 14px 14px;
+      text-align: left;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .blog8-box::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog8-tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 12.5px;
+      color: rgba(0,0,0,.78);
+      background: linear-gradient(90deg, rgba(242,138,26,.14), rgba(37,27,189,.12));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 10px;
+    }
+
+    .blog8-box ul{
+      margin: 0;
+      padding-left: 18px;
+      position: relative;
+      z-index: 2;
+    }
+    .blog8-box li{
+      margin: 6px 0;
+      color: rgba(0,0,0,.72);
+      font-weight: 650;
+      line-height: 1.55;
+      font-size: 14.2px;
+    }
+
+    @media (max-width: 899px){
+      .blog8-cards{ grid-template-columns: 1fr; }
+      .blog8-compare{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px){
+      .blog8-step{ padding: 14px 14px 14px 58px; }
+      .blog8-step::before{ width: 36px; height: 36px; left: 12px; top: 12px; }
+    }
+  </style>
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html" class="activo">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blogart-hero" aria-labelledby="blogart-title">
+      <div class="blogart-hero-card" data-animate="up">
+        <div class="blogart-hero-inner">
+
+          <div class="blogart-kicker" data-animate="fade">Tips</div>
+
+          <h1 class="blogart-title" id="blogart-title" data-animate="up">
+            Ideas económicas para decorar un evento sin perder estilo
+          </h1>
+
+          <p class="blogart-meta" data-animate="up" data-delay="70">
+            <span class="blogart-pill">Ahorro inteligente</span>
+            <span class="blogart-pill">Piezas clave</span>
+            <span class="blogart-pill">Lectura: 6–8 min</span>
+          </p>
+
+          <p class="blogart-lead" data-animate="up" data-delay="110">
+            Lo barato se ve bonito cuando tienes <strong>estructura</strong>: un punto focal,
+            buena paleta y pocas piezas que se repitan. Aquí va cómo lograrlo.
+          </p>
+
+          <div class="blogart-hero-cta" data-animate="up" data-delay="150">
+            <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+              Ver productos
+            </a>
+
+            <a class="btn btn-secundario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20decoraci%C3%B3n%20econ%C3%B3mica%20pero%20bonita.%20Evento:%20%20Fecha:%20%20Colores:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Pedir ideas
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CUERPO -->
+    <section class="seccion blogart-wrap" aria-labelledby="contenido-title">
+      <h2 class="sr-only" id="contenido-title">Contenido</h2>
+
+      <div class="blogart-layout">
+
+        <!-- ARTÍCULO -->
+        <article class="blogart-article formulario" data-animate="up">
+          <figure class="blogart-cover">
+            <img src="imgs/blog/blog-08.webp" alt="Decoración económica pero con estilo" loading="lazy">
+            <figcaption>Con una paleta y 2–3 piezas clave, tu evento se ve bien pensado.</figcaption>
+          </figure>
+
+          <div class="blogart-content">
+            <p>
+              El truco para “ahorrar sin que se note” es invertir en lo que se ve en fotos:
+              fondo, letrero principal y altura. Lo demás puede ser sencillo.
+            </p>
+
+            <div class="blogart-tip">
+              <strong>Tip rápido:</strong> 2 colores + 1 acento metálico (opcional) es la fórmula más fácil para que todo combine.
+            </div>
+
+            <hr class="blog8-sep">
+
+            <h2 class="blog8-glow">3 piezas baratas (pero con efecto “wow”)</h2>
+
+            <div class="blog8-cards">
+              <div class="blog8-card">
+                <span class="blog8-pill">Must</span>
+                <strong>Un letrero principal</strong>
+                <span>Nombre, “Happy Birthday”, “Mis XV”. Es el punto focal de las fotos.</span>
+              </div>
+
+              <div class="blog8-card">
+                <span class="blog8-pill">Pro</span>
+                <strong>2–3 bases de altura</strong>
+                <span>Stands o cajitas para elevar dulces. Cambia por completo el look.</span>
+              </div>
+
+              <div class="blog8-card">
+                <span class="blog8-pill">Tip</span>
+                <strong>Detalles repetidos</strong>
+                <span>Ej. estrellas, mariposas, hojas. Repetir = coherencia sin gastar más.</span>
+              </div>
+            </div>
+
+            <hr class="blog8-sep">
+
+            <h2 class="blog8-glow">Dónde SÍ vale la pena invertir</h2>
+
+            <div class="blog8-compare">
+              <div class="blog8-box">
+                <div class="blog8-tag">✅ Sí conviene</div>
+                <ul>
+                  <li>Letrero principal (se ve en todas las fotos).</li>
+                  <li>Caja para sobres o topper premium (si aplica).</li>
+                  <li>Una pieza protagonista grande (entrada o fondo).</li>
+                  <li>Detalles que se reutilizan (letreros genéricos).</li>
+                </ul>
+              </div>
+
+              <div class="blog8-box">
+                <div class="blog8-tag">⚠️ Aquí puedes ahorrar</div>
+                <ul>
+                  <li>Muchos centros distintos (mejor repite 1–2 diseños).</li>
+                  <li>Demasiados props pequeños (no se notan).</li>
+                  <li>Exceso de colores (sube costo y baja coherencia).</li>
+                  <li>Textos larguísimos (se ve recargado).</li>
+                </ul>
+              </div>
+            </div>
+
+            <hr class="blog8-sep">
+
+            <h2 class="blog8-glow">Paso a paso para decorar con poco presupuesto</h2>
+
+            <ol class="blog8-steps">
+              <li class="blog8-step">
+                <h3>Define tu paleta (2 colores)</h3>
+                <p>Ej. azul + crema. Si quieres “premium”, agrega dorado solo en detalles.</p>
+              </li>
+
+              <li class="blog8-step">
+                <h3>Elige un “punto foto”</h3>
+                <p>Un fondo + letrero principal. Esa zona es la que se verá más en redes.</p>
+              </li>
+
+              <li class="blog8-step">
+                <h3>Repite un motivo</h3>
+                <p>Estrellas o flores en 2–3 piezas y listo. Se ve uniforme sin gastar más.</p>
+              </li>
+
+              <li class="blog8-step">
+                <h3>Altura = mesa más pro</h3>
+                <p>Con bases o stands la mesa se ve “montada”, aunque tengas menos cosas.</p>
+              </li>
+
+              <li class="blog8-step">
+                <h3>Deja aire</h3>
+                <p>Espacios vacíos también son diseño. No llenes todo por llenar.</p>
+              </li>
+            </ol>
+
+            <div class="blogart-tip">
+              <strong>Tip pro:</strong> Si quieres ahorrar, usa piezas neutras reutilizables (bases, letreros genéricos) y solo personaliza el “protagonista”.
+            </div>
+
+            <hr class="blogart-sep">
+
+            <h2 class="blog8-glow">Checklist para cotizar algo económico (pero bonito)</h2>
+
+            <ol class="blog8-steps">
+              <li class="blog8-step">
+                <h3>Evento + fecha</h3>
+                <p>Cumple, XV, bautizo… y cuándo lo necesitas.</p>
+              </li>
+              <li class="blog8-step">
+                <h3>Colores</h3>
+                <p>2 colores principales (y si quieres, un acento).</p>
+              </li>
+              <li class="blog8-step">
+                <h3>Qué piezas quieres</h3>
+                <p>Letrero principal + 2–3 bases + detalles (opcional).</p>
+              </li>
+              <li class="blog8-step">
+                <h3>Medida aproximada</h3>
+                <p>De la mesa o del espacio donde irá el fondo.</p>
+              </li>
+            </ol>
+
+            <div class="blogart-cta">
+              <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+                <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+                Ver catálogo
+              </a>
+
+              <a class="btn btn-secundario btn-grande btn-bounce"
+                 href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20decoraci%C3%B3n%20econ%C3%B3mica%20pero%20bonita.%20Evento:%20%20Fecha:%20%20Colores:%20%20Piezas:%20"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                Pedir propuesta
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ASIDE -->
+        <aside class="blogart-aside" data-animate="up" data-delay="80">
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Atajos</h3>
+            <a class="blogart-link" href="blog.html">← Volver al blog</a>
+            <a class="blogart-link" href="productos.html">Ver catálogo</a>
+            <a class="blogart-link" href="compras.html">Ver carrito / comprar</a>
+          </div>
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Te armamos una propuesta con tu presupuesto</h3>
+            <p class="blogart-sidep">
+              Dinos tu <strong>presupuesto</strong>, <strong>colores</strong> y <strong>evento</strong>. Te decimos qué piezas convienen más.
+            </p>
+
+            <a class="btn btn-primario btn-grande btn-bounce blogart-sidebtn"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20decoraci%C3%B3n%20bonita%20con%20presupuesto.%20Evento:%20%20Fecha:%20%20Colores:%20%20Presupuesto:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Escribir por WhatsApp
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- RELACIONADOS -->
+    <section class="seccion blogart-related" aria-labelledby="rel-title">
+      <h2 class="titulo-seccion" id="rel-title" data-animate="up">Te puede interesar</h2>
+
+      <div class="blogart-rel-grid" data-animate="up" data-delay="70">
+        <article class="blogart-rel-card">
+          <a href="blog-04.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-04.webp" alt="Ideas para mesas de dulces con letreros" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Ideas para mesas de dulces con letreros personalizados</h3>
+            <p>Qué piezas sí o sí necesitas para que tu mesa se vea completa e impactante en fotos.</p>
+            <a href="blog-04.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+
+        <article class="blogart-rel-card">
+          <a href="blog-10.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-10.webp" alt="Errores comunes al pedir decoración personalizada" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Errores comunes al pedir decoración personalizada (y cómo evitarlos)</h3>
+            <p>Medidas, fechas, colores… los detalles que hacen la diferencia al cotizar.</p>
+            <a href="blog-10.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="blogart-back" data-animate="up" data-delay="110">
+        <a class="btn btn-secundario btn-grande btn-bounce" href="blog.html">← Volver al listado</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
+  </footer>
+
+  <!-- BURBUJAS -->
+  <div class="burbujas">
+    <a href="https://wa.me/528123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

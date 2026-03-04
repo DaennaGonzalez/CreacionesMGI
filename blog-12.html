@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cuidados de tus piezas: cómo mantener MDF y acrílico como nuevos. Tips de limpieza, almacenamiento y qué evitar para que duren más." />
+  <title>Creaciones MGI | Blog | Cuidados de tus piezas: cómo mantener MDF y acrílico como nuevos</title>
+
+  <!-- CSS general + blog + artículo -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="blog.css" />
+  <link rel="stylesheet" href="blog-articulo.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+
+  <!-- ✅ Extra dinámico SOLO para este artículo -->
+  <style>
+    /* ===========================================
+       BLOG 12 — Extra UI (solo aquí)
+       - Rutina rápida (3 pasos) con bolitas degradadas
+       - “Evita esto” vs “Haz esto” (2 columnas)
+       - Checklist imprimible (chips)
+       - Ajustes móvil/tablet
+    =========================================== */
+
+    .blog12-sep{
+      border: 0;
+      height: 10px;
+      border-radius: 999px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    .blog12-glow{ position: relative; }
+    .blog12-glow::after{
+      content:"";
+      position:absolute;
+      left: 0;
+      bottom: -10px;
+      width: min(420px, 86%);
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    /* 3 pasos */
+    .blog12-steps{
+      counter-reset: st;
+      list-style: none;
+      padding-left: 0;
+      margin: 12px 0 14px;
+      display: grid;
+      gap: 12px;
+    }
+    .blog12-step{
+      counter-increment: st;
+      position: relative;
+      padding: 14px 14px 14px 64px;
+      border-radius: 20px;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+    }
+    .blog12-step::before{
+      content: counter(st);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 950;
+      color: #fff;
+      background:
+        radial-gradient(420px 160px at 18% 10%, rgba(255,159,58,.22), rgba(0,0,0,0) 55%),
+        linear-gradient(90deg, var(--azul), var(--naranja));
+      box-shadow:
+        0 18px 34px rgba(37,27,189,.18),
+        0 12px 22px rgba(0,0,0,.12);
+      border: 1px solid rgba(255,255,255,.22);
+    }
+    .blog12-step h3{
+      margin: 0 0 6px;
+      font-size: 16.6px;
+      font-weight: 950;
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 0 rgba(255,255,255,.88));
+    }
+    .blog12-step p{
+      margin: 0;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.6;
+      font-size: 14.8px;
+    }
+
+    /* Evita vs Haz */
+    .blog12-compare{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+    .blog12-box{
+      border-radius: 22px;
+      padding: 16px 16px;
+
+      background:
+        radial-gradient(700px 240px at 18% 20%, rgba(242,138,26,.14), rgba(0,0,0,0) 60%),
+        radial-gradient(760px 320px at 72% 10%, rgba(37,27,189,.14), rgba(0,0,0,0) 62%),
+        linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.66));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 20px 40px rgba(0,0,0,.12);
+      position: relative;
+      overflow:hidden;
+    }
+    .blog12-box::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+    .blog12-tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 13px;
+      color: rgba(0,0,0,.78);
+      background: linear-gradient(90deg, rgba(242,138,26,.16), rgba(37,27,189,.14));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 10px;
+    }
+    .blog12-box ul{
+      margin: 0;
+      padding-left: 18px;
+      position: relative;
+      z-index: 2;
+    }
+    .blog12-box li{
+      margin: 7px 0;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.55;
+      font-size: 14.6px;
+    }
+
+    /* Chips checklist */
+    .blog12-chips{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 14px;
+      padding: 0;
+      list-style: none;
+    }
+    .blog12-chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 13px;
+      color: rgba(0,0,0,.78);
+      background: linear-gradient(90deg, rgba(37,27,189,.14), rgba(242,138,26,.14));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+    }
+
+    @media (max-width: 899px){
+      .blog12-compare{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px){
+      .blog12-step{ padding: 14px 14px 14px 58px; }
+      .blog12-step::before{ width: 36px; height: 36px; left: 12px; top: 12px; }
+    }
+  </style>
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html" class="activo">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blogart-hero" aria-labelledby="blogart-title">
+      <div class="blogart-hero-card" data-animate="up">
+        <div class="blogart-hero-inner">
+
+          <div class="blogart-kicker" data-animate="fade">Cuidados</div>
+
+          <h1 class="blogart-title" id="blogart-title" data-animate="up">
+            Cuidados de tus piezas: cómo mantener MDF y acrílico como nuevos
+          </h1>
+
+          <p class="blogart-meta" data-animate="up" data-delay="70">
+            <span class="blogart-pill">Limpieza</span>
+            <span class="blogart-pill">Duración</span>
+            <span class="blogart-pill">Lectura: 6–8 min</span>
+          </p>
+
+          <p class="blogart-lead" data-animate="up" data-delay="110">
+            Con cuidados sencillos tus piezas duran muchísimo (y se siguen viendo “premium”).
+            Aquí tienes una guía clara para <strong>MDF</strong> y <strong>acrílico</strong>.
+          </p>
+
+          <div class="blogart-hero-cta" data-animate="up" data-delay="150">
+            <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+              Ver productos
+            </a>
+
+            <a class="btn btn-secundario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20tengo%20una%20duda%20sobre%20c%C3%B3mo%20cuidar%20mi%20pieza.%20Es%20de:%20%20(MDF/Acr%C3%ADlico)%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Preguntar por WhatsApp
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CUERPO -->
+    <section class="seccion blogart-wrap" aria-labelledby="contenido-title">
+      <h2 class="sr-only" id="contenido-title">Contenido</h2>
+
+      <div class="blogart-layout">
+
+        <!-- ARTÍCULO -->
+        <article class="blogart-article formulario" data-animate="up">
+          <figure class="blogart-cover">
+            <img src="imgs/blog/blog-12.webp" alt="Cuidados MDF y acrílico" loading="lazy">
+            <figcaption>Lo más importante: evitar humedad (MDF) y rayones (acrílico).</figcaption>
+          </figure>
+
+          <div class="blogart-content">
+            <p>
+              Si tus piezas son para eventos, decoración o regalo, la idea es que se mantengan bonitas
+              para fotos y para guardarlas después. Con esta guía lo logras sin complicarte.
+            </p>
+
+            <div class="blogart-tip">
+              <strong>Tip rápido:</strong> Si vas a guardar tu pieza, guárdala en bolsa/film suave o caja,
+              separando las capas para que no se rayen entre sí.
+            </div>
+
+            <hr class="blog12-sep">
+
+            <h2 class="blog12-glow">Rutina rápida (3 pasos)</h2>
+
+            <ol class="blog12-steps">
+              <li class="blog12-step">
+                <h3>Quita polvo (sin tallar)</h3>
+                <p>Usa paño de microfibra seco. Primero retira polvo, luego limpias.</p>
+              </li>
+              <li class="blog12-step">
+                <h3>Limpia suave</h3>
+                <p>Paño ligeramente húmedo (no empapado). Nada de esponjas ásperas.</p>
+              </li>
+              <li class="blog12-step">
+                <h3>Seca y guarda</h3>
+                <p>Seca al momento y guarda en lugar fresco, sin sol directo ni humedad.</p>
+              </li>
+            </ol>
+
+            <hr class="blog12-sep">
+
+            <h2 class="blog12-glow">Evita esto vs Haz esto</h2>
+
+            <div class="blog12-compare">
+              <div class="blog12-box">
+                <span class="blog12-tag">🚫 Evita</span>
+                <ul>
+                  <li>Agua directa o humedad constante (especialmente en MDF).</li>
+                  <li>Cloro, thinner, acetona o químicos agresivos.</li>
+                  <li>Esponjas verdes o fibras abrasivas (rayan acrílico).</li>
+                  <li>Sol directo por horas (puede decolorar o deformar).</li>
+                  <li>Apilar piezas sin protección entre ellas.</li>
+                </ul>
+              </div>
+
+              <div class="blog12-box">
+                <span class="blog12-tag">✅ Haz</span>
+                <ul>
+                  <li>Microfibra + limpieza suave con agua y jabón neutro (si hace falta).</li>
+                  <li>Secar rápido (sobre todo MDF) para evitar que “se hinche”.</li>
+                  <li>Guardar en caja o bolsa suave (para no rayar acrílico).</li>
+                  <li>Transportar con cartón/foam entre piezas.</li>
+                  <li>Si tiene detalles pegados, manipula por la base.</li>
+                </ul>
+              </div>
+            </div>
+
+            <hr class="blog12-sep">
+
+            <h2 class="blog12-glow">Checklist rápido (para que duren años)</h2>
+
+            <ul class="blog12-chips">
+              <li class="blog12-chip">🧼 Microfibra siempre</li>
+              <li class="blog12-chip">💧 Nada empapado</li>
+              <li class="blog12-chip">☀️ Sin sol directo</li>
+              <li class="blog12-chip">📦 Guarda con protección</li>
+              <li class="blog12-chip">🧴 Jabón neutro</li>
+              <li class="blog12-chip">🚫 Sin acetona/cloro</li>
+            </ul>
+
+            <div class="blogart-tip">
+              <strong>Tip pro:</strong> Si tu acrílico tiene rayoncitos finos, una microfibra + limpieza suave
+              mejora muchísimo el acabado. (Solo evita tallar fuerte).
+            </div>
+
+            <div class="blogart-cta">
+              <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+                <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+                Ver catálogo
+              </a>
+
+              <a class="btn btn-secundario btn-grande btn-bounce"
+                 href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20%C2%BFme%20das%20un%20tip%20de%20cuidado%20para%20mi%20pieza%3F%20Es%20de:%20%20(MDF/Acr%C3%ADlico)%20"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                Pedir tip
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ASIDE -->
+        <aside class="blogart-aside" data-animate="up" data-delay="80">
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Atajos</h3>
+            <a class="blogart-link" href="blog.html">← Volver al blog</a>
+            <a class="blogart-link" href="productos.html">Ver catálogo</a>
+            <a class="blogart-link" href="compras.html">Ver carrito / comprar</a>
+          </div>
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">¿Quieres algo que dure más?</h3>
+            <p class="blogart-sidep">
+              Te recomendamos material y acabado según dónde lo usarás (interior/exterior, evento, etc.).
+            </p>
+
+            <a class="btn btn-primario btn-grande btn-bounce blogart-sidebtn"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20una%20pieza%20que%20dure%20mucho.%20Se%20usar%C3%A1%20en:%20%20(interior/exterior)%20%20Evento:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Escribir por WhatsApp
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- RELACIONADOS -->
+    <section class="seccion blogart-related" aria-labelledby="rel-title">
+      <h2 class="titulo-seccion" id="rel-title" data-animate="up">Te puede interesar</h2>
+
+      <div class="blogart-rel-grid" data-animate="up" data-delay="70">
+        <article class="blogart-rel-card">
+          <a href="blog-26.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-26.webp" alt="Cuidados básicos para que tus piezas duren años" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Cuidados básicos para que tus piezas duren años</h3>
+            <p>MDF y acrílico: cómo limpiar sin maltratar y cómo guardarlas.</p>
+            <a href="blog-26.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+
+        <article class="blogart-rel-card">
+          <a href="blog-11.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-11.webp" alt="MDF vs Acrílico" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>MDF vs Acrílico: ¿cuál elegir para tu diseño?</h3>
+            <p>Comparación clara: estética, precio, durabilidad y uso ideal en cada material.</p>
+            <a href="blog-11.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="blogart-back" data-animate="up" data-delay="110">
+        <a class="btn btn-secundario btn-grande btn-bounce" href="blog.html">← Volver al listado</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
+  </footer>
+
+  <!-- BURBUJAS -->
+  <div class="burbujas">
+    <a href="https://wa.me/528123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
