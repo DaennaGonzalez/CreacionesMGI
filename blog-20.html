@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cómo preparar tu altar de Día de Muertos personalizado: elementos esenciales, ideas creativas y cómo incorporar MDF con estilo." />
+  <title>Creaciones MGI | Blog | Cómo preparar tu altar de Día de Muertos personalizado</title>
+
+  <!-- CSS general + blog + artículo -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="blog.css" />
+  <link rel="stylesheet" href="blog-articulo.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+
+  <!-- ✅ Extra dinámico SOLO para este artículo -->
+  <style>
+    /* ===========================================
+       BLOG 20 — Extra UI (solo aquí)
+       - Niveles del altar (pasos numerados)
+       - “Elementos esenciales” (chips)
+       - “Ideas MDF que se ven pro” (cards)
+       - Ajustes móvil/tablet
+    =========================================== */
+
+    .blog20-sep{
+      border: 0;
+      height: 10px;
+      border-radius: 999px;
+      margin: 18px 0;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    .blog20-glow{ position: relative; }
+    .blog20-glow::after{
+      content:"";
+      position:absolute;
+      left: 0;
+      bottom: -10px;
+      width: min(600px, 92%);
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
+      box-shadow: 0 14px 24px rgba(0,0,0,.08);
+    }
+
+    /* Pasos */
+    .blog20-steps{
+      counter-reset: st;
+      list-style: none;
+      padding-left: 0;
+      margin: 12px 0 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .blog20-step{
+      counter-increment: st;
+      position: relative;
+      padding: 14px 14px 14px 64px;
+      border-radius: 20px;
+
+      background:
+        radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
+        radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.12), rgba(0,0,0,0) 70%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.70));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.10);
+      overflow: hidden;
+    }
+
+    .blog20-step::before{
+      content: counter(st);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 950;
+      color: #fff;
+
+      background:
+        radial-gradient(420px 160px at 18% 10%, rgba(255,159,58,.22), rgba(0,0,0,0) 55%),
+        linear-gradient(90deg, var(--azul), var(--naranja));
+
+      box-shadow:
+        0 18px 34px rgba(37,27,189,.18),
+        0 12px 22px rgba(0,0,0,.12);
+
+      border: 1px solid rgba(255,255,255,.22);
+    }
+
+    .blog20-step h3{
+      margin: 0 0 6px;
+      font-size: 16.6px;
+      font-weight: 950;
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 0 rgba(255,255,255,.88));
+    }
+
+    .blog20-step p{
+      margin: 0;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.6;
+      font-size: 14.8px;
+    }
+
+    .blog20-mini{
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 10px 12px;
+      border-radius: 999px;
+
+      font-weight: 950;
+      font-size: 13px;
+      color: rgba(0,0,0,.78);
+
+      background: linear-gradient(90deg, rgba(37,27,189,.14), rgba(242,138,26,.14));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+    }
+
+    /* Chips esenciales */
+    .blog20-chips{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 14px;
+      padding: 0;
+      list-style: none;
+    }
+    .blog20-chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 950;
+      font-size: 13px;
+      color: rgba(0,0,0,.78);
+      background: linear-gradient(90deg, rgba(242,138,26,.16), rgba(37,27,189,.14));
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 22px rgba(0,0,0,.08);
+    }
+
+    /* Cards MDF */
+    .blog20-cards{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+      margin: 12px 0 14px;
+    }
+
+    .blog20-card{
+      border-radius: 22px;
+      padding: 16px 16px;
+
+      background:
+        radial-gradient(700px 240px at 18% 20%, rgba(242,138,26,.14), rgba(0,0,0,0) 60%),
+        radial-gradient(760px 320px at 72% 10%, rgba(37,27,189,.14), rgba(0,0,0,0) 62%),
+        linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.66));
+
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 20px 40px rgba(0,0,0,.12);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .blog20-card::after{
+      content:"";
+      position:absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 2px dashed rgba(0,0,0,.18);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .blog20-card strong{
+      display:block;
+      margin: 0 0 10px;
+      position: relative;
+      z-index: 2;
+
+      font-weight: 950;
+      font-size: 16.6px;
+
+      background: linear-gradient(90deg, var(--azul), var(--naranja));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .blog20-card ul{
+      margin: 0;
+      padding-left: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog20-card li{
+      margin: 7px 0;
+      color: rgba(0,0,0,.74);
+      font-weight: 650;
+      line-height: 1.55;
+      font-size: 14.6px;
+    }
+
+    @media (max-width: 899px){
+      .blog20-cards{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px){
+      .blog20-step{ padding: 14px 14px 14px 58px; }
+      .blog20-step::before{ width: 36px; height: 36px; left: 12px; top: 12px; }
+    }
+  </style>
+</head>
+
+<body class="mgi-body">
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      </a>
+
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="pedidos.html">Pedidos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="blog.html" class="activo">Blog</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blogart-hero" aria-labelledby="blogart-title">
+      <div class="blogart-hero-card" data-animate="up">
+        <div class="blogart-hero-inner">
+
+          <div class="blogart-kicker" data-animate="fade">Temporada</div>
+
+          <h1 class="blogart-title" id="blogart-title" data-animate="up">
+            Cómo preparar tu altar de Día de Muertos personalizado
+          </h1>
+
+          <p class="blogart-meta" data-animate="up" data-delay="70">
+            <span class="blogart-pill">Altar</span>
+            <span class="blogart-pill">MDF</span>
+            <span class="blogart-pill">Lectura: 7–9 min</span>
+          </p>
+
+          <p class="blogart-lead" data-animate="up" data-delay="110">
+            Un altar bonito se siente especial. Aquí tienes una guía sencilla para armarlo,
+            elegir elementos esenciales y sumar MDF sin que se vea recargado.
+          </p>
+
+          <div class="blogart-hero-cta" data-animate="up" data-delay="150">
+            <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+              <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+              Ver productos
+            </a>
+
+            <a class="btn btn-secundario btn-grande btn-bounce"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20un%20altar%20de%20D%C3%ADa%20de%20Muertos%20personalizado.%20Tama%C3%B1o:%20%20Idea:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Cotizar altar
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CUERPO -->
+    <section class="seccion blogart-wrap" aria-labelledby="contenido-title">
+      <h2 class="sr-only" id="contenido-title">Contenido</h2>
+
+      <div class="blogart-layout">
+
+        <!-- ARTÍCULO -->
+        <article class="blogart-article formulario" data-animate="up">
+          <figure class="blogart-cover">
+            <img src="imgs/blog/blog-20.webp" alt="Altar de Día de Muertos" loading="lazy">
+            <figcaption>Tradición + detalles personalizados = altar inolvidable.</figcaption>
+          </figure>
+
+          <div class="blogart-content">
+            <p>
+              Lo más bonito de un altar es que cuenta una historia. No tiene que ser enorme:
+              con una base bien armada y algunos detalles personalizados, se ve súper especial.
+            </p>
+
+            <div class="blogart-tip">
+              <strong>Tip rápido:</strong> Elige una paleta de 2–3 colores (ej. naranja, morado, crema)
+              y repítela en flores, papel picado y detalles.
+            </div>
+
+            <hr class="blog20-sep">
+
+            <h2 class="blog20-glow">Elementos esenciales (sí o sí)</h2>
+            <ul class="blog20-chips">
+              <li class="blog20-chip">🕯️ Velas o luz cálida</li>
+              <li class="blog20-chip">🌼 Cempasúchil (o tonos naranja)</li>
+              <li class="blog20-chip">🖼️ Foto (o nombre)</li>
+              <li class="blog20-chip">🍞 Pan / comida</li>
+              <li class="blog20-chip">💧 Agua</li>
+              <li class="blog20-chip">🧻 Papel picado</li>
+            </ul>
+
+            <hr class="blog20-sep">
+
+            <h2 class="blog20-glow">Cómo armarlo por niveles (sin complicarte)</h2>
+
+            <ol class="blog20-steps">
+              <li class="blog20-step">
+                <h3>Define el tamaño y el lugar</h3>
+                <p>¿Mesa pequeña, consola o pared? El espacio manda el tamaño.</p>
+                <div class="blog20-mini">✅ Tip: toma foto del área y mide el ancho</div>
+              </li>
+
+              <li class="blog20-step">
+                <h3>Arma una base limpia</h3>
+                <p>Mantel liso o papel kraft + un nivel (caja/banquito) para dar altura.</p>
+                <div class="blog20-mini">✅ Tip: con 2 alturas ya se ve “pro”</div>
+              </li>
+
+              <li class="blog20-step">
+                <h3>Coloca el “foco” (foto o nombre)</h3>
+                <p>Al centro o ligeramente arriba. Eso guía toda la vista del altar.</p>
+                <div class="blog20-mini">✅ Tip: aquí entra perfecto un letrero MDF</div>
+              </li>
+
+              <li class="blog20-step">
+                <h3>Distribuye flores + luz</h3>
+                <p>Flores a los lados (y un camino de pétalos), velas en puntos clave.</p>
+                <div class="blog20-mini">✅ Tip: luz cálida para que se vea bonito en foto</div>
+              </li>
+
+              <li class="blog20-step">
+                <h3>Agrega detalles (sin saturar)</h3>
+                <p>Papel picado atrás, figuritas, calaveritas y ofrenda (pan/agua/comida).</p>
+                <div class="blog20-mini">✅ Tip: deja “respirar” el espacio</div>
+              </li>
+            </ol>
+
+            <hr class="blog20-sep">
+
+            <h2 class="blog20-glow">Ideas MDF que se ven súper pro</h2>
+
+            <div class="blog20-cards">
+              <div class="blog20-card">
+                <strong>Nombre o frase principal</strong>
+                <ul>
+                  <li>“Día de Muertos” / “Bienvenidos”</li>
+                  <li>Nombre de la persona/homenaje</li>
+                  <li>En MDF natural o pintado (según paleta)</li>
+                </ul>
+              </div>
+
+              <div class="blog20-card">
+                <strong>Mini letreros / íconos</strong>
+                <ul>
+                  <li>Calaveritas, flores, cruz, velita</li>
+                  <li>Etiquetas para pan/agua</li>
+                  <li>Detalles pequeños que amarran el tema</li>
+                </ul>
+              </div>
+
+              <div class="blog20-card">
+                <strong>Estructura de altar (tamaños)</strong>
+                <ul>
+                  <li>Chico: para escritorio o repisa</li>
+                  <li>Mediano: mesa principal</li>
+                  <li>Grande: fondo + niveles</li>
+                </ul>
+              </div>
+
+              <div class="blog20-card">
+                <strong>Tip de color</strong>
+                <ul>
+                  <li>Naranja + morado = clásico</li>
+                  <li>Negro + naranja = fuerte</li>
+                  <li>Crema + naranja = elegante</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="blogart-tip">
+              <strong>Tip pro:</strong> Si quieres que se vea “premium”, usa menos cosas pero de mayor impacto:
+              1 letrero bonito + flores bien acomodadas + luz cálida.
+            </div>
+
+            <div class="blogart-cta">
+              <a class="btn btn-primario btn-grande btn-bounce" href="productos.html">
+                <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+                Ver catálogo
+              </a>
+
+              <a class="btn btn-secundario btn-grande btn-bounce"
+                 href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20quiero%20altar%20D%C3%ADa%20de%20Muertos.%20Tama%C3%B1o:%20%20Colores:%20%20Nombre/Frase:%20%20Fecha:%20"
+                 target="_blank" rel="noopener">
+                <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+                Cotizar mi altar
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ASIDE -->
+        <aside class="blogart-aside" data-animate="up" data-delay="80">
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Atajos</h3>
+            <a class="blogart-link" href="blog.html">← Volver al blog</a>
+            <a class="blogart-link" href="productos.html">Ver catálogo</a>
+            <a class="blogart-link" href="compras.html">Ver carrito / comprar</a>
+          </div>
+
+          <div class="formulario blogart-sidecard">
+            <h3 class="blogart-side-title">Te ayudamos a armarlo</h3>
+            <p class="blogart-sidep">
+              Mándanos foto del espacio + tamaño aproximado y te decimos qué piezas convienen.
+            </p>
+
+            <a class="btn btn-primario btn-grande btn-bounce blogart-sidebtn"
+               href="https://wa.me/528123439492?text=Hola%20Creaciones%20MGI,%20necesito%20ayuda%20con%20mi%20altar.%20Espacio:%20%20Tama%C3%B1o:%20%20Colores:%20"
+               target="_blank" rel="noopener">
+              <img class="btn-ico" src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+              Escribir por WhatsApp
+            </a>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- RELACIONADOS -->
+    <section class="seccion blogart-related" aria-labelledby="rel-title">
+      <h2 class="titulo-seccion" id="rel-title" data-animate="up">Te puede interesar</h2>
+
+      <div class="blogart-rel-grid" data-animate="up" data-delay="70">
+        <article class="blogart-rel-card">
+          <a href="blog-12.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-12.webp" alt="Cuidados de piezas" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Cuidados de tus piezas: cómo mantener MDF y acrílico como nuevos</h3>
+            <p>Tips de limpieza, almacenamiento y qué evitar para que duren más.</p>
+            <a href="blog-12.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+
+        <article class="blogart-rel-card">
+          <a href="blog-21.html" class="blogart-rel-img">
+            <img src="imgs/blog/blog-21.webp" alt="Ideas creativas para Pascua" loading="lazy">
+          </a>
+          <div class="blogart-rel-body">
+            <h3>Ideas creativas para Pascua con MDF</h3>
+            <p>Decoraciones y detalles personalizados para canastas, mesas y regalos.</p>
+            <a href="blog-21.html" class="blogart-rel-more">Leer →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="blogart-back" data-animate="up" data-delay="110">
+        <a class="btn btn-secundario btn-grande btn-bounce" href="blog.html">← Volver al listado</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p class="footer-firma">Creado por Daenna González</p>
+  </footer>
+
+  <!-- BURBUJAS -->
+  <div class="burbujas">
+    <a href="https://wa.me/528123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.facebook.com/profile.php?id=61559132295014"
+       target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
+    </a>
+
+    <a href="https://www.instagram.com/creacionesmgi/"
+       target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

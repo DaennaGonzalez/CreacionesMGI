@@ -3,16 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Creaciones MGI - Fabricación personalizada en MDF y acrílico. Detalles únicos, piezas inolvidables." />
+
+  <meta
+    name="description"
+    content="Creaciones MGI - Fabricación personalizada en MDF y acrílico. Detalles únicos, piezas inolvidables."
+  />
+
   <title>Creaciones MGI | Inicio</title>
 
-  <!-- CSS (se agregará después) -->
+  <!-- CSS -->
   <link rel="stylesheet" href="styles.css" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+
   <!-- Favicon -->
   <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
 </head>
@@ -21,12 +30,14 @@
   <!-- Fondo fijo -->
   <div class="bg-fixed" aria-hidden="true"></div>
 
-  <!-- ENCABEZADO -->
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
   <header class="site-header">
     <div class="header-inner">
 
       <!-- Logo -->
-      <a class="brand" href="index.html">
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
         <img
           src="imgs/logo-creacionesmgi.webp"
           alt="Creaciones MGI"
@@ -34,22 +45,27 @@
         />
       </a>
 
-      <!-- FRASE (solo aparece en modo compacto) -->
-<p class="header-frase" aria-hidden="true">
-  Damos forma a tus ideas para crear historias inolvidables.
-</p>
+      <!-- Frase compacta -->
+      <p class="header-frase" aria-hidden="true">
+        Damos forma a tus ideas para crear historias inolvidables.
+      </p>
 
       <!-- Menú hamburguesa -->
-      <input type="checkbox" id="menu-toggle" class="menu-toggle">
-      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
+      <input
+        type="checkbox"
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-hidden="true"
+      />
 
+      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
         <span></span>
         <span></span>
         <span></span>
       </label>
 
       <!-- Navegación -->
-      <nav class="site-nav">
+      <nav class="site-nav" aria-label="Navegación principal">
         <ul class="nav-list">
           <li><a href="index.html" class="activo">Inicio</a></li>
           <li><a href="nosotros.html">Nosotros</a></li>
@@ -60,778 +76,999 @@
           <li><a href="blog.html">Blog</a></li>
         </ul>
       </nav>
+
     </div>
   </header>
 
-  <!-- CONTENIDO PRINCIPAL -->
+  <!-- =========================================================
+       CONTENIDO PRINCIPAL
+  ========================================================== -->
   <main>
 
-    <!-- PORTADA -->
-    <section class="hero">
+    <!-- =========================================================
+         HERO / PORTADA
+    ========================================================== -->
+    <section class="hero" id="inicio">
       <div class="hero-contenido">
 
-        <!-- Tabla izquierda -->
-        <div class="hero-lateral izquierda">
-          <img src="imgs/tabla-izquierda.webp" alt="">
+        <!-- Decoración izquierda -->
+        <div class="hero-lateral izquierda" aria-hidden="true">
+          <img src="imgs/tabla-izquierda.webp" alt="" />
         </div>
 
         <!-- Centro -->
         <div class="hero-centro">
-          <h1>Damos forma a tus ideas<br>para crear historias inolvidables</h1>
-          
+          <h1>Damos forma a tus ideas<br />para crear historias inolvidables</h1>
+
           <img
             src="imgs/imagen-centro-portada.webp"
-            alt="Productos personalizados Creaciones MGI"
+            alt="Productos personalizados de Creaciones MGI"
             class="imagen-principal"
           />
 
-          <button class="btn-principal" data-modal="cotizaModal">
-            Cotiza tu diseño
-          </button>
+          <div class="hero-cta">
+            <button
+              type="button"
+              class="btn-principal"
+              data-modal="cotizaModal"
+            >
+              Cotiza tu diseño
+            </button>
+
+            <a class="btn-secundario" href="productos.html">
+              Ver productos
+            </a>
+          </div>
         </div>
 
-        <!-- Tabla derecha -->
-        <div class="hero-lateral derecha">
-          <img src="imgs/tabla-derecha.webp" alt="">
+        <!-- Decoración derecha -->
+        <div class="hero-lateral derecha" aria-hidden="true">
+          <img src="imgs/tabla-derecha.webp" alt="" />
         </div>
 
-
-        <!-- =========================
-  VIDEO (debajo del botón)
-========================= -->
-<section class="home-video" aria-label="Video principal de Creaciones MGI">
-  <div class="home-video__frame">
-    <video
-      class="home-video__video"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-    >
-      <source
-        src="https://res.cloudinary.com/dbsjtpqpa/video/upload/q_auto,f_auto/VIDEO_CREACIONES_MGI_sbjqrs.mp4"
-        type="video/mp4"
-      />
-      Tu navegador no soporta videos HTML5.
-    </video>
-  </div>
-</section>
-
-
+        <!-- Video principal -->
+        <section class="home-video" aria-label="Video principal de Creaciones MGI">
+          <div class="home-video__frame">
+            <video
+              class="home-video__video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+            >
+              <source
+                src="https://res.cloudinary.com/dbsjtpqpa/video/upload/q_auto,f_auto/VIDEO_CREACIONES_MGI_sbjqrs.mp4"
+                type="video/mp4"
+              />
+              Tu navegador no soporta videos HTML5.
+            </video>
+          </div>
+        </section>
 
       </div>
     </section>
 
-    <!-- SECCIÓN 1 -->
-<!-- SECCIÓN: LOS MÁS VENDIDOS (CARRUSEL) -->
-<section class="seccion mas-vendidos" id="mas-vendidos">
-  <h2 class="titulo-seccion">Los más vendidos</h2>
+    <!-- =========================================================
+         LOS MÁS VENDIDOS
+    ========================================================== -->
+    <section class="seccion mas-vendidos" id="mas-vendidos">
+      <header class="section-header">
+        <h2 class="titulo-seccion">Los más vendidos</h2>
+        <p class="subtitulo-seccion">
+          Productos favoritos para eventos, regalos y detalles personalizados.
+        </p>
+      </header>
 
-  <div class="mv-carousel" aria-label="Carrusel de productos más vendidos">
-    <div class="mv-viewport">
-      <!-- Track (JS lo duplicará para loop infinito) -->
-      <div class="mv-track" id="mvTrack">
+      <div class="mv-carousel" aria-label="Carrusel de productos más vendidos">
+        <div class="mv-viewport">
+          <div class="mv-track" id="mvTrack">
 
-        <!-- 1 -->
-        <article class="mv-card">
-          <div class="mv-card__inner">
-            <h3 class="mv-title">Caja para sobres XV personalizada</h3>
+            <!-- Producto 1 -->
+            <article class="mv-card">
+              <div class="mv-card__inner">
+                <h3 class="mv-title">Caja para sobres XV personalizada</h3>
 
-            <div class="mv-media">
-              <img src="imgs/masvendido1.webp" alt="Caja para sobres XV personalizada" loading="lazy">
-            </div>
+                <div class="mv-media">
+                  <img
+                    src="imgs/masvendido1.webp"
+                    alt="Caja para sobres XV personalizada"
+                    loading="lazy"
+                  />
+                </div>
 
-            <p class="mv-desc">20x20x20 cm • MDF + acrílico</p>
-            <p class="mv-price">$329.00 MXN</p>
+                <p class="mv-desc">20x20x20 cm • MDF + acrílico</p>
+                <p class="mv-price">$329.00 MXN</p>
+              </div>
+
+              <a
+                class="mv-buy"
+                href="productos.html"
+                aria-label="Ver producto: Caja para sobres XV personalizada"
+              >
+                <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true" />
+              </a>
+            </article>
+
+            <!-- Producto 2 -->
+            <article class="mv-card">
+              <div class="mv-card__inner">
+                <h3 class="mv-title">Caja para sobres Boda</h3>
+
+                <div class="mv-media">
+                  <img
+                    src="imgs/masvendido2.webp"
+                    alt="Caja para sobres Boda"
+                    loading="lazy"
+                  />
+                </div>
+
+                <p class="mv-desc">20x20x20 cm • MDF + acrílico</p>
+                <p class="mv-price">$349.00 MXN</p>
+              </div>
+
+              <a
+                class="mv-buy"
+                href="productos.html"
+                aria-label="Ver producto: Caja para sobres Boda"
+              >
+                <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true" />
+              </a>
+            </article>
+
+            <!-- Producto 3 -->
+            <article class="mv-card">
+              <div class="mv-card__inner">
+                <h3 class="mv-title">Letrero Happy Birthday grande</h3>
+
+                <div class="mv-media">
+                  <img
+                    src="imgs/masvendido3.webp"
+                    alt="Letrero Happy Birthday grande"
+                    loading="lazy"
+                  />
+                </div>
+
+                <p class="mv-desc">25x75 cm • MDF 3mm</p>
+                <p class="mv-price">$160.00 MXN</p>
+              </div>
+
+              <a
+                class="mv-buy"
+                href="productos.html"
+                aria-label="Ver producto: Letrero Happy Birthday grande"
+              >
+                <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true" />
+              </a>
+            </article>
+
+            <!-- Producto 4 -->
+            <article class="mv-card">
+              <div class="mv-card__inner">
+                <h3 class="mv-title">Letrero Happy Birthday circular</h3>
+
+                <div class="mv-media">
+                  <img
+                    src="imgs/masvendido4.webp"
+                    alt="Letrero Happy Birthday circular"
+                    loading="lazy"
+                  />
+                </div>
+
+                <p class="mv-desc">60x60 cm • MDF 3mm</p>
+                <p class="mv-price">$175.00 MXN</p>
+              </div>
+
+              <a
+                class="mv-buy"
+                href="productos.html"
+                aria-label="Ver producto: Letrero Happy Birthday circular"
+              >
+                <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true" />
+              </a>
+            </article>
+
+            <!-- Producto 5 -->
+            <article class="mv-card">
+              <div class="mv-card__inner">
+                <h3 class="mv-title">Lapicera personalizada</h3>
+
+                <div class="mv-media">
+                  <img
+                    src="imgs/masvendido5.webp"
+                    alt="Lapicera personalizada"
+                    loading="lazy"
+                  />
+                </div>
+
+                <p class="mv-desc">Ideal para regalos • Personalizada</p>
+                <p class="mv-price">$80.00 MXN</p>
+              </div>
+
+              <a
+                class="mv-buy"
+                href="productos.html"
+                aria-label="Ver producto: Lapicera personalizada"
+              >
+                <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true" />
+              </a>
+            </article>
+
+            <!-- Producto 6 -->
+            <article class="mv-card">
+              <div class="mv-card__inner">
+                <h3 class="mv-title">Alcancía temática Geek</h3>
+
+                <div class="mv-media">
+                  <img
+                    src="imgs/masvendido6.webp"
+                    alt="Alcancía temática Geek"
+                    loading="lazy"
+                  />
+                </div>
+
+                <p class="mv-desc">Modelos infantiles • Varios diseños</p>
+                <p class="mv-price">$195.00 MXN</p>
+              </div>
+
+              <a
+                class="mv-buy"
+                href="productos.html"
+                aria-label="Ver producto: Alcancía temática Geek"
+              >
+                <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true" />
+              </a>
+            </article>
+
           </div>
-
-          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Caja para sobres XV">
-            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
-          </a>
-        </article>
-
-        <!-- 2 -->
-        <article class="mv-card">
-          <div class="mv-card__inner">
-            <h3 class="mv-title">Caja para sobres Boda</h3>
-
-            <div class="mv-media">
-              <img src="imgs/masvendido2.webp" alt="Caja para sobres Boda" loading="lazy">
-            </div>
-
-            <p class="mv-desc">20x20x20 cm • MDF + acrílico</p>
-            <p class="mv-price">$349.00 MXN</p>
-          </div>
-
-          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Caja para sobres Boda">
-            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
-          </a>
-        </article>
-
-        <!-- 3 -->
-        <article class="mv-card">
-          <div class="mv-card__inner">
-            <h3 class="mv-title">Letrero Happy Birthday (grande)</h3>
-
-            <div class="mv-media">
-              <img src="imgs/masvendido3.webp" alt="Letrero Happy Birthday grande" loading="lazy">
-            </div>
-
-            <p class="mv-desc">25x75 cm • MDF 3mm</p>
-            <p class="mv-price">$160.00 MXN</p>
-          </div>
-
-          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Letrero Happy Birthday grande">
-            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
-          </a>
-        </article>
-
-        <!-- 4 -->
-        <article class="mv-card">
-          <div class="mv-card__inner">
-            <h3 class="mv-title">Letrero Happy Birthday circular</h3>
-
-            <div class="mv-media">
-              <img src="imgs/masvendido4.webp" alt="Letrero Happy Birthday circular" loading="lazy">
-            </div>
-
-            <p class="mv-desc">60x60 cm • MDF 3mm</p>
-            <p class="mv-price">$175.00 MXN</p>
-          </div>
-
-          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Letrero circular">
-            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
-          </a>
-        </article>
-
-        <!-- 5 -->
-        <article class="mv-card">
-          <div class="mv-card__inner">
-            <h3 class="mv-title">Lapicera personalizada</h3>
-
-            <div class="mv-media">
-              <img src="imgs/masvendido5.webp" alt="Lapicera personalizada" loading="lazy">
-            </div>
-
-            <p class="mv-desc">Ideal para regalos • Personalizada</p>
-            <p class="mv-price">$80.00 MXN</p>
-          </div>
-
-          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Lapicera">
-            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
-          </a>
-        </article>
-
-        <!-- 6 -->
-        <article class="mv-card">
-          <div class="mv-card__inner">
-            <h3 class="mv-title">Alcancía temática (Geek)</h3>
-
-            <div class="mv-media">
-              <img src="imgs/masvendido6.webp" alt="Alcancía temática Geek" loading="lazy">
-            </div>
-
-            <p class="mv-desc">Modelos infantiles • Varios diseños</p>
-            <p class="mv-price">$195.00 MXN</p>
-          </div>
-
-          <a class="mv-buy" href="compras.html" aria-label="Ir a compras: Alcancía Geek">
-            <img src="imgs/icono-carrito.webp" alt="" aria-hidden="true">
-          </a>
-        </article>
-
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- 👇 IMAGEN DESTACADA DEBAJO (SE QUEDA IGUAL) -->
-  <div class="destacado-imagen">
-    <img
-      src="imgs/trabajadora-sorprendida.webp"
-      alt="Trabajadora sorprendida con productos Creaciones MGI"
-      class="destacado-imagen__img"
-      loading="lazy"
-    />
-  </div>
-</section>
-
-
-<!-- SECCIÓN 2 (NUEVA): ¿QUÉ ESTÁS CELEBRANDO? -->
-<section class="seccion seccion-celebrando" id="celebrando">
-  <div class="celebrando-wrap">
-
-    <!-- Decoraciones (solo DESKTOP amplio) -->
-    <img
-      src="imgs/queestascelebrando-izquierda.webp"
-      alt=""
-      class="celebrando-deco celebrando-deco--izq"
-      aria-hidden="true"
-      loading="lazy"
-    />
-
-    <img
-      src="imgs/queestascelebrando-derecha.webp"
-      alt=""
-      class="celebrando-deco celebrando-deco--der"
-      aria-hidden="true"
-      loading="lazy"
-    />
-
-    <h2 class="titulo-seccion">¿Qué estás celebrando?</h2>
-
-    <div class="grid-productos celebrando-grid">
-      <!-- 1 -->
-      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
-        <h3>🎂 Cumpleaños</h3>
-        <p>Letreros, alcancías, centros de mesa y decoración temática.</p>
-        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
-      </article>
-
-      <!-- 2 -->
-      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
-        <h3>👑 XV Años</h3>
-        <p>Cajas para sobres personalizadas y detalles con nombre.</p>
-        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
-      </article>
-
-      <!-- 3 -->
-      <article class="tarjeta tarjeta-celebracion">
-        <h3>👰 Bodas</h3>
-        <p>Letreros elegantes y caja para sobres MDF + acrílico.</p>
-        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
-      </article>
-
-      <!-- 4 -->
-      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--larga">
-        <h3>✝ Primera Comunión / Bautizo</h3>
-        <p>Cruces, palomas, toppers y diseños religiosos.</p>
-        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
-      </article>
-
-      <!-- 5 -->
-      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--larga">
-        <h3>💖 Día de las Madres</h3>
-        <p>Portarretratos y cajas corazón para regalar.</p>
-        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
-      </article>
-
-      <!-- 6 -->
-      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--larga">
-        <h3>👩‍🏫 Día del Maestro</h3>
-        <p>Lapiceras personalizadas y regalos escolares.</p>
-        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
-      </article>
-
-      <!-- 7 -->
-      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
-        <h3>🐰 Pascua</h3>
-        <p>Canastas y decoraciones para temporada.</p>
-        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
-      </article>
-
-      <!-- 8 -->
-      <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
-        <h3>🎮 Línea Geek</h3>
-        <p>Mario, Minecraft, Stitch, Friends y más.</p>
-        <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
-      </article>
-    </div>
-
-    <!-- Imagen de “fallback” centrada (TABLET/DESKTOP angosto) y otra para MÓVIL -->
-    <div class="celebrando-imagen-final">
-      <picture>
-        <!-- Móvil -->
-        <source media="(max-width: 640px)" srcset="imgs/queestascelebrando-movil.webp">
-        <!-- Tablet / Desktop ya sin espacio lateral -->
+      <!-- Imagen destacada -->
+      <div class="destacado-imagen">
         <img
-          src="imgs/queestascelebrando-central.webp"
-          alt="Ideas y celebraciones en Creaciones MGI"
-          class="celebrando-imagen-final__img"
+          src="imgs/trabajadora-sorprendida.webp"
+          alt="Trabajadora sorprendida con productos Creaciones MGI"
+          class="destacado-imagen__img"
           loading="lazy"
         />
-      </picture>
-    </div>
+      </div>
 
-  </div>
-</section>
-
-<!-- ✅ Ajuste rápido (pegar en tu styles.css abajo o en un bloque nuevo) -->
-<style>
-  /* Tarjetas con contenido centrado y botón pegado al “final” */
-  .tarjeta-celebracion{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-  }
-
-  .tarjeta-celebracion h3{
-    width: 100%;
-    text-align: center;
-  }
-
-  .tarjeta-celebracion p{
-    width: 100%;
-    text-align: center;
-    margin: 0; /* para que no se desbalancee */
-  }
-
-  /* El botón siempre queda centrado al final */
-  .btn-ver-ideas{
-    margin-top: auto;          /* empuja al fondo */
-    align-self: center;        /* centrado horizontal */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;     /* quita subrayado */
-    padding: 12px 18px;        /* un poquito más compacto */
-    font-size: 14px;
-  }
-
-  .tarjeta-celebracion h3{
-  line-height: 1.1;   /* reduce espacio entre líneas */
-  margin: 0 0 6px;    /* elimina espacio extra arriba */
-}
-
-.btn-ver-ideas{
-  position: absolute;
-  left: 50%;
-  bottom: -4.5px; /* controla cuánto se sale */
-
-  
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  
-  padding: 12px 22px;
-  text-decoration: none;
-}
-/* 1) Evita que el botón se corte al salirse */
-.tarjeta.tarjeta-celebracion{
-  overflow: visible; /* <- esto evita el recorte */
-  position: relative; /* <- necesario para absolute */
-}
-/* Base: todas las tarjetas */
-.tarjeta.tarjeta-celebracion{
-  padding-bottom: 40px; /* base (para que no se vea apretado) */
-}
-
-/* Solo las largas */
-.tarjeta.tarjeta-celebracion.tarjeta-celebracion--larga{
-  padding-bottom: 60px; /* extra */
-}
-/* =========================================
-   ANIMACIÓN GELATINA SUAVE
-========================================= */
-
-@keyframes gelatina {
-  0%   { transform: translateX(-50%) scale(1); }
-  30%  { transform: translateX(-50%) scale(1.08, 0.92); }
-  50%  { transform: translateX(-50%) scale(0.95, 1.05); }
-  70%  { transform: translateX(-50%) scale(1.03, 0.97); }
-  100% { transform: translateX(-50%) scale(1); }
-}
-
-.btn-ver-ideas:hover{
-  animation: gelatina 0.45s ease;
-}
-.btn-ver-ideas:active{
-  animation: gelatina 0.35s ease;
-}
-/* Baja un poco el contenido (más aire arriba) */
-.tarjeta-celebracion--baja{
-  padding-top: 45px; /* ajusta entre 28px y 40px según gusto */
-}
-
-
-</style>
-
-
-    <!-- SECCIÓN 2 -->
-    <section class="seccion fondo-azul">
-      <h2 class="titulo-seccion">¿Cómo trabajamos?</h2>
-
-      <div class="pasos">
-        <div class="paso">1. Envíanos tu idea</div>
-        <div class="paso">2. Te enviamos cotización</div>
-        <div class="paso">3. Fabricamos y entregamos</div>
+      <!-- Nuevo botón debajo de la muchacha -->
+      <div class="destacado-cta">
+        <a class="btn-principal btn-ver-productos" href="productos.html">
+          Ver todos los productos
+        </a>
       </div>
     </section>
 
+    <!-- =========================================================
+         ¿QUÉ ESTÁS CELEBRANDO?
+    ========================================================== -->
+    <section class="seccion seccion-celebrando" id="celebrando">
+      <div class="celebrando-wrap">
 
-<!-- =========================================================
-     SECCIÓN: PERSONALIZA TU DISEÑO (NUEVA)
-     + Imagen inferior
-     + Modal con PDF de catálogo (Google Drive)
-========================================================= -->
-<section id="personaliza" class="seccion seccion-personaliza">
-  <div class="personaliza-wrap">
+        <!-- Decoraciones desktop -->
+        <img
+          src="imgs/queestascelebrando-izquierda.webp"
+          alt=""
+          class="celebrando-deco celebrando-deco--izq"
+          aria-hidden="true"
+          loading="lazy"
+        />
 
-    <!-- TARJETA / MARCO -->
-    <div class="personaliza-card">
-      <div class="personaliza-inner">
+        <img
+          src="imgs/queestascelebrando-derecha.webp"
+          alt=""
+          class="celebrando-deco celebrando-deco--der"
+          aria-hidden="true"
+          loading="lazy"
+        />
 
-        <!-- Título -->
-        <header class="personaliza-header">
-          <h2 class="personaliza-titulo">Personaliza tu diseño</h2>
-          <p class="personaliza-subtitulo">
-            Cuéntanos tu idea o elige un producto del catálogo y lo adaptamos a tu medida, con tu nombre o frase.
+        <header class="section-header">
+          <h2 class="titulo-seccion">¿Qué estás celebrando?</h2>
+          <p class="subtitulo-seccion">
+            Elige una ocasión y descubre ideas listas para personalizar.
           </p>
         </header>
 
-        <!-- Beneficios (SIN ✔) -->
-        <div class="personaliza-grid" role="list">
-          <article class="personaliza-item" role="listitem">
-            <h3 class="personaliza-item__titulo">Nombre o frase</h3>
-            <p class="personaliza-item__mini">Agrega el texto que quieras en tu diseño.</p>
+        <div class="grid-productos celebrando-grid">
+
+          <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
+            <h3>🎂 Cumpleaños</h3>
+            <p>Letreros, alcancías, centros de mesa y decoración temática.</p>
+            <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
           </article>
 
-          <article class="personaliza-item" role="listitem">
-            <h3 class="personaliza-item__titulo">Colores a elegir</h3>
-            <p class="personaliza-item__mini">Combinamos tonos según tu evento o estilo.</p>
+          <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
+            <h3>👑 XV Años</h3>
+            <p>Cajas para sobres personalizadas y detalles con nombre.</p>
+            <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
           </article>
 
-          <article class="personaliza-item" role="listitem">
-            <h3 class="personaliza-item__titulo">Medidas personalizadas</h3>
-            <p class="personaliza-item__mini">Lo adaptamos a las dimensiones que necesites.</p>
+          <article class="tarjeta tarjeta-celebracion">
+            <h3>👰 Bodas</h3>
+            <p>Letreros elegantes y caja para sobres MDF + acrílico.</p>
+            <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
           </article>
 
-          <article class="personaliza-item" role="listitem">
-            <h3 class="personaliza-item__titulo">Diseños por temporada o evento</h3>
-            <p class="personaliza-item__mini">Cumpleaños, bodas, baby shower, etc.</p>
+          <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--larga">
+            <h3>✝ Primera Comunión / Bautizo</h3>
+            <p>Cruces, palomas, toppers y diseños religiosos.</p>
+            <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
           </article>
+
+          <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--larga">
+            <h3>💖 Día de las Madres</h3>
+            <p>Portarretratos y cajas corazón para regalar.</p>
+            <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+          </article>
+
+          <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--larga">
+            <h3>👩‍🏫 Día del Maestro</h3>
+            <p>Lapiceras personalizadas y regalos escolares.</p>
+            <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+          </article>
+
+          <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
+            <h3>🐰 Pascua</h3>
+            <p>Canastas y decoraciones para temporada.</p>
+            <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+          </article>
+
+          <article class="tarjeta tarjeta-celebracion tarjeta-celebracion--baja">
+            <h3>🎮 Línea Geek</h3>
+            <p>Mario, Minecraft, Stitch, Friends y más.</p>
+            <a class="btn-principal btn-ver-ideas" href="productos.html">Ver ideas</a>
+          </article>
+
         </div>
 
-        <!-- Botones -->
-        <div class="personaliza-cta">
-          <!-- WhatsApp (funciona sin JS) -->
-          <a
-            class="btn-personaliza btn-personaliza--wa"
-            href="https://wa.me/5218123439492?text=Hola%20Creaciones%20MGI%2C%20quiero%20personalizar%20un%20dise%C3%B1o.%20Mi%20idea%20es%3A%20"
-            target="_blank"
-            rel="noopener"
-          >
-            Enviar mi idea
+        <!-- Imagen responsive final -->
+        <div class="celebrando-imagen-final">
+          <picture>
+            <source
+              media="(max-width: 640px)"
+              srcset="imgs/queestascelebrando-movil.webp"
+            />
+
+            <img
+              src="imgs/queestascelebrando-central.webp"
+              alt="Ideas y celebraciones en Creaciones MGI"
+              class="celebrando-imagen-final__img"
+              loading="lazy"
+            />
+          </picture>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ¿CÓMO TRABAJAMOS?
+    ========================================================== -->
+    <section class="seccion seccion-como-trabajamos" id="como-trabajamos">
+      <div class="trabajamos-fondo">
+
+        <header class="section-header">
+          <h2 class="titulo-seccion">¿Cómo trabajamos?</h2>
+          <p class="subtitulo-seccion">
+            Puedes comprar productos en stock o pedir un diseño personalizado.
+          </p>
+        </header>
+
+        <div class="trabajamos-opciones">
+
+          <!-- Opción 1 -->
+          <article class="trabajamos-card trabajamos-card--stock">
+            <span class="trabajamos-badge">Opción 1</span>
+
+            <h3>Compra productos en stock</h3>
+
+            <p>
+              Si ya sabes qué productos quieres, agrégalos al carrito desde la tienda.
+              Al finalizar, tu pedido se enviará por WhatsApp con productos, precios,
+              entrega y total calculado.
+            </p>
+
+            <ol class="trabajamos-lista">
+              <li>Elige productos disponibles.</li>
+              <li>Agrega al carrito.</li>
+              <li>Selecciona recoger o envío a domicilio.</li>
+              <li>Envía tu pedido por WhatsApp.</li>
+            </ol>
+
+            <div class="trabajamos-cta">
+              <a class="btn-principal" href="productos.html">
+                Comprar en stock
+              </a>
+            </div>
+          </article>
+
+          <!-- Opción 2 -->
+          <article class="trabajamos-card trabajamos-card--personalizado">
+            <span class="trabajamos-badge">Opción 2</span>
+
+            <h3>Solicita un diseño personalizado</h3>
+
+            <p>
+              Si quieres una medida, nombre, frase, color o temática especial,
+              mándanos tu idea y te ayudamos a cotizarla.
+            </p>
+
+            <ol class="trabajamos-lista">
+              <li>Cuéntanos tu idea.</li>
+              <li>Te enviamos cotización.</li>
+              <li>Fabricamos tu diseño.</li>
+              <li>Coordinamos entrega o recolección.</li>
+            </ol>
+
+            <div class="trabajamos-cta">
+              <button
+                type="button"
+                class="btn-principal"
+                data-modal="cotizaModal"
+              >
+                Cotizar diseño
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="trabajamos-nota">
+          <p>
+            Para envíos a domicilio, puedes calcular un costo estimado usando los
+            kilómetros que te marca Google Maps desde nuestra ubicación hasta tu domicilio.
+          </p>
+
+          <a class="btn-secundario" href="#calculadora-envio">
+            Calcular envío
           </a>
-
-          <!-- Abre modal -->
-          <button
-            type="button"
-            class="btn-personaliza btn-personaliza--sec"
-            id="btnAbrirCatalogo"
-            aria-haspopup="dialog"
-            aria-controls="modalCatalogo"
-          >
-            Ver catálogo
-          </button>
         </div>
 
       </div>
-    </div>
-
-    <!-- IMAGEN INFERIOR (debajo de la tarjeta) -->
-    <div class="personaliza-imagen">
-      <img
-        src="imgs/creaciones-manualidades.webp"
-        alt="Creaciones y manualidades"
-        class="personaliza-imagen__img"
-        loading="lazy"
-      />
-    </div>
-
-  </div>
-</section>
-
-<!-- =========================================================
-     MODAL: CATÁLOGO (PDF en Google Drive)
-========================================================= -->
-<div class="modal-catalogo" id="modalCatalogo" aria-hidden="true">
-  <!-- overlay para cerrar al dar click fuera -->
-  <div class="modal-catalogo__overlay" data-close="true"></div>
-
-  <div
-    class="modal-catalogo__panel"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="tituloCatalogo"
-  >
-    <div class="modal-catalogo__header">
-      <h3 class="modal-catalogo__titulo" id="tituloCatalogo">Catálogo</h3>
-
-      <!-- ✅ X para cerrar -->
-      <button
-        type="button"
-        class="modal-catalogo__cerrar"
-        id="btnCerrarCatalogo"
-        aria-label="Cerrar catálogo"
-        title="Cerrar"
-      >
-        ✕
-      </button>
-    </div>
-
-    <div class="modal-catalogo__body">
-      <iframe
-        class="catalogo-pdf"
-        src=""
-        allow="autoplay"
-        loading="lazy"
-        title="Catálogo Creaciones MGI"
-      ></iframe>
-
-      <p class="catalogo-fallback">
-        Si no se muestra el catálogo, ábrelo aquí:
-        <a
-          class="catalogo-link"
-          href="https://drive.google.com/file/d/1qrMfTDpX4idLxtEInIWqW4DTrWMPYQIW/view?usp=sharing"
-          target="_blank"
-          rel="noopener"
-        >Ver PDF en Google Drive</a>
-      </p>
-    </div>
-  </div>
-</div>
+    </section>
 
 
-<!-- =========================================================
-     SECCIÓN: RESEÑAS (CARRUSEL AUTOMÁTICO / INFINITO)
-========================================================= -->
-<section class="seccion seccion-resenas" id="resenas">
-  <h2 class="titulo-seccion">Reseñas</h2>
+    
+    <!-- =========================================================
+         ENVÍOS Y ATENCIÓN
+    ========================================================== -->
+    <section id="envios-atencion" class="seccion seccion-envios">
+      <div class="envios-fondo">
 
-  <div class="resenas-carrusel" aria-label="Carrusel de reseñas de clientes">
-    <div class="resenas-viewport">
-      <div class="resenas-track" id="resenasTrack">
+        <header class="section-header">
+          <h2 class="titulo-seccion">Envíos y atención</h2>
+          <p class="subtitulo-seccion">
+            Coordinamos tu pedido de forma sencilla y directa.
+          </p>
+        </header>
 
-        <!-- 1 -->
-        <article class="resena-card">
-          <div class="resena-card__inner">
-            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
-            <p class="resena-texto">
-              “Súper bonito el trabajo y la atención rapidísima. Me ayudaron a elegir colores y quedó mejor de lo que imaginaba.”
-            </p>
-            <p class="resena-nombre">— Mariana López</p>
-          </div>
-        </article>
-
-        <!-- 2 -->
-        <article class="resena-card">
-          <div class="resena-card__inner">
-            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
-            <p class="resena-texto">
-              “Pedí una caja para sobres y llegó impecable. Se nota la calidad y el detalle. Los recomiendo al 100%.”
-            </p>
-            <p class="resena-nombre">— José Luis Martínez</p>
-          </div>
-        </article>
-
-        <!-- 3 -->
-        <article class="resena-card">
-          <div class="resena-card__inner">
-            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
-            <p class="resena-texto">
-              “Me encantó la comunicación, siempre atentos. Mandé mi idea por WhatsApp y me la ajustaron a la medida exacta.”
-            </p>
-            <p class="resena-nombre">— Fernanda Garza</p>
-          </div>
-        </article>
-
-        <!-- 4 -->
-        <article class="resena-card">
-          <div class="resena-card__inner">
-            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
-            <p class="resena-texto">
-              “Excelente servicio. Compré un letrero para cumpleaños y quedó precioso. Entrega rápida en Monterrey.”
-            </p>
-            <p class="resena-nombre">— Ricardo Hernández</p>
-          </div>
-        </article>
-
-        <!-- 5 -->
-        <article class="resena-card">
-          <div class="resena-card__inner">
-            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
-            <p class="resena-texto">
-              “Todo muy profesional, desde la cotización hasta la entrega. El acabado se ve súper limpio y elegante.”
-            </p>
-            <p class="resena-nombre">— Karla Sánchez</p>
-          </div>
-        </article>
-
-        <!-- 6 -->
-        <article class="resena-card">
-          <div class="resena-card__inner">
-            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
-            <p class="resena-texto">
-              “Hicieron un diseño por temporada y quedó hermoso. Me guiaron con opciones y respondieron rapidísimo.”
-            </p>
-            <p class="resena-nombre">— Daniel Ramírez</p>
-          </div>
-        </article>
-
-        <!-- 7 -->
-        <article class="resena-card">
-          <div class="resena-card__inner">
-            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
-            <p class="resena-texto">
-              “La calidad del MDF y el acrílico está excelente. Se ve resistente y muy bonito. Volveré a pedir sin duda.”
-            </p>
-            <p class="resena-nombre">— Paola Castillo</p>
-          </div>
-        </article>
-
-        <!-- 8 -->
-        <article class="resena-card">
-          <div class="resena-card__inner">
-            <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
-            <p class="resena-texto">
-              “Me salvaron con un pedido urgente. Muy amables y cumplidos. El resultado quedó espectacular.”
-            </p>
-            <p class="resena-nombre">— Alejandra Torres</p>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
-     FIN SECCIÓN: RESEÑAS (CARRUSEL AUTOMÁTICO / INFINITO)
-========================================================= -->
-
-
-<!-- =========================================================
-     SECCIÓN 7: ENVÍOS + UBICACIÓN + HORARIO (NUEVA – confianza)
-========================================================= -->
-<!-- =========================================================
-     SECCIÓN: ENVÍOS + UBICACIÓN + HORARIO (NUEVA)
-========================================================= -->
-<section id="envios-atencion" class="seccion seccion-envios">
-  <!-- Fondo suave tipo “sombreado azulito” (igual que como trabajamos) -->
-  <div class="envios-fondo">
-    <h2 class="titulo-seccion">Envíos y atención</h2>
-
-    <!-- Imagen centrada -->
-    <div class="envios-imagen" aria-hidden="true">
-      <img
-        src="imgs/servicio-domicilio.webp"
-        alt=""
-        class="envios-imagen__img"
-        loading="lazy"
-      />
-    </div>
-
-    <!-- Grid de tarjetas -->
-    <div class="envios-grid" role="list">
-      <!-- 1 -->
-      <article class="envios-card" role="listitem">
-        <h3 class="envios-card__titulo">🚚 Envíos a domicilio</h3>
-        <p class="envios-card__texto">Entregas en Monterrey y área metropolitana.</p>
-      </article>
-
-      <!-- 2 -->
-      <article class="envios-card" role="listitem">
-        <h3 class="envios-card__titulo">🕒 Horario</h3>
-        <p class="envios-card__texto">Lunes a viernes • 9:00 a.m. a 4:00 p.m.</p>
-      </article>
-
-      <!-- 3 (CLICKEABLE COMPLETA a ubicacion.html) -->
-      <a class="envios-card envios-card--link" role="listitem" href="ubicacion.html">
-        <div class="envios-card__top">
-          <h3 class="envios-card__titulo">📍 Visítanos</h3>
-
-          <!-- icono adicional (maps) -->
+        <div class="envios-imagen" aria-hidden="true">
           <img
-            src="imgs/icono-maps.png"
-            alt="Abrir ubicación"
-            class="envios-card__icon"
+            src="imgs/servicio-domicilio.webp"
+            alt=""
+            class="envios-imagen__img"
             loading="lazy"
           />
         </div>
 
-        <p class="envios-card__texto">
-          Calle Río Jánitzio 1868, Col. Central, Monterrey NL.
+        <div class="envios-grid" role="list">
+
+          <article class="envios-card" role="listitem">
+            <h3 class="envios-card__titulo">🚚 Envíos a domicilio</h3>
+            <p class="envios-card__texto">
+              Entregas en Monterrey y área metropolitana dentro de cobertura.
+            </p>
+          </article>
+
+          <article class="envios-card" role="listitem">
+            <h3 class="envios-card__titulo">🕒 Horario</h3>
+            <p class="envios-card__texto">
+              Lunes a viernes • 9:00 a.m. a 4:00 p.m.
+            </p>
+          </article>
+
+          <a
+            class="envios-card envios-card--link"
+            role="listitem"
+            href="ubicacion.html"
+          >
+            <div class="envios-card__top">
+              <h3 class="envios-card__titulo">📍 Visítanos</h3>
+
+              <img
+                src="imgs/icono-maps.png"
+                alt="Abrir ubicación"
+                class="envios-card__icon"
+                loading="lazy"
+              />
+            </div>
+
+            <p class="envios-card__texto">
+              Calle Río Jánitzio 1868, Col. Central, Monterrey NL.
+            </p>
+
+            <span class="envios-card__hint">Ver ubicación</span>
+          </a>
+
+          <article class="envios-card" role="listitem">
+            <h3 class="envios-card__titulo">💬 Atención directa</h3>
+            <p class="envios-card__texto">
+              Escríbenos por WhatsApp y te respondemos lo antes posible.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="envios-cta">
+          <a id="btnEnviosWhatsApp" class="btn-envios-wa" href="#">
+            <img
+              class="btn-envios-wa__icon"
+              src="imgs/icono-whatsapp.png"
+              alt=""
+              aria-hidden="true"
+            />
+            Escríbenos por WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CALCULADORA DE ENVÍO
+    ========================================================== -->
+    <section class="seccion seccion-calculadora-envio" id="calculadora-envio">
+      <div class="calculadora-card">
+
+        <header class="calculadora-header">
+          <h2 class="titulo-seccion">Calcula tu envío</h2>
+
+          <p class="calculadora-intro">
+            Para calcular tu envío, abre Google Maps, revisa cuántos kilómetros
+            hay desde nuestra ubicación hasta tu domicilio e ingrésalos aquí.
+          </p>
+        </header>
+
+        <div class="calculadora-layout">
+
+          <!-- Instrucciones -->
+          <div class="calculadora-info">
+            <h3>¿Cómo saber los kilómetros?</h3>
+
+            <ol class="calculadora-pasos">
+              <li>Abre nuestra ubicación en Google Maps.</li>
+              <li>Selecciona cómo llegar desde tu domicilio.</li>
+              <li>Revisa la distancia en kilómetros.</li>
+              <li>Escribe esa distancia en la calculadora.</li>
+            </ol>
+
+            <a
+              class="btn-secundario btn-maps"
+              href="https://www.google.com/maps/search/?api=1&query=C.+R%C3%ADo+Janitzio+1868,+Central,+64190+Monterrey,+N.L."
+              target="_blank"
+              rel="noopener"
+            >
+              Abrir ubicación en Google Maps
+            </a>
+          </div>
+
+          <!-- Formulario calculadora -->
+          <form class="calculadora-form" id="formCalculadoraEnvio">
+            <div class="campo-grupo">
+              <label for="tipoEntrega">Tipo de entrega</label>
+              <select id="tipoEntrega" name="tipoEntrega">
+                <option value="domicilio">Envío a domicilio</option>
+                <option value="recoger">Recoger en tienda / taller</option>
+              </select>
+            </div>
+
+            <div class="campo-grupo" id="campoKilometros">
+              <label for="kilometrosEnvio">Kilómetros de distancia</label>
+              <input
+                type="number"
+                id="kilometrosEnvio"
+                name="kilometrosEnvio"
+                min="0"
+                max="30"
+                step="0.1"
+                placeholder="Ej. 7.9"
+                inputmode="decimal"
+              />
+
+              <small>
+                Máximo 30 km a la redonda. 
+              </small>
+            </div>
+
+            <button type="submit" class="btn-principal">
+              Calcular envío
+            </button>
+
+            <div
+              class="resultado-envio"
+              id="resultadoEnvio"
+              aria-live="polite"
+            >
+              <p>
+                Ingresa la distancia para ver el costo estimado de envío.
+              </p>
+            </div>
+          </form>
+
+        </div>
+
+        <p class="calculadora-aviso">
+          El costo es estimado. Si tu domicilio supera los 30 km, podemos revisar
+          una opción especial por WhatsApp.
         </p>
 
-        <span class="envios-card__hint">Ver ubicación</span>
-      </a>
+      </div>
+    </section>
 
-      <!-- 4 -->
-      <article class="envios-card" role="listitem">
-        <h3 class="envios-card__titulo">💬 Atención directa</h3>
-        <p class="envios-card__texto">Escríbenos y te respondemos rápido.</p>
-      </article>
-    </div>
+    <!-- =========================================================
+         PERSONALIZA TU DISEÑO
+    ========================================================== -->
+    <section id="personaliza" class="seccion seccion-personaliza">
+      <div class="personaliza-wrap">
 
-    <!-- Botón grande WhatsApp -->
-    <div class="envios-cta">
-      <a id="btnEnviosWhatsApp" class="btn-envios-wa" href="#">
-        <img
-          class="btn-envios-wa__icon"
-          src="imgs/icono-whatsapp.png"
-          alt=""
-          aria-hidden="true"
+        <div class="personaliza-card">
+          <div class="personaliza-inner">
+
+            <header class="personaliza-header">
+              <h2 class="personaliza-titulo">Personaliza tu diseño</h2>
+
+              <p class="personaliza-subtitulo">
+                Cuéntanos tu idea o elige un producto del catálogo y lo adaptamos
+                a tu medida, con tu nombre o frase.
+              </p>
+            </header>
+
+            <div class="personaliza-grid" role="list">
+
+              <article class="personaliza-item" role="listitem">
+                <h3 class="personaliza-item__titulo">Nombre o frase</h3>
+                <p class="personaliza-item__mini">
+                  Agrega el texto que quieras en tu diseño.
+                </p>
+              </article>
+
+              <article class="personaliza-item" role="listitem">
+                <h3 class="personaliza-item__titulo">Colores a elegir</h3>
+                <p class="personaliza-item__mini">
+                  Combinamos tonos según tu evento o estilo.
+                </p>
+              </article>
+
+              <article class="personaliza-item" role="listitem">
+                <h3 class="personaliza-item__titulo">Medidas personalizadas</h3>
+                <p class="personaliza-item__mini">
+                  Lo adaptamos a las dimensiones que necesites.
+                </p>
+              </article>
+
+              <article class="personaliza-item" role="listitem">
+                <h3 class="personaliza-item__titulo">Diseños por temporada</h3>
+                <p class="personaliza-item__mini">
+                  Cumpleaños, bodas, baby shower, temporada y más.
+                </p>
+              </article>
+
+            </div>
+
+            <div class="personaliza-cta">
+              <a
+                class="btn-personaliza btn-personaliza--wa"
+                href="https://wa.me/5218123439492?text=Hola%20Creaciones%20MGI%2C%20quiero%20personalizar%20un%20dise%C3%B1o.%20Mi%20idea%20es%3A%20"
+                target="_blank"
+                rel="noopener"
+              >
+                Enviar mi idea
+              </a>
+
+              <button
+                type="button"
+                class="btn-personaliza btn-personaliza--sec"
+                id="btnAbrirCatalogo"
+                aria-haspopup="dialog"
+                aria-controls="modalCatalogo"
+              >
+                Ver catálogo
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="personaliza-imagen">
+          <img
+            src="imgs/creaciones-manualidades.webp"
+            alt="Creaciones y manualidades personalizadas"
+            class="personaliza-imagen__img"
+            loading="lazy"
+          />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         RESEÑAS
+    ========================================================== -->
+    <section class="seccion seccion-resenas" id="resenas">
+      <header class="section-header">
+        <h2 class="titulo-seccion">Reseñas</h2>
+        <p class="subtitulo-seccion">
+          Clientes felices con sus pedidos personalizados.
+        </p>
+      </header>
+
+      <div class="resenas-carrusel" aria-label="Carrusel de reseñas de clientes">
+        <div class="resenas-viewport">
+          <div class="resenas-track" id="resenasTrack">
+
+            <article class="resena-card">
+              <div class="resena-card__inner">
+                <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+                <p class="resena-texto">
+                  “Súper bonito el trabajo y la atención rapidísima. Me ayudaron
+                  a elegir colores y quedó mejor de lo que imaginaba.”
+                </p>
+                <p class="resena-nombre">— Mariana López</p>
+              </div>
+            </article>
+
+            <article class="resena-card">
+              <div class="resena-card__inner">
+                <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+                <p class="resena-texto">
+                  “Pedí una caja para sobres y llegó impecable. Se nota la calidad
+                  y el detalle. Los recomiendo al 100%.”
+                </p>
+                <p class="resena-nombre">— José Luis Martínez</p>
+              </div>
+            </article>
+
+            <article class="resena-card">
+              <div class="resena-card__inner">
+                <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+                <p class="resena-texto">
+                  “Me encantó la comunicación, siempre atentos. Mandé mi idea por
+                  WhatsApp y me la ajustaron a la medida exacta.”
+                </p>
+                <p class="resena-nombre">— Fernanda Garza</p>
+              </div>
+            </article>
+
+            <article class="resena-card">
+              <div class="resena-card__inner">
+                <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+                <p class="resena-texto">
+                  “Excelente servicio. Compré un letrero para cumpleaños y quedó
+                  precioso. Entrega rápida en Monterrey.”
+                </p>
+                <p class="resena-nombre">— Ricardo Hernández</p>
+              </div>
+            </article>
+
+            <article class="resena-card">
+              <div class="resena-card__inner">
+                <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+                <p class="resena-texto">
+                  “Todo muy profesional, desde la cotización hasta la entrega.
+                  El acabado se ve súper limpio y elegante.”
+                </p>
+                <p class="resena-nombre">— Karla Sánchez</p>
+              </div>
+            </article>
+
+            <article class="resena-card">
+              <div class="resena-card__inner">
+                <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+                <p class="resena-texto">
+                  “Hicieron un diseño por temporada y quedó hermoso. Me guiaron
+                  con opciones y respondieron rapidísimo.”
+                </p>
+                <p class="resena-nombre">— Daniel Ramírez</p>
+              </div>
+            </article>
+
+            <article class="resena-card">
+              <div class="resena-card__inner">
+                <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+                <p class="resena-texto">
+                  “La calidad del MDF y el acrílico está excelente. Se ve resistente
+                  y muy bonito. Volveré a pedir sin duda.”
+                </p>
+                <p class="resena-nombre">— Paola Castillo</p>
+              </div>
+            </article>
+
+            <article class="resena-card">
+              <div class="resena-card__inner">
+                <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+                <p class="resena-texto">
+                  “Me salvaron con un pedido urgente. Muy amables y cumplidos.
+                  El resultado quedó espectacular.”
+                </p>
+                <p class="resena-nombre">— Alejandra Torres</p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- =========================================================
+       MODAL: COTIZA TU DISEÑO
+  ========================================================== -->
+  <dialog class="modal-cotiza" id="cotizaModal">
+    <div class="modal-cotiza__contenido">
+      <button
+        type="button"
+        class="modal-cotiza__cerrar"
+        data-close
+        aria-label="Cerrar cotización"
+      >
+        ✕
+      </button>
+
+      <h2>Cotiza tu diseño</h2>
+
+      <p>
+        Cuéntanos qué tienes en mente y te contactaremos para ayudarte con tu pedido.
+      </p>
+
+      <form class="formulario formulario-cotiza" id="formCotiza">
+        <label for="cotizaNombre">Nombre</label>
+        <input
+          type="text"
+          id="cotizaNombre"
+          name="nombre"
+          placeholder="Tu nombre"
+          required
         />
-        Escríbenos por WhatsApp
-      </a>
+
+        <label for="cotizaTelefono">WhatsApp</label>
+        <input
+          type="tel"
+          id="cotizaTelefono"
+          name="telefono"
+          placeholder="Ej. 8123456789"
+          required
+        />
+
+        <label for="cotizaEvento">Tipo de evento o producto</label>
+        <input
+          type="text"
+          id="cotizaEvento"
+          name="evento"
+          placeholder="Ej. cumpleaños, boda, XV, regalo..."
+        />
+
+        <label for="cotizaMensaje">Cuéntanos tu idea</label>
+        <textarea
+          id="cotizaMensaje"
+          name="mensaje"
+          placeholder="Describe colores, medidas, nombre, frase o temática."
+          required
+        ></textarea>
+
+        <button type="submit" class="btn-principal">
+          Enviar por WhatsApp
+        </button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- =========================================================
+       MODAL: CATÁLOGO
+  ========================================================== -->
+  <div class="modal-catalogo" id="modalCatalogo" aria-hidden="true">
+
+    <div class="modal-catalogo__overlay" data-close="true"></div>
+
+    <div
+      class="modal-catalogo__panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="tituloCatalogo"
+    >
+      <div class="modal-catalogo__header">
+        <h3 class="modal-catalogo__titulo" id="tituloCatalogo">Catálogo</h3>
+
+        <button
+          type="button"
+          class="modal-catalogo__cerrar"
+          id="btnCerrarCatalogo"
+          aria-label="Cerrar catálogo"
+          title="Cerrar"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="modal-catalogo__body">
+        <iframe
+          class="catalogo-pdf"
+          src=""
+          allow="autoplay"
+          loading="lazy"
+          title="Catálogo Creaciones MGI"
+        ></iframe>
+
+        <p class="catalogo-fallback">
+          Si no se muestra el catálogo, ábrelo aquí:
+          <a
+            class="catalogo-link"
+            href="https://drive.google.com/file/d/1qrMfTDpX4idLxtEInIWqW4DTrWMPYQIW/view?usp=sharing"
+            target="_blank"
+            rel="noopener"
+          >
+            Ver PDF en Google Drive
+          </a>
+        </p>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- =========================================================
-     FIN SECCIÓN 7: ENVÍOS + UBICACIÓN + HORARIO (NUEVA – confianza)
-========================================================= -->
-
-
-  <!-- PIE DE PÁGINA -->
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
   <footer class="footer">
-    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p>
+      © <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.
+    </p>
 
-    <!-- Firma (muy pequeña) -->
-    <p class="footer-firma">Creado por Daenna González</p>
+    <p class="footer-firma">
+      Creado por Daenna González
+    </p>
   </footer>
 
- <!-- BURBUJAS FLOTANTES -->
-<div class="burbujas">
+  <!-- =========================================================
+       BURBUJAS FLOTANTES
+  ========================================================== -->
+  <div class="burbujas">
 
-  <!-- WhatsApp -->
-  <a href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos."
-     target="_blank"
-     rel="noopener"
-     class="burbuja whatsapp"
-     aria-label="WhatsApp">
-    <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true">
-  </a>
+    <a
+      href="https://wa.me/5218123439492?text=Hola%20Creaciones%20MGI%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos."
+      target="_blank"
+      rel="noopener"
+      class="burbuja whatsapp"
+      aria-label="WhatsApp"
+    >
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true" />
+    </a>
 
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/profile.php?id=61559132295014"
-     target="_blank"
-     rel="noopener"
-     class="burbuja facebook"
-     aria-label="Facebook">
-    <img src="imgs/logo-facebook.png" alt="" aria-hidden="true">
-  </a>
+    <a
+      href="https://www.facebook.com/profile.php?id=61559132295014"
+      target="_blank"
+      rel="noopener"
+      class="burbuja facebook"
+      aria-label="Facebook"
+    >
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true" />
+    </a>
 
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/creacionesmgi/"
-     target="_blank"
-     rel="noopener"
-     class="burbuja instagram"
-     aria-label="Instagram">
-    <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true">
-  </a>
+    <a
+      href="https://www.instagram.com/creacionesmgi/"
+      target="_blank"
+      rel="noopener"
+      class="burbuja instagram"
+      aria-label="Instagram"
+    >
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true" />
+    </a>
 
-</div>
+  </div>
 
-  <!-- JS (se agregará después) -->
+  <!-- JS -->
   <script src="script.js"></script>
-
-  <script>
-    document.getElementById("anio").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
