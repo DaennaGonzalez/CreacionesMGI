@@ -165,45 +165,78 @@
     </section>
 
 
-    <!-- =====================================================
-     NUEVO: PAGO DIRECTO EN LA PÁGINA (carrito)
+   <!-- =====================================================
+     PEDIDO POR WHATSAPP DESDE CARRITO
      Insertar ANTES de "Para cotizar rápido"
 ====================================================== -->
-<section class="seccion pedidos-pago-directo" aria-labelledby="pago-directo">
-  <h2 class="titulo-seccion" id="pago-directo" data-animate="up">Paga directo en la página</h2>
+<section class="seccion pedidos-carrito-whatsapp" aria-labelledby="pedido-whatsapp">
+  <h2 class="titulo-seccion" id="pedido-whatsapp" data-animate="up">
+    Revisa tu carrito y envía tu pedido por WhatsApp
+  </h2>
 
-  <div class="formulario pedidos-pago-card" data-animate="up" data-delay="60">
+  <div class="formulario pedidos-pago-card pedidos-whatsapp-card" data-animate="up" data-delay="60">
     <p class="pedidos-pago-texto">
-      Si ya elegiste productos del catálogo, puedes ir a <strong>compras (el botón de abajo)</strong> para
-      <strong>revisar tu carrito</strong>, ajustar cantidades y <strong>finalizar tu pedido</strong> desde la página.
+      Si ya sabes qué productos quieres, primero entra al catálogo, agrega los productos
+      a tu carrito y después revisa tu pedido antes de enviarlo.
     </p>
 
-    <p class="pedidos-pago-aviso" id="pagoAviso" aria-live="polite">
-      Tip: Si tu carrito está vacío, primero ve a <strong>Productos</strong> y agrega lo que te guste.
+    <p class="pedidos-pago-texto">
+      En el carrito podrás confirmar cantidades, opciones seleccionadas, color o pintado extra
+      y el total estimado de tu pedido.
+    </p>
+
+    <p class="pedidos-pago-aviso">
+      Importante: No se realiza pago en línea. Al finalizar, tu pedido se enviará por
+      <strong>WhatsApp</strong> para confirmar disponibilidad, detalles personalizados,
+      forma de entrega y forma de pago.
     </p>
 
     <div class="pedidos-cta-bloque" data-animate="up" data-delay="120">
       <a class="btn btn-primario btn-grande btn-bounce" href="compras.html">
-        <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
-        Ir a compras (carrito)
+        <img
+          class="btn-ico"
+          src="imgs/icono-carrito3d.webp"
+          alt=""
+          aria-hidden="true"
+        />
+        Ir al carrito
       </a>
 
       <a class="btn btn-secundario btn-grande btn-bounce" href="productos.html">
-        <img class="btn-ico" src="imgs/icono-carrito3d.webp" alt="" aria-hidden="true">
+        <img
+          class="btn-ico"
+          src="imgs/icono-carrito3d.webp"
+          alt=""
+          aria-hidden="true"
+        />
         Ver productos
       </a>
-    </div>
 
-    <!-- (Opcional) badge visual si luego quieres mostrar cantidad con JS -->
-    <p class="pedidos-pago-badge" data-animate="fade" data-delay="160">
-      Productos en carrito: <strong id="carritoCountMini">0</strong>
-    </p>
+      <a
+        class="btn btn-secundario btn-grande btn-bounce"
+        href="https://wa.me/5218123439492?text=Hola%20Creaciones%20MGI%2C%20quiero%20ayuda%20para%20hacer%20mi%20pedido."
+        target="_blank"
+        rel="noopener"
+      >
+        <img
+          class="btn-ico"
+          src="imgs/icono-whatsapp.png"
+          alt=""
+          aria-hidden="true"
+        />
+        Ayuda por WhatsApp
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- Imagen decorativa entre secciones -->
 <div class="pedidos-img-separador" aria-hidden="true">
-  <img src="imgs/persona-pagoweb.webp" alt="">
+  <img
+    src="imgs/persona-pagoweb.webp"
+    alt=""
+    loading="lazy"
+  />
 </div>
 
     <!-- =====================================================
