@@ -3,17 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Carrito de compras Creaciones MGI. Revisa tus productos, ajusta cantidades y finaliza tu pedido." />
+
+  <meta
+    name="description"
+    content="Carrito de pedido Creaciones MGI. Revisa tus productos, ajusta cantidades y envía tu pedido por WhatsApp."
+  />
+
   <title>Creaciones MGI | Compras</title>
 
   <!-- CSS general -->
   <link rel="stylesheet" href="styles.css" />
+
   <!-- CSS exclusivo de compras -->
   <link rel="stylesheet" href="compras.css" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..900&family=Montserrat:wght@400;700;800;900&display=swap"
+    rel="stylesheet"
+  />
 
   <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
 </head>
@@ -21,24 +31,38 @@
 <body class="mgi-body">
   <div class="bg-fixed" aria-hidden="true"></div>
 
-  <!-- HEADER (igual al blog/index) -->
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
   <header class="site-header">
     <div class="header-inner">
 
-      <a class="brand" href="index.html">
-        <img src="imgs/logo-creacionesmgi.webp" alt="Creaciones MGI" class="brand-logo" />
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
+        <img
+          src="imgs/logo-creacionesmgi.webp"
+          alt="Creaciones MGI"
+          class="brand-logo"
+        />
       </a>
 
       <p class="header-frase" aria-hidden="true">
         Damos forma a tus ideas para crear historias inolvidables.
       </p>
 
-      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <input
+        type="checkbox"
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-hidden="true"
+      />
+
       <label for="menu-toggle" class="menu-icon" aria-label="Abrir menú">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </label>
 
-      <nav class="site-nav">
+      <nav class="site-nav" aria-label="Navegación principal">
         <ul class="nav-list">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="nosotros.html">Nosotros</a></li>
@@ -53,96 +77,208 @@
     </div>
   </header>
 
+  <!-- =========================================================
+       CONTENIDO PRINCIPAL
+  ========================================================== -->
   <main>
 
-    <!-- INTRO -->
+    <!-- =========================================================
+         INTRO
+    ========================================================== -->
     <section class="seccion compras-intro" aria-labelledby="compras-title">
-      <h2 class="titulo-seccion" id="compras-title">Carrito de compras</h2>
+      <h1 class="titulo-seccion" id="compras-title">
+        Carrito de pedido
+      </h1>
 
       <div class="formulario compras-intro__card">
         <p>
-          Revisa tus productos, ajusta cantidades y completa tu información para finalizar el pedido.
-          Si necesitas personalización (color, nombre, tamaño), puedes anotarlo en “Notas”.
+          Revisa tus productos, ajusta cantidades y completa tus datos.
+          Al finalizar, tu pedido se enviará por WhatsApp para confirmar disponibilidad,
+          detalles personalizados y forma de entrega.
+        </p>
+
+        <p class="compras-intro__nota">
+          No se realiza pago en línea. El pedido se confirma directamente por WhatsApp.
         </p>
 
         <div class="compras-intro__cta">
-          <a href="productos.html" class="btn-principal">Seguir comprando</a>
+          <a href="productos.html" class="btn-principal">
+            Seguir comprando
+          </a>
 
-          <a href="https://wa.me/18123439492?text=Hola%20Creaciones%20MGI,%20quiero%20ayuda%20con%20mi%20carrito%20de%20compras."
-             target="_blank" rel="noopener" class="btn-principal">
+          <a
+            href="https://wa.me/5218123439492?text=Hola%20Creaciones%20MGI%2C%20quiero%20ayuda%20con%20mi%20carrito%20de%20pedido."
+            target="_blank"
+            rel="noopener"
+            class="btn-principal compras-btn-outline"
+          >
             Ayuda por WhatsApp
           </a>
         </div>
       </div>
     </section>
 
-    <!-- CONTENIDO PRINCIPAL -->
+    <!-- =========================================================
+         CONTENIDO PRINCIPAL DEL CARRITO
+    ========================================================== -->
     <section class="seccion compras-wrap" aria-labelledby="resumen-title">
-      <h2 class="titulo-seccion" id="resumen-title">Resumen del pedido</h2>
+      <h2 class="titulo-seccion" id="resumen-title">
+        Resumen del pedido
+      </h2>
 
       <!-- Estado vacío -->
       <div class="formulario compras-empty" id="carritoEmpty" hidden aria-live="polite">
         <p><strong>Tu carrito está vacío.</strong></p>
-        <p>Vuelve al catálogo y agrega productos para continuar.</p>
-        <a href="productos.html" class="btn-principal">Ver productos</a>
+        <p>Vuelve al catálogo y agrega productos para preparar tu pedido.</p>
+
+        <a href="productos.html" class="btn-principal">
+          Ver productos
+        </a>
       </div>
 
       <div class="compras-layout">
 
-        <!-- LISTA DE PRODUCTOS -->
-        <div class="formulario compras-panel">
+        <!-- =====================================================
+             LISTA DE PRODUCTOS
+        ====================================================== -->
+        <section class="formulario compras-panel" aria-labelledby="productos-carrito-title">
           <div class="compras-panel__head">
-            <h3 class="compras-panel__title">Productos</h3>
+            <h3 class="compras-panel__title" id="productos-carrito-title">
+              Productos agregados
+            </h3>
 
-            <button type="button" class="btn-principal compras-btn-danger" id="btnVaciarCarrito">
+            <button
+              type="button"
+              class="btn-principal compras-btn-danger"
+              id="btnVaciarCarrito"
+            >
               Vaciar carrito
             </button>
           </div>
 
-          <!-- Aquí el JS renderiza tarjetas/filas -->
           <div class="compras-lista" id="carritoLista" aria-live="polite"></div>
 
           <p class="compras-nota">
-            * Precios en MXN. Productos personalizados pueden variar según diseño/material.
+            * Los precios están en MXN. En productos personalizados, el precio puede variar
+            si agregas detalles especiales, acabados o cambios de diseño.
           </p>
-        </div>
+        </section>
 
-        <!-- DATOS DEL COMPRADOR + TOTALES -->
-        <aside class="formulario compras-resumen">
-          <h3 class="compras-panel__title">Tus datos</h3>
+        <!-- =====================================================
+             DATOS DEL CLIENTE + ENTREGA + TOTALES
+        ====================================================== -->
+        <aside class="formulario compras-resumen" aria-labelledby="datos-title">
+          <h3 class="compras-panel__title" id="datos-title">
+            Tus datos
+          </h3>
 
           <form id="checkoutForm" class="compras-form" autocomplete="on">
 
+            <!-- Datos del cliente -->
             <div class="compras-grid">
+
               <div class="compras-campo">
                 <label for="buyerName">Nombre completo *</label>
-                <input id="buyerName" name="buyerName" type="text" placeholder="Ej. Ana López" required>
+                <input
+                  id="buyerName"
+                  name="buyerName"
+                  type="text"
+                  placeholder="Ej. Ana López"
+                  autocomplete="name"
+                  required
+                />
               </div>
 
               <div class="compras-campo">
-                <label for="buyerPhone">Teléfono / WhatsApp *</label>
-                <input id="buyerPhone" name="buyerPhone" type="tel" placeholder="Ej. 81 1234 5678" required>
+                <label for="buyerPhone">WhatsApp / Teléfono *</label>
+                <input
+                  id="buyerPhone"
+                  name="buyerPhone"
+                  type="tel"
+                  placeholder="Ej. 81 1234 5678"
+                  autocomplete="tel"
+                  required
+                />
               </div>
 
               <div class="compras-campo compras-col-full">
-                <label for="buyerEmail">Correo (opcional)</label>
-                <input id="buyerEmail" name="buyerEmail" type="email" placeholder="Ej. correo@ejemplo.com">
+                <label for="buyerEmail">Correo electrónico opcional</label>
+                <input
+                  id="buyerEmail"
+                  name="buyerEmail"
+                  type="email"
+                  placeholder="Ej. correo@ejemplo.com"
+                  autocomplete="email"
+                />
               </div>
 
               <div class="compras-campo compras-col-full">
-                <label for="buyerAddress">Dirección / Domicilio *</label>
-                <input id="buyerAddress" name="buyerAddress" type="text" placeholder="Calle, número, colonia, ciudad, estado, CP" required>
+                <label for="deliveryType">Forma de entrega *</label>
+                <select id="deliveryType" name="deliveryType" required>
+                  <option value="recoger">Recoger en taller / punto acordado</option>
+                  <option value="domicilio">Envío a domicilio</option>
+                </select>
+              </div>
+
+              <div class="compras-campo compras-col-full" id="campoDireccion">
+                <label for="buyerAddress">Dirección o referencia de entrega</label>
+                <input
+                  id="buyerAddress"
+                  name="buyerAddress"
+                  type="text"
+                  placeholder="Calle, número, colonia, ciudad, estado o punto de referencia"
+                  autocomplete="street-address"
+                />
+              </div>
+
+              <div class="compras-campo compras-col-full" id="campoKilometros">
+                <label for="shippingKm">Kilómetros de distancia para envío</label>
+                <input
+                  id="shippingKm"
+                  name="shippingKm"
+                  type="number"
+                  min="0"
+                  max="30"
+                  step="0.1"
+                  placeholder="Ej. 7.9"
+                  inputmode="decimal"
+                />
+
+                <small class="compras-help">
+                  Para calcularlo, entra a Google Maps, busca la ruta desde
+                  <strong>C. Río Janitzio 1868, Central, 64190 Monterrey, N.L.</strong>
+                  hasta tu domicilio e ingresa los km que te marca.
+                  El envío máximo es de 30 km.
+                </small>
+
+                <a
+                  class="compras-maps-link"
+                  href="https://www.google.com/maps/search/?api=1&query=C.+R%C3%ADo+Janitzio+1868,+Central,+64190+Monterrey,+N.L."
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Abrir ubicación base en Google Maps
+                </a>
               </div>
 
               <div class="compras-campo compras-col-full">
-                <label for="buyerNote">Notas del pedido (opcional)</label>
-                <textarea id="buyerNote" name="buyerNote" rows="3" placeholder="Color, nombre a grabar, fecha, temática, referencias de entrega…"></textarea>
+                <label for="buyerNote">Notas del pedido</label>
+                <textarea
+                  id="buyerNote"
+                  name="buyerNote"
+                  rows="4"
+                  placeholder="Color, nombre a grabar, fecha del evento, temática, referencias, detalles personalizados..."
+                ></textarea>
               </div>
+
             </div>
 
-            <hr class="compras-sep">
+            <hr class="compras-sep" />
 
-            <h3 class="compras-panel__title">Totales</h3>
+            <!-- Totales -->
+            <h3 class="compras-panel__title">
+              Totales estimados
+            </h3>
 
             <div class="compras-totales">
               <div class="compras-fila">
@@ -151,35 +287,35 @@
               </div>
 
               <div class="compras-fila">
-                <span>Envío</span>
+                <span>Envío estimado</span>
                 <strong id="envioTxt">$0.00</strong>
               </div>
 
               <div class="compras-fila compras-total">
-                <span>Total</span>
+                <span>Total estimado</span>
                 <strong id="totalTxt">$0.00</strong>
               </div>
             </div>
 
-            <div class="compras-acciones">
-              <button type="submit" class="btn-principal" id="btnGuardarPedido">
-                Guardar y finalizar pedido
-              </button>
+            <p class="compras-ayuda">
+              El total es estimado. Tu pedido se enviará por WhatsApp para confirmar
+              disponibilidad, detalles personalizados, fecha de entrega y costo final.
+            </p>
 
-              <button type="button" class="btn-principal compras-btn-outline" id="btnEnviarWhats">
+            <!-- Acciones -->
+            <div class="compras-acciones">
+              <button
+                type="submit"
+                class="btn-principal compras-btn-whatsapp"
+                id="btnEnviarWhats"
+              >
                 Enviar pedido por WhatsApp
               </button>
 
-              <!-- Mercado Pago (placeholder visual; lo activamos cuando conectemos) -->
-              <button type="button" class="btn-principal compras-btn-mp" id="btnMercadoPago" disabled>
-                <img src="imgs/icono-mercadopago.png" alt="" aria-hidden="true" class="mp-ico">
-                Pagar con Mercado Pago (próximamente)
-              </button>
+              <a href="productos.html" class="btn-principal compras-btn-outline">
+                Seguir comprando
+              </a>
             </div>
-
-            <p class="compras-ayuda">
-              Al finalizar, tu pedido se guardará. El pago con Mercado Pago lo activamos cuando conectemos Supabase + Mercado Pago.
-            </p>
 
           </form>
         </aside>
@@ -190,63 +326,62 @@
     <noscript>
       <section class="seccion">
         <div class="formulario">
-          <p><strong>Para usar el carrito necesitas habilitar JavaScript.</strong></p>
+          <p>
+            <strong>Para usar el carrito necesitas habilitar JavaScript.</strong>
+          </p>
         </div>
       </section>
     </noscript>
 
   </main>
 
-  <!-- FOOTER (igual al blog/index) -->
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
   <footer class="footer">
-    <p>© <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.</p>
+    <p>
+      © <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.
+    </p>
   </footer>
 
-  <!-- BURBUJAS FLOTANTES (igual al blog) -->
+  <!-- =========================================================
+       BURBUJAS FLOTANTES
+  ========================================================== -->
   <div class="burbujas">
-    <a href="https://wa.me/18123439492" target="_blank" rel="noopener" class="burbuja whatsapp" aria-label="WhatsApp">
-      <img src="imgs/icono-whatsapp.png" alt="WhatsApp">
+
+    <a
+      href="https://wa.me/5218123439492"
+      target="_blank"
+      rel="noopener"
+      class="burbuja whatsapp"
+      aria-label="WhatsApp"
+    >
+      <img src="imgs/icono-whatsapp.png" alt="WhatsApp" />
     </a>
-    <a href="https://www.facebook.com/profile.php?id=61559132295014" target="_blank" rel="noopener" class="burbuja facebook" aria-label="Facebook">
-      <img src="imgs/logo-facebook.png" alt="Facebook">
+
+    <a
+      href="https://www.facebook.com/profile.php?id=61559132295014"
+      target="_blank"
+      rel="noopener"
+      class="burbuja facebook"
+      aria-label="Facebook"
+    >
+      <img src="imgs/logo-facebook.png" alt="Facebook" />
     </a>
-    <a href="https://www.instagram.com/creacionesmgi/" target="_blank" rel="noopener" class="burbuja instagram" aria-label="Instagram">
-      <img src="imgs/icono-instagram.webp" alt="Instagram">
+
+    <a
+      href="https://www.instagram.com/creacionesmgi/"
+      target="_blank"
+      rel="noopener"
+      class="burbuja instagram"
+      aria-label="Instagram"
+    >
+      <img src="imgs/icono-instagram.webp" alt="Instagram" />
     </a>
+
   </div>
 
   <!-- JS -->
   <script src="compras.js" defer></script>
-  <script>
-    document.getElementById("anio").textContent = new Date().getFullYear();
-  </script>
-
-<!-- MODAL: Pedido guardado -->
-<div class="mgi-modal" id="modalPedido" hidden>
-  <div class="mgi-modal__backdrop" data-close-modal></div>
-
-  <div class="mgi-modal__card" role="dialog" aria-modal="true" aria-labelledby="modalPedidoTitle">
-    <button class="mgi-modal__close" type="button" aria-label="Cerrar" data-close-modal>×</button>
-
-    <div class="mgi-modal__icon" aria-hidden="true">
-      <img src="imgs/icono-carrito3d.webp" alt="">
-    </div>
-
-    <h3 class="mgi-modal__title" id="modalPedidoTitle">¡Pedido guardado!</h3>
-    <p class="mgi-modal__text">Tu pedido se guardó en el sistema. Conserva tu folio:</p>
-
-    <div class="mgi-modal__folio">
-      <span>Folio:</span>
-      <strong id="modalFolio">—</strong>
-      <button class="mgi-modal__copy" type="button" id="btnCopiarFolio">Copiar</button>
-    </div>
-
-    <div class="mgi-modal__actions">
-      <a class="btn-principal" href="confirmacion.html" id="btnIrConfirmacion">Ver confirmación</a>
-      <button class="btn-principal compras-btn-outline" type="button" data-close-modal>Seguir aquí</button>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>

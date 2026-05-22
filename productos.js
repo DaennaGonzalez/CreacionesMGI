@@ -6,20 +6,14 @@
    - productos.html nuevo
    - compras.html usando localStorage key: mgi_cart_v1
 
-   Guarda productos en carrito con estructura:
-   {
-     id,
-     baseId,
-     name,
-     category,
-     price,
-     img,
-     qty,
-     optionLabel,
-     extraLabel,
-     unitBasePrice,
-     unitExtraPrice
-   }
+   Contempla:
+   - Renta / venta
+   - Variantes de precio
+   - Color / pintado con costo extra
+   - Cantidad
+   - Precio base
+   - Precio extra
+   - Precio final unitario
 ========================================================= */
 
 (() => {
@@ -69,6 +63,16 @@
       minimumFractionDigits: number % 1 === 0 ? 0 : 2,
       maximumFractionDigits: 2
     }).format(number);
+  }
+
+  function formatPriceNumber(value) {
+    const number = round2(value);
+
+    if (number % 1 === 0) {
+      return String(number);
+    }
+
+    return number.toFixed(2);
   }
 
   function normalizeText(value) {
@@ -130,13 +134,25 @@
     const menuIcon = $(".menu-icon");
     const nav = $(".site-nav");
 
-    if (!toggle || !menuIcon) return;
+    if (!toggle || !menuIcon || !nav) return;
 
     const updateAria = () => {
       menuIcon.setAttribute("aria-expanded", toggle.checked ? "true" : "false");
     };
 
     toggle.addEventListener("change", updateAria);
+
+    menuIcon.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+
+    toggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+
+    nav.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
 
     $$(".nav-list a").forEach((link) => {
       link.addEventListener("click", () => {
@@ -145,16 +161,11 @@
       });
     });
 
-    document.addEventListener("click", (event) => {
+    document.addEventListener("click", () => {
       if (!toggle.checked) return;
 
-      const clickedMenu = menuIcon.contains(event.target);
-      const clickedNav = nav && nav.contains(event.target);
-
-      if (!clickedMenu && !clickedNav) {
-        closeMobileMenu();
-        updateAria();
-      }
+      closeMobileMenu();
+      updateAria();
     });
 
     document.addEventListener("keydown", (event) => {
@@ -199,6 +210,41 @@
      4. CARRITO LOCALSTORAGE
   ========================================================= */
 
+  function normalizeCartItem(item) {
+    if (!item || typeof item !== "object") return null;
+
+    const id = String(item.id || "").trim();
+    const baseId = String(item.baseId || id).trim();
+    const name = String(item.name || "Producto").trim();
+    const category = String(item.category || "all").trim();
+    const img = String(item.img || "").trim();
+
+    const price = round2(item.price);
+    const qty = Math.max(1, parseInt(item.qty, 10) || 1);
+
+    const optionLabel = String(item.optionLabel || "").trim();
+    const extraLabel = String(item.extraLabel || "").trim();
+
+    const unitBasePrice = round2(item.unitBasePrice ?? item.price);
+    const unitExtraPrice = round2(item.unitExtraPrice || 0);
+
+    if (!id || !name || price <= 0) return null;
+
+    return {
+      id,
+      baseId,
+      name,
+      category,
+      price,
+      img,
+      qty,
+      optionLabel,
+      extraLabel,
+      unitBasePrice,
+      unitExtraPrice
+    };
+  }
+
   function getCart() {
     const raw = localStorage.getItem(CONFIG.CART_KEY);
 
@@ -208,31 +254,14 @@
 
     if (!Array.isArray(parsed)) return [];
 
-    return parsed
-      .filter((item) => item && typeof item === "object")
-      .map((item) => {
-        const id = String(item.id || "").trim();
-
-        return {
-          id,
-          baseId: String(item.baseId || id).trim(),
-          name: String(item.name || "Producto").trim(),
-          category: String(item.category || "all").trim(),
-          price: round2(item.price),
-          img: String(item.img || "").trim(),
-          qty: Math.max(1, parseInt(item.qty, 10) || 1),
-
-          optionLabel: String(item.optionLabel || "").trim(),
-          extraLabel: String(item.extraLabel || "").trim(),
-          unitBasePrice: round2(item.unitBasePrice ?? item.price),
-          unitExtraPrice: round2(item.unitExtraPrice || 0)
-        };
-      })
-      .filter((item) => item.id && item.price > 0);
+    return parsed.map(normalizeCartItem).filter(Boolean);
   }
 
   function setCart(cart) {
-    const safeCart = Array.isArray(cart) ? cart : [];
+    const safeCart = Array.isArray(cart)
+      ? cart.map(normalizeCartItem).filter(Boolean)
+      : [];
+
     localStorage.setItem(CONFIG.CART_KEY, JSON.stringify(safeCart));
   }
 
@@ -258,7 +287,11 @@
       product.extraLabel ? `ex:${product.extraLabel}` : ""
     ].filter(Boolean);
 
-    return parts.join("__").replace(/\s+/g, "-").toLowerCase();
+    return parts
+      .join("__")
+      .replace(/\s+/g, "-")
+      .replace(/[^\w\-:.áéíóúñÁÉÍÓÚÑ]+/g, "")
+      .toLowerCase();
   }
 
   function upsertCartItem(product) {
@@ -274,7 +307,6 @@
       price: round2(product.price),
       img: product.img,
       qty: Math.max(1, parseInt(product.qty, 10) || 1),
-
       optionLabel: product.optionLabel || "",
       extraLabel: product.extraLabel || "",
       unitBasePrice: round2(product.unitBasePrice),
@@ -302,7 +334,7 @@
   }
 
   /* =========================================================
-     5. LECTURA DE PRODUCTOS, EXTRAS, VARIANTES Y CANTIDAD
+     5. LECTURA DE PRODUCTOS, VARIANTES, EXTRAS Y CANTIDAD
   ========================================================= */
 
   function getSelectedVariant(card) {
@@ -384,6 +416,7 @@
 
   function readProductFromCard(card) {
     const baseId = String(card.dataset.id || "").trim();
+
     const name =
       String(
         card.dataset.name ||
@@ -392,6 +425,7 @@
       ).trim();
 
     const category = String(card.dataset.category || "all").trim();
+
     const img =
       String(
         card.dataset.img ||
@@ -401,6 +435,8 @@
 
     const variant = getSelectedVariant(card);
     const extras = getSelectedExtras(card);
+
+    const hasExtraOption = Boolean($("[data-extra]", card));
 
     const unitBasePrice = getBasePrice(card);
     const unitExtraPrice = extras.price;
@@ -413,35 +449,12 @@
       category,
       img,
       qty,
-
       price,
-      optionLabel: variant.label,
-      extraLabel: extras.label,
+      optionLabel: variant.label || "",
+      extraLabel: extras.label || (hasExtraOption ? "Sin color / sin pintado extra" : ""),
       unitBasePrice,
       unitExtraPrice
     };
-  }
-
-  function updateCardPrice(card) {
-    const priceEl = $(".price", card);
-    if (!priceEl) return;
-
-    const price = getUnitPrice(card);
-    priceEl.textContent = formatPriceNumber(price);
-  }
-
-  function updateAllCardPrices() {
-    $$(".producto-card").forEach(updateCardPrice);
-  }
-
-  function formatPriceNumber(value) {
-    const number = round2(value);
-
-    if (number % 1 === 0) {
-      return String(number);
-    }
-
-    return number.toFixed(2);
   }
 
   function validateProduct(product) {
@@ -480,7 +493,84 @@
   }
 
   /* =========================================================
-     6. UI AGREGAR AL CARRITO
+     6. PRECIO EN VIVO EN TARJETAS
+  ========================================================= */
+
+  function updateCardPrice(card) {
+    const priceEl = $(".price", card);
+    if (!priceEl) return;
+
+    const basePrice = getBasePrice(card);
+    const extras = getSelectedExtras(card);
+    const variant = getSelectedVariant(card);
+    const finalPrice = getUnitPrice(card);
+    const hasExtraOption = Boolean($("[data-extra]", card));
+
+    priceEl.textContent = formatPriceNumber(finalPrice);
+
+    let detail = $(".producto-precio-detalle", card);
+    const bottom = $(".producto-bottom", card);
+
+    if (!detail && bottom) {
+      detail = document.createElement("p");
+      detail.className = "producto-precio-detalle";
+      bottom.insertAdjacentElement("afterend", detail);
+    }
+
+    if (!detail) return;
+
+    const lines = [];
+
+    if (variant.label) {
+      lines.push(`Opción seleccionada: ${variant.label}`);
+    }
+
+    if (hasExtraOption) {
+      if (extras.label && extras.price > 0) {
+        lines.push(`${extras.label}: +${money(extras.price)}`);
+        lines.push(`Base ${money(basePrice)} + extra ${money(extras.price)} = ${money(finalPrice)}`);
+      } else {
+        lines.push("Sin color / sin pintado extra");
+      }
+    }
+
+    detail.textContent = lines.join(" · ");
+    detail.hidden = lines.length === 0;
+  }
+
+  function updateAllCardPrices() {
+    $$(".producto-card").forEach(updateCardPrice);
+  }
+
+  function setupLivePriceUpdates() {
+    document.addEventListener("change", (event) => {
+      const control = event.target.closest("[data-variant], [data-extra]");
+      if (!control) return;
+
+      const card = control.closest(".producto-card");
+      if (!card) return;
+
+      updateCardPrice(card);
+    });
+
+    document.addEventListener("input", (event) => {
+      const qtyInput = event.target.closest("[data-qty]");
+      if (!qtyInput) return;
+
+      const value = parseInt(qtyInput.value, 10);
+
+      if (Number.isFinite(value) && value >= 1) return;
+
+      if (qtyInput.value !== "") {
+        qtyInput.value = "1";
+      }
+    });
+
+    updateAllCardPrices();
+  }
+
+  /* =========================================================
+     7. UI AGREGAR AL CARRITO
   ========================================================= */
 
   function markButtonAdded(button, qty) {
@@ -550,43 +640,20 @@
 
       const subtotal = round2(product.price * product.qty);
 
+      const details = [
+        product.optionLabel ? `Opción: ${product.optionLabel}` : null,
+        product.extraLabel ? `Color/pintado: ${product.extraLabel}` : null,
+        `Subtotal ${money(subtotal)}`
+      ]
+        .filter(Boolean)
+        .join(" · ");
+
       showProductFeedback(
         card,
-        `${product.qty} agregado(s) al carrito · Subtotal ${money(subtotal)}`,
+        `${product.qty} agregado(s) al carrito · ${details}`,
         "success"
       );
     });
-  }
-
-  /* =========================================================
-     7. ACTUALIZACIÓN EN VIVO DE PRECIO
-  ========================================================= */
-
-  function setupLivePriceUpdates() {
-    document.addEventListener("change", (event) => {
-      const control = event.target.closest("[data-variant], [data-extra]");
-      if (!control) return;
-
-      const card = control.closest(".producto-card");
-      if (!card) return;
-
-      updateCardPrice(card);
-    });
-
-    document.addEventListener("input", (event) => {
-      const qtyInput = event.target.closest("[data-qty]");
-      if (!qtyInput) return;
-
-      const value = parseInt(qtyInput.value, 10);
-
-      if (Number.isFinite(value) && value >= 1) return;
-
-      if (qtyInput.value !== "") {
-        qtyInput.value = "1";
-      }
-    });
-
-    updateAllCardPrices();
   }
 
   /* =========================================================

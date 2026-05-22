@@ -1,10 +1,15 @@
 /* =========================================================
    PRODUCTOS.CSS — CREACIONES MGI
    Catálogo completo responsive
-   - Conserva tabla decorativa de Productos
+   Compatible con productos.html + productos.js actualizado
+
+   Incluye:
+   - Tabla decorativa de Productos conservada
    - Buscador + filtros + carrito
    - Tarjetas con cantidad, extras, variantes y cotización
-   - Compatible con productos.html nuevo
+   - Detalle visual de renta/venta, color/pintado y precio final
+   - Títulos con mayor contraste sin cuadros grandes
+   - Menú hamburguesa corregido en móvil
 ========================================================= */
 
 /* =========================================================
@@ -18,6 +23,7 @@
 
   --naranja:#f28a1a;
   --naranja-2:#ff9f3a;
+  --naranja-3:#ff7600;
 
   --crema:#f3ede5;
   --crema-2:#fff8ee;
@@ -27,10 +33,10 @@
   --texto-suave:rgba(0,0,0,.72);
   --texto-muy-suave:rgba(0,0,0,.56);
 
-  --punteado:rgba(0,0,0,.34);
+  --punteado:rgba(0,0,0,.30);
 
   --grad-mgi:linear-gradient(90deg, var(--naranja), var(--azul));
-  --grad-titulo:linear-gradient(90deg, var(--azul), var(--naranja), #8c3cff);
+  --grad-titulo:linear-gradient(90deg, #120a8f 0%, #251bbd 32%, #f28a1a 68%, #ff7600 100%);
   --grad-azul:linear-gradient(90deg, var(--azul), var(--azul-2));
   --grad-naranja:linear-gradient(180deg, var(--naranja-2), var(--naranja));
 
@@ -58,6 +64,10 @@ img{
 }
 
 .is-hidden{
+  display:none !important;
+}
+
+[hidden]{
   display:none !important;
 }
 
@@ -269,8 +279,9 @@ img{
   background-clip:text;
   color:transparent;
   filter:
-    drop-shadow(0 2px 0 rgba(255,255,255,.9))
-    drop-shadow(0 18px 22px rgba(37,27,189,.10));
+    drop-shadow(0 2px 0 rgba(255,255,255,.95))
+    drop-shadow(0 8px 14px rgba(37,27,189,.24))
+    drop-shadow(0 10px 18px rgba(242,138,26,.16));
   text-wrap:balance;
 }
 
@@ -279,8 +290,8 @@ img{
   max-width:820px;
   font-size:18px;
   line-height:1.6;
-  color:rgba(0,0,0,.75);
-  font-weight:650;
+  color:rgba(0,0,0,.78);
+  font-weight:700;
 }
 
 .productos-hero-cta{
@@ -312,17 +323,46 @@ img{
 }
 
 .titulo-seccion{
-  margin:0 0 26px;
+  position:relative;
+  z-index:3;
+  margin:0 auto 26px;
   text-align:center;
-  font-size:clamp(28px,3vw,36px);
+  font-size:clamp(30px,3.2vw,40px);
   line-height:1.08;
   font-weight:950;
+
   background:var(--grad-titulo);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
-  filter:drop-shadow(0 2px 0 rgba(255,255,255,.88));
+
+  filter:
+    drop-shadow(0 2px 0 rgba(255,255,255,.98))
+    drop-shadow(0 6px 10px rgba(37,27,189,.24))
+    drop-shadow(0 8px 12px rgba(242,138,26,.14));
+
+  text-shadow:none;
   text-wrap:balance;
+  opacity:1;
+}
+
+.titulo-seccion::before{
+  display:none !important;
+  content:none !important;
+}
+
+.titulo-seccion::after{
+  content:"";
+  display:block;
+  width:min(190px,62%);
+  height:7px;
+  margin:13px auto 0;
+  border-radius:999px;
+  background:linear-gradient(90deg, #251bbd, #f28a1a, #ff7600);
+  box-shadow:
+    0 8px 14px rgba(37,27,189,.18),
+    0 8px 14px rgba(242,138,26,.16);
+  opacity:1;
 }
 
 .productos-final{
@@ -333,8 +373,8 @@ img{
 .productos-final-texto{
   max-width:760px;
   margin:0 auto;
-  color:var(--texto-suave);
-  font-weight:700;
+  color:rgba(0,0,0,.78);
+  font-weight:800;
   font-size:16px;
   line-height:1.5;
 }
@@ -553,18 +593,8 @@ img{
 }
 
 .productos-seccion::before{
-  content:"";
-  position:absolute;
-  inset:-6px -6px auto -6px;
-  height:150px;
-  border-radius:34px;
-
-  background:
-    radial-gradient(520px 180px at 18% 10%, rgba(242,138,26,.14), rgba(0,0,0,0) 65%),
-    radial-gradient(520px 200px at 82% 0%, rgba(37,27,189,.14), rgba(0,0,0,0) 70%);
-
-  pointer-events:none;
-  z-index:0;
+  display:none !important;
+  content:none !important;
 }
 
 .productos-seccion > *{
@@ -575,40 +605,10 @@ img{
 .productos-seccion .titulo-seccion{
   display:block;
   width:fit-content;
+  max-width:100%;
   margin-left:auto;
   margin-right:auto;
-  padding-top:18px;
-}
-
-.productos-seccion .titulo-seccion::before{
-  content:"CATEGORÍA";
-  position:absolute;
-  top:-14px;
-  left:50%;
-  transform:translateX(-50%);
-
-  padding:8px 14px;
-  border-radius:999px;
-
-  font-size:12px;
-  font-weight:950;
-  letter-spacing:.35px;
-
-  color:rgba(0,0,0,.78);
-  background:linear-gradient(90deg, rgba(242,138,26,.18), rgba(37,27,189,.16));
-  border:1px solid rgba(0,0,0,.10);
-  box-shadow:0 14px 24px rgba(0,0,0,.10);
-}
-
-.productos-seccion .titulo-seccion::after{
-  content:"";
-  display:block;
-  height:10px;
-  width:min(220px,66%);
-  margin:14px auto 0;
-  border-radius:999px;
-  background:linear-gradient(90deg, rgba(37,27,189,.22), rgba(242,138,26,.22));
-  box-shadow:0 14px 24px rgba(0,0,0,.08);
+  padding-top:0;
 }
 
 /* =========================================================
@@ -860,7 +860,7 @@ img{
 }
 
 /* =========================================================
-   10. PRECIO Y BOTÓN DE PRODUCTO
+   10. PRECIO, DETALLE DE PRECIO Y BOTÓN
 ========================================================= */
 
 .producto-bottom{
@@ -912,6 +912,32 @@ img{
   content:"💬";
 }
 
+.producto-precio-detalle{
+  width:100%;
+  max-width:330px;
+  margin:8px auto 0;
+  padding:10px 12px;
+
+  border-radius:16px;
+  background:
+    radial-gradient(260px 90px at 20% 0%, rgba(242,138,26,.18), rgba(242,138,26,0) 68%),
+    radial-gradient(260px 90px at 80% 0%, rgba(37,27,189,.15), rgba(37,27,189,0) 70%),
+    rgba(255,255,255,.58);
+
+  border:1px solid rgba(37,27,189,.13);
+  box-shadow:0 8px 16px rgba(0,0,0,.06);
+
+  color:rgba(0,0,0,.76);
+  font-size:12.8px;
+  font-weight:850;
+  line-height:1.35;
+  text-align:center;
+}
+
+.producto-precio-detalle[hidden]{
+  display:none !important;
+}
+
 .producto-add,
 .producto-cotizar{
   min-height:46px;
@@ -952,7 +978,45 @@ img{
 }
 
 /* =========================================================
-   11. ANIMACIONES REVEAL
+   11. FEEDBACK DE PRODUCTO
+========================================================= */
+
+.producto-feedback{
+  width:100%;
+  max-width:330px;
+  margin:8px auto 0;
+  padding:10px 12px;
+  border-radius:16px;
+  font-size:12.8px;
+  line-height:1.35;
+  font-weight:850;
+  text-align:center;
+}
+
+.producto-feedback:empty{
+  display:none;
+}
+
+.producto-feedback.is-success{
+  color:#136b31;
+  background:rgba(37,211,102,.12);
+  border:1px solid rgba(37,211,102,.24);
+}
+
+.producto-feedback.is-warning{
+  color:#805500;
+  background:rgba(255,180,0,.15);
+  border:1px solid rgba(255,150,0,.28);
+}
+
+.producto-feedback.is-error{
+  color:#9b1d1d;
+  background:rgba(255,80,80,.12);
+  border:1px solid rgba(255,80,80,.22);
+}
+
+/* =========================================================
+   12. ANIMACIONES REVEAL
 ========================================================= */
 
 .reveal{
@@ -973,7 +1037,58 @@ img{
 }
 
 /* =========================================================
-   12. RESPONSIVE DESKTOP PEQUEÑO
+   13. FIX MENÚ HAMBURGUESA EN PRODUCTOS
+========================================================= */
+
+@media (max-width:900px){
+  .site-header{
+    z-index:99999 !important;
+    overflow:visible !important;
+  }
+
+  .header-inner{
+    overflow:visible !important;
+  }
+
+  .menu-toggle{
+    position:absolute !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+  }
+
+  .menu-icon{
+    display:flex !important;
+    z-index:100002 !important;
+    pointer-events:auto !important;
+  }
+
+  .site-nav{
+    position:relative !important;
+    z-index:100001 !important;
+    overflow:visible !important;
+  }
+
+  .nav-list{
+    z-index:100001 !important;
+  }
+
+  #menu-toggle:checked ~ .site-nav .nav-list{
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+    transform:translateY(0) scale(1) !important;
+    display:flex !important;
+  }
+
+  #menu-toggle:not(:checked) ~ .site-nav .nav-list{
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+  }
+}
+
+/* =========================================================
+   14. RESPONSIVE DESKTOP PEQUEÑO
 ========================================================= */
 
 @media (max-width:1024px) and (min-width:900px){
@@ -1007,7 +1122,7 @@ img{
 }
 
 /* =========================================================
-   13. RESPONSIVE TABLET
+   15. RESPONSIVE TABLET
 ========================================================= */
 
 @media (max-width:899px) and (min-width:641px){
@@ -1076,7 +1191,7 @@ img{
 }
 
 /* =========================================================
-   14. RESPONSIVE MÓVIL
+   16. RESPONSIVE MÓVIL
 ========================================================= */
 
 @media (max-width:640px){
@@ -1136,9 +1251,19 @@ img{
   }
 
   .titulo-seccion{
-    font-size:28px;
-    margin-bottom:16px;
-    padding:0 10px;
+    display:block;
+    width:100%;
+    max-width:100%;
+    font-size:clamp(27px,7.8vw,34px);
+    margin-bottom:18px;
+    padding:0 8px;
+    line-height:1.12;
+  }
+
+  .titulo-seccion::after{
+    width:135px;
+    height:6px;
+    margin-top:10px;
   }
 
   .productos-toolbar{
@@ -1238,6 +1363,12 @@ img{
     justify-content:center;
   }
 
+  .producto-precio-detalle,
+  .producto-feedback{
+    max-width:520px;
+    font-size:12.6px;
+  }
+
   .pedidos-cta-bloque .btn{
     width:100%;
     max-width:520px;
@@ -1245,7 +1376,7 @@ img{
 }
 
 /* =========================================================
-   15. MÓVIL MEDIANO Y PEQUEÑO
+   17. MÓVIL MEDIANO Y PEQUEÑO
 ========================================================= */
 
 @media (max-width:480px) and (min-width:391px){
@@ -1293,10 +1424,18 @@ img{
   .producto-img img{
     max-height:142px;
   }
+
+  .producto-check{
+    align-items:flex-start;
+  }
+
+  .producto-check input{
+    margin-top:1px;
+  }
 }
 
 /* =========================================================
-   16. REDUCE MOTION
+   18. REDUCE MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion:reduce){

@@ -1805,3 +1805,129 @@ main{
     width: min(520px, 100%);
   }
 }
+
+/* =========================================================
+   FIX LIMPIO PEDIDOS - TITULOS MÁS FUERTES SIN CUADROS
+   Pegar al final de pedidos.css
+========================================================= */
+
+/* Evita fondos grandes o cuadros decorativos que tapen textos */
+.pedidos-seccion::before,
+.seccion-pedidos::before,
+.pedidos-pasos::before,
+.pedidos-resumen::before,
+.pedidos-formulario::before,
+.pedidos-final::before{
+  display: none !important;
+}
+
+/* Títulos principales más fuertes sin crear bloques encima */
+.titulo-seccion,
+.pedidos-title,
+.pedidos-hero-title,
+.pedidos-heading,
+.pedidos-final .titulo-seccion,
+.pedidos-resumen .titulo-seccion,
+.pedidos-pasos .titulo-seccion,
+.pedidos-formulario .titulo-seccion{
+  position: relative !important;
+  z-index: 3 !important;
+
+  background: linear-gradient(
+    90deg,
+    #1b119f 0%,
+    #251bbd 32%,
+    #f28a1a 68%,
+    #ff7a00 100%
+  ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+
+  opacity: 1 !important;
+  font-weight: 950 !important;
+
+  filter:
+    drop-shadow(0 2px 0 rgba(255,255,255,.98))
+    drop-shadow(0 5px 8px rgba(37,27,189,.22)) !important;
+
+  text-shadow: none !important;
+}
+
+/* Evita pseudo-elementos grandes sobre títulos */
+.titulo-seccion::before,
+.pedidos-title::before,
+.pedidos-hero-title::before,
+.pedidos-heading::before{
+  display: none !important;
+  content: none !important;
+}
+
+/* Línea decorativa pequeña y limpia */
+.titulo-seccion::after,
+.pedidos-title::after,
+.pedidos-hero-title::after,
+.pedidos-heading::after{
+  content: "" !important;
+  display: block !important;
+
+  width: min(180px, 60%) !important;
+  height: 6px !important;
+
+  margin: 12px auto 0 !important;
+  border-radius: 999px !important;
+
+  background: linear-gradient(
+    90deg,
+    #251bbd,
+    #f28a1a
+  ) !important;
+
+  box-shadow: none !important;
+  opacity: 1 !important;
+
+  position: static !important;
+  transform: none !important;
+}
+
+/* Textos descriptivos más legibles sin fondos extra */
+.pedidos-lead,
+.pedidos-subtitle,
+.pedidos-intro,
+.pedidos-final-texto,
+.pedidos-texto{
+  color: rgba(0,0,0,.78) !important;
+  font-weight: 750 !important;
+}
+
+/* Ajuste móvil */
+@media (max-width: 768px){
+  .titulo-seccion,
+  .pedidos-title,
+  .pedidos-hero-title,
+  .pedidos-heading,
+  .pedidos-final .titulo-seccion{
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 18px !important;
+
+    padding: 0 8px !important;
+
+    font-size: clamp(26px, 7.5vw, 34px) !important;
+    line-height: 1.12 !important;
+  }
+
+  .titulo-seccion::after,
+  .pedidos-title::after,
+  .pedidos-hero-title::after,
+  .pedidos-heading::after{
+    width: 130px !important;
+    height: 5px !important;
+    margin-top: 10px !important;
+  }
+}
