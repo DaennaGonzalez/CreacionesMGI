@@ -4,12 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Verificación de dominio de Meta / Facebook -->
+  <meta name="facebook-domain-verification" content="s3z73ssjmpwp3qujuy6ex4i8lepgng" />
+
+  <!-- SEO básico -->
+  <title>Creaciones MGI | Inicio</title>
+
   <meta
     name="description"
     content="Creaciones MGI - Fabricación personalizada en MDF y acrílico. Detalles únicos, piezas inolvidables."
   />
 
-  <title>Creaciones MGI | Inicio</title>
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- URL oficial de la página -->
+  <link rel="canonical" href="https://creacionesmgi.com/" />
+
+  <!-- Open Graph / Vista previa al compartir en Facebook, WhatsApp y Messenger -->
+  <meta property="og:title" content="Creaciones MGI | Detalles personalizados en MDF y acrílico" />
+  <meta property="og:description" content="Fabricamos detalles personalizados en MDF y acrílico para cumpleaños, XV años, bodas, bautizos, regalos y eventos especiales." />
+  <meta property="og:image" content="https://creacionesmgi.com/imgs/preview-facebook.jpg" />
+  <meta property="og:image:secure_url" content="https://creacionesmgi.com/imgs/preview-facebook.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Creaciones MGI - Detalles personalizados en MDF y acrílico" />
+  <meta property="og:url" content="https://creacionesmgi.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Creaciones MGI" />
+  <meta property="og:locale" content="es_MX" />
+
+  <!-- Vista previa tipo Twitter / X / WhatsApp compatible -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Creaciones MGI | Detalles personalizados en MDF y acrílico" />
+  <meta name="twitter:description" content="Fabricamos detalles personalizados en MDF y acrílico para cumpleaños, XV años, bodas, bautizos, regalos y eventos especiales." />
+  <meta name="twitter:image" content="https://creacionesmgi.com/imgs/preview-facebook.jpg" />
 
   <!-- CSS -->
   <link rel="stylesheet" href="styles.css" />
@@ -24,9 +54,63 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/webp" href="imgs/logo-creacionesmgi.webp" />
+
+  <!-- Datos estructurados del negocio -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Creaciones MGI",
+    "url": "https://creacionesmgi.com/",
+    "logo": "https://creacionesmgi.com/imgs/logo-creacionesmgi.webp",
+    "image": "https://creacionesmgi.com/imgs/preview-facebook.jpg",
+    "description": "Fabricación personalizada en MDF y acrílico para cumpleaños, XV años, bodas, bautizos, regalos y eventos especiales.",
+    "telephone": "+528123439492",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Río Jánitzio 1868",
+      "addressLocality": "Monterrey",
+      "addressRegion": "Nuevo León",
+      "postalCode": "64190",
+      "addressCountry": "MX"
+    },
+    "openingHours": "Mo-Fr 09:00-16:00",
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61559132295014",
+      "https://www.instagram.com/creacionesmgi/"
+    ]
+  }
+  </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2215758785927392');
+  fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
 </head>
 
 <body class="mgi-body">
+
+  <!-- Meta Pixel NoScript -->
+  <noscript>
+    <img
+      height="1"
+      width="1"
+      style="display:none"
+      src="https://www.facebook.com/tr?id=2215758785927392&ev=PageView&noscript=1"
+      alt=""
+    />
+  </noscript>
+
   <!-- Fondo fijo -->
   <div class="bg-fixed" aria-hidden="true"></div>
 
@@ -334,7 +418,7 @@
         />
       </div>
 
-      <!-- Nuevo botón debajo de la muchacha -->
+      <!-- Botón debajo de la muchacha -->
       <div class="destacado-cta">
         <a class="btn-principal btn-ver-productos" href="productos.html">
           Ver todos los productos
@@ -530,8 +614,6 @@
       </div>
     </section>
 
-
-    
     <!-- =========================================================
          ENVÍOS Y ATENCIÓN
     ========================================================== -->
@@ -649,7 +731,7 @@
               class="btn-secundario btn-maps"
               href="https://www.google.com/maps/search/?api=1&query=C.+R%C3%ADo+Janitzio+1868,+Central,+64190+Monterrey,+N.L."
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               Abrir ubicación en Google Maps
             </a>
@@ -679,7 +761,7 @@
               />
 
               <small>
-                Máximo 30 km a la redonda. 
+                Máximo 30 km a la redonda.
               </small>
             </div>
 
@@ -763,7 +845,7 @@
                 class="btn-personaliza btn-personaliza--wa"
                 href="https://wa.me/5218123439492?text=Hola%20Creaciones%20MGI%2C%20quiero%20personalizar%20un%20dise%C3%B1o.%20Mi%20idea%20es%3A%20"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
               >
                 Enviar mi idea
               </a>
@@ -902,7 +984,6 @@
       </div>
     </section>
 
-
   </main>
 
   <!-- =========================================================
@@ -1009,7 +1090,7 @@
             class="catalogo-link"
             href="https://drive.google.com/file/d/1qrMfTDpX4idLxtEInIWqW4DTrWMPYQIW/view?usp=sharing"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Ver PDF en Google Drive
           </a>
@@ -1018,18 +1099,61 @@
     </div>
   </div>
 
-  <!-- =========================================================
-       FOOTER
-  ========================================================== -->
-  <footer class="footer">
-    <p>
-      © <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.
-    </p>
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+<footer class="footer">
 
-    <p class="footer-firma">
-      Creado por Daenna González
-    </p>
-  </footer>
+  <div class="footer-logo">
+    <img
+      src="imgs/logo-creacionesmgi.webp"
+      alt="Creaciones MGI"
+    />
+  </div>
+
+  <p>
+    © <span id="anio"></span> Creaciones MGI. Todos los derechos reservados.
+  </p>
+
+  <div class="footer-redes" aria-label="Redes sociales de Creaciones MGI">
+    <a
+      href="https://wa.me/5218123439492?text=Hola%20Creaciones%20MGI%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="footer-red footer-red--whatsapp"
+      aria-label="WhatsApp de Creaciones MGI"
+    >
+      <img src="imgs/icono-whatsapp.png" alt="" aria-hidden="true" />
+      <span>WhatsApp</span>
+    </a>
+
+    <a
+      href="https://www.facebook.com/profile.php?id=61559132295014"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="footer-red footer-red--facebook"
+      aria-label="Facebook de Creaciones MGI"
+    >
+      <img src="imgs/logo-facebook.png" alt="" aria-hidden="true" />
+      <span>Facebook</span>
+    </a>
+
+    <a
+      href="https://www.instagram.com/creacionesmgi/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="footer-red footer-red--instagram"
+      aria-label="Instagram de Creaciones MGI"
+    >
+      <img src="imgs/icono-instagram.webp" alt="" aria-hidden="true" />
+      <span>Instagram</span>
+    </a>
+  </div>
+
+  <p class="footer-firma">
+    Creado por Daenna González
+  </p>
+</footer>
 
   <!-- =========================================================
        BURBUJAS FLOTANTES
@@ -1039,7 +1163,7 @@
     <a
       href="https://wa.me/5218123439492?text=Hola%20Creaciones%20MGI%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos."
       target="_blank"
-      rel="noopener"
+      rel="noopener noreferrer"
       class="burbuja whatsapp"
       aria-label="WhatsApp"
     >
@@ -1049,7 +1173,7 @@
     <a
       href="https://www.facebook.com/profile.php?id=61559132295014"
       target="_blank"
-      rel="noopener"
+      rel="noopener noreferrer"
       class="burbuja facebook"
       aria-label="Facebook"
     >
@@ -1059,7 +1183,7 @@
     <a
       href="https://www.instagram.com/creacionesmgi/"
       target="_blank"
-      rel="noopener"
+      rel="noopener noreferrer"
       class="burbuja instagram"
       aria-label="Instagram"
     >
