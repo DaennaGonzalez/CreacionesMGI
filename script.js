@@ -948,3 +948,267 @@
     init();
   }
 })();
+
+/* =========================================================
+   14) META PIXEL - EVENTOS PARA PUBLICIDAD
+   Pegar este bloque hasta el final del script.js,
+   después del último })();
+========================================================= */
+
+(() => {
+  "use strict";
+
+  const MGI_PIXEL = {
+    negocio: "Creaciones MGI",
+    dominio: "https://creacionesmgi.com",
+    pixelId: "2215758785927392"
+  };
+
+  const pixelDisponible = () => {
+    return typeof window.fbq === "function";
+  };
+
+  const track = (evento, parametros = {}) => {
+    if (!pixelDisponible()) return;
+
+    window.fbq("track", evento, {
+      negocio: MGI_PIXEL.negocio,
+      dominio: MGI_PIXEL.dominio,
+      ...parametros
+    });
+  };
+
+  const trackCustom = (evento, parametros = {}) => {
+    if (!pixelDisponible()) return;
+
+    window.fbq("trackCustom", evento, {
+      negocio: MGI_PIXEL.negocio,
+      dominio: MGI_PIXEL.dominio,
+      ...parametros
+    });
+  };
+
+  const obtenerTexto = (elemento) => {
+    if (!elemento) return "";
+
+    return (elemento.innerText || elemento.textContent || "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 120);
+  };
+
+  function setupPageViewExtra() {
+    const path = window.location.pathname.toLowerCase();
+
+    if (path.includes("productos")) {
+      track("ViewContent", {
+        content_name: "Catálogo de productos",
+        content_category: "Productos personalizados MDF y acrílico"
+      });
+    }
+
+    if (path.includes("contacto")) {
+      trackCustom("VistaContacto", {
+        pagina: "Contacto"
+      });
+    }
+
+    if (path.includes("pedidos")) {
+      trackCustom("VistaPedidos", {
+        pagina: "Pedidos"
+      });
+    }
+
+    if (path.includes("ubicacion")) {
+      trackCustom("VistaUbicacion", {
+        pagina: "Ubicación"
+      });
+    }
+  }
+
+  function setupPixelClicks() {
+    document.addEventListener("click", (event) => {
+      const enlace = event.target.closest("a[href]");
+      const botonCotiza = event.target.closest('[data-modal="cotizaModal"]');
+      const botonCatalogo = event.target.closest("#btnAbrirCatalogo");
+
+      if (botonCotiza) {
+        trackCustom("AbrirModalCotizacion", {
+          boton: obtenerTexto(botonCotiza)
+        });
+      }
+
+      if (botonCatalogo) {
+              if (botonCatalogo) {
+        trackCustom("AbrirCatalogo", {
+          boton: "Ver catálogo"
+        });
+
+        track("ViewContent", {
+          content_name: "Catálogo Creaciones MGI",
+          content_category: "Catálogo PDF"
+        });
+      }
+      }
+
+      if (!enlace) return;
+
+      const href = enlace.href || "";
+      const texto = obtenerTexto(enlace);
+
+      if (href.includes("wa.me") || href.includes("whatsapp")) {
+        track("Contact", {
+          canal: "WhatsApp",
+          boton: texto || enlace.getAttribute("aria-label") || "WhatsApp"
+        });
+      }
+
+      if (href.includes("facebook.com")) {
+        trackCustom("ClickFacebook", {
+          canal: "Facebook",
+          boton: texto || enlace.getAttribute("aria-label") || "Facebook"
+        });
+      }
+
+      if (href.includes("instagram.com")) {
+        trackCustom("ClickInstagram", {
+          canal: "Instagram",
+          boton: texto || enlace.getAttribute("aria-label") || "Instagram"
+        });
+      }
+
+      if (href.includes("productos.html")) {
+        trackCustom("ClickProductos", {
+          destino: "productos.html",
+          boton: texto || "Ver productos"
+        });
+      }
+
+      if (href.includes("ubicacion.html")) {
+        trackCustom("ClickUbicacionWeb", {
+          destino: "ubicacion.html",
+          boton: texto || "Ubicación"
+        });
+      }
+
+      if (href.includes("google.com/maps")) {
+        trackCustom("AbrirGoogleMaps", {
+          destino: "Google Maps",
+          boton: texto || "Abrir ubicación"
+        });
+      }
+
+      if (href.includes("drive.google.com")) {
+        trackCustom("AbrirCatalogoDrive", {
+          destino: "Google Drive",
+          boton: texto || "Ver PDF"
+        });
+      }
+    });
+  }
+
+  function setupPixelFormularioCotizacion() {
+    const form = document.getElementById("formCotiza");
+    if (!form) return;
+
+    form.addEventListener(
+      "submit",
+      () => {
+        const nombre = document.getElementById("cotizaNombre")?.value.trim();
+        const telefono = document.getElementById("cotizaTelefono")?.value.trim();
+        const evento = document.getElementById("cotizaEvento")?.value.trim();
+        const mensaje = document.getElementById("cotizaMensaje")?.value.trim();
+
+        if (!nombre || !telefono || !mensaje) return;
+
+        track("Lead", {
+          formulario: "Cotiza tu diseño",
+          canal: "WhatsApp",
+          evento_producto: evento || "No especificado"
+        });
+      },
+      true
+    );
+  }
+
+  function setupPixelCalculadoraEnvio() {
+    const form = document.getElementById("formCalculadoraEnvio");
+    if (!form) return;
+
+    form.addEventListener(
+      "submit",
+      () => {
+        const tipoEntrega = document.getElementById("tipoEntrega")?.value || "";
+        const kilometrosRaw =
+          document.getElementById("kilometrosEnvio")?.value || "";
+
+        const kilometros = Number.parseFloat(
+          String(kilometrosRaw).replace(",", ".")
+        );
+
+        trackCustom("CalcularEnvio", {
+          tipo_entrega: tipoEntrega || "No especificado",
+          kilometros: Number.isFinite(kilometros) ? kilometros : null
+        });
+      },
+      true
+    );
+  }
+
+  function setupPixelProductosMasVendidos() {
+  const productos = document.querySelectorAll(".mv-card");
+
+  productos.forEach((producto) => {
+    const enlace = producto.querySelector("a[href]");
+    const titulo = producto.querySelector(".mv-title")?.textContent?.trim();
+    const precio = producto.querySelector(".mv-price")?.textContent?.trim();
+
+    if (!enlace || !titulo) return;
+
+    enlace.addEventListener("click", () => {
+            trackCustom("ClickProductoMasVendido", {
+        producto: titulo,
+        precio: precio || "No especificado"
+      });
+
+      track("ViewContent", {
+        content_name: titulo,
+        content_category: "Producto más vendido",
+        currency: "MXN"
+      });
+    });
+  });
+}
+
+  function setupPixelCelebraciones() {
+    const celebraciones = document.querySelectorAll(".tarjeta-celebracion");
+
+    celebraciones.forEach((card) => {
+      const enlace = card.querySelector("a[href]");
+      const titulo = card.querySelector("h3")?.textContent?.trim();
+
+      if (!enlace || !titulo) return;
+
+      enlace.addEventListener("click", () => {
+        trackCustom("ClickCelebracion", {
+          celebracion: titulo
+        });
+      });
+    });
+  }
+
+  function initMetaPixelMGI() {
+    setupPageViewExtra();
+    setupPixelClicks();
+    setupPixelFormularioCotizacion();
+    setupPixelCalculadoraEnvio();
+    setupPixelProductosMasVendidos();
+    setupPixelCelebraciones();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMetaPixelMGI);
+  } else {
+    initMetaPixelMGI();
+  }
+})();

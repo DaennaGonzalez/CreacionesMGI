@@ -90,15 +90,20 @@
             </p>
 
             <div class="productos-hero-cta" data-animate="up" data-delay="140">
-              <a class="btn btn-primario btn-grande btn-bounce" href="#catalogo">
-                <img
-                  class="btn-ico"
-                  src="imgs/icono-carrito3d.webp"
-                  alt=""
-                  aria-hidden="true"
-                />
-                Ver catálogo
-              </a>
+                        <button
+            type="button"
+            class="btn btn-primario btn-grande btn-bounce js-abrir-catalogo"
+            aria-haspopup="dialog"
+            aria-controls="modalCatalogo"
+          >
+            <img
+              class="btn-ico"
+              src="imgs/icono-carrito3d.webp"
+              alt=""
+              aria-hidden="true"
+            />
+            Ver catálogo
+          </button>
 
               <a
                 class="btn btn-secundario btn-grande btn-bounce"
@@ -2019,6 +2024,57 @@
     </section>
 
   </main>
+
+  <!-- =========================================================
+     MODAL: CATÁLOGO
+========================================================== -->
+<div class="modal-catalogo" id="modalCatalogo" aria-hidden="true">
+
+  <div class="modal-catalogo__overlay" data-close="true"></div>
+
+  <div
+    class="modal-catalogo__panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloCatalogo"
+  >
+    <div class="modal-catalogo__header">
+      <h3 class="modal-catalogo__titulo" id="tituloCatalogo">Catálogo</h3>
+
+      <button
+        type="button"
+        class="modal-catalogo__cerrar"
+        id="btnCerrarCatalogo"
+        aria-label="Cerrar catálogo"
+        title="Cerrar"
+      >
+        ✕
+      </button>
+    </div>
+
+    <div class="modal-catalogo__body">
+      <iframe
+        class="catalogo-pdf"
+        src=""
+        allow="autoplay"
+        loading="lazy"
+        title="Catálogo Creaciones MGI"
+      ></iframe>
+
+      <p class="catalogo-fallback">
+        Si no se muestra el catálogo, ábrelo aquí:
+        <a
+          class="catalogo-link"
+          href="https://drive.google.com/file/d/1qrMfTDpX4idLxtEInIWqW4DTrWMPYQIW/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ver PDF en Google Drive
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
 
   <footer class="footer">
     <p>

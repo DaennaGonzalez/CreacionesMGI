@@ -23,11 +23,15 @@
      1. CONFIGURACIÓN
   ========================================================= */
 
-  const CONFIG = {
-    CART_KEY: "mgi_cart_v1",
-    WHATSAPP_NUMBER: "5218123439492",
-    DEBUG: false
-  };
+const CONFIG = {
+  CART_KEY: "mgi_cart_v1",
+  WHATSAPP_NUMBER: "5218123439492",
+
+  CATALOGO_PREVIEW_URL:
+    "https://drive.google.com/file/d/1qrMfTDpX4idLxtEInIWqW4DTrWMPYQIW/preview",
+
+  DEBUG: false
+};
 
   /* =========================================================
      2. HELPERS
@@ -205,6 +209,77 @@
       });
     });
   }
+
+  /* =========================================================
+   4. MODAL CATÁLOGO PDF
+========================================================= */
+
+function setupCatalogoModal() {
+  const openBtns = $$(".js-abrir-catalogo, [data-abrir-catalogo]");
+  const modal = $("#modalCatalogo");
+  const closeBtn = $("#btnCerrarCatalogo");
+  const overlay = modal ? $(".modal-catalogo__overlay", modal) : null;
+  const panel = modal ? $(".modal-catalogo__panel", modal) : null;
+  const iframe = modal ? $(".catalogo-pdf", modal) : null;
+
+  if (!openBtns.length || !modal || !panel) return;
+
+  let lastOpener = null;
+
+  const isOpen = () => modal.classList.contains("is-open");
+
+  const openModal = (opener = null) => {
+    lastOpener = opener;
+
+    if (iframe && !iframe.getAttribute("src")) {
+      iframe.setAttribute("src", CONFIG.CATALOGO_PREVIEW_URL);
+    }
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+
+    if (closeBtn) closeBtn.focus({ preventScroll: true });
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("no-scroll");
+
+    if (lastOpener) {
+      lastOpener.focus({ preventScroll: true });
+    }
+  };
+
+  openBtns.forEach((openBtn) => {
+    openBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      openModal(openBtn);
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      closeModal();
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", closeModal);
+  }
+
+  panel.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isOpen()) {
+      closeModal();
+    }
+  });
+}
 
   /* =========================================================
      4. CARRITO LOCALSTORAGE
@@ -869,6 +944,7 @@
     setupCompactHeader();
     setupMobileMenu();
     setupSmoothAnchors();
+    setupCatalogoModal();
 
     repairCartStorage();
     updateCartBadge();
